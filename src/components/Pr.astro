@@ -1,0 +1,30 @@
+<!-- ============ 10 发 PR ============ -->
+<section class="sec" id="pr">
+	<div class="wrap pr-grid">
+		<div class="pr-copy">
+			<div class="sec-head" data-rv>
+				<span class="sec-no">10 / merge</span>
+				<h2>发一个 Pull Request</h2>
+			</div>
+			<p class="sec-lead" data-rv style="transition-delay:.08s;margin-bottom:8px">想法不用成熟，话不用讲全。一句话说说你想做什么，我先帮你看看：<b style="color:var(--ink)">第一版该有哪些功能、技术上有没有坑、大概要多少投入。</b>聊完不合适也没关系——至少思路理清了，你不亏。</p>
+			<div class="pr-merge" data-rv style="transition-delay:.16s">
+				<span>base:</span><b>合作</b><span>←</span><span>compare:</span><i>你的想法</i>
+			</div>
+		</div>
+		<form class="pr-form" id="prForm" data-rv style="transition-delay:.1s" novalidate>
+			<span class="pf-label">标题 · 一句话就够</span>
+			<input class="pf-in" id="prTitle" type="text" placeholder="我想做一个 XXX" autocomplete="off">
+			<span class="pf-label">补充 · 可以慢慢聊（选填）</span>
+			<textarea class="pf-ta" id="prBody" placeholder="现在进展到哪了？目标用户是谁？最想先解决什么问题？"></textarea>
+			<span class="pf-label">你现在处于哪个阶段</span>
+			<div class="chips" id="stageChips">
+				<button type="button" class="chip on" data-v="只有一个想法">只有一个想法</button>
+				<button type="button" class="chip" data-v="已有方案或原型">已有方案或原型</button>
+				<button type="button" class="chip" data-v="已有用户在用">已有用户在用</button>
+				<button type="button" class="chip" data-v="已有第一版产品">已有第一版产品</button>
+			</div>
+			<button class="btn amber" type="submit">发起 PR
+				<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></button>
+		</form>
+	</div>
+</section>

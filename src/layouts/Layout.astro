@@ -1,0 +1,744 @@
+---
+import '../styles/global.css';
+import '@fontsource/noto-sans-sc/400.css';
+import '@fontsource/noto-sans-sc/500.css';
+import '@fontsource/noto-sans-sc/700.css';
+import '@fontsource/noto-serif-sc/700.css';
+import '@fontsource/noto-serif-sc/900.css';
+import '@fontsource/jetbrains-mono/400.css';
+import '@fontsource/jetbrains-mono/700.css';
+---
+
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<script is:inline>document.documentElement.classList.add('js')</script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>wodema · 共建仓库 — 找一起做产品的创业伙伴</title>
+		<meta
+			name="description"
+			content="独立全栈开发者，找长期创业伙伴。你管业务，我管产品，从 MVP 一路做到有人付费。"
+		/>
+		<link
+			rel="icon"
+			href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230E100C'/%3E%3Cpath d='M11 9v13a4 4 0 0 0 4 4h7' stroke='%23E5A63C' stroke-width='2.6' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='11' cy='7' r='3' fill='%23E5A63C'/%3E%3Ccircle cx='22' cy='26' r='3' fill='%23E5A63C'/%3E%3Ccircle cx='22' cy='7' r='3' fill='%23EDE8D8'/%3E%3C/svg%3E"
+		/>
+
+		<!-- 字体：本地打包（@fontsource），无线上请求。 -->
+		<meta name="generator" content={Astro.generator} />
+	</head>
+	<body>
+		<!-- ============ 顶栏 ============ -->
+		<header class="top" id="top">
+			<a class="logo" href="#" aria-label="回到顶部">
+				<span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6.5" cy="5" r="2.3"/><circle cx="6.5" cy="19" r="2.3"/><circle cx="17.5" cy="8" r="2.3"/><path d="M6.5 7.3v9.4"/><path d="M17.5 10.3c0 4-3.6 4.7-7.5 5.2"/></svg></span>
+				wodema<i>共建仓库</i>
+			</a>
+			<nav class="nav" id="nav">
+				<a href="#diff" data-s="diff">方式</a>
+				<a href="#work" data-s="work">作品</a>
+				<a href="#modes" data-s="modes">投入</a>
+				<a href="#path" data-s="path">轨迹</a>
+				<a href="#about" data-s="about">关于</a>
+				<a href="#faq" data-s="faq">FAQ</a>
+			</nav>
+			<div class="top-r">
+				<button class="kbd-btn" id="palBtn" aria-label="打开命令面板">
+					<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+					<span class="kba">⌘ K</span><span class="kbb">目录</span>
+				</button>
+				<a class="btn amber" href="#pr" style="padding:9px 18px;font-size:13.5px">发个 PR</a>
+			</div>
+		</header>
+
+		<slot />
+
+		<!-- ============ 页脚 ============ -->
+		<footer>
+			<div class="wrap foot-grid">
+				<div>
+					<div class="f-h">GIT LOG</div>
+					<div class="f-log">
+						<div><span class="f-p">❯</span>git log --oneline 本站</div>
+						<div><b>c2f8a4e</b>fix: 字体改非阻塞加载，不再白屏</div>
+						<div><b>f7e2a1d</b>feat: 补齐所有空空的地方</div>
+						<div><b>b3c9d02</b>design: 手写了一份合作 diff</div>
+						<div><b>7d44e18</b>content: 六段合作的故事</div>
+						<div><b>e0c7713</b>design: 轨迹分支图</div>
+					</div>
+				</div>
+				<div>
+					<div class="f-h">目录 / TREE</div>
+					<nav class="f-nav">
+						<a href="#diff">合作方式</a><a href="#who">适合谁</a><a href="#work">作品仓库</a><a href="#modes">投入方式</a><a href="#how">合作流程</a><a href="#path">三年轨迹</a><a href="#voices">伙伴的话</a><a href="#about">关于我</a><a href="#faq">FAQ</a>
+					</nav>
+				</div>
+				<div class="f-side">
+					<div class="f-h">联系 / CONTACT</div>
+					<button class="copy-mail" id="mailBtn">
+						<span>hello@wodema.dev</span>
+						<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15H4.5A2.5 2.5 0 0 1 2 12.5v-8A2.5 2.5 0 0 1 4.5 2h8A2.5 2.5 0 0 1 15 4.5V5"/></svg>
+					</button>
+					<button class="copy-mail" id="xhsBtn">
+						<span>小红书 · wodema</span>
+						<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15H4.5A2.5 2.5 0 0 1 2 12.5v-8A2.5 2.5 0 0 1 4.5 2h8A2.5 2.5 0 0 1 15 4.5V5"/></svg>
+					</button>
+					<p>私信备注「PR」，通常 24 小时内回复。<br>本站所有项目数据均为示例，替换成你的真实项目即可。</p>
+				</div>
+			</div>
+			<div class="f-bar">© 2026 wodema · 与 6 位创业者共同维护 · 本站纯手写，无框架无埋点 · 用一次真诚的合作，交换下一次</div>
+		</footer>
+
+		<!-- ============ 仓库详情弹窗 ============ -->
+		<div class="mask" id="repoMask"><div class="card" id="repoModal" tabindex="-1"></div></div>
+
+		<!-- ============ PR 结果弹窗 ============ -->
+		<div class="mask" id="prMask"><div class="card" tabindex="-1">
+			<div class="pr-ok">
+				<div class="pr-ok-head">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>
+					<span id="prNo">PR #000 已打开</span>
+				</div>
+				<div class="pr-ok-sub">准备合入：合作 ← 你的想法</div>
+				<pre class="pr-brief" id="prBrief"></pre>
+				<div class="pr-ok-btns">
+					<button class="btn line" id="prCopy" type="button">复制简介</button>
+					<button class="btn amber" id="prMail" type="button">写邮件发给他
+						<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></button>
+				</div>
+				<p class="pr-ok-tip">也可以直接私信，把上面这段简介贴过去就行。通常 24 小时内回复。</p>
+			</div>
+		</div></div>
+
+		<!-- ============ 命令面板 ============ -->
+		<div class="mask" id="palMask"><div class="pal">
+			<div class="pal-in">
+				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+				<input id="palInput" placeholder="输入命令，或想去的板块…" autocomplete="off">
+			</div>
+			<ul id="palList"></ul>
+			<div class="pal-ft">↑ ↓ 选择 · Enter 执行 · Esc 关闭</div>
+		</div></div>
+
+		<div id="toast" role="status"></div>
+
+		<script>
+			(function () {
+				'use strict';
+
+				/* ================= 出错可见，绝不静默空白 ================= */
+				var errShown = false;
+				function reportErr(tag, err) {
+					try {
+						console.error('[wodema] 模块「' + tag + '」初始化失败：', err);
+						if (!errShown) {
+							errShown = true;
+							var t = document.getElementById('toast');
+							if (t) {
+								t.textContent = '页面部分功能出了点问题：' + tag + '。按 F12 打开控制台，把红色报错发给我即可修复';
+								t.classList.add('on');
+							}
+						}
+					} catch (_) {}
+				}
+				window.addEventListener('error', function (e) { if (e && e.message) reportErr('脚本运行', e.message); });
+				function boot(tag, fn) { try { fn(); } catch (err) { reportErr(tag, err); } }
+
+				/* ================= 工具 ================= */
+				function $(s) { return document.querySelector(s); }
+				function $$(s) { return Array.prototype.slice.call(document.querySelectorAll(s)); }
+				function mulberry32(a) { return function () { a |= 0; a = a + 0x6D2B79F5 | 0; var t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+				function hash(s) { var h = 0; for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) | 0; return Math.abs(h) + 7; }
+				var toastTimer = 0;
+				function toast(msg) { var el = $('#toast'); if (!el) return; el.textContent = msg; el.classList.add('on'); clearTimeout(toastTimer); toastTimer = setTimeout(function () { el.classList.remove('on'); }, 2600); }
+				function fallbackCopy(txt, done) {
+					var ta = document.createElement('textarea'); ta.value = txt; ta.style.cssText = 'position:fixed;opacity:0';
+					document.body.appendChild(ta); ta.select();
+					try { document.execCommand('copy'); done(); } catch (e) { toast('复制失败，请手动选择文本'); }
+					ta.remove();
+				}
+				function copyText(txt, ok) {
+					var done = function () { toast(ok || '已复制到剪贴板'); };
+					if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(txt).then(done, function () { fallbackCopy(txt, done); }); }
+					else fallbackCopy(txt, done);
+				}
+				function go(sel) { var el = document.querySelector(sel); if (el) el.scrollIntoView({ behavior: 'smooth' }); }
+				var ICON_ARR = '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg>';
+				var ICON_BRANCH = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6.5" cy="5" r="2.3"/><circle cx="6.5" cy="19" r="2.3"/><circle cx="17.5" cy="8" r="2.3"/><path d="M6.5 7.3v9.4"/><path d="M17.5 10.3c0 4-3.6 4.7-7.5 5.2"/></svg>';
+				var ICON_X = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+
+				/* ================================================================
+				   数据区：替换成你的真实项目 / 提交记录 / 邮箱即可
+				================================================================ */
+				var MAIL = 'hello@wodema.dev';
+				var XHS = 'wodema';
+
+				var PROJECTS = [
+					{ id: 'schedule', name: '课表通', slug: 'schedule-hub', featured: false,
+						partner: '王老师', role: '少儿编程工作室联盟发起人', start: '2023.03', period: '2023.03 — 至今', months: 42,
+						status: '运营中', one: '100+ 工作室在用的排课、请假、消课小程序',
+						tags: ['小程序', '预约', '消课'], commits: 1875,
+						nums: [{ n: '1,875', l: 'commits' }, { n: '100+', l: '工作室' }, { n: '42', l: '个月' }],
+						story: [
+							{ k: 'git init', t: '起点', d: '王老师拉着 20 家工作室想共用一套课表，排课全靠微信群喊。漏排一场就是一屋子家长投诉，退费扯皮半个月。' },
+							{ k: '两周', t: '第一版', d: '小程序排课 + 家长请假，先在自家 3 家店用。上线第一周就抓出两次漏排。' },
+							{ k: 'v1.0', t: '长出来', d: '补课换课的规则每家都不同，做成了可配置；消课通知接了微信服务消息，「还剩几节课」这个问题从客服桌上消失了。' },
+							{ k: 'tag 转折', t: '第 40 家', d: '第 40 家工作室入驻那天，王老师把所有纸质会员卡停了——批量迁移工具是那一周连夜加出来的。' },
+							{ k: 'HEAD', t: '现在', d: '100+ 工作室在用，成了联盟的基础设施，排课冲突降了九成。' }],
+						quote: { text: '家长的第一句话从「课时还剩几节」变成了「小程序上自己看」。', by: '王老师 · 课表通 创始人' } },
+
+					{ id: 'mountain', name: '山舍', slug: 'mountain-stay', featured: false,
+						partner: '老周', role: '莫干山民宿主理人', start: '2023.09', period: '2023.09 — 至今', months: 36,
+						status: '旺季上线', one: '给 8 家民宿做的房态、定价与渠道后台',
+						tags: ['后台', '数据看板', '自动化'], commits: 2046,
+						nums: [{ n: '2,046', l: 'commits' }, { n: '8', l: '家民宿' }, { n: '36', l: '个月' }],
+						story: [
+							{ k: 'git init', t: '起点', d: '老周管着 8 家民宿，房态散落在 5 个平台，超卖是家常便饭，赔一次房费心疼半个月。' },
+							{ k: '两周', t: '第一版', d: '一个后台 + 一张日历，先把房态收拢到一处；渠道同步只做了流量最大的那家。' },
+							{ k: 'v1.0', t: '长出来', d: '超卖治住了就做动态定价——周五自动涨、连住自动减；管家离职交接乱，就做了交接清单和客人偏好标签。' },
+							{ k: 'tag 转折', t: '去年国庆', d: '超卖次数：0。老周把后台截图发到民宿主群，第二天带来 3 家同行来问。' },
+							{ k: 'HEAD', t: '现在', d: '旺季全量上线，RevPAR 同比 +19%，老周开始主动劝同行来用。' }],
+						quote: { text: '以前求外包改个字段要等一周，现在晚上聊完，早上就能试。', by: '老周 · 山舍 创始人' } },
+
+					{ id: 'topic', name: '选题库', slug: 'topic-flow', featured: false,
+						partner: '小林', role: '自媒体创业者 · 12 人团队', start: '2024.04', period: '2024.04 — 至今', months: 29,
+						status: '运营中', one: '内容团队的选题、排期与爆款复盘工具',
+						tags: ['SaaS', '协作', '数据'], commits: 2731,
+						nums: [{ n: '2,731', l: 'commits' }, { n: '400+', l: '付费团队' }, { n: '29', l: '个月' }],
+						story: [
+							{ k: 'git init', t: '起点', d: '小林的 12 个编辑，选题靠群接龙。一条内容为什么爆，没人说得清，复盘全凭感觉。' },
+							{ k: '两周', t: '第一版', d: '选题池 + 看板，先让「谁在写什么」一目了然。' },
+							{ k: 'v1.0', t: '长出来', d: '接了平台数据，每条内容能回看曲线；复盘模板沉淀成表单，新人两周上手。' },
+							{ k: 'tag 转折', t: '一篇爆款', d: '一篇严格按复盘模板做的选题成了百万阅读。小林把后台链接发进了 500 人的同行群。' },
+							{ k: 'HEAD', t: '现在', d: '付费团队 400+，付费转化率比上一版高 18%。小林把工具卖给了一开始采访过他的同行。' }],
+						quote: { text: '我们是它的第一个用户，现在是它的分销商。', by: '小林 · 选题库 创始人' } },
+
+					{ id: 'profit', name: '集市报表', slug: 'profit-lens', featured: false,
+						partner: 'Amy', role: '跨境电商卖家', start: '2024.11', period: '2024.11 — 至今', months: 22,
+						status: 'MVP 验证中', one: '多平台利润报表：广告、物流、退款一屏算清',
+						tags: ['数据', '报表', 'SaaS'], commits: 1418,
+						nums: [{ n: '1,418', l: 'commits' }, { n: '30+', l: '内测排队' }, { n: '22', l: '个月' }],
+						story: [
+							{ k: 'git init', t: '起点', d: 'Amy 同时在 4 个平台卖货，每个平台一套报表。月底对账整整三天，还要和会计师互相甩锅。' },
+							{ k: '两周', t: '第一版', d: '只做一件事：把广告费摊进每个 SKU，算出真实利润。' },
+							{ k: 'v1.0', t: '长出来', d: '加了物流费和退款回流，口径跟 Amy 的会计师一对，账第一次严丝合缝。' },
+							{ k: 'tag 转折', t: '砍掉两个品', d: 'Amy 砍掉了两个「看起来在赚钱」的品——报表说它们每月亏两万。' },
+							{ k: 'HEAD', t: '现在', d: 'MVP 跑通，Amy 的卖家群里有 30 多人在排队要内测。' }],
+						quote: { text: '第一次有人把我的账，算得比我的会计师还清楚。', by: 'Amy · 集市报表 创始人' } },
+
+					{ id: 'petcare', name: '毛孩子档案', slug: 'petcare-os', featured: true,
+						partner: '陈姐', role: '连锁宠物店主理人', start: '2025.02', period: '2025.02 — 至今', months: 19,
+						status: '运营中', one: '32 家宠物门店在用的会员、档案与供应链系统',
+						tags: ['SaaS', '小程序', '后台'], commits: 3120,
+						nums: [{ n: '3,120', l: 'commits' }, { n: '32', l: '家门店' }, { n: '400+', l: '日活店员' }],
+						story: [
+							{ k: 'git init', t: '起点', d: '陈姐有 3 家店、一万多个会员，全记在 Excel 和店长的脑子里。会员换了店，档案就丢了。' },
+							{ k: '两周', t: '第一版', d: '一个小程序：办卡、建档、消费记录。店员扫一下，就能认出这条狗。' },
+							{ k: 'v1.0', t: '长出来', d: '拍照建档太慢，上了批量导入；老板娘想看复购，长出了报表；第 10 家店加盟，多门店权限跟着长了出来。' },
+							{ k: 'tag 转折', t: '供应链上线', d: '供应链模块上线那天，陈姐第一次算清了每家店的真实库存周转——有的店囤了半年的粮。' },
+							{ k: 'HEAD', t: '现在', d: 'v2.0 跑了半年，32 家门店、400+ 店员每天在用。陈姐在谈第二个城市的代理。' }],
+						quote: { text: '他不像乙方，更像我们公司的第一个员工——只是不用来坐班。', by: '陈姐 · 毛孩子档案 创始人' } },
+
+					{ id: 'court', name: '拼场', slug: 'court-mate', featured: false,
+						partner: '阿哲', role: '羽毛球社群主理人', start: '2025.10', period: '2025.10 — 至今', months: 11,
+						status: '试点中', one: '球场拼场、AA 收款与水平匹配小程序',
+						tags: ['小程序', '支付', '社群'], commits: 642,
+						nums: [{ n: '642', l: 'commits' }, { n: '61%', l: '周复购' }, { n: '11', l: '个月' }],
+						story: [
+							{ k: 'git init', t: '起点', d: '阿哲管着 8 个羽毛球群，每场拼场、收款、找水平相近的搭子全靠人工，每周耗掉他十几个小时。' },
+							{ k: '两周', t: '第一版', d: '拼场 + AA 收款，先解决「收钱」这件最烦的事。' },
+							{ k: 'v1.0', t: '长出来', d: '加了水平标签和自动匹配，新手局不再被老手打跑；迟到罚则终于有了解释权。' },
+							{ k: 'tag 转折', t: '12 分钟', d: '试点第二个月，一场球 12 分钟满员——以前要在群里喊两天。' },
+							{ k: 'HEAD', t: '现在', d: '3 个群在试点，周复购 61%。' }],
+						quote: { text: '上线第一周，我退掉了三个收付款小程序。', by: '阿哲 · 拼场 创始人' } }
+				];
+
+				var QUOTES = [
+					{ t: '他不像乙方，更像我们公司的第一个员工——只是不用来坐班。', who: '陈姐', p: '毛孩子档案 · 合作 19 个月' },
+					{ t: '合作满一百周的时候，我在他代码里看到一条注释：「这里当时想错了，感谢陈姐骂醒。」那一刻我知道这钱花得值。', who: '陈姐', p: '毛孩子档案 · 合作 19 个月' },
+					{ t: '以前求外包改个字段要等一周，现在晚上聊完，早上就能试。', who: '老周', p: '山舍 · 合作 36 个月' },
+					{ t: '我最怕的不是做不出来，是做出来没人管。三年了，他还在管。', who: '老周', p: '山舍 · 合作 36 个月' },
+					{ t: '我们是它的第一个用户，现在是它的分销商。', who: '小林', p: '选题库 · 合作 29 个月' },
+					{ t: '第一次有人把我的账，算得比会计师还清楚。', who: 'Amy', p: '集市报表 · 合作 22 个月' },
+					{ t: '家长的第一句话从「课时还剩几节」变成了「小程序上自己看」。', who: '王老师', p: '课表通 · 合作 42 个月' },
+					{ t: '上线第一周，我退掉了三个收付款小程序。', who: '阿哲', p: '拼场 · 合作 11 个月' }
+				];
+
+				var FAQ = [
+					['费用怎么算？会不会很贵？', '按阶段或按月，开工前锁定，从不按小时「磨洋工」。MVP 一口价，改到能用为止；长期按月，随时可停、不押金。具体数字取决于范围——这也是为什么我总想先聊清楚，再谈钱。'],
+					['代码归谁？', '全部归你。仓库从第一天起就建在你自己的账号下，我只有协作权限。哪天合作结束，你换个人接着写就行，不用从我这「赎回」任何东西。'],
+					['你一个人，忙得过来吗？', '现在的 6 段合作里，4 段已进入平稳维护期，占用很小。我的原则是同一时间最多深度推进 2 个新项目——这也是为什么我在「挑」，而不是在「接」。'],
+					['真的不用写需求文档吗？', '真的不用。一句话 + 一张截图或一段语音就够了，技术细节我来补全，写成你看得懂的清单再确认。你负责说清楚「想解决什么」，「怎么实现」是我的事。'],
+					['上线之后出问题怎么办？', '约定范围内的问题，免费修，这是应该的。长期合作里更简单——迭代本身就是日常，你甚至不会把它当成「售后」。'],
+					['都是远程，怎么保证靠谱？', '每周固定一次语音同步（30 分钟），平时共享文档随时留言；每周都有可见的进展，进展本身就是最硬的汇报。异地三年，六段合作没有一段因为「找不到人」出过事。'],
+					['如果合作不合适怎么办？', '每个阶段结束都是自然的退出点：代码、文档、部署信息完整交接，绝不绑架。合作是双向选择——聊完觉得不合适，我也会直接说，不浪费你的时间。'],
+					['做着做着你会不会消失？', '最长的一段合作 42 个月，还在跑；六段合作平均 26 个月以上。我没有团队要养、没有单要转包，消失对我没有任何好处——手艺人跑得了和尚跑不了庙。']
+				];
+
+				var TICKER = [
+					['a41f2c9', 'feat: 毛孩子档案 · 供应链批次入库', '陈姐', '今天'],
+					['8e77d01', 'fix: 山舍 · OTA 房态同步延迟', '老周', '今天'],
+					['c3a9d4f', 'feat: 选题库 · 爆款曲线回放', '小林', '今天'],
+					['9f02b3e', 'chore: 课表通 · 消课通知模板', '王老师', '昨天'],
+					['2b6c8f1', 'feat: 集市报表 · 物流费分摊口径', 'Amy', '昨天'],
+					['77d1e0a', 'feat: 拼场 · 水平自动匹配 v2', '阿哲', '2 天前'],
+					['e5a3b17', 'docs: 把这周的用户反馈整理成 issue', '自己', '2 天前'],
+					['d88f4c2', 'feat: 毛孩子档案 · 疫苗到期提醒', '陈姐', '3 天前'],
+					['1f6b0e4', 'perf: 山舍 · 房态日历首屏提速 40%', '老周', '3 天前'],
+					['4a9e7d3', 'feat: 选题库 · 权限组与审稿流', '小林', '4 天前'],
+					['b02c5f8', 'refactor: 还掉了去年欠的技术债', '自己', '4 天前'],
+					['66c1a8e', 'feat: 课表通 · 调课冲突自动检测', '王老师', '5 天前'],
+					['3e7d9b1', 'feat: 拼场 · 球场时段库存', '阿哲', '6 天前'],
+					['f1c90d4', 'fix: 集市报表 · 汇率取数时区', 'Amy', '6 天前']
+				];
+
+				var DIFF = [
+					['diff --git a/外包合作.txt b/合伙人合作.txt', 'd-file'],
+					['index 9e8a1c2..b41f7d3 100644', 'd-hdr'],
+					['--- a/外包合作.txt', 'd-hdr'],
+					['+++ b/合伙人合作.txt', 'd-hdr'],
+					['@@ -1,6 +1,6 @@ 怎么一起做事', 'd-hunk'],
+					['- 先谈价格，再谈需求，交付即止', 'd-del'],
+					['+ 先聊想法，再定范围，从一个 MVP 开始', 'd-add'],
+					['- 改一次需求，加一次钱', 'd-del'],
+					['+ 想法随时说，成本提前讲清楚', 'd-add'],
+					['- 你是甲方，我是乙方', 'd-del'],
+					['+ 你管业务，我管产品，我们共用一个仓库', 'd-add'],
+					['- 项目结束，各自天涯', 'd-del'],
+					['+ 上线那天，合作才刚刚开始', 'd-add'],
+					['@@ -12,4 +12,9 @@ 平时怎么沟通', 'd-hunk'],
+					['- 每周例会，发会议纪要', 'd-del'],
+					['+ 每周一次语音，平时共享文档随时留言', 'd-add'],
+					['- 需求文档 · 签字确认 · 才能开工', 'd-del'],
+					['+ 一句话需求 + 一张草图，当天就能看到东西', 'd-add'],
+					['- 上线后的 bug 单独收费', 'd-del'],
+					['+ 约定范围内免费修，这是应该的', 'd-add'],
+					['+ 晚上 11 点的服务器告警，我盯着', 'd-add']
+				];
+
+				var SCENES = [
+					{ cmd: 'git log --oneline 合作仓库', out: [
+						['a41f2c9 (HEAD → 主线) 毛孩子档案 v2.0 上线 · 与陈姐同行 19 个月', 'o-amber'],
+						['8e77d01 山舍 · 旺季房态全量同步 · 与老周', ''],
+						['c3a9d4f 选题库 · 付费转化 +18% · 与小林', ''],
+						['9f02b3e 课表通 · 第 100 家工作室入驻 · 与王老师', ''] ] },
+					{ cmd: 'git remote -v', out: [
+						['origin  你的业务和用户', 'o-dim'],
+						['origin  我的代码和产品 · 我们共用一个仓库', 'o-dim'] ] },
+					{ cmd: 'git shortlog -sn --no-merges', out: [
+						['  4712  我（写了这些代码）', 'o-amber'],
+						['  1893  陈姐（提的需求和反馈）', ''],
+						['  1520  小林（骂过的和夸过的）', ''],
+						['   908  老周（半夜发来的语音）', 'o-dim'] ] },
+					{ cmd: 'git merge 你的想法', out: [
+						['Auto-merging 一款真正有人用的产品', 'o-green'],
+						['Merge made by the 合作 strategy into 主线.', 'o-dim'] ] },
+					{ cmd: 'tail -f 生产环境.log', out: [
+						['14:02:11 POST /api/booking 200 · 62ms', 'o-dim'],
+						['14:02:19 POST /api/pay 200 · 又一单', 'o-green'],
+						['14:03:40 GET /health 200 · 一切正常', 'o-dim'] ] }
+				];
+
+				/* ================= 弹窗通用 ================= */
+				function openMask(m) { m.classList.add('on'); document.body.style.overflow = 'hidden'; }
+				function closeMask(m) {
+					m.classList.remove('on');
+					if (!document.querySelector('.mask.on')) document.body.style.overflow = '';
+				}
+				function esc(s) { return String(s); }
+
+				/* ================= 仓库详情弹窗 ================= */
+				var repoMask = $('#repoMask'), repoModal = $('#repoModal');
+				function openRepo(p) {
+					if (!repoModal) return;
+					repoModal.innerHTML =
+						'<header class="rm-head">' +
+						'<div class="rm-title">' + ICON_BRANCH + '<div><h3>' + esc(p.name) + '</h3><span>' + esc(p.slug) + '</span></div></div>' +
+						'<div class="rm-right"><span class="badge"><i class="dot"></i>' + esc(p.status) + '</span>' +
+						'<button class="icon-btn rm-close" aria-label="关闭">' + ICON_X + '</button></div>' +
+						'</header>' +
+						'<div class="rm-meta">与 ' + esc(p.partner) + '（' + esc(p.role) + '）· ' + esc(p.period) + ' · ' + p.commits.toLocaleString('en-US') + ' commits · ' + p.months + ' 个月</div>' +
+						'<div class="rm-body">' +
+						'<p class="rm-one">' + esc(p.one) + '</p>' +
+						'<div class="rm-beats">' +
+						p.story.map(function (s) { return '<div class="beat"><b>' + esc(s.k) + ' · ' + esc(s.t) + '</b><p>' + esc(s.d) + '</p></div>'; }).join('') +
+						'</div>' +
+						'<div class="rm-heat"><div class="fs-t">commit 热力图 · 最近半年</div><div class="heat"></div></div>' +
+						'<blockquote class="rm-quote">「' + esc(p.quote.text) + '」<footer>—— ' + esc(p.quote.by) + '</footer></blockquote>' +
+						'<div class="rm-foot"><div class="rm-tags">' +
+						p.tags.map(function (t) { return '<span>' + esc(t) + '</span>'; }).join('') +
+						'</div><button class="rm-cta">聊聊同款想法 ' + ICON_ARR + '</button></div>' +
+						'</div>';
+					heat(repoModal.querySelector('.heat'), hash(p.id), 26, 7);
+					repoModal.querySelector('.rm-close').addEventListener('click', function () { closeMask(repoMask); });
+					repoModal.querySelector('.rm-cta').addEventListener('click', function () {
+						closeMask(repoMask);
+						var t = $('#prTitle'); if (t) t.value = '我想做一个类似「' + p.name + '」的产品';
+						go('#pr');
+						setTimeout(function () { var el = $('#prTitle'); if (el) el.focus(); }, 700);
+					});
+					openMask(repoMask);
+					repoModal.focus();
+				}
+
+				/* ================= 热力图 / 脉冲 ================= */
+				function heat(el, seed, cols, rows) {
+					if (!el) return;
+					var rnd = mulberry32(seed), html = '';
+					for (var i = 0; i < cols * rows; i++) {
+						var r = rnd(), lv = r < .3 ? 0 : r < .55 ? 1 : r < .75 ? 2 : r < .9 ? 3 : 4;
+						html += '<i class="hc" data-l="' + lv + '"></i>';
+					}
+					el.innerHTML = html;
+					el.style.gridTemplateRows = 'repeat(' + rows + ',var(--cell))';
+				}
+				function pulse(el, seed, n) {
+					if (!el) return;
+					n = n || 44;
+					var rnd = mulberry32(seed), html = '';
+					for (var i = 0; i < n; i++) {
+						var h = 4 + Math.round(rnd() * 26);
+						html += '<i class="pb' + (i === n - 1 ? ' now' : '') + '" style="height:' + h + 'px"></i>';
+					}
+					el.innerHTML = html;
+				}
+
+				/* ================= 终端 ================= */
+				var sceneI = 0, tkToken = 0;
+				function runScene() {
+					var body = $('#termBody'); if (!body) return;
+					var my = ++tkToken, alive = function () { return my === tkToken; };
+					var s = SCENES[sceneI % SCENES.length];
+					body.innerHTML = '';
+					var line = document.createElement('div'); line.className = 't-line';
+					line.innerHTML = '<span class="t-p">❯</span><span class="t-c"></span><span class="t-cur"></span>';
+					body.appendChild(line);
+					var c = line.querySelector('.t-c'), i = 0;
+					(function ty() {
+						if (!alive()) return;
+						if (i < s.cmd.length) { c.textContent += s.cmd[i++]; return setTimeout(ty, 30 + Math.random() * 50); }
+						var cur = line.querySelector('.t-cur'); if (cur) cur.remove();
+						var j = 0;
+						(function nx() {
+							if (!alive()) return;
+							if (j < s.out.length) {
+								var o = document.createElement('div'); o.className = 't-line ' + s.out[j][1];
+								o.textContent = s.out[j][0]; j++;
+								body.appendChild(o);
+								return setTimeout(nx, 180);
+							}
+							setTimeout(function () { if (alive()) { sceneI++; runScene(); } }, 3400);
+						})();
+					})();
+				}
+				boot('终端', function () {
+					var t = $('#term');
+					if (t) t.addEventListener('click', function () { sceneI++; runScene(); });
+					runScene();
+				});
+
+				/* ================= 跑马灯 ================= */
+				boot('提交跑马灯', function () {
+					var el = $('#tkTrack'); if (!el) return;
+					var items = TICKER.map(function (t) {
+						return '<span class="tk"><b>' + t[0] + '</b>' + t[1] + '<i>· 与' + t[2] + ' · ' + t[3] + '</i></span>';
+					}).join('<span class="tk-sep">◆</span>') + '<span class="tk-sep">◆</span>';
+					el.innerHTML = '<div class="tk-half">' + items + '</div><div class="tk-half" aria-hidden="true">' + items + '</div>';
+				});
+
+				/* ================= diff ================= */
+				boot('合作diff', function () {
+					var el = $('#diffBody'); if (!el) return;
+					el.innerHTML = DIFF.map(function (l, i) {
+						var mk = l[1] === 'd-del' ? '-' : l[1] === 'd-add' ? '+' : ' ';
+						return '<div class="dline ' + l[1] + '" style="transition-delay:' + (0.12 + i * 0.09) + 's"><span class="dmk">' + mk + '</span><span>' + l[0] + '</span></div>';
+					}).join('');
+				});
+
+				/* ================= 作品区 ================= */
+				boot('作品仓库', function () {
+					var feat = null;
+					for (var i = 0; i < PROJECTS.length; i++) { if (PROJECTS[i].featured) { feat = PROJECTS[i]; break; } }
+					if (!feat) feat = PROJECTS[0];
+					var set = function (id, txt) { var el = document.getElementById(id); if (el) el.textContent = txt; };
+					set('featStatus', feat.status); set('featName', feat.name); set('featSlug', feat.slug);
+					set('featOne', feat.one);
+					var fp = document.getElementById('featPartner');
+					if (fp) fp.innerHTML = '合作伙伴：<b>' + feat.partner + '</b>（' + feat.role + '）· ' + feat.period;
+					set('featLead', '「' + feat.story[0].d + '」' + feat.story[feat.story.length - 1].d);
+					var fs = document.getElementById('featStats');
+					if (fs) fs.innerHTML = feat.nums.map(function (n) { return '<span><b>' + n.n + '</b><i>' + n.l + '</i></span>'; }).join('');
+					heat(document.getElementById('featHeat'), hash(feat.id), 32, 7);
+					var fb = document.getElementById('featBtn');
+					if (fb) fb.addEventListener('click', function () { openRepo(feat); });
+
+					var list = $('#repoList'); if (!list) return;
+					var rest = PROJECTS.filter(function (p) { return !p.featured; });
+					rest.forEach(function (p, i) {
+						var row = document.createElement('article');
+						row.className = 'rr'; row.tabIndex = 0;
+						row.setAttribute('role', 'button');
+						row.setAttribute('aria-label', '查看 ' + p.name);
+						row.style.transitionDelay = (i * 0.07) + 's';
+						row.innerHTML =
+							'<div class="rr-l"><span class="rr-idx">' + String(i + 2).padStart(2, '0') + '</span>' +
+							'<div class="rr-name"><h3>' + p.name + '</h3><span class="rr-slug">' + p.slug + ' · 与' + p.partner + '</span>' +
+							'<div class="rr-tags">' + p.tags.map(function (t) { return '<i>' + t + '</i>'; }).join('') + '</div></div></div>' +
+							'<p class="rr-one">' + p.one + '</p>' +
+							'<div class="rr-side">' +
+							'<div class="rr-pulse" aria-hidden="true"></div>' +
+							'<div class="rr-meta"><b>' + p.commits.toLocaleString('en-US') + '</b><i>commits · ' + p.months + ' 个月</i></div>' +
+							'<span class="badge"><i class="dot"></i>' + p.status + '</span>' +
+							'<svg class="rr-arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg>' +
+							'</div>';
+						var open = function () { openRepo(p); };
+						row.addEventListener('click', open);
+						row.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+						list.appendChild(row);
+						pulse(row.querySelector('.rr-pulse'), hash(p.id) + 3);
+					});
+				});
+
+				/* ================= 伙伴的话 ================= */
+				boot('伙伴评价', function () {
+					var el = $('#qwall'); if (!el) return;
+					el.innerHTML = QUOTES.map(function (q) {
+						return '<div class="qcard"><blockquote>' + q.t + '</blockquote><div class="qmeta"><b>' + q.who + '</b>' + q.p + '</div></div>';
+					}).join('');
+				});
+
+				/* ================= FAQ ================= */
+				boot('FAQ', function () {
+					var el = $('#faqList'); if (!el) return;
+					el.innerHTML = FAQ.map(function (f, i) {
+						return '<div class="fq"><button class="fq-q" type="button" aria-expanded="false">' +
+							'<span class="qno">' + String(i + 1).padStart(2, '0') + '</span><span>' + f[0] + '</span>' +
+							'<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>' +
+							'</button><div class="fq-a"><div><p>' + f[1] + '</p></div></div></div>';
+					}).join('');
+					el.addEventListener('click', function (e) {
+						var q = e.target.closest('.fq-q'); if (!q) return;
+						var fq = q.parentElement, wasOpen = fq.classList.contains('open');
+						$$('#faqList .fq').forEach(function (x) {
+							x.classList.remove('open');
+							var b = x.querySelector('.fq-q'); if (b) b.setAttribute('aria-expanded', 'false');
+						});
+						if (!wasOpen) { fq.classList.add('open'); q.setAttribute('aria-expanded', 'true'); }
+					});
+				});
+
+				/* ================= 轨迹图（SVG 分支合并） ================= */
+				boot('轨迹分支图', function () {
+					var svg = $('#graphSvg'); if (!svg) return;
+					var NS = 'http://www.w3.org/2000/svg';
+					function mk(n, a) { var e = document.createElementNS(NS, n); for (var k in a) e.setAttribute(k, a[k]); return e; }
+					var mx = 96, sy = 46, step = 128;
+					var endY = sy + step * (PROJECTS.length - 1) + 104 + 40;
+					svg.setAttribute('viewBox', '0 0 620 ' + (endY + 30));
+					svg.appendChild(mk('path', { class: 'gg-master', d: 'M' + mx + ' ' + (sy - 22) + ' V' + endY }));
+					var lastYear = null;
+					PROJECTS.forEach(function (p, i) {
+						var y0 = sy + i * step, y1 = y0 + 104;
+						var bp = mk('path', { class: 'gg-branch', d: 'M' + mx + ' ' + y0 + ' C ' + (mx + 96) + ' ' + y0 + ', ' + (mx + 134) + ' ' + (y0 + 14) + ', ' + (mx + 134) + ' ' + (y0 + 52) + ' C ' + (mx + 134) + ' ' + (y0 + 90) + ', ' + (mx + 96) + ' ' + y1 + ', ' + mx + ' ' + y1 });
+						svg.appendChild(bp);
+						var n1 = mk('circle', { class: 'gg-node', cx: mx, cy: y0, r: 5 });
+						var n2 = mk('circle', { class: 'gg-node gg-merge', cx: mx, cy: y1, r: 5 });
+						svg.appendChild(n1); svg.appendChild(n2);
+						var t1 = mk('text', { class: 'gg-name gg-fade', x: mx + 152, y: y0 + 42 });
+						var t2 = mk('text', { class: 'gg-meta gg-fade', x: mx + 152, y: y0 + 62 });
+						var t3 = mk('text', { class: 'gg-st gg-fade', x: mx + 152, y: y0 + 82 });
+						t1.textContent = p.name; t2.textContent = p.period + ' · 与' + p.partner; t3.textContent = p.one;
+						svg.appendChild(t1); svg.appendChild(t2); svg.appendChild(t3);
+						var hit = mk('rect', { class: 'gg-hit gg-fade', x: mx + 142, y: y0 + 18, width: 420, height: 76 });
+						var title = document.createElementNS(NS, 'title'); title.textContent = '查看 ' + p.name + ' 详情';
+						hit.appendChild(title); svg.appendChild(hit);
+						[t1, t2, t3, hit].forEach(function (n) { n.addEventListener('click', function () { openRepo(p); }); });
+						var yr = p.start.slice(0, 4);
+						if (yr !== lastYear) { lastYear = yr; var yt = mk('text', { class: 'gg-year', x: mx - 18, y: y0 + 4 }); yt.textContent = yr; svg.appendChild(yt); }
+						[t1, t2, t3, hit, n1, n2].forEach(function (n) { n.style.transitionDelay = (0.25 + i * 0.18 + 0.35) + 's'; });
+						bp.style.transitionDelay = (0.25 + i * 0.18) + 's';
+					});
+					var head = mk('circle', { class: 'gg-node gg-head', cx: mx, cy: endY, r: 6 });
+					var ht = mk('text', { class: 'gg-meta gg-fade', x: mx + 18, y: endY + 4 });
+					ht.textContent = 'HEAD → 主线 · 还在继续写';
+					svg.appendChild(head); svg.appendChild(ht);
+
+					requestAnimationFrame(function () {
+						$$('#graphSvg .gg-master, #graphSvg .gg-branch').forEach(function (p) {
+							var L = p.getTotalLength();
+							p.style.strokeDasharray = L; p.style.strokeDashoffset = L;
+							p.style.transitionProperty = 'stroke-dashoffset';
+							p.style.transitionDuration = '1s';
+							p.style.transitionTimingFunction = 'ease';
+						});
+					});
+					var wrap = $('#graphWrap');
+					if (wrap && 'IntersectionObserver' in window) {
+						new IntersectionObserver(function (es, o) {
+							es.forEach(function (e) {
+								if (e.isIntersecting) {
+									wrap.classList.add('in'); o.disconnect();
+									$$('#graphSvg .gg-master, #graphSvg .gg-branch').forEach(function (p) { p.style.strokeDashoffset = 0; });
+								}
+							});
+						}, { threshold: .2 }).observe(wrap);
+					} else if (wrap) {
+						wrap.classList.add('in');
+						$$('#graphSvg .gg-master, #graphSvg .gg-branch').forEach(function (p) { p.style.strokeDashoffset = 0; });
+					}
+				});
+
+				/* ================= PR 表单 ================= */
+				boot('PR表单', function () {
+					var chips = $('#stageChips');
+					if (chips) chips.addEventListener('click', function (e) {
+						var c = e.target.closest('.chip'); if (!c) return;
+						$$('#stageChips .chip').forEach(function (x) { x.classList.remove('on'); });
+						c.classList.add('on');
+					});
+					var form = $('#prForm'); if (!form) return;
+					var prMask = $('#prMask');
+					var prBriefText = '', prSubject = '';
+					form.addEventListener('submit', function (e) {
+						e.preventDefault();
+						var tEl = $('#prTitle');
+						var t = tEl ? tEl.value.trim() : '';
+						if (!t) {
+							if (tEl) { tEl.classList.add('err'); tEl.focus(); setTimeout(function () { tEl.classList.remove('err'); }, 1200); }
+							toast('先写一句：我想做一个 XXX');
+							return;
+						}
+						var onChip = $('#stageChips .chip.on');
+						var stage = (onChip && onChip.dataset) ? onChip.dataset.v : '只有一个想法';
+						var bEl = $('#prBody');
+						var body = bEl ? bEl.value.trim() : '';
+						var no = 100 + Math.floor(Math.random() * 900);
+						var d = new Date();
+						var date = d.getFullYear() + '.' + String(d.getMonth() + 1).padStart(2, '0') + '.' + String(d.getDate()).padStart(2, '0');
+						prBriefText = '【想做的事】\n' + t + '\n\n【当前阶段】\n' + stage + '\n\n【补充】\n' + (body || '（细节见面聊）') + '\n\n—— 来自 wodema 站点 · ' + date;
+						prSubject = 'PR #' + no + '：' + t;
+						var noEl = $('#prNo'); if (noEl) noEl.textContent = 'PR #' + no + ' 已打开';
+						var br = $('#prBrief'); if (br) br.textContent = prBriefText;
+						if (prMask) openMask(prMask);
+						form.reset();
+						$$('#stageChips .chip').forEach(function (x, i) { x.classList.toggle('on', i === 0); });
+						toast('PR 已创建，复制简介或直接发邮件');
+					});
+					var pc = $('#prCopy');
+					if (pc) pc.addEventListener('click', function () { copyText(prBriefText, '简介已复制，去私信里粘贴吧'); });
+					var pm = $('#prMail');
+					if (pm) pm.addEventListener('click', function () {
+						location.href = 'mailto:' + MAIL + '?subject=' + encodeURIComponent(prSubject) + '&body=' + encodeURIComponent(prBriefText);
+					});
+					var mb = $('#mailBtn');
+					if (mb) mb.addEventListener('click', function () { copyText(MAIL, '邮箱已复制：' + MAIL); });
+					var xb = $('#xhsBtn');
+					if (xb) xb.addEventListener('click', function () { copyText(XHS, '小红书号已复制：' + XHS); });
+				});
+
+				/* ================= 命令面板 ================= */
+				boot('命令面板', function () {
+					var palMask = $('#palMask'), palInput = $('#palInput'), palList = $('#palList'), palBtn = $('#palBtn');
+					if (!palMask || !palInput || !palList) return;
+					var palIdx = 0, curCmds = [];
+					var COMMANDS = [
+						{ k: '前往 · 合作方式', h: '#diff', run: function () { go('#diff'); } },
+						{ k: '前往 · 适合谁', h: '#who', run: function () { go('#who'); } },
+						{ k: '前往 · 作品仓库', h: '#work', run: function () { go('#work'); } },
+						{ k: '前往 · 投入方式', h: '#modes', run: function () { go('#modes'); } },
+						{ k: '前往 · 合作流程', h: '#how', run: function () { go('#how'); } },
+						{ k: '前往 · 合作轨迹', h: '#path', run: function () { go('#path'); } },
+						{ k: '前往 · 伙伴的话', h: '#voices', run: function () { go('#voices'); } },
+						{ k: '前往 · 关于我', h: '#about', run: function () { go('#about'); } },
+						{ k: '前往 · 常见问题', h: '#faq', run: function () { go('#faq'); } },
+						{ k: '前往 · 发一个 Pull Request', h: '#pr', run: function () { go('#pr'); setTimeout(function () { var el = $('#prTitle'); if (el) el.focus(); }, 700); } },
+						{ k: '动作 · 复制邮箱', h: 'copy', run: function () { copyText(MAIL, '邮箱已复制：' + MAIL); } },
+						{ k: '动作 · 复制小红书号', h: 'copy', run: function () { copyText(XHS, '小红书号已复制：' + XHS); } },
+						{ k: '动作 · 随机打开一个项目', h: 'repo', run: function () { openRepo(PROJECTS[Math.floor(Math.random() * PROJECTS.length)]); } },
+						{ k: '动作 · 回到顶部', h: 'top', run: function () { window.scrollTo({ top: 0, behavior: 'smooth' }); } }
+					];
+					function paintAct() {
+						palList.querySelectorAll('li[data-i]').forEach(function (li) { li.classList.toggle('act', +li.dataset.i === palIdx); });
+					}
+					function renderPal(q) {
+						curCmds = COMMANDS.filter(function (c) { return c.k.indexOf(q) > -1 || c.h.indexOf(q) > -1; });
+						if (palIdx >= curCmds.length) palIdx = Math.max(0, curCmds.length - 1);
+						palList.innerHTML = curCmds.length
+							? curCmds.map(function (c, i) { return '<li class="' + (i === palIdx ? 'act' : '') + '" data-i="' + i + '"><span>' + c.k + '</span><i>' + c.h + '</i></li>'; }).join('')
+							: '<li class="empty">没有匹配的命令</li>';
+						palList.querySelectorAll('li[data-i]').forEach(function (li) {
+							li.addEventListener('click', function () { curCmds[+li.dataset.i].run(); closeMask(palMask); });
+							li.addEventListener('mousemove', function () { palIdx = +li.dataset.i; paintAct(); });
+						});
+					}
+					function openPal() { palInput.value = ''; palIdx = 0; renderPal(''); openMask(palMask); setTimeout(function () { palInput.focus(); }, 30); }
+					if (palBtn) palBtn.addEventListener('click', openPal);
+					palInput.addEventListener('input', function () { palIdx = 0; renderPal(palInput.value.trim()); });
+
+					[repoMask, $('#prMask'), palMask].forEach(function (m) {
+						if (m) m.addEventListener('click', function (e) { if (e.target === m) closeMask(m); });
+					});
+					document.addEventListener('keydown', function (e) {
+						if (e.key === 'Escape') { $$('.mask.on').forEach(closeMask); return; }
+						if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+							e.preventDefault();
+							if (palMask.classList.contains('on')) closeMask(palMask); else openPal();
+							return;
+						}
+						if (palMask.classList.contains('on')) {
+							if (e.key === 'ArrowDown') { e.preventDefault(); palIdx = Math.min(curCmds.length - 1, palIdx + 1); paintAct(); }
+							else if (e.key === 'ArrowUp') { e.preventDefault(); palIdx = Math.max(0, palIdx - 1); paintAct(); }
+							else if (e.key === 'Enter' && curCmds[palIdx]) { e.preventDefault(); curCmds[palIdx].run(); closeMask(palMask); }
+							return;
+						}
+						var tag = (document.activeElement && document.activeElement.tagName) || '';
+						if (e.key === '/' && tag !== 'INPUT' && tag !== 'TEXTAREA') { e.preventDefault(); openPal(); }
+					});
+				});
+
+				/* ================= 滚动浮现 / 计数 / 导航 ================= */
+				boot('滚动动效', function () {
+					if (!('IntersectionObserver' in window)) {
+						$$('[data-rv], .diffwin, .rr').forEach(function (el) { el.classList.add('in'); });
+						return;
+					}
+					var rvIO = new IntersectionObserver(function (es) {
+						es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); rvIO.unobserve(en.target); } });
+					}, { threshold: .15 });
+					$$('[data-rv], .diffwin, .rr').forEach(function (el) { rvIO.observe(el); });
+
+					var cntIO = new IntersectionObserver(function (es) {
+						es.forEach(function (en) {
+							if (!en.isIntersecting) return;
+							cntIO.unobserve(en.target);
+							var el = en.target, target = +el.dataset.count, t0 = performance.now();
+							(function f(t) {
+								var k = Math.min(1, (t - t0) / 1400), e2 = 1 - Math.pow(1 - k, 3);
+								el.textContent = Math.round(target * e2).toLocaleString('en-US');
+								if (k < 1) requestAnimationFrame(f);
+							})(t0);
+						});
+					}, { threshold: .4 });
+					$$('[data-count]').forEach(function (el) { cntIO.observe(el); });
+
+					var navIO = new IntersectionObserver(function (es) {
+						es.forEach(function (en) {
+							if (en.isIntersecting) {
+								$$('#nav a').forEach(function (a) { a.classList.toggle('on', a.dataset.s === en.target.id); });
+							}
+						});
+					}, { rootMargin: '-40% 0px -55% 0px' });
+					$$('section[id]').forEach(function (s) { navIO.observe(s); });
+				});
+
+				boot('顶栏状态', function () {
+					var top = $('#top'); if (!top) return;
+					window.addEventListener('scroll', function () {
+						top.classList.toggle('scrolled', window.scrollY > 24);
+					}, { passive: true });
+				});
+			})();
+		</script>
+	</body>
+</html>
