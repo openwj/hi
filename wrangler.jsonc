@@ -1,9 +1,11 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "better-belt",
-  "compatibility_date": "2026-09-01",  // 填一个近期日期
-  "assets": {
-    "directory": "./dist",
-    "not_found_handling": "404-page"    // 没做 404 页就删掉这行
-  }
+    "$schema": "node_modules/wrangler/config-schema.json",
+    "name": "better-belt",
+    "compatibility_date": "2026-09-01", // 填一个近期日期
+    "assets": {
+        "directory": "./dist",
+        "not_found_handling": "404-page" // 没做 404 页就删掉这行
+    },
+    "workers_dev": true, // 或 false
+    "preview_urls": true // 或 true
 }
