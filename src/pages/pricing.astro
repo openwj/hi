@@ -5,8 +5,7 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 <PricingLayout>
 	<!-- ============ HERO ============ -->
 	<section class="hero">
-		<div class="wrap">
-			<p class="crumb" data-rv><b>❯</b>~/wodema/docs $ cat 合作执行手册.md --workshop</p>
+		<div class="wrap">				<p class="crumb" data-rv><b>❯</b>~/我的码/docs $ cat 合作执行手册.md --workshop</p>
 			<h1 data-rv style="transition-delay:.08s">钱怎么算、活怎么干、<br>怎么退出——全写明白，<br><span class="price-cut">价格按手作坊来。</span></h1>
 			<p class="hero-sub" data-rv style="transition-delay:.16s">一个人闭环的手作坊：没有团队、没有办公室、没有销售环节——<b>你付的每一块钱，基本都买在写代码这件事上</b>。协作走错峰节奏：你白天跑业务，我晚间深度施工，<b>早上你醒来，进展已经在那</b>。看完还有模糊的地方，算我写得不行，直接来问。</p>
 			<div class="hero-cta" data-rv style="transition-delay:.24s">
@@ -109,8 +108,8 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 		<div class="wrap">
 			<div class="sec-head" data-rv>
 				<span class="sec-no">04 / 详解</span>
-				<h2>逐日、逐钱、逐条，怎么执行</h2>
-				<span class="sec-cmd">$ man wodema-&#123;mvp|monthly|equity&#125;</span>
+				<h2>三种模式各自一页</h2>
+				<span class="sec-cmd">$ ls 模式/</span>
 			</div>
 
 			<div class="modes-box" data-rv>
@@ -124,7 +123,7 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 				<div class="panel on" data-mode="mvp">
 					<div class="p-top">
 						<div>
-							<p class="p-cmd">$ man wodema-mvp</p>
+							<p class="p-cmd">$ man 我的码-mvp</p>
 							<h3>MVP 冲刺</h3>
 							<p class="p-def">用最小的一笔钱，把想法变成<b>能给真人用的东西</b>。固定周期、固定价格、固定交付物——先跑起来，再谈别的。</p>
 							<div class="p-chips"><span>2–4 周</span><span>一口价</span><span>晚间+周末冲刺</span><span>含 2 周保障期</span><span>同期只带 1 个</span></div>
@@ -249,7 +248,7 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 				<div class="panel" data-mode="month">
 					<div class="p-top">
 						<div>
-							<p class="p-cmd">$ man wodema-monthly</p>
+							<p class="p-cmd">$ man 我的码-monthly</p>
 							<h3>长期同行</h3>
 							<p class="p-def">像养一个<b>不用坐班的技术合伙人</b>：按月付费、每周可见进展、随时可停。买断的不是我的在线时长，是「每周产出 + 一个随叫随到的人」。</p>
 							<div class="p-chips"><span>最短 3 个月</span><span>月初付当月</span><span>不押金</span><span>提前 2 周可停</span><span>无违约金</span></div>
@@ -352,7 +351,7 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 				<div class="panel" data-mode="equity">
 					<div class="p-top">
 						<div>
-							<p class="p-cmd">$ man wodema-equity</p>
+							<p class="p-cmd">$ man 我的码-equity</p>
 							<h3>深度合伙</h3>
 							<p class="p-def">已经有付费用户的产品，我用<b>持续的代码投入换一小部分未来</b>。不拿工资、不占业务决策权——要的只是「把产品做好」的那一票。这是三档里唯一<b>不用付现金</b>的。</p>
 							<div class="p-chips"><span>0 现金</span><span>3–6% 股份</span><span>36 个月成熟</span><span>每年仅 1 个名额</span></div>
@@ -475,7 +474,7 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 			<div class="sec-head" data-rv>
 				<span class="sec-no">06 / 估价</span>
 				<h2>先心里有个数</h2>
-				<span class="sec-cmd">$ wodema estimate --mvp --workshop</span>
+				<span class="sec-cmd">$ 我的码 estimate --mvp --workshop</span>
 			</div>
 			<p class="sec-lead" data-rv>勾一勾你的 MVP 大概要什么，我给你一个起步价参考区间。这不是报价——报价要聊完才有。但预算盘子多大、值不值得约语音，这一步就能判断。</p>
 			<div class="est-box" data-rv>
@@ -533,8 +532,7 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 			<div class="cta-btns" data-rv>
 				<a class="btn amber" href="/#pr">去主站发一个 PR</a>
 				<button class="btn line" id="mailBtn" type="button">复制邮箱</button>
-			</div>
-			<p class="cta-crumb" data-rv>~/wodema/docs $ echo "砍范围，别砍价——这句免费送你。"</p>
+			</div>				<p class="cta-crumb" data-rv>~/我的码/docs $ echo "砍范围，别砍价——这句免费送你。"</p>
 		</div>
 	</section>
 </PricingLayout>
@@ -547,7 +545,7 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 		var errShown = false;
 		function reportErr(tag, err) {
 			try {
-				console.error('[wodema 手册] 模块「' + tag + '」失败：', err);
+				console.error('【我的码】 手册 模块「' + tag + '」失败：', err);
 				if (!errShown) {
 					errShown = true;
 					var t = document.getElementById('toast');
@@ -556,6 +554,12 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 			} catch (_) {}
 		}
 		function boot(tag, fn) { try { fn(); } catch (err) { reportErr(tag, err); } }
+		/* 与 PricingLayout 共用模块的去重锁：同名模块只绑一次 */
+		function once(name, fn) {
+			if (window['__wm_' + name + '_done__']) return;
+			window['__wm_' + name + '_done__'] = true;
+			fn();
+		}
 
 		var $ = function (s) { return document.querySelector(s); };
 		var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
@@ -571,8 +575,8 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 			var done = function () { toast(ok || '已复制到剪贴板'); };
 			if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(txt).then(done, function () { fallbackCopy(txt, done); }); }
 			else fallbackCopy(txt, done);
-		}
-		var MAIL = 'hello@wodema.dev';
+		}			/* 邮箱倒序存放，防爬虫直抓（换邮箱改这一行，倒序写） */
+			var MAIL = 'nc.amedow@ih'.split('').reverse().join('');
 
 		/* ========== 模式 Tab 切换 ========== */
 		function switchMode(id) {
@@ -741,31 +745,60 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 
 		/* ========== FAQ 手风琴（全页通用） ========== */
 		boot('FAQ', function () {
-			document.addEventListener('click', function (e) {
-				var q = e.target.closest('.fq-q'); if (!q) return;
-				var fq = q.parentElement, wasOpen = fq.classList.contains('open');
-				var box = fq.parentElement;
-				if (box) box.querySelectorAll('.fq').forEach(function (x) { x.classList.remove('open'); });
-				if (!wasOpen) fq.classList.add('open');
+			once('faq', function () {
+				document.addEventListener('click', function (e) {
+					var q = e.target.closest('.fq-q'); if (!q) return;
+					var fq = q.parentElement, wasOpen = fq.classList.contains('open');
+					var box = fq.parentElement;
+					if (box) box.querySelectorAll('.fq').forEach(function (x) { x.classList.remove('open'); });
+					if (!wasOpen) fq.classList.add('open');
+				});
 			});
 		});
 
 		/* ========== 复制邮箱 / 顶栏 / 浮现 ========== */
 		boot('联系', function () {
-			var m = $('#mailBtn');
-			if (m) m.addEventListener('click', function () { copyText(MAIL, '邮箱已复制：' + MAIL); });
+			once('mail', function () {
+				var m = $('#mailBtn');
+				if (m) m.addEventListener('click', function () { copyText(MAIL, '邮箱已复制：' + MAIL); });
+			});
 		});
 		boot('顶栏', function () {
-			var top = $('#top'); if (!top) return;
-			window.addEventListener('scroll', function () { top.classList.toggle('scrolled', window.scrollY > 24); }, { passive: true });
+			once('top', function () {
+				var top = $('#top'); if (!top) return;
+				window.addEventListener('scroll', function () { top.classList.toggle('scrolled', window.scrollY > 24); }, { passive: true });
+			});
+		});
+		boot('移动端菜单', function () {
+			once('burger', function () {
+				var burger = $('#burger'), mNav = $('#mNav');
+				if (!burger || !mNav) return;
+				function setOpen(on) {
+					burger.classList.toggle('on', on);
+					mNav.classList.toggle('on', on);
+					burger.setAttribute('aria-expanded', on ? 'true' : 'false');
+					burger.setAttribute('aria-label', on ? '关闭菜单' : '打开菜单');
+				}
+				burger.addEventListener('click', function () { setOpen(!burger.classList.contains('on')); });
+				mNav.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
+				document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+			});
 		});
 		boot('浮现动效', function () {
-			var els = $$('[data-rv]');
-			if (!('IntersectionObserver' in window)) { els.forEach(function (el) { el.classList.add('in'); }); return; }
-			var io = new IntersectionObserver(function (es) {
-				es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
-			}, { threshold: .12 });
-			els.forEach(function (el) { io.observe(el); });
+			once('reveal', function () {
+				var els = $$('[data-rv]');
+				if (!('IntersectionObserver' in window)) { els.forEach(function (el) { el.classList.add('in'); }); return; }
+				var io = new IntersectionObserver(function (es) {
+					es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+				}, { threshold: .12 });
+				els.forEach(function (el) { io.observe(el); });
+			});
+		});
+		/* 邮箱文案还原：把 [at]/[dot] 写成真地址，人看正常，爬虫抓不到 */
+		boot('邮箱还原', function () {
+			once('mailLabel', function () {
+				$$('[data-mail-label]').forEach(function (el) { el.textContent = MAIL; });
+			});
 		});
 	})();
 </script>

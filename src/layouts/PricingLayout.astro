@@ -14,7 +14,7 @@ interface Props {
 }
 
 const {
-  title = 'wodema · 合作执行手册 — 三种模式怎么落地（手作坊价）',
+  title = '我的码 · 合作执行手册 — 三种模式怎么落地（手作坊价）',
   description = '三种合作模式的执行细节：周期、付款节点、报价逻辑、变更规则、验收标准、退出条款，全部摊开写明白。验证期享手作坊起步价。',
 } = Astro.props;
 ---
@@ -24,9 +24,15 @@ const {
 	<head>
 		<meta charset="UTF-8" />
 		<script is:inline>document.documentElement.classList.add('js')</script>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+		<meta name="theme-color" content="#0E100C" />
 		<title>{title}</title>
 		<meta name="description" content={description} />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:site_name" content="我的码" />
+		<meta property="og:locale" content="zh_CN" />
 		<link
 			rel="icon"
 			href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230E100C'/%3E%3Cpath d='M11 9v13a4 4 0 0 0 4 4h7' stroke='%23E5A63C' stroke-width='2.6' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='11' cy='7' r='3' fill='%23E5A63C'/%3E%3Ccircle cx='22' cy='26' r='3' fill='%23E5A63C'/%3E%3Ccircle cx='22' cy='7' r='3' fill='%23EDE8D8'/%3E%3C/svg%3E"
@@ -35,11 +41,12 @@ const {
 		<meta name="generator" content={Astro.generator} />
 	</head>
 	<body>
+		<a class="skip-link" href="#main">跳到主要内容</a>
 		<!-- 顶栏 -->
 		<header class="top" id="top">
-			<a class="logo" href="/" aria-label="返回 wodema 主站">
+			<a class="logo" href="/" aria-label="返回 我的码 主站">
 				<span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6.5" cy="5" r="2.3"/><circle cx="6.5" cy="19" r="2.3"/><circle cx="17.5" cy="8" r="2.3"/><path d="M6.5 7.3v9.4"/><path d="M17.5 10.3c0 4-3.6 4.7-7.5 5.2"/></svg></span>
-				wodema<i>执行手册</i>
+				我的码<i>执行手册</i>
 			</a>
 			<nav class="nav">
 				<a href="#cmp">速览</a><a href="#quiz">帮我选</a><a href="#policy">定价</a><a href="#modes">模式</a><a href="#low">预算紧</a><a href="#est">估价</a>
@@ -47,9 +54,11 @@ const {
 			<a class="btn amber" href="#cta" style="padding:9px 18px;font-size:13.5px">聊聊合作</a>
 		</header>
 
+		<main id="main">
 		<slot />
+		</main>
 
-		<footer>本页价格为验证期起步价参考区间（手作坊模式 · 签约锁定）· wodema 执行手册 v4 · 与主站同一人维护</footer>
+		<footer>本页价格为验证期起步价参考区间（手作坊模式 · 签约锁定）· 我的码 执行手册 v4 · 与主站同一人维护</footer>
 
 		<div id="toast" role="status"></div>
 	</body>
