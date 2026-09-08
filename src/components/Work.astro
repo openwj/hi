@@ -1,35 +1,35 @@
 <!-- ============ 03 作品仓库 ============ -->
-<section class="sec" id="work">
-	<div class="wrap">
-		<div class="sec-head" data-rv>
-			<span class="sec-no">03 / 作品</span>
-			<h2>一起写出来的仓库</h2>
-			<span class="sec-cmd">// 点开任意一个，都是一段还在继续的合作</span>
+<section class="py-[88px]" id="work">
+	<div class="mx-auto w-full max-w-[1200px] px-7">
+		<div class="mb-5 flex flex-wrap items-baseline gap-[22px]" data-rv>
+			<span class="font-mono text-[13px] tracking-[.15em] text-amber">03 / 作品</span>
+			<h2 class="font-serif text-[clamp(28px,3.6vw,42px)] font-black tracking-[.01em]">一起写出来的仓库</h2>
+			<span class="ml-auto font-mono text-[12.5px] text-faint">// 点开任意一个，都是一段还在继续的合作</span>
 		</div>
 
-		<div class="feat" data-rv>
-			<div class="feat-main">
-				<div class="feat-tags">
-					<span class="badge"><i class="dot"></i><span id="featStatus"></span></span>
-					<span class="feat-flag">FEATURED · 合作最深的一段</span>
+		<div class="relative mb-[14px] grid grid-cols-[minmax(0,1fr)] gap-[44px] rounded-2xl border border-line2 bg-bg2 p-[30px] wide:grid-cols-[1.15fr_.85fr] wide:p-[42px_44px] before:pointer-events-none before:absolute before:-left-px before:-top-px before:h-[22px] before:w-[22px] before:rounded-tl-2xl before:border-l-2 before:border-t-2 before:border-amber after:pointer-events-none after:absolute after:-bottom-px after:-right-px after:h-[22px] after:w-[22px] after:rounded-br-2xl after:border-b-2 after:border-r-2 after:border-amber" data-rv>
+			<div class="feat-main min-w-0">
+				<div class="mb-5 flex flex-wrap items-center gap-[14px]">
+					<span class="inline-flex items-center gap-2 rounded-full border border-green/35 px-3 py-1 font-mono text-[11.5px] text-green"><i class="size-[7px] animate-dotp rounded-full bg-green"></i><span id="featStatus"></span></span>
+					<span class="font-mono text-[11px] tracking-[.18em] text-faint">FEATURED · 合作最深的一段</span>
 				</div>
-				<h3 id="featName"></h3>
-				<span class="feat-slug" id="featSlug"></span>
-				<p class="feat-one" id="featOne"></p>
-				<p class="feat-partner" id="featPartner"></p>
-				<p class="feat-lead" id="featLead"></p>
-				<button class="btn line" id="featBtn">打开这个仓库
-					<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></button>
+				<h3 class="font-serif text-[clamp(30px,3.2vw,44px)] font-black" id="featName"></h3>
+				<span class="font-mono text-[13px] text-faint" id="featSlug"></span>
+				<p class="mt-4 text-[16.5px] leading-[1.9]" id="featOne"></p>
+				<p class="mt-[14px] text-[13.5px] text-sub" id="featPartner"></p>
+				<p class="mt-[18px] border-l-[3px] border-line2 pl-4 text-[14.5px] leading-[2] text-sub" id="featLead"></p>
+				<button class="mt-7 inline-flex items-center justify-center gap-[9px] rounded-[10px] border-[1.5px] border-line2 bg-transparent px-5 py-[11px] text-[14.5px] font-bold text-ink transition duration-200 hover:border-amber hover:text-amber active:scale-[.97]" id="featBtn">打开这个仓库
+					<svg class="h-[1em] w-[1em] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></button>
 			</div>
-			<div class="feat-side">
-				<div class="fs-block">
-					<div class="fs-t">commit 热力图 · 最近半年</div>
-					<div class="heat" id="featHeat"></div>
-					<div class="fs-stats" id="featStats"></div>
+			<div class="feat-side min-w-0">
+				<div class="rounded-xl border border-line bg-bg p-[22px]">
+					<div class="mb-4 font-mono text-[11.5px] tracking-[.08em] text-faint">commit 热力图 · 最近半年</div>
+					<div class="grid gap-[3px] overflow-x-auto pb-1 [--cell:12px] [grid-auto-columns:12px] [grid-auto-flow:column]" id="featHeat"></div>
+					<div class="mt-5 flex flex-wrap gap-[26px]" id="featStats"></div>
 				</div>
 			</div>
 		</div>
 
-		<div class="repo-list" id="repoList"></div>
+		<div class="border-t border-line" id="repoList"></div>
 	</div>
 </section>

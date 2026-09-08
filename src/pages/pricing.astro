@@ -4,158 +4,158 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 
 <PricingLayout>
 	<!-- ============ HERO ============ -->
-	<section class="hero">
-		<div class="wrap">				<p class="crumb" data-rv><b>❯</b>~/我的码/docs $ cat 合作执行手册.md --workshop</p>
-			<h1 data-rv style="transition-delay:.08s">钱怎么算、活怎么干、<br>怎么退出——全写明白，<br><span class="price-cut">价格按手作坊来。</span></h1>
-			<p class="hero-sub" data-rv style="transition-delay:.16s">一个人闭环的手作坊：没有团队、没有办公室、没有销售环节——<b>你付的每一块钱，基本都买在写代码这件事上</b>。协作走错峰节奏：你白天跑业务，我晚间深度施工，<b>早上你醒来，进展已经在那</b>。看完还有模糊的地方，算我写得不行，直接来问。</p>
-			<div class="hero-cta" data-rv style="transition-delay:.24s">
-				<a class="btn amber" href="#modes">直接看三种模式
-					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v14"/><path d="M6 12l6 6 6-6"/></svg></a>
-				<a class="btn line" href="#quiz">30 秒帮我选</a>
+	<section class="relative bg-[radial-gradient(rgba(237,232,216,.05)_1px,transparent_1px)] bg-[length:30px_30px] pb-[78px] pt-[138px] [-webkit-mask-image:linear-gradient(#000_60%,transparent)] [mask-image:linear-gradient(#000_60%,transparent)]">
+		<div class="mx-auto w-full max-w-[1120px] px-7">				<p class="mb-6 font-mono text-[13px] text-faint" data-rv><b class="mr-[10px] font-bold text-amber">❯</b>~/我的码/docs $ cat 合作执行手册.md --workshop</p>
+			<h1 class="font-serif text-[clamp(36px,5vw,62px)] font-black leading-[1.3]" data-rv style="transition-delay:.08s">钱怎么算、活怎么干、<br>怎么退出——全写明白，<br><span class="text-amber">价格按手作坊来。</span></h1>
+			<p class="mt-6 max-w-[680px] text-[16px] leading-[2] text-sub" data-rv style="transition-delay:.16s">一个人闭环的手作坊：没有团队、没有办公室、没有销售环节——<b class="font-medium text-ink">你付的每一块钱，基本都买在写代码这件事上</b>。协作走错峰节奏：你白天跑业务，我晚间深度施工，<b class="font-medium text-ink">早上你醒来，进展已经在那</b>。看完还有模糊的地方，算我写得不行，直接来问。</p>
+			<div class="mt-8 flex flex-wrap gap-[14px]" data-rv style="transition-delay:.24s">
+				<a class="inline-flex items-center justify-center gap-[9px] rounded-[10px] bg-amber px-5 py-[11px] text-[14.5px] font-bold text-[#1d1405] transition duration-200 hover:brightness-[1.09] active:scale-[.97]" href="#modes">直接看三种模式
+					<svg class="size-4 shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v14"/><path d="M6 12l6 6 6-6"/></svg></a>
+				<a class="inline-flex items-center justify-center gap-[9px] rounded-[10px] border-[1.5px] border-line2 bg-transparent px-5 py-[11px] text-[14.5px] font-bold text-ink transition duration-200 hover:border-amber hover:text-amber active:scale-[.97]" href="#quiz">30 秒帮我选</a>
 			</div>
-			<div class="founder-pill" data-rv style="transition-delay:.3s"><span class="dp"></span>手作坊价 · 零公司成本 · 同期限量 · 签约锁价</div>
-			<p class="hero-meta" data-rv style="transition-delay:.34s">3 种模式<b>·</b>月费 ¥1,980 起<b>·</b>小程序 ¥5,000 起<b>·</b>0 句「详情面议」</p>
+			<div class="mt-[26px] inline-flex w-max max-w-full flex-wrap items-center gap-[10px] rounded-full border border-amber/40 bg-amber/5 px-5 py-[10px] font-mono text-[12.5px] leading-[1.6] text-amber" data-rv style="transition-delay:.3s"><span class="size-[7px] shrink-0 animate-dotp rounded-full bg-amber"></span>手作坊价 · 零公司成本 · 同期限量 · 签约锁价</div>
+			<p class="mt-[26px] font-mono text-[12.5px] text-faint" data-rv style="transition-delay:.34s">3 种模式<b class="mx-[6px] font-normal text-amber">·</b>月费 ¥1,980 起<b class="mx-[6px] font-normal text-amber">·</b>小程序 ¥5,000 起<b class="mx-[6px] font-normal text-amber">·</b>0 句「详情面议」</p>
 		</div>
 	</section>
 
 	<!-- ============ 01 速览 ============ -->
-	<section class="sec" id="cmp" style="padding-top:48px">
-		<div class="wrap">
-			<div class="sec-head" data-rv>
-				<span class="sec-no">01 / 速览</span>
-				<h2>三种模式，一屏对比</h2>
-				<span class="sec-cmd">$ diff 模式A 模式B 模式C</span>
+	<section class="py-[84px]" id="cmp" style="padding-top:48px">
+		<div class="mx-auto w-full max-w-[1120px] px-7">
+			<div class="mb-[18px] flex flex-wrap items-baseline gap-[22px]" data-rv>
+				<span class="font-mono text-[13px] tracking-[.15em] text-amber">01 / 速览</span>
+				<h2 class="font-serif text-[clamp(26px,3.4vw,38px)] font-black">三种模式，一屏对比</h2>
+				<span class="ml-auto font-mono text-[12.5px] text-faint">$ diff 模式A 模式B 模式C</span>
 			</div>
-			<div class="tbl-scroll" data-rv>
-				<table class="cmp">
+			<div class="overflow-x-auto rounded-[14px] border border-line2 bg-bg2" data-rv>
+				<table class="w-full min-w-[820px] border-collapse text-[14px]">
 					<thead><tr>
-						<th style="width:120px"></th>
-						<th>MVP 冲刺</th>
-						<th>长期同行<small>多数合作在这档</small></th>
-						<th>深度合伙</th>
+						<th class="border border-line bg-panel px-[18px] py-[14px] text-left align-top font-serif text-[17px] font-black leading-[1.8] text-ink" style="width:120px"></th>
+						<th class="border border-line bg-panel px-[18px] py-[14px] text-left align-top font-serif text-[17px] font-black leading-[1.8] text-ink">MVP 冲刺</th>
+						<th class="border border-line bg-panel px-[18px] py-[14px] text-left align-top font-serif text-[17px] font-black leading-[1.8] text-ink">长期同行<small class="mt-1 block font-mono text-[10.5px] font-normal leading-normal text-faint">多数合作在这档</small></th>
+						<th class="border border-line bg-panel px-[18px] py-[14px] text-left align-top font-serif text-[17px] font-black leading-[1.8] text-ink">深度合伙</th>
 					</tr></thead>
 					<tbody>
-						<tr><th>形式</th><td><b>一次性项目</b>，一口价</td><td><b>按月订阅</b></td><td><b>代码换股份</b></td></tr>
-						<tr><th>周期</th><td>2–4 周 + 2 周保障期</td><td>最短 3 个月，之后按月续</td><td>1–3 年，36 个月成熟</td></tr>
-						<tr><th>花费</th><td>约 <b>¥1.5k–15k</b>（起步价区间）</td><td>¥1,980 / 3,600 / 5,800 / 8,800 每月四档</td><td>0 现金 + 3–6% 股份</td></tr>
-						<tr><th>适合谁</th><td>想法待验证，先跑起来</td><td>已有用户，要持续迭代</td><td>已有付费用户，想做大</td></tr>
-						<tr><th>付款</th><td>¥3k 以下 50/50；以上 40/30/30</td><td>月初付当月，不押金</td><td>不付钱，签股权协议</td></tr>
-						<tr><th>退出</th><td>验收即止（含保障期）</td><td>提前 2 周通知，随时停</td><td>按成熟与回购条款</td></tr>
-						<tr><th>协作节奏</th><td>晚间+周末集中冲刺</td><td>错峰协作 · 每周 1–3 个深度日</td><td>错峰协作 · 每年仅 1 席</td></tr>
+						<tr><th class="whitespace-nowrap border border-line px-[18px] py-[14px] text-left align-top font-mono text-[12px] font-normal leading-[1.8] text-faint">形式</th><td class="border border-line px-[18px] py-[14px] text-left align-top leading-[1.8] text-sub"><b class="font-medium text-ink">一次性项目</b>，一口价</td><td class="border border-line px-[18px] py-[14px] text-left align-top leading-[1.8] text-sub"><b class="font-medium text-ink">按月订阅</b></td><td class="border border-line px-[18px] py-[14px] text-left align-top leading-[1.8] text-sub"><b class="font-medium text-ink">代码换股份</b></td></tr>
+						<tr><th class="whitespace-nowrap border border-line px-[18px] py-[14px] text-left align-top font-mono text-[12px] font-normal leading-[1.8] text-faint">周期</th><td class="border border-line px-[18px] py-[14px] text-left align-top leading-[1.8] text-sub">2–4 周 + 2 周保障期</td><td class="border border-line px-[18px] py-[14px] text-left align-top leading-[1.8] text-sub">最短 3 个月，之后按月续</td><td class="border border-line px-[18px] py-[14px] text-left align-top leading-[1.8] text-sub">1–3 年，36 个月成熟</td></tr>
+						<tr><th class="whitespace-nowrap border border-line px-[18px] py-[14px] text-left align-top font-mono text-[12px] font-normal leading-[1.8] text-faint">花费</th><td class="border border-line px-[18px] py-[14px] text-left align-top leading-[1.8] text-sub">约 <b class="font-medium text-ink">¥1.5k–15k</b>（起步价区间）</td><td class="border border-line px-[18px] py-[14px] text-left align-top leading-[1.8] text-sub">¥1,980 / 3,600 / 5,800 / 8,800 每月四档</td><td class="border border-line px-[18px] py-[14px] text-left align-top leading-[1.8] text-sub">0 现金 + 3–6% 股份</td></tr>
+						<tr><th class="whitespace-nowrap border border-line px-[18px] py-[14px] text-left align-top font-mono text-[12px] font-normal leading-[1.8] text-faint">适合谁</th><td class="border border-line px-[18px] py-[14px] text-left align-top leading-[1.8] text-sub">想法待验证，先跑起来</td><td class="border border-line px-[18px] py-[14px] text-left align-top leading-[1.8] text-sub">已有用户，要持续迭代</td><td class="border border-line px-[18px] py-[14px] text-left align-top leading-[1.8] text-sub">已有付费用户，想做大</td></tr>
+						<tr><th class="whitespace-nowrap border border-line px-[18px] py-[14px] text-left align-top font-mono text-[12px] font-normal leading-[1.8] text-faint">付款</th><td class="border border-line px-[18px] py-[14px] text-left align-top leading-[1.8] text-sub">¥3k 以下 50/50；以上 40/30/30</td><td class="border border-line px-[18px] py-[14px] text-left align-top leading-[1.8] text-sub">月初付当月，不押金</td><td class="border border-line px-[18px] py-[14px] text-left align-top leading-[1.8] text-sub">不付钱，签股权协议</td></tr>
+						<tr><th class="whitespace-nowrap border border-line px-[18px] py-[14px] text-left align-top font-mono text-[12px] font-normal leading-[1.8] text-faint">退出</th><td class="border border-line px-[18px] py-[14px] text-left align-top leading-[1.8] text-sub">验收即止（含保障期）</td><td class="border border-line px-[18px] py-[14px] text-left align-top leading-[1.8] text-sub">提前 2 周通知，随时停</td><td class="border border-line px-[18px] py-[14px] text-left align-top leading-[1.8] text-sub">按成熟与回购条款</td></tr>
+						<tr><th class="whitespace-nowrap border border-line px-[18px] py-[14px] text-left align-top font-mono text-[12px] font-normal leading-[1.8] text-faint">协作节奏</th><td class="border border-line px-[18px] py-[14px] text-left align-top leading-[1.8] text-sub">晚间+周末集中冲刺</td><td class="border border-line px-[18px] py-[14px] text-left align-top leading-[1.8] text-sub">错峰协作 · 每周 1–3 个深度日</td><td class="border border-line px-[18px] py-[14px] text-left align-top leading-[1.8] text-sub">错峰协作 · 每年仅 1 席</td></tr>
 					</tbody>
 				</table>
 			</div>
-			<p class="tbl-note" data-rv>// 全部为验证期起步价（签约锁定，涨价不追溯）。不知道选哪种？往下走，30 秒测出来。</p>
+			<p class="mt-[14px] font-mono text-[11.5px] text-faint" data-rv>// 全部为验证期起步价（签约锁定，涨价不追溯）。不知道选哪种？往下走，30 秒测出来。</p>
 		</div>
 	</section>
 
 	<!-- ============ 02 帮我选 ============ -->
-	<section class="sec" id="quiz" style="padding-top:20px">
-		<div class="wrap">
-			<div class="sec-head" data-rv>
-				<span class="sec-no">02 / 帮我选</span>
-				<h2>三个问题，测出你的模式</h2>
-				<span class="sec-cmd">$ ./which-mode --quick</span>
+	<section class="py-[84px]" id="quiz" style="padding-top:20px">
+		<div class="mx-auto w-full max-w-[1120px] px-7">
+			<div class="mb-[18px] flex flex-wrap items-baseline gap-[22px]" data-rv>
+				<span class="font-mono text-[13px] tracking-[.15em] text-amber">02 / 帮我选</span>
+				<h2 class="font-serif text-[clamp(26px,3.4vw,38px)] font-black">三个问题，测出你的模式</h2>
+				<span class="ml-auto font-mono text-[12.5px] text-faint">$ ./which-mode --quick</span>
 			</div>
-			<div class="qz" id="quizBody" data-rv></div>
-			<div class="qz-res" id="quizRes" data-rv style="margin-top:16px"></div>
+			<div class="qz grid gap-4" id="quizBody" data-rv></div>
+			<div class="qz-res mt-4 hidden animate-rise rounded-[14px] border border-green/35 bg-green/10 p-[26px_28px]" id="quizRes" data-rv></div>
 		</div>
 	</section>
 
 	<!-- ============ 03 定价政策 ============ -->
-	<section class="sec" id="policy" style="padding-top:20px">
-		<div class="wrap">
-			<div class="sec-head" data-rv>
-				<span class="sec-no">03 / 定价</span>
-				<h2>手作坊价：便宜有便宜的道理</h2>
-				<span class="sec-cmd">$ cat 定价政策.md</span>
+	<section class="py-[84px]" id="policy" style="padding-top:20px">
+		<div class="mx-auto w-full max-w-[1120px] px-7">
+			<div class="mb-[18px] flex flex-wrap items-baseline gap-[22px]" data-rv>
+				<span class="font-mono text-[13px] tracking-[.15em] text-amber">03 / 定价</span>
+				<h2 class="font-serif text-[clamp(26px,3.4vw,38px)] font-black">手作坊价：便宜有便宜的道理</h2>
+				<span class="ml-auto font-mono text-[12.5px] text-faint">$ cat 定价政策.md</span>
 			</div>
-			<p class="sec-lead" data-rv>同样的需求找团队做，报价通常是我的 <b style="color:var(--ink)">2–3 倍</b>——不是我便宜，是团队贵：办公室、中层、销售提成、磨合损耗，全都在你的报价单里。手作坊没有这些环节；同时产能刻意保持很小，<b style="color:var(--ink)">同期只带 1 个冲刺 + 2 段长期维护</b>，每一单都是挑过的，做砸一单，亏的是我自己。</p>
+			<p class="mb-10 max-w-[660px] text-[15px] leading-[2] text-sub" data-rv>同样的需求找团队做，报价通常是我的 <b class="font-medium text-ink">2–3 倍</b>——不是我便宜，是团队贵：办公室、中层、销售提成、磨合损耗，全都在你的报价单里。手作坊没有这些环节；同时产能刻意保持很小，<b class="font-medium text-ink">同期只带 1 个冲刺 + 2 段长期维护</b>，每一单都是挑过的，做砸一单，亏的是我自己。</p>
 
-			<div class="policy">
-				<div class="pc" data-rv>
-					<h4>按阶段定价<i>stage-based</i></h4>
-					<p>价格跟着你的阶段走，而不是一口咬死：</p>
-					<p><b>验证期</b>（暂无收入，或月流水 &lt; ¥1 万）：本页所有价格，<b>起步价</b>。<br>
-					<b>成长期</b>（月流水 ≥ ¥1 万 或完成融资）：之后的新合作恢复标准价（约 ×1.5）；<b>已签的合作不动</b>。</p>
-					<p>判断标准只有一个：<b>你有没有开始赚钱</b>。融资款不算你赚的钱——融资了也先按起步价走完当前合作。</p>
+			<div class="policy mb-[18px] grid grid-cols-1 gap-[18px] tab:grid-cols-2">
+				<div class="rounded-[14px] border border-line2 bg-bg2 p-7" data-rv>
+					<h4 class="mb-[14px] flex items-center gap-[10px] text-[17px] font-bold">按阶段定价<i class="rounded-[5px] border border-amber/40 px-[9px] py-[2px] font-mono text-[11px] font-normal not-italic text-amber">stage-based</i></h4>
+					<p class="text-[14px] leading-[2] text-sub">价格跟着你的阶段走，而不是一口咬死：</p>
+					<p class="text-[14px] leading-[2] text-sub"><b class="font-medium text-ink">验证期</b>（暂无收入，或月流水 &lt; ¥1 万）：本页所有价格，<b class="font-medium text-ink">起步价</b>。<br>
+					<b class="font-medium text-ink">成长期</b>（月流水 ≥ ¥1 万 或完成融资）：之后的新合作恢复标准价（约 ×1.5）；<b class="font-medium text-ink">已签的合作不动</b>。</p>
+					<p class="mt-[10px] text-[14px] leading-[2] text-sub">判断标准只有一个：<b class="font-medium text-ink">你有没有开始赚钱</b>。融资款不算你赚的钱——融资了也先按起步价走完当前合作。</p>
 				</div>
-				<div class="pc" data-rv style="transition-delay:.08s">
-					<h4>三个承诺<i>locked</i></h4>
-					<p><b>锁价</b>：签约那天什么价，这个合作周期内就是什么价。我涨价只影响之后的新合作，绝不回头加钱。</p>
-					<p><b>无息分期</b>：¥3,000 以下 50/50 两期；以上 40/30/30 三期；¥1.2 万以上可谈按里程碑拆 4 期。分期不加息。</p>
-					<p><b>孵化器友好</b>：凭在孵证明（孵化器 / 加速器 / 校园创业项目）再享 9 折。我知道那段的现金流什么样。</p>
+				<div class="rounded-[14px] border border-line2 bg-bg2 p-7" data-rv style="transition-delay:.08s">
+					<h4 class="mb-[14px] flex items-center gap-[10px] text-[17px] font-bold">三个承诺<i class="rounded-[5px] border border-amber/40 px-[9px] py-[2px] font-mono text-[11px] font-normal not-italic text-amber">locked</i></h4>
+					<p class="text-[14px] leading-[2] text-sub"><b class="font-medium text-ink">锁价</b>：签约那天什么价，这个合作周期内就是什么价。我涨价只影响之后的新合作，绝不回头加钱。</p>
+					<p class="mt-[10px] text-[14px] leading-[2] text-sub"><b class="font-medium text-ink">无息分期</b>：¥3,000 以下 50/50 两期；以上 40/30/30 三期；¥1.2 万以上可谈按里程碑拆 4 期。分期不加息。</p>
+					<p class="mt-[10px] text-[14px] leading-[2] text-sub"><b class="font-medium text-ink">孵化器友好</b>：凭在孵证明（孵化器 / 加速器 / 校园创业项目）再享 9 折。我知道那段的现金流什么样。</p>
 				</div>
 			</div>
 
-			<div class="tbl-scroll" data-rv>
-				<table class="tier resp">
-					<thead><tr><th style="width:160px">你的阶段</th><th>判断标准</th><th>执行价格</th></tr></thead>
+			<div class="overflow-x-auto rounded-[14px] border border-line2 bg-bg2" data-rv>
+				<table class="w-full border-collapse text-[13.5px]">
+					<thead><tr><th class="border border-line bg-panel px-4 py-3 text-left align-top font-mono text-[11.5px] font-normal leading-[1.7] text-faint" style="width:160px">你的阶段</th><th class="border border-line bg-panel px-4 py-3 text-left align-top font-mono text-[11.5px] font-normal leading-[1.7] text-faint">判断标准</th><th class="border border-line bg-panel px-4 py-3 text-left align-top font-mono text-[11.5px] font-normal leading-[1.7] text-faint">执行价格</th></tr></thead>
 					<tbody>
-						<tr class="hot"><td><b>验证期 · 起步价</b></td><td>暂无收入，或月流水 &lt; ¥10,000</td><td><b>本页全部价格</b>（签约锁定）</td></tr>
-						<tr><td>成长期 · 标准价</td><td>月流水 ≥ ¥10,000，或完成融资</td><td>约 ×1.5，仅对之后的新合作生效</td></tr>
-						<tr><td>交叉地带</td><td>月流水 ¥5,000 – 10,000</td><td>两条路都通：继续起步价付费，或开始谈<b>深度合伙</b></td></tr>
-						<tr><td>老合作</td><td>任何已签约的合作</td><td><b>按签约价走完</b>，涨价不追溯</td></tr>
+						<tr class="bg-amber/5"><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub"><b class="font-mono text-[15px] font-bold text-amber">验证期 · 起步价</b></td><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub">暂无收入，或月流水 &lt; ¥10,000</td><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub"><b class="font-mono text-[15px] font-bold text-amber">本页全部价格</b>（签约锁定）</td></tr>
+						<tr><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub">成长期 · 标准价</td><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub">月流水 ≥ ¥10,000，或完成融资</td><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub">约 ×1.5，仅对之后的新合作生效</td></tr>
+						<tr><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub">交叉地带</td><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub">月流水 ¥5,000 – 10,000</td><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub">两条路都通：继续起步价付费，或开始谈<b class="font-mono text-[15px] font-bold text-amber">深度合伙</b></td></tr>
+						<tr><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub">老合作</td><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub">任何已签约的合作</td><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub"><b class="font-mono text-[15px] font-bold text-amber">按签约价走完</b>，涨价不追溯</td></tr>
 					</tbody>
 				</table>
 			</div>
-			<p class="tbl-note" data-rv>// 判断标准是流水不是利润——赚钱了就该分我一杯「标准价」，这才叫长期主义。</p>
+			<p class="mt-[14px] font-mono text-[11.5px] text-faint" data-rv>// 判断标准是流水不是利润——赚钱了就该分我一杯「标准价」，这才叫长期主义。</p>
 		</div>
 	</section>
 
 	<!-- ============ 04 模式详解 ============ -->
-	<section class="sec" id="modes" style="padding-top:20px">
-		<div class="wrap">
-			<div class="sec-head" data-rv>
-				<span class="sec-no">04 / 详解</span>
+	<section class="py-[84px]" id="modes" style="padding-top:20px">
+		<div class="mx-auto w-full max-w-[1120px] px-7">
+			<div class="mb-[18px] flex flex-wrap items-baseline gap-[22px]" data-rv>
+				<span class="font-mono text-[13px] tracking-[.15em] text-amber">04 / 详解</span>
 				<h2>三种模式各自一页</h2>
-				<span class="sec-cmd">$ ls 模式/</span>
+				<span class="ml-auto font-mono text-[12.5px] text-faint">$ ls 模式/</span>
 			</div>
 
-			<div class="modes-box" data-rv>
-				<div class="mtabs" role="tablist">
-					<button class="mtab on" data-mode="mvp" role="tab"><i>01</i>mvp.sprint</button>
-					<button class="mtab" data-mode="month" role="tab"><i>02</i>monthly.md</button>
-					<button class="mtab" data-mode="equity" role="tab"><i>03</i>equity.md</button>
+			<div class="overflow-hidden rounded-2xl border border-line2 bg-bg2" data-rv>
+				<div class="sticky top-0 z-[5] flex border-b border-line bg-panel" role="tablist">
+					<button class="mtab flex-1 cursor-pointer border-0 border-r border-line bg-bg2 px-2 py-[14px] font-mono text-[12.5px] text-amber transition-colors duration-200 last:border-r-0 [box-shadow:inset_0_-2px_0_var(--color-amber)]" data-mode="mvp" role="tab"><i>01</i>mvp.sprint</button>
+					<button class="mtab flex-1 cursor-pointer border-0 border-r border-line bg-transparent px-2 py-[14px] font-mono text-[12.5px] text-sub transition-colors duration-200 last:border-r-0 hover:text-ink" data-mode="month" role="tab"><i>02</i>monthly.md</button>
+					<button class="mtab flex-1 cursor-pointer border-0 border-r border-line bg-transparent px-2 py-[14px] font-mono text-[12.5px] text-sub transition-colors duration-200 last:border-r-0 hover:text-ink" data-mode="equity" role="tab"><i>03</i>equity.md</button>
 				</div>
 
 				<!-- ===== MVP 冲刺 ===== -->
-				<div class="panel on" data-mode="mvp">
-					<div class="p-top">
+				<div class="panel animate-rise p-[36px_clamp(20px,4vw,44px)_44px]" data-mode="mvp">
+					<div class="mb-[10px] grid grid-cols-1 items-start gap-9 tab:grid-cols-[1.15fr_.85fr]">
 						<div>
-							<p class="p-cmd">$ man 我的码-mvp</p>
-							<h3>MVP 冲刺</h3>
-							<p class="p-def">用最小的一笔钱，把想法变成<b>能给真人用的东西</b>。固定周期、固定价格、固定交付物——先跑起来，再谈别的。</p>
-							<div class="p-chips"><span>2–4 周</span><span>一口价</span><span>晚间+周末冲刺</span><span>含 2 周保障期</span><span>同期只带 1 个</span></div>
+							<p class="mb-[10px] font-mono text-[12px] text-amber">$ man 我的码-mvp</p>
+							<h3 class="font-serif text-[clamp(28px,3vw,38px)] font-black">MVP 冲刺</h3>
+							<p class="mt-[10px] text-[15.5px] leading-[1.9] text-sub">用最小的一笔钱，把想法变成<b>能给真人用的东西</b>。固定周期、固定价格、固定交付物——先跑起来，再谈别的。</p>
+							<div class="mt-[18px] flex flex-wrap gap-[9px]"><span>2–4 周</span><span>一口价</span><span>晚间+周末冲刺</span><span>含 2 周保障期</span><span>同期只带 1 个</span></div>
 						</div>
-						<div class="fact">
-							<div class="fact-t">档案 / FACTS</div>
-							<div><b>周期</b><span>2–4 周 + 2 周保障</span></div>
-							<div><b>付费</b><span>两期或三期无息</span></div>
-							<div><b>单价</b><span>¥600–800 / 人天</span></div>
-							<div><b>上线</b><span>含部署·域名·提审</span></div>
-							<div><b>节奏</b><span>晚间施工 · 晨间交付</span></div>
-						</div>
-					</div>
-
-					<div class="ss"><div class="ss-h"><span class="ss-no">4.1</span><h4>执行时间线</h4><em>从语音到上线的 14 天</em></div>
-						<div class="tline">
-							<div class="tnode"><span class="tn-day">DAY 0</span><h5>聊范围<i>语音 45 分钟</i></h5><p>你说清「想解决谁的什么问题」。当晚我回一份范围清单：做什么、不做什么、多少钱、多少天——四栏。觉得贵了当场砍，砍到双方都点头才往下走。</p></div>
-							<div class="tnode money"><span class="tn-day">DAY 1</span><h5>首期开工<i>付 40%（或 ¥3k 以下 50%）</i></h5><p>仓库建在你账号下，我只挂协作权限；服务器、域名当天就位。这天结束时，你就能看到空跑的骨架和一份共享进度文档。</p></div>
-							<div class="tnode"><span class="tn-day">DAY 2–7</span><h5>核心开发<i>晚间施工 · 晨间交付</i></h5><p>只做范围清单上的事，别的念头全记进「以后再说.txt」。每个施工夜结束发一条进展：截图 + 可点的预览链接——<b style="color:var(--amber)">你早上醒来就能点开玩</b>。第 7 天，是第二期付款的节点。</p></div>
-							<div class="tnode money"><span class="tn-day">DAY 7</span><h5>预览确认<i>付 30%</i></h5><p>核心流程在测试环境跑通，你亲手点过一遍。确认「就是这个东西」，再付第二期——不是做完才让你看，是<b>看着它长</b>。</p></div>
-							<div class="tnode"><span class="tn-day">DAY 8–10</span><h5>真人内测</h5><p>拉 3–5 个目标用户来用。反馈不经过我过滤，直接进共享文档——好消息坏消息你同时看到。</p></div>
-							<div class="tnode"><span class="tn-day">DAY 11–13</span><h5>修改收口</h5><p>内测反馈里，范围内的直接改；范围外的记变更单，24 小时内给报价，你点头才动工。</p></div>
-							<div class="tnode done"><span class="tn-day">DAY 14</span><h5>上线交付<i>付尾款</i></h5><p>正式部署 + 域名解析 + 小程序提审（拒审是常态，改到过为止），交付物六件套见「验收标准」。</p></div>
-							<div class="tnode done"><span class="tn-day">DAY 15–28</span><h5>保障期</h5><p>第二轮修改 + bug 免费修。28 天后想继续走，自然就转「长期同行」。</p></div>
+						<div class="rounded-xl border border-line bg-bg p-[18px_20px] font-mono text-[12.5px]">
+							<div class="mb-3 text-[11px] tracking-[.2em] text-faint">档案 / FACTS</div>
+							<div class="grid grid-cols-[86px_1fr] gap-3 border-b border-dashed border-line py-[7px] leading-[1.7] last:border-b-0"><b class="font-normal text-faint">周期</b><span class="text-ink">2–4 周 + 2 周保障</span></div>
+							<div class="grid grid-cols-[86px_1fr] gap-3 border-b border-dashed border-line py-[7px] leading-[1.7] last:border-b-0"><b class="font-normal text-faint">付费</b><span class="text-ink">两期或三期无息</span></div>
+							<div class="grid grid-cols-[86px_1fr] gap-3 border-b border-dashed border-line py-[7px] leading-[1.7] last:border-b-0"><b class="font-normal text-faint">单价</b><span class="text-ink">¥600–800 / 人天</span></div>
+							<div class="grid grid-cols-[86px_1fr] gap-3 border-b border-dashed border-line py-[7px] leading-[1.7] last:border-b-0"><b class="font-normal text-faint">上线</b><span class="text-ink">含部署·域名·提审</span></div>
+							<div class="grid grid-cols-[86px_1fr] gap-3 border-b border-dashed border-line py-[7px] leading-[1.7] last:border-b-0"><b class="font-normal text-faint">节奏</b><span class="text-ink">晚间施工 · 晨间交付</span></div>
 						</div>
 					</div>
 
-					<div class="ss"><div class="ss-h"><span class="ss-no">4.2</span><h4>报价逻辑：范围清单长这样</h4><em>每个数字都能对账</em></div>
-						<pre class="calc">一口价 = 预估人天 × 单价
+					<div class="mt-[34px] border-t border-dashed border-line2 pt-[26px]"><div class="mb-[18px] flex flex-wrap items-baseline gap-[14px]"><span class="font-mono text-[11px] tracking-[.18em] text-amber">4.1</span><h4 class="text-[18px] font-bold">执行时间线</h4><em class="ml-auto font-mono text-[11.5px] text-faint">从语音到上线的 14 天</em></div>
+						<div class="relative ml-[7px] grid gap-6 border-l-2 border-line2 pl-7">
+							<div class="tnode relative before:absolute before:-left-[35px] before:top-[3px] before:size-[12px] before:rounded-[3px] before:border-[2.5px] before:border-amber before:bg-bg before:content-['']"><span class="block font-mono text-[11px] tracking-[.12em] text-faint">DAY 0</span><h5 class="mb-[7px] mt-1 text-[15.5px]">聊范围<i class="ml-[10px] rounded-[5px] border border-amber/40 px-2 py-[2px] align-[2px] font-mono text-[10.5px] font-normal not-italic text-amber">语音 45 分钟</i></h5><p class="text-[13.5px] leading-[1.95] text-sub">你说清「想解决谁的什么问题」。当晚我回一份范围清单：做什么、不做什么、多少钱、多少天——四栏。觉得贵了当场砍，砍到双方都点头才往下走。</p></div>
+							<div class="tnode relative before:absolute before:-left-[35px] before:top-[3px] before:size-[12px] before:rounded-[3px] before:border-[2.5px] before:border-amber before:bg-amber before:content-['']"><span class="block font-mono text-[11px] tracking-[.12em] text-faint">DAY 1</span><h5 class="mb-[7px] mt-1 text-[15.5px]">首期开工<i class="ml-[10px] rounded-[5px] border border-amber/40 px-2 py-[2px] align-[2px] font-mono text-[10.5px] font-normal not-italic text-amber">付 40%（或 ¥3k 以下 50%）</i></h5><p class="text-[13.5px] leading-[1.95] text-sub">仓库建在你账号下，我只挂协作权限；服务器、域名当天就位。这天结束时，你就能看到空跑的骨架和一份共享进度文档。</p></div>
+							<div class="tnode relative before:absolute before:-left-[35px] before:top-[3px] before:size-[12px] before:rounded-[3px] before:border-[2.5px] before:border-amber before:bg-bg before:content-['']"><span class="block font-mono text-[11px] tracking-[.12em] text-faint">DAY 2–7</span><h5 class="mb-[7px] mt-1 text-[15.5px]">核心开发<i class="ml-[10px] rounded-[5px] border border-amber/40 px-2 py-[2px] align-[2px] font-mono text-[10.5px] font-normal not-italic text-amber">晚间施工 · 晨间交付</i></h5><p class="text-[13.5px] leading-[1.95] text-sub">只做范围清单上的事，别的念头全记进「以后再说.txt」。每个施工夜结束发一条进展：截图 + 可点的预览链接——<b class="text-amber">你早上醒来就能点开玩</b>。第 7 天，是第二期付款的节点。</p></div>
+							<div class="tnode relative before:absolute before:-left-[35px] before:top-[3px] before:size-[12px] before:rounded-[3px] before:border-[2.5px] before:border-amber before:bg-amber before:content-['']"><span class="block font-mono text-[11px] tracking-[.12em] text-faint">DAY 7</span><h5 class="mb-[7px] mt-1 text-[15.5px]">预览确认<i class="ml-[10px] rounded-[5px] border border-amber/40 px-2 py-[2px] align-[2px] font-mono text-[10.5px] font-normal not-italic text-amber">付 30%</i></h5><p class="text-[13.5px] leading-[1.95] text-sub">核心流程在测试环境跑通，你亲手点过一遍。确认「就是这个东西」，再付第二期——不是做完才让你看，是<b class="text-amber">看着它长</b>。</p></div>
+							<div class="tnode relative before:absolute before:-left-[35px] before:top-[3px] before:size-[12px] before:rounded-[3px] before:border-[2.5px] before:border-amber before:bg-bg before:content-['']"><span class="block font-mono text-[11px] tracking-[.12em] text-faint">DAY 8–10</span><h5 class="mb-[7px] mt-1 text-[15.5px]">真人内测</h5><p class="text-[13.5px] leading-[1.95] text-sub">拉 3–5 个目标用户来用。反馈不经过我过滤，直接进共享文档——好消息坏消息你同时看到。</p></div>
+							<div class="tnode relative before:absolute before:-left-[35px] before:top-[3px] before:size-[12px] before:rounded-[3px] before:border-[2.5px] before:border-amber before:bg-bg before:content-['']"><span class="block font-mono text-[11px] tracking-[.12em] text-faint">DAY 11–13</span><h5 class="mb-[7px] mt-1 text-[15.5px]">修改收口</h5><p class="text-[13.5px] leading-[1.95] text-sub">内测反馈里，范围内的直接改；范围外的记变更单，24 小时内给报价，你点头才动工。</p></div>
+							<div class="tnode relative before:absolute before:-left-[35px] before:top-[3px] before:size-[12px] before:rounded-[3px] before:border-[2.5px] before:border-green before:bg-bg before:content-['']"><span class="block font-mono text-[11px] tracking-[.12em] text-faint">DAY 14</span><h5 class="mb-[7px] mt-1 text-[15.5px]">上线交付<i class="ml-[10px] rounded-[5px] border border-amber/40 px-2 py-[2px] align-[2px] font-mono text-[10.5px] font-normal not-italic text-amber">付尾款</i></h5><p class="text-[13.5px] leading-[1.95] text-sub">正式部署 + 域名解析 + 小程序提审（拒审是常态，改到过为止），交付物六件套见「验收标准」。</p></div>
+							<div class="tnode relative before:absolute before:-left-[35px] before:top-[3px] before:size-[12px] before:rounded-[3px] before:border-[2.5px] before:border-green before:bg-bg before:content-['']"><span class="block font-mono text-[11px] tracking-[.12em] text-faint">DAY 15–28</span><h5 class="mb-[7px] mt-1 text-[15.5px]">保障期</h5><p class="text-[13.5px] leading-[1.95] text-sub">第二轮修改 + bug 免费修。28 天后想继续走，自然就转「长期同行」。</p></div>
+						</div>
+					</div>
+
+					<div class="mt-[34px] border-t border-dashed border-line2 pt-[26px]"><div class="mb-[18px] flex flex-wrap items-baseline gap-[14px]"><span class="font-mono text-[11px] tracking-[.18em] text-amber">4.2</span><h4 class="text-[18px] font-bold">报价逻辑：范围清单长这样</h4><em class="ml-auto font-mono text-[11.5px] text-faint">每个数字都能对账</em></div>
+						<pre class="overflow-x-auto whitespace-pre rounded-xl border border-line2 bg-panel p-[22px_26px] font-mono text-[13px] leading-[2.05] text-sub">一口价 = 预估人天 × 单价
 │
-├─ 单价：<b>¥600–800 / 人天</b>（起步价），按技术密度定
-├─ 人天：范围清单逐项标注，加总后 <u>×1.15 缓冲</u>
+├─ 单价：<b class="font-normal text-amber">¥600–800 / 人天</b>（起步价），按技术密度定
+├─ 人天：范围清单逐项标注，加总后 <u class="no-underline text-ink">×1.15 缓冲</u>
 └─ 缓冲：留给意外的 15%——用不完是我赚的，超了是我认的
 
 # 范围清单 · 真实格式示例
@@ -165,150 +165,150 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 04  门店端小程序 3 屏            3.0 天
 05  部署 · 提审 · 交接文档       1.5 天
 ─────────────────────────────────
-小计 8 天 × 1.15 ≈ 9 天 × ¥700 → <b>¥6,300 一口价</b>
+小计 8 天 × 1.15 ≈ 9 天 × ¥700 → <b class="font-normal text-amber">¥6,300 一口价</b>
 
 典型区间（起步价）：
 ├─ 落地页 / 单页           ¥1,500 – 3,000
 ├─ 展示官网                ¥2,000 – 4,500
 ├─ 工具型小程序            ¥5,000 – 10,000
 └─ 带后台的小系统          ¥8,000 – 15,000</pre>
-						<p class="note">报价不是拍脑袋——清单发你的时候，每一项后面都跟着天数和钱。哪里贵了、哪里能砍，逐行对话。</p>
+						<p class="mt-3 text-[13px] leading-[1.9] text-faint">报价不是拍脑袋——清单发你的时候，每一项后面都跟着天数和钱。哪里贵了、哪里能砍，逐行对话。</p>
 					</div>
 
-					<div class="ss"><div class="ss-h"><span class="ss-no">4.3</span><h4>付款节奏</h4><em>看着长再付，无息</em></div>
-						<div class="paybar">
-							<div class="pseg">① 开工付 40%<br>锁档期 · 建仓库</div>
-							<div class="pseg g">② 第 7 天付 30%<br>亲手点过预览之后</div>
-							<div class="pseg g">③ 验收付 30%<br>上线后 3 天内</div>
+					<div class="mt-[34px] border-t border-dashed border-line2 pt-[26px]"><div class="mb-[18px] flex flex-wrap items-baseline gap-[14px]"><span class="font-mono text-[11px] tracking-[.18em] text-amber">4.3</span><h4 class="text-[18px] font-bold">付款节奏</h4><em class="ml-auto font-mono text-[11.5px] text-faint">看着长再付，无息</em></div>
+						<div class="mb-1 mt-[6px] flex flex-col gap-2 phone:flex-row">
+							<div class="flex-1 rounded-[9px] border border-amber/40 bg-amber/10 px-[6px] py-[14px] text-center font-mono text-[12px] leading-[1.7] text-amber">① 开工付 40%<br>锁档期 · 建仓库</div>
+							<div class="flex-1 rounded-[9px] border border-green/30 bg-green/10 px-[6px] py-[14px] text-center font-mono text-[12px] leading-[1.7] text-green">② 第 7 天付 30%<br>亲手点过预览之后</div>
+							<div class="flex-1 rounded-[9px] border border-green/30 bg-green/10 px-[6px] py-[14px] text-center font-mono text-[12px] leading-[1.7] text-green">③ 验收付 30%<br>上线后 3 天内</div>
 						</div>
-						<p class="note">¥3,000 以下的项目简化为 50 / 50 两期。第二期挂在「你能点开用」上，而不是时间上——第 7 天点不开，这天就不到来。¥1.2 万以上可谈按里程碑拆 4 期，同样无息。</p>
+						<p class="mt-3 text-[13px] leading-[1.9] text-faint">¥3,000 以下的项目简化为 50 / 50 两期。第二期挂在「你能点开用」上，而不是时间上——第 7 天点不开，这天就不到来。¥1.2 万以上可谈按里程碑拆 4 期，同样无息。</p>
 					</div>
 
-					<div class="ss"><div class="ss-h"><span class="ss-no">4.4</span><h4>边界：包含什么，不包含什么</h4></div>
-						<div class="io-grid">
-							<div class="io in"><h5>+ 这些都含在一口价里</h5><ul>
-								<li>范围清单内的全部开发</li>
-								<li>部署上线：服务器配置、域名解析、小程序提审（改到过为止）</li>
-								<li>两轮修改 + 2 周 bug 保障</li>
-								<li>交付物六件套（见下节）</li>
+					<div class="mt-[34px] border-t border-dashed border-line2 pt-[26px]"><div class="mb-[18px] flex flex-wrap items-baseline gap-[14px]"><span class="font-mono text-[11px] tracking-[.18em] text-amber">4.4</span><h4 class="text-[18px] font-bold">边界：包含什么，不包含什么</h4></div>
+						<div class="grid grid-cols-1 gap-4 tab:grid-cols-2">
+							<div class="io rounded-xl border border-green/30 bg-bg p-[20px_22px]"><h5 class="mb-[14px] font-mono text-[12px] font-normal text-green">+ 这些都含在一口价里</h5><ul>
+								<li class="flex gap-[10px] text-[13.5px] leading-[1.8] text-sub before:shrink-0 before:font-mono before:text-green before:content-['+']">范围清单内的全部开发</li>
+								<li class="flex gap-[10px] text-[13.5px] leading-[1.8] text-sub before:shrink-0 before:font-mono before:text-green before:content-['+']">部署上线：服务器配置、域名解析、小程序提审（改到过为止）</li>
+								<li class="flex gap-[10px] text-[13.5px] leading-[1.8] text-sub before:shrink-0 before:font-mono before:text-green before:content-['+']">两轮修改 + 2 周 bug 保障</li>
+								<li class="flex gap-[10px] text-[13.5px] leading-[1.8] text-sub before:shrink-0 before:font-mono before:text-green before:content-['+']">交付物六件套（见下节）</li>
 							</ul></div>
-							<div class="io out"><h5>− 这些要另算</h5><ul>
-								<li>范围外新功能（走变更单，一口价追加）</li>
-								<li>服务器、短信等第三方成本（你直付，约 ¥100–600/年）</li>
-								<li>内容录入与日常运营</li>
-								<li>美术级视觉设计——给「清爽能用」，不给「惊艳」</li>
+							<div class="io rounded-xl border border-red/30 bg-bg p-[20px_22px]"><h5 class="mb-[14px] font-mono text-[12px] font-normal text-red">− 这些要另算</h5><ul>
+								<li class="flex gap-[10px] text-[13.5px] leading-[1.8] text-sub before:shrink-0 before:font-mono before:text-red before:content-['−']">范围外新功能（走变更单，一口价追加）</li>
+								<li class="flex gap-[10px] text-[13.5px] leading-[1.8] text-sub before:shrink-0 before:font-mono before:text-red before:content-['−']">服务器、短信等第三方成本（你直付，约 ¥100–600/年）</li>
+								<li class="flex gap-[10px] text-[13.5px] leading-[1.8] text-sub before:shrink-0 before:font-mono before:text-red before:content-['−']">内容录入与日常运营</li>
+								<li class="flex gap-[10px] text-[13.5px] leading-[1.8] text-sub before:shrink-0 before:font-mono before:text-red before:content-['−']">美术级视觉设计——给「清爽能用」，不给「惊艳」</li>
 							</ul></div>
 						</div>
 					</div>
 
-					<div class="ss"><div class="ss-h"><span class="ss-no">4.5</span><h4>需求变更怎么处理</h4><em>规则先于分歧</em></div>
-						<div class="chg">
-							<div class="chg-row"><div><i>免费做</i><b>措辞、交互微调</b></div><span>上线前顺手就改了，不值一提。</span></div>
-							<div class="chg-row"><div><i>原则上做</i><b>范围内的逻辑调整</b></div><span>直接做；但明显要吃掉预算的，我会提前预警，让你决定砍哪边。</span></div>
-							<div class="chg-row"><div><i>变更单</i><b>新增功能模块</b></div><span>你描述需求 → 我 24 小时内回复影响和报价 → 你确认才动工。绝不先做后加钱。</span></div>
+					<div class="mt-[34px] border-t border-dashed border-line2 pt-[26px]"><div class="mb-[18px] flex flex-wrap items-baseline gap-[14px]"><span class="font-mono text-[11px] tracking-[.18em] text-amber">4.5</span><h4 class="text-[18px] font-bold">需求变更怎么处理</h4><em class="ml-auto font-mono text-[11.5px] text-faint">规则先于分歧</em></div>
+						<div class="grid gap-[10px]">
+							<div class="grid grid-cols-1 gap-1.5 rounded-[10px] border border-line bg-bg p-[15px_18px] text-[13.5px] leading-[1.9] text-sub phone:grid-cols-[minmax(150px,220px)_1fr] phone:gap-[18px]"><div><i class="mb-1 block font-mono text-[10.5px] text-green">免费做</i><b class="font-medium text-ink">措辞、交互微调</b></div><span>上线前顺手就改了，不值一提。</span></div>
+							<div class="grid grid-cols-1 gap-1.5 rounded-[10px] border border-line bg-bg p-[15px_18px] text-[13.5px] leading-[1.9] text-sub phone:grid-cols-[minmax(150px,220px)_1fr] phone:gap-[18px]"><div><i class="mb-1 block font-mono text-[10.5px] text-green">原则上做</i><b class="font-medium text-ink">范围内的逻辑调整</b></div><span>直接做；但明显要吃掉预算的，我会提前预警，让你决定砍哪边。</span></div>
+							<div class="grid grid-cols-1 gap-1.5 rounded-[10px] border border-line bg-bg p-[15px_18px] text-[13.5px] leading-[1.9] text-sub phone:grid-cols-[minmax(150px,220px)_1fr] phone:gap-[18px]"><div><i class="mb-1 block font-mono text-[10.5px] text-green">变更单</i><b class="font-medium text-ink">新增功能模块</b></div><span>你描述需求 → 我 24 小时内回复影响和报价 → 你确认才动工。绝不先做后加钱。</span></div>
 						</div>
 					</div>
 
-					<div class="ss"><div class="ss-h"><span class="ss-no">4.6</span><h4>验收标准与交付物六件套</h4></div>
-						<ul class="accept">
-							<li><b><span>1</span></b><span>范围清单上每一项，在<b style="color:var(--ink)">正式环境</b>可用（不是演示环境）。</span></li>
-							<li><b><span>2</span></b><span>核心流程当面（语音屏幕共享）完整走一遍——从注册走到完成。</span></li>
-							<li><b><span>3</span></b><span>六件套交付齐（见下），尾款按节点。不靠「感觉差不多了」，靠清单。</span></li>
+					<div class="mt-[34px] border-t border-dashed border-line2 pt-[26px]"><div class="mb-[18px] flex flex-wrap items-baseline gap-[14px]"><span class="font-mono text-[11px] tracking-[.18em] text-amber">4.6</span><h4 class="text-[18px] font-bold">验收标准与交付物六件套</h4></div>
+						<ul class="grid list-none gap-[14px]">
+							<li class="flex gap-4 text-[14.5px] leading-[1.9] text-sub"><b class="shrink-0 font-mono text-[16px] font-bold text-amber"><span class="grid size-[26px] place-items-center rounded-[7px] border-[1.5px] border-amber/50">1</span></b><span>范围清单上每一项，在<b class="font-medium text-ink">正式环境</b>可用（不是演示环境）。</span></li>
+							<li class="flex gap-4 text-[14.5px] leading-[1.9] text-sub"><b class="shrink-0 font-mono text-[16px] font-bold text-amber"><span class="grid size-[26px] place-items-center rounded-[7px] border-[1.5px] border-amber/50">2</span></b><span>核心流程当面（语音屏幕共享）完整走一遍——从注册走到完成。</span></li>
+							<li class="flex gap-4 text-[14.5px] leading-[1.9] text-sub"><b class="shrink-0 font-mono text-[16px] font-bold text-amber"><span class="grid size-[26px] place-items-center rounded-[7px] border-[1.5px] border-amber/50">3</span></b><span>六件套交付齐（见下），尾款按节点。不靠「感觉差不多了」，靠清单。</span></li>
 						</ul>
-						<div class="deliv" style="margin-top:18px">
-							<div class="dv"><b>① 代码仓库</b>建在你自己的账号下，我只有协作权限<i>repo · 你的资产</i></div>
-							<div class="dv"><b>② 服务器 + 域名</b>解析、SSL、备案协助记录<i>deploy</i></div>
-							<div class="dv"><b>③ 小程序主体与提审包</b>过审记录、版本回溯说明<i>weapp</i></div>
-							<div class="dv"><b>④ 一页纸交接文档</b>账号密码表 / 架构图 / 年度固定成本<i>doc</i></div>
-							<div class="dv"><b>⑤ 测试数据与只读演示账号</b>给未来的员工或投资人看<i>demo</i></div>
-							<div class="dv"><b>⑥ 3 分钟演示视频</b>核心流程录屏，路演直接放<i>video</i></div>
+						<div class="grid grid-cols-1 gap-3 phone:grid-cols-2 tab:grid-cols-3" style="margin-top:18px">
+							<div class="rounded-[10px] border border-dashed border-line2 bg-bg p-[14px_16px] text-[13px] leading-[1.8] text-sub"><b class="mb-[5px] block font-semibold text-ink">① 代码仓库</b>建在你自己的账号下，我只有协作权限<i class="mt-[6px] block font-mono text-[10.5px] text-amber">repo · 你的资产</i></div>
+							<div class="rounded-[10px] border border-dashed border-line2 bg-bg p-[14px_16px] text-[13px] leading-[1.8] text-sub"><b class="mb-[5px] block font-semibold text-ink">② 服务器 + 域名</b>解析、SSL、备案协助记录<i class="mt-[6px] block font-mono text-[10.5px] text-amber">deploy</i></div>
+							<div class="rounded-[10px] border border-dashed border-line2 bg-bg p-[14px_16px] text-[13px] leading-[1.8] text-sub"><b class="mb-[5px] block font-semibold text-ink">③ 小程序主体与提审包</b>过审记录、版本回溯说明<i class="mt-[6px] block font-mono text-[10.5px] text-amber">weapp</i></div>
+							<div class="rounded-[10px] border border-dashed border-line2 bg-bg p-[14px_16px] text-[13px] leading-[1.8] text-sub"><b class="mb-[5px] block font-semibold text-ink">④ 一页纸交接文档</b>账号密码表 / 架构图 / 年度固定成本<i class="mt-[6px] block font-mono text-[10.5px] text-amber">doc</i></div>
+							<div class="rounded-[10px] border border-dashed border-line2 bg-bg p-[14px_16px] text-[13px] leading-[1.8] text-sub"><b class="mb-[5px] block font-semibold text-ink">⑤ 测试数据与只读演示账号</b>给未来的员工或投资人看<i class="mt-[6px] block font-mono text-[10.5px] text-amber">demo</i></div>
+							<div class="rounded-[10px] border border-dashed border-line2 bg-bg p-[14px_16px] text-[13px] leading-[1.8] text-sub"><b class="mb-[5px] block font-semibold text-ink">⑥ 3 分钟演示视频</b>核心流程录屏，路演直接放<i class="mt-[6px] block font-mono text-[10.5px] text-amber">video</i></div>
 						</div>
 					</div>
 
-					<div class="ss"><div class="ss-h"><span class="ss-no">4.7</span><h4>退出与退费</h4></div>
-						<div class="chg">
-							<div class="chg-row"><div><i>前 3 天</i><b>不满意</b></div><span>退首期的 70%（扣除已投入部分），零理由零扯皮。</span></div>
-							<div class="chg-row"><div><i>中期</i><b>叫停</b></div><span>按已完成项结算，代码和文档照常交接。</span></div>
-							<div class="chg-row"><div><i>保障期后</i><b>还想改</b></div><span>转长期，或单次报价——先谈价，后动工。</span></div>
+					<div class="mt-[34px] border-t border-dashed border-line2 pt-[26px]"><div class="mb-[18px] flex flex-wrap items-baseline gap-[14px]"><span class="font-mono text-[11px] tracking-[.18em] text-amber">4.7</span><h4 class="text-[18px] font-bold">退出与退费</h4></div>
+						<div class="grid gap-[10px]">
+							<div class="grid grid-cols-1 gap-1.5 rounded-[10px] border border-line bg-bg p-[15px_18px] text-[13.5px] leading-[1.9] text-sub phone:grid-cols-[minmax(150px,220px)_1fr] phone:gap-[18px]"><div><i>前 3 天</i><b>不满意</b></div><span>退首期的 70%（扣除已投入部分），零理由零扯皮。</span></div>
+							<div class="grid grid-cols-1 gap-1.5 rounded-[10px] border border-line bg-bg p-[15px_18px] text-[13.5px] leading-[1.9] text-sub phone:grid-cols-[minmax(150px,220px)_1fr] phone:gap-[18px]"><div><i>中期</i><b>叫停</b></div><span>按已完成项结算，代码和文档照常交接。</span></div>
+							<div class="grid grid-cols-1 gap-1.5 rounded-[10px] border border-line bg-bg p-[15px_18px] text-[13.5px] leading-[1.9] text-sub phone:grid-cols-[minmax(150px,220px)_1fr] phone:gap-[18px]"><div><i>保障期后</i><b>还想改</b></div><span>转长期，或单次报价——先谈价，后动工。</span></div>
 						</div>
 					</div>
 
-					<div class="ss"><div class="ss-h"><span class="ss-no">4.8</span><h4>常被问到的</h4></div>
-						<div class="faq">
-							<div class="fq"><button class="fq-q" type="button"><span>这个价格，靠谱吗？会不会做完就跑？</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><div><p>便宜不是因为便宜，是因为结构：手作坊没有团队工资、办公室、销售环节，你付的钱基本都在写代码这件事上。反过来，产能小所以挑项目——同期只带 1 个冲刺，做砸一单亏的是我自己。跑路的成本对我无限高：仓库权限从第一天就在你手里，加上 2 周保障期和「我的锅不设期限」的 bug 条款，兜底是写死的。</p></div></div></div>
-							<div class="fq"><button class="fq-q" type="button"><span>为什么进展都是早上看到、消息晚上才回？</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><div><p>我的深度工作时段在晚间——整块时间写代码，碎片时间用来想方案。你早上醒来看到可点的进展，比两个人白天互相打断高效得多。这套节奏叫「错峰协作」，是所有合作的默认工作方式；真有急事，P0 故障走电话直呼，不排队。</p></div></div></div>
-							<div class="fq"><button class="fq-q" type="button"><span>小程序提审被拒了怎么办？</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><div><p>拒审是常态不是事故。改到过审为止，包含在报价内——前提是你的主体资质提前备齐，这一条会写进范围清单。</p></div></div></div>
-							<div class="fq"><button class="fq-q" type="button"><span>保障期结束后才发现的 bug 呢？</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><div><p>属于我的锅（逻辑、数据、安全），不计时间照修；属于新需求或环境变化的，先报价再动工。谁的问题谁承担，这条不设期限。</p></div></div></div>
-							<div class="fq"><button class="fq-q" type="button"><span>能再便宜点吗？</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><div><p>直接砍范围，别砍价。同样 ¥4,000，砍到「只做一件事」比磨到「做三件事」靠谱十倍——MVP 的 M 不是 minimal，是 must-have。预算实在紧张，往下看「预算紧的三条路」。</p></div></div></div>
+					<div class="mt-[34px] border-t border-dashed border-line2 pt-[26px]"><div class="mb-[18px] flex flex-wrap items-baseline gap-[14px]"><span class="font-mono text-[11px] tracking-[.18em] text-amber">4.8</span><h4 class="text-[18px] font-bold">常被问到的</h4></div>
+						<div class="grid gap-[10px]">
+							<div class="fq group overflow-hidden rounded-[11px] border border-line2 bg-bg transition-colors duration-300 group-[.open]:border-amber-d"><button class="fq-q flex w-full items-center gap-3 border-0 bg-transparent px-5 py-4 text-left text-[14.5px] font-medium text-ink" type="button"><span>这个价格，靠谱吗？会不会做完就跑？</span><svg class="chev ml-auto size-3.5 shrink-0 text-faint transition-transform duration-300 group-[.open]:rotate-45 group-[.open]:text-amber" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a grid transition-[grid-template-rows] duration-[400ms] ease-[cubic-bezier(.2,.7,.3,1)] [grid-template-rows:0fr] group-[.open]:[grid-template-rows:1fr]"><div class="overflow-hidden"><p class="px-5 pb-[18px] pl-[46px] text-[13.5px] leading-[2] text-sub">便宜不是因为便宜，是因为结构：手作坊没有团队工资、办公室、销售环节，你付的钱基本都在写代码这件事上。反过来，产能小所以挑项目——同期只带 1 个冲刺，做砸一单亏的是我自己。跑路的成本对我无限高：仓库权限从第一天就在你手里，加上 2 周保障期和「我的锅不设期限」的 bug 条款，兜底是写死的。</p></div></div></div>
+							<div class="fq group overflow-hidden rounded-[11px] border border-line2 bg-bg transition-colors duration-300 group-[.open]:border-amber-d"><button class="fq-q flex w-full items-center gap-3 border-0 bg-transparent px-5 py-4 text-left text-[14.5px] font-medium text-ink" type="button"><span>为什么进展都是早上看到、消息晚上才回？</span><svg class="chev ml-auto size-3.5 shrink-0 text-faint transition-transform duration-300 group-[.open]:rotate-45 group-[.open]:text-amber" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a grid transition-[grid-template-rows] duration-[400ms] ease-[cubic-bezier(.2,.7,.3,1)] [grid-template-rows:0fr] group-[.open]:[grid-template-rows:1fr]"><div class="overflow-hidden"><p class="px-5 pb-[18px] pl-[46px] text-[13.5px] leading-[2] text-sub">我的深度工作时段在晚间——整块时间写代码，碎片时间用来想方案。你早上醒来看到可点的进展，比两个人白天互相打断高效得多。这套节奏叫「错峰协作」，是所有合作的默认工作方式；真有急事，P0 故障走电话直呼，不排队。</p></div></div></div>
+							<div class="fq group overflow-hidden rounded-[11px] border border-line2 bg-bg transition-colors duration-300 group-[.open]:border-amber-d"><button class="fq-q flex w-full items-center gap-3 border-0 bg-transparent px-5 py-4 text-left text-[14.5px] font-medium text-ink" type="button"><span>小程序提审被拒了怎么办？</span><svg class="chev ml-auto size-3.5 shrink-0 text-faint transition-transform duration-300 group-[.open]:rotate-45 group-[.open]:text-amber" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a grid transition-[grid-template-rows] duration-[400ms] ease-[cubic-bezier(.2,.7,.3,1)] [grid-template-rows:0fr] group-[.open]:[grid-template-rows:1fr]"><div class="overflow-hidden"><p class="px-5 pb-[18px] pl-[46px] text-[13.5px] leading-[2] text-sub">拒审是常态不是事故。改到过审为止，包含在报价内——前提是你的主体资质提前备齐，这一条会写进范围清单。</p></div></div></div>
+							<div class="fq group overflow-hidden rounded-[11px] border border-line2 bg-bg transition-colors duration-300 group-[.open]:border-amber-d"><button class="fq-q flex w-full items-center gap-3 border-0 bg-transparent px-5 py-4 text-left text-[14.5px] font-medium text-ink" type="button"><span>保障期结束后才发现的 bug 呢？</span><svg class="chev ml-auto size-3.5 shrink-0 text-faint transition-transform duration-300 group-[.open]:rotate-45 group-[.open]:text-amber" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a grid transition-[grid-template-rows] duration-[400ms] ease-[cubic-bezier(.2,.7,.3,1)] [grid-template-rows:0fr] group-[.open]:[grid-template-rows:1fr]"><div class="overflow-hidden"><p class="px-5 pb-[18px] pl-[46px] text-[13.5px] leading-[2] text-sub">属于我的锅（逻辑、数据、安全），不计时间照修；属于新需求或环境变化的，先报价再动工。谁的问题谁承担，这条不设期限。</p></div></div></div>
+							<div class="fq group overflow-hidden rounded-[11px] border border-line2 bg-bg transition-colors duration-300 group-[.open]:border-amber-d"><button class="fq-q flex w-full items-center gap-3 border-0 bg-transparent px-5 py-4 text-left text-[14.5px] font-medium text-ink" type="button"><span>能再便宜点吗？</span><svg class="chev ml-auto size-3.5 shrink-0 text-faint transition-transform duration-300 group-[.open]:rotate-45 group-[.open]:text-amber" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a grid transition-[grid-template-rows] duration-[400ms] ease-[cubic-bezier(.2,.7,.3,1)] [grid-template-rows:0fr] group-[.open]:[grid-template-rows:1fr]"><div class="overflow-hidden"><p class="px-5 pb-[18px] pl-[46px] text-[13.5px] leading-[2] text-sub">直接砍范围，别砍价。同样 ¥4,000，砍到「只做一件事」比磨到「做三件事」靠谱十倍——MVP 的 M 不是 minimal，是 must-have。预算实在紧张，往下看「预算紧的三条路」。</p></div></div></div>
 						</div>
 					</div>
 				</div>
 
 				<!-- ===== 长期同行 ===== -->
-				<div class="panel" data-mode="month">
-					<div class="p-top">
+				<div class="panel hidden p-[36px_clamp(20px,4vw,44px)_44px]" data-mode="month">
+					<div class="mb-[10px] grid grid-cols-1 items-start gap-9 tab:grid-cols-[1.15fr_.85fr]">
 						<div>
-							<p class="p-cmd">$ man 我的码-monthly</p>
-							<h3>长期同行</h3>
-							<p class="p-def">像养一个<b>不用坐班的技术合伙人</b>：按月付费、每周可见进展、随时可停。买断的不是我的在线时长，是「每周产出 + 一个随叫随到的人」。</p>
-							<div class="p-chips"><span>最短 3 个月</span><span>月初付当月</span><span>不押金</span><span>提前 2 周可停</span><span>无违约金</span></div>
+							<p class="mb-[10px] font-mono text-[12px] text-amber">$ man 我的码-monthly</p>
+							<h3 class="font-serif text-[clamp(28px,3vw,38px)] font-black">长期同行</h3>
+							<p class="mt-[10px] text-[15.5px] leading-[1.9] text-sub">像养一个<b>不用坐班的技术合伙人</b>：按月付费、每周可见进展、随时可停。买断的不是我的在线时长，是「每周产出 + 一个随叫随到的人」。</p>
+							<div class="mt-[18px] flex flex-wrap gap-[9px]"><span>最短 3 个月</span><span>月初付当月</span><span>不押金</span><span>提前 2 周可停</span><span>无违约金</span></div>
 						</div>
-						<div class="fact">
-							<div class="fact-t">档案 / FACTS</div>
-							<div><b>周期</b><span>最短 3 月，按月续</span></div>
-							<div><b>付费</b><span>月初付当月</span></div>
-							<div><b>投入</b><span>每周 1–3 个深度日</span></div>
-							<div><b>退出</b><span>提前 2 周，随时停</span></div>
-							<div><b>席位</b><span>轻伴2 · 陪跑2 · 并肩1</span></div>
+						<div class="rounded-xl border border-line bg-bg p-[18px_20px] font-mono text-[12.5px]">
+							<div class="mb-3 text-[11px] tracking-[.2em] text-faint">档案 / FACTS</div>
+							<div class="grid grid-cols-[86px_1fr] gap-3 border-b border-dashed border-line py-[7px] leading-[1.7] last:border-b-0"><b class="font-normal text-faint">周期</b><span class="text-ink">最短 3 月，按月续</span></div>
+							<div class="grid grid-cols-[86px_1fr] gap-3 border-b border-dashed border-line py-[7px] leading-[1.7] last:border-b-0"><b class="font-normal text-faint">付费</b><span class="text-ink">月初付当月</span></div>
+							<div class="grid grid-cols-[86px_1fr] gap-3 border-b border-dashed border-line py-[7px] leading-[1.7] last:border-b-0"><b class="font-normal text-faint">投入</b><span class="text-ink">每周 1–3 个深度日</span></div>
+							<div class="grid grid-cols-[86px_1fr] gap-3 border-b border-dashed border-line py-[7px] leading-[1.7] last:border-b-0"><b class="font-normal text-faint">退出</b><span class="text-ink">提前 2 周，随时停</span></div>
+							<div class="grid grid-cols-[86px_1fr] gap-3 border-b border-dashed border-line py-[7px] leading-[1.7] last:border-b-0"><b class="font-normal text-faint">席位</b><span class="text-ink">轻伴2 · 陪跑2 · 并肩1</span></div>
 						</div>
 					</div>
 
-					<div class="ss"><div class="ss-h"><span class="ss-no">4.1</span><h4>四档投入（起步价）</h4><em>月初可调档</em></div>
-						<div class="tbl-scroll"><table class="tier">
-							<thead><tr><th>档位</th><th>月费</th><th>我的投入</th><th>适合</th></tr></thead>
+					<div class="mt-[34px] border-t border-dashed border-line2 pt-[26px]"><div class="mb-[18px] flex flex-wrap items-baseline gap-[14px]"><span class="font-mono text-[11px] tracking-[.18em] text-amber">4.1</span><h4 class="text-[18px] font-bold">四档投入（起步价）</h4><em class="ml-auto font-mono text-[11.5px] text-faint">月初可调档</em></div>
+						<div class="overflow-x-auto rounded-[14px] border border-line2 bg-bg2"><table class="w-full border-collapse text-[13.5px]">
+							<thead><tr><th class="border border-line bg-panel px-4 py-3 text-left align-top font-mono text-[11.5px] font-normal leading-[1.7] text-faint">档位</th><th class="border border-line bg-panel px-4 py-3 text-left align-top font-mono text-[11.5px] font-normal leading-[1.7] text-faint">月费</th><th class="border border-line bg-panel px-4 py-3 text-left align-top font-mono text-[11.5px] font-normal leading-[1.7] text-faint">我的投入</th><th class="border border-line bg-panel px-4 py-3 text-left align-top font-mono text-[11.5px] font-normal leading-[1.7] text-faint">适合</th></tr></thead>
 							<tbody>
-								<tr><td>轻伴</td><td><b>¥1,980</b></td><td>每周约 1 个深度日</td><td>刚上线：维护、修 bug、盯告警、小调整</td></tr>
-								<tr class="hot"><td>陪跑 <i style="font-style:normal;font-family:var(--mono);font-size:10px;color:var(--amber)">多数合作在这档</i></td><td><b>¥3,600</b></td><td>每周约 2 个深度日</td><td>有用户在用：持续迭代 + 每月数据复盘</td></tr>
-								<tr><td>并肩</td><td><b>¥5,800</b></td><td>每周约 3 个深度日</td><td>增长期：功能按节奏出，我参加你的周会</td></tr>
-								<tr><td>全速</td><td><b>¥8,800</b></td><td>整周晚间+周末</td><td>冲刺月专用 · 每年仅开放 1–2 次 · 需提前约</td></tr>
+								<tr><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub">轻伴</td><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub"><b class="font-mono text-[15px] font-bold text-amber">¥1,980</b></td><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub">每周约 1 个深度日</td><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub">刚上线：维护、修 bug、盯告警、小调整</td></tr>
+								<tr class="bg-amber/5"><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub">陪跑 <i class="ml-[10px] font-mono text-[10px] not-italic text-amber">多数合作在这档</i></td><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub"><b class="font-mono text-[15px] font-bold text-amber">¥3,600</b></td><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub">每周约 2 个深度日</td><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub">有用户在用：持续迭代 + 每月数据复盘</td></tr>
+								<tr><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub">并肩</td><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub"><b class="font-mono text-[15px] font-bold text-amber">¥5,800</b></td><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub">每周约 3 个深度日</td><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub">增长期：功能按节奏出，我参加你的周会</td></tr>
+								<tr><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub">全速</td><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub"><b class="font-mono text-[15px] font-bold text-amber">¥8,800</b></td><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub">整周晚间+周末</td><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub">冲刺月专用 · 每年仅开放 1–2 次 · 需提前约</td></tr>
 							</tbody>
 						</table></div>
-						<p class="note">每月 1 日可升降档，中途不变——频繁调档对排期伤害太大，不如月初想清楚。参考：招一个初级全栈，企业月成本约 ¥12,000–15,000（工资 + 五险一金 + 招聘磨合）；陪跑档不到它的三分之一，第一周就有产出，不用了随时停。</p>
+						<p class="mt-3 text-[13px] leading-[1.9] text-faint">每月 1 日可升降档，中途不变——频繁调档对排期伤害太大，不如月初想清楚。参考：招一个初级全栈，企业月成本约 ¥12,000–15,000（工资 + 五险一金 + 招聘磨合）；陪跑档不到它的三分之一，第一周就有产出，不用了随时停。</p>
 					</div>
 
-					<div class="ss"><div class="ss-h"><span class="ss-no">4.2</span><h4>一周的执行节奏</h4><em>错峰协作 · 循环播放</em></div>
-						<div class="tline">
-							<div class="tnode"><span class="tn-day">每周日晚</span><h5>下周排期</h5><p>本周任务进共享看板，谁先谁后你说了算；紧急插队标注「今天就要」，我当晚答复能不能、怎么排。</p></div>
-							<div class="tnode"><span class="tn-day">周一 – 周五晚间</span><h5>深度施工</h5><p>每晚一段连续的深度时间。你睡前留言，我集中处理 + 施工；<b style="color:var(--amber)">早上你醒来，进展已经在看板上</b>。</p></div>
-							<div class="tnode money"><span class="tn-day">每月 1 日</span><h5>付当月<i>不押金 · 不签长约</i></h5><p>付的是这个月的「承诺」，不是「赎身费」。仓库和账号从头就在你手里，没什么可押的。</p></div>
-							<div class="tnode"><span class="tn-day">每周五晚</span><h5>一页周报</h5><p>三段式，一分钟读完；不够的随时语音。</p></div>
-							<div class="tnode done"><span class="tn-day">月末</span><h5>复盘 + 双向决定</h5><p>上月数据过一遍：用户在用什么、哪里流失。你决定续不续，我也决定接不接——三年里我主动提过两次「这月先停一停」，都是方向问题，不是钱的问题。</p></div>
+					<div class="mt-[34px] border-t border-dashed border-line2 pt-[26px]"><div class="mb-[18px] flex flex-wrap items-baseline gap-[14px]"><span class="font-mono text-[11px] tracking-[.18em] text-amber">4.2</span><h4 class="text-[18px] font-bold">一周的执行节奏</h4><em class="ml-auto font-mono text-[11.5px] text-faint">错峰协作 · 循环播放</em></div>
+						<div class="relative ml-[7px] grid gap-6 border-l-2 border-line2 pl-7">
+							<div class="tnode relative before:absolute before:-left-[35px] before:top-[3px] before:size-[12px] before:rounded-[3px] before:border-[2.5px] before:border-amber before:bg-bg before:content-['']"><span class="block font-mono text-[11px] tracking-[.12em] text-faint">每周日晚</span><h5 class="mb-[7px] mt-1 text-[15.5px]">下周排期</h5><p class="text-[13.5px] leading-[1.95] text-sub">本周任务进共享看板，谁先谁后你说了算；紧急插队标注「今天就要」，我当晚答复能不能、怎么排。</p></div>
+							<div class="tnode relative before:absolute before:-left-[35px] before:top-[3px] before:size-[12px] before:rounded-[3px] before:border-[2.5px] before:border-amber before:bg-bg before:content-['']"><span class="block font-mono text-[11px] tracking-[.12em] text-faint">周一 – 周五晚间</span><h5 class="mb-[7px] mt-1 text-[15.5px]">深度施工</h5><p class="text-[13.5px] leading-[1.95] text-sub">每晚一段连续的深度时间。你睡前留言，我集中处理 + 施工；<b class="text-amber">早上你醒来，进展已经在看板上</b>。</p></div>
+							<div class="tnode relative before:absolute before:-left-[35px] before:top-[3px] before:size-[12px] before:rounded-[3px] before:border-[2.5px] before:border-amber before:bg-amber before:content-['']"><span class="block font-mono text-[11px] tracking-[.12em] text-faint">每月 1 日</span><h5 class="mb-[7px] mt-1 text-[15.5px]">付当月<i class="ml-[10px] rounded-[5px] border border-amber/40 px-2 py-[2px] align-[2px] font-mono text-[10.5px] font-normal not-italic text-amber">不押金 · 不签长约</i></h5><p class="text-[13.5px] leading-[1.95] text-sub">付的是这个月的「承诺」，不是「赎身费」。仓库和账号从头就在你手里，没什么可押的。</p></div>
+							<div class="tnode relative before:absolute before:-left-[35px] before:top-[3px] before:size-[12px] before:rounded-[3px] before:border-[2.5px] before:border-amber before:bg-bg before:content-['']"><span class="block font-mono text-[11px] tracking-[.12em] text-faint">每周五晚</span><h5 class="mb-[7px] mt-1 text-[15.5px]">一页周报</h5><p class="text-[13.5px] leading-[1.95] text-sub">三段式，一分钟读完；不够的随时语音。</p></div>
+							<div class="tnode relative before:absolute before:-left-[35px] before:top-[3px] before:size-[12px] before:rounded-[3px] before:border-[2.5px] before:border-green before:bg-bg before:content-['']"><span class="block font-mono text-[11px] tracking-[.12em] text-faint">月末</span><h5 class="mb-[7px] mt-1 text-[15.5px]">复盘 + 双向决定</h5><p class="text-[13.5px] leading-[1.95] text-sub">上月数据过一遍：用户在用什么、哪里流失。你决定续不续，我也决定接不接——三年里我主动提过两次「这月先停一停」，都是方向问题，不是钱的问题。</p></div>
 						</div>
-						<pre class="rpt"># 周报 · 真实格式（每周五晚）
-<b>做完</b>  消课冲突检测上线 · 家长端换版
-<b>下周</b>  请假补课流程 · 消息订阅模板
-<b>风险</b>  短信通道审核中，备选已接</pre>
+						<pre class="mt-[14px] overflow-x-auto whitespace-pre rounded-[10px] border border-dashed border-line2 bg-bg p-4 font-mono text-[12.5px] leading-[1.95] text-sub"># 周报 · 真实格式（每周五晚）
+<b class="font-normal text-amber">做完</b>  消课冲突检测上线 · 家长端换版
+<b class="font-normal text-amber">下周</b>  请假补课流程 · 消息订阅模板
+<b class="font-normal text-amber">风险</b>  短信通道审核中，备选已接</pre>
 					</div>
 
-					<div class="ss"><div class="ss-h"><span class="ss-no">4.3</span><h4>故障响应分级</h4><em>错峰节奏下的白纸黑字</em></div>
-						<div class="tbl-scroll"><table class="tier resp">
-							<thead><tr><th style="width:70px">等级</th><th>什么算</th><th>响应</th><th>修复</th></tr></thead>
+					<div class="mt-[34px] border-t border-dashed border-line2 pt-[26px]"><div class="mb-[18px] flex flex-wrap items-baseline gap-[14px]"><span class="font-mono text-[11px] tracking-[.18em] text-amber">4.3</span><h4 class="text-[18px] font-bold">故障响应分级</h4><em class="ml-auto font-mono text-[11.5px] text-faint">错峰节奏下的白纸黑字</em></div>
+						<div class="overflow-x-auto rounded-[14px] border border-line2 bg-bg2"><table class="w-full border-collapse text-[13.5px]">
+							<thead><tr><th class="border border-line bg-panel px-4 py-3 text-left align-top font-mono text-[11.5px] font-normal leading-[1.7] text-faint" style="width:70px">等级</th><th class="border border-line bg-panel px-4 py-3 text-left align-top font-mono text-[11.5px] font-normal leading-[1.7] text-faint">什么算</th><th class="border border-line bg-panel px-4 py-3 text-left align-top font-mono text-[11.5px] font-normal leading-[1.7] text-faint">响应</th><th class="border border-line bg-panel px-4 py-3 text-left align-top font-mono text-[11.5px] font-normal leading-[1.7] text-faint">修复</th></tr></thead>
 							<tbody>
-								<tr><td class="p0">P0</td><td>线上不可用 / 支付 / 数据安全</td><td><b>电话直呼</b>，随时有效</td><td>当晚动手，24 小时内修复或给出临时方案</td></tr>
-								<tr><td class="p1">P1</td><td>核心功能异常，有替代路径</td><td><b>24 小时内</b>（晚间集中处理）</td><td>48 小时内给方案</td></tr>
-								<tr><td class="p2">P2</td><td>一般问题 / 体验优化</td><td><b>当周答复</b></td><td>进下期排期</td></tr>
+								<tr><td class="border border-line px-4 py-3 text-left align-top font-mono text-[13.5px] font-bold text-red">P0</td><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub">线上不可用 / 支付 / 数据安全</td><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub"><b class="font-medium text-ink">电话直呼</b>，随时有效</td><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub">当晚动手，24 小时内修复或给出临时方案</td></tr>
+								<tr><td class="border border-line px-4 py-3 text-left align-top font-mono text-[13.5px] font-bold text-amber">P1</td><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub">核心功能异常，有替代路径</td><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub"><b class="font-medium text-ink">24 小时内</b>（晚间集中处理）</td><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub">48 小时内给方案</td></tr>
+								<tr><td class="border border-line px-4 py-3 text-left align-top font-mono text-[13.5px] font-bold text-sub">P2</td><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub">一般问题 / 体验优化</td><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub"><b class="font-medium text-ink">当周答复</b></td><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub">进下期排期</td></tr>
 							</tbody>
 						</table></div>
-						<p class="note">为什么敢写「当晚动手」：我的深度工作时段本来就在晚间，线上告警直连手机——你发现故障的时候，我通常已经在改了。非 P0 的事不差这几个小时，错峰让彼此都保住整块时间。</p>
+						<p class="mt-3 text-[13px] leading-[1.9] text-faint">为什么敢写「当晚动手」：我的深度工作时段本来就在晚间，线上告警直连手机——你发现故障的时候，我通常已经在改了。非 P0 的事不差这几个小时，错峰让彼此都保住整块时间。</p>
 					</div>
 
-					<div class="ss"><div class="ss-h"><span class="ss-no">4.4</span><h4>为什么最短 3 个月</h4></div>
-						<p class="p-def">一个月只够修修补补；三个月才能看到一条完整的「迭代 → 数据 → 再迭代」曲线，也才能看出两个人合拍不合拍。3 个月后按月续，<b>没有任何长约</b>——留人靠产出，不靠合同。兜底条款：首月跑完觉得不合适，第 2、3 个月随时叫停，<b>未开工的月份不收费</b>——你的试错成本，被压到最小。</p>
+					<div class="mt-[34px] border-t border-dashed border-line2 pt-[26px]"><div class="mb-[18px] flex flex-wrap items-baseline gap-[14px]"><span class="font-mono text-[11px] tracking-[.18em] text-amber">4.4</span><h4 class="text-[18px] font-bold">为什么最短 3 个月</h4></div>
+						<p class="mt-[10px] text-[15.5px] leading-[1.9] text-sub">一个月只够修修补补；三个月才能看到一条完整的「迭代 → 数据 → 再迭代」曲线，也才能看出两个人合拍不合拍。3 个月后按月续，<b class="font-medium text-ink">没有任何长约</b>——留人靠产出，不靠合同。兜底条款：首月跑完觉得不合适，第 2、3 个月随时叫停，<b class="font-medium text-ink">未开工的月份不收费</b>——你的试错成本，被压到最小。</p>
 					</div>
 
-					<div class="ss"><div class="ss-h"><span class="ss-no">4.5</span><h4>边界</h4></div>
-						<div class="io-grid">
-							<div class="io in"><h5>+ 月费里都含</h5><ul>
+					<div class="mt-[34px] border-t border-dashed border-line2 pt-[26px]"><div class="mb-[18px] flex flex-wrap items-baseline gap-[14px]"><span class="font-mono text-[11px] tracking-[.18em] text-amber">4.5</span><h4 class="text-[18px] font-bold">边界</h4></div>
+						<div class="grid grid-cols-1 gap-4 tab:grid-cols-2">
+							<div class="io rounded-xl border border-green/30 bg-bg p-[20px_22px]"><h5 class="mb-[14px] font-mono text-[12px] font-normal text-green">+ 月费里都含</h5><ul>
 								<li>既有功能的持续迭代</li>
 								<li>bug 修复 + 上表三级故障响应</li>
 								<li>小程序版本提审、服务器监控</li>
@@ -316,7 +316,7 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 								<li>每月一次数据复盘</li>
 								<li>技术咨询：选型、招人参考、避坑</li>
 							</ul></div>
-							<div class="io out"><h5>− 不含，另算</h5><ul>
+							<div class="io rounded-xl border border-red/30 bg-bg p-[20px_22px]"><h5 class="mb-[14px] font-mono text-[12px] font-normal text-red">− 不含，另算</h5><ul>
 								<li>服务器等第三方成本（你直付）</li>
 								<li>全新独立模块（如突然要做 App）——拆出去走一口价</li>
 								<li>工作时段内的即时在线 / 白天驻场</li>
@@ -325,96 +325,96 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 						</div>
 					</div>
 
-					<div class="ss"><div class="ss-h"><span class="ss-no">4.6</span><h4>变更怎么处理</h4><em>长期模式天然消化变更</em></div>
-						<div class="chg">
-							<div class="chg-row"><div><i>排期窗口</i><b>常规变更</b></div><span>每周日晚的排期就是变更窗口，直接排进去。</span></div>
-							<div class="chg-row"><div><i>当晚答复</i><b>紧急插队</b></div><span>标注「今天就要」，我评估后当晚回复。排序规则写死：P0 故障 &gt; 付费用户的事 &gt; 其他。</span></div>
-							<div class="chg-row"><div><i>拆出去</i><b>超大模块</b></div><span>全新独立的东西走阶段一口价，不混在月费里——账算不清，友情就没了。</span></div>
+					<div class="mt-[34px] border-t border-dashed border-line2 pt-[26px]"><div class="mb-[18px] flex flex-wrap items-baseline gap-[14px]"><span class="font-mono text-[11px] tracking-[.18em] text-amber">4.6</span><h4 class="text-[18px] font-bold">变更怎么处理</h4><em class="ml-auto font-mono text-[11.5px] text-faint">长期模式天然消化变更</em></div>
+						<div class="grid gap-[10px]">
+							<div class="grid grid-cols-1 gap-1.5 rounded-[10px] border border-line bg-bg p-[15px_18px] text-[13.5px] leading-[1.9] text-sub phone:grid-cols-[minmax(150px,220px)_1fr] phone:gap-[18px]"><div><i>排期窗口</i><b>常规变更</b></div><span>每周日晚的排期就是变更窗口，直接排进去。</span></div>
+							<div class="grid grid-cols-1 gap-1.5 rounded-[10px] border border-line bg-bg p-[15px_18px] text-[13.5px] leading-[1.9] text-sub phone:grid-cols-[minmax(150px,220px)_1fr] phone:gap-[18px]"><div><i>当晚答复</i><b>紧急插队</b></div><span>标注「今天就要」，我评估后当晚回复。排序规则写死：P0 故障 &gt; 付费用户的事 &gt; 其他。</span></div>
+							<div class="grid grid-cols-1 gap-1.5 rounded-[10px] border border-line bg-bg p-[15px_18px] text-[13.5px] leading-[1.9] text-sub phone:grid-cols-[minmax(150px,220px)_1fr] phone:gap-[18px]"><div><i>拆出去</i><b>超大模块</b></div><span>全新独立的东西走阶段一口价，不混在月费里——账算不清，友情就没了。</span></div>
 						</div>
 					</div>
 
-					<div class="ss"><div class="ss-h"><span class="ss-no">4.7</span><h4>退出</h4></div>
-						<p class="p-def">提前 2 周说。我把当月排期做完、文档补齐、约 1 小时语音交接完，月底体面收尾。<b>当月费用不退</b>（活已经干了），但没有违约金、没有押金、没有「代码赎回」——仓库从来就在你名下。</p>
+					<div class="mt-[34px] border-t border-dashed border-line2 pt-[26px]"><div class="mb-[18px] flex flex-wrap items-baseline gap-[14px]"><span class="font-mono text-[11px] tracking-[.18em] text-amber">4.7</span><h4 class="text-[18px] font-bold">退出</h4></div>
+						<p class="mt-[10px] text-[15.5px] leading-[1.9] text-sub">提前 2 周说。我把当月排期做完、文档补齐、约 1 小时语音交接完，月底体面收尾。<b>当月费用不退</b>（活已经干了），但没有违约金、没有押金、没有「代码赎回」——仓库从来就在你名下。</p>
 					</div>
 
-					<div class="ss"><div class="ss-h"><span class="ss-no">4.8</span><h4>常被问到的</h4></div>
-						<div class="faq">
-							<div class="fq"><button class="fq-q" type="button"><span>为什么不按小时计费？</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><div><p>小时计费惩罚爱沟通的人——你会不敢找我聊。按月买断的是每周产出和确定性，我反而希望你随时来改想法。</p></div></div></div>
-							<div class="fq"><button class="fq-q" type="button"><span>白天找得到你吗？</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><div><p>P0 故障走电话直呼，随时有效。其他事务我晚间集中处理——这不是怠慢，是节奏：错峰协作让你我都保住整块时间，比挂着「在线」互相等高效得多。真需要碰头，语音提前一天约就行，每次 30 分钟。</p></div></div></div>
-							<div class="fq"><button class="fq-q" type="button"><span>你同时服务几个客户，我会不会排队？</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><div><p>看板全透明，排序规则写死。每档席位有限（陪跑常年 2 席），就是为了「排不上队」这种事根本不发生。</p></div></div></div>
-							<div class="fq"><button class="fq-q" type="button"><span>能不能先试一个月看看？</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><div><p>底线是 3 个月：前 4 周我都在还「上下文债」（读代码、理数据、摸业务），一个月各自都没赚回成本。兜底：首月跑完觉得不合适，后两个月随时叫停、未开工月不收费。想更低成本试，走一段 MVP，或把已有项目丢给我做一次「体检」。</p></div></div></div>
+					<div class="mt-[34px] border-t border-dashed border-line2 pt-[26px]"><div class="mb-[18px] flex flex-wrap items-baseline gap-[14px]"><span class="font-mono text-[11px] tracking-[.18em] text-amber">4.8</span><h4 class="text-[18px] font-bold">常被问到的</h4></div>
+						<div class="grid gap-[10px]">
+							<div class="fq group overflow-hidden rounded-[11px] border border-line2 bg-bg transition-colors duration-300 group-[.open]:border-amber-d"><button class="fq-q flex w-full items-center gap-3 border-0 bg-transparent px-5 py-4 text-left text-[14.5px] font-medium text-ink" type="button"><span>为什么不按小时计费？</span><svg class="chev ml-auto size-3.5 shrink-0 text-faint transition-transform duration-300 group-[.open]:rotate-45 group-[.open]:text-amber" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a grid transition-[grid-template-rows] duration-[400ms] ease-[cubic-bezier(.2,.7,.3,1)] [grid-template-rows:0fr] group-[.open]:[grid-template-rows:1fr]"><div class="overflow-hidden"><p class="px-5 pb-[18px] pl-[46px] text-[13.5px] leading-[2] text-sub">小时计费惩罚爱沟通的人——你会不敢找我聊。按月买断的是每周产出和确定性，我反而希望你随时来改想法。</p></div></div></div>
+							<div class="fq group overflow-hidden rounded-[11px] border border-line2 bg-bg transition-colors duration-300 group-[.open]:border-amber-d"><button class="fq-q flex w-full items-center gap-3 border-0 bg-transparent px-5 py-4 text-left text-[14.5px] font-medium text-ink" type="button"><span>白天找得到你吗？</span><svg class="chev ml-auto size-3.5 shrink-0 text-faint transition-transform duration-300 group-[.open]:rotate-45 group-[.open]:text-amber" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a grid transition-[grid-template-rows] duration-[400ms] ease-[cubic-bezier(.2,.7,.3,1)] [grid-template-rows:0fr] group-[.open]:[grid-template-rows:1fr]"><div class="overflow-hidden"><p class="px-5 pb-[18px] pl-[46px] text-[13.5px] leading-[2] text-sub">P0 故障走电话直呼，随时有效。其他事务我晚间集中处理——这不是怠慢，是节奏：错峰协作让你我都保住整块时间，比挂着「在线」互相等高效得多。真需要碰头，语音提前一天约就行，每次 30 分钟。</p></div></div></div>
+							<div class="fq group overflow-hidden rounded-[11px] border border-line2 bg-bg transition-colors duration-300 group-[.open]:border-amber-d"><button class="fq-q flex w-full items-center gap-3 border-0 bg-transparent px-5 py-4 text-left text-[14.5px] font-medium text-ink" type="button"><span>你同时服务几个客户，我会不会排队？</span><svg class="chev ml-auto size-3.5 shrink-0 text-faint transition-transform duration-300 group-[.open]:rotate-45 group-[.open]:text-amber" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a grid transition-[grid-template-rows] duration-[400ms] ease-[cubic-bezier(.2,.7,.3,1)] [grid-template-rows:0fr] group-[.open]:[grid-template-rows:1fr]"><div class="overflow-hidden"><p class="px-5 pb-[18px] pl-[46px] text-[13.5px] leading-[2] text-sub">看板全透明，排序规则写死。每档席位有限（陪跑常年 2 席），就是为了「排不上队」这种事根本不发生。</p></div></div></div>
+							<div class="fq group overflow-hidden rounded-[11px] border border-line2 bg-bg transition-colors duration-300 group-[.open]:border-amber-d"><button class="fq-q flex w-full items-center gap-3 border-0 bg-transparent px-5 py-4 text-left text-[14.5px] font-medium text-ink" type="button"><span>能不能先试一个月看看？</span><svg class="chev ml-auto size-3.5 shrink-0 text-faint transition-transform duration-300 group-[.open]:rotate-45 group-[.open]:text-amber" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a grid transition-[grid-template-rows] duration-[400ms] ease-[cubic-bezier(.2,.7,.3,1)] [grid-template-rows:0fr] group-[.open]:[grid-template-rows:1fr]"><div class="overflow-hidden"><p class="px-5 pb-[18px] pl-[46px] text-[13.5px] leading-[2] text-sub">底线是 3 个月：前 4 周我都在还「上下文债」（读代码、理数据、摸业务），一个月各自都没赚回成本。兜底：首月跑完觉得不合适，后两个月随时叫停、未开工月不收费。想更低成本试，走一段 MVP，或把已有项目丢给我做一次「体检」。</p></div></div></div>
 						</div>
 					</div>
 				</div>
 
 				<!-- ===== 深度合伙 ===== -->
-				<div class="panel" data-mode="equity">
-					<div class="p-top">
+				<div class="panel hidden p-[36px_clamp(20px,4vw,44px)_44px]" data-mode="equity">
+					<div class="mb-[10px] grid grid-cols-1 items-start gap-9 tab:grid-cols-[1.15fr_.85fr]">
 						<div>
-							<p class="p-cmd">$ man 我的码-equity</p>
-							<h3>深度合伙</h3>
-							<p class="p-def">已经有付费用户的产品，我用<b>持续的代码投入换一小部分未来</b>。不拿工资、不占业务决策权——要的只是「把产品做好」的那一票。这是三档里唯一<b>不用付现金</b>的。</p>
-							<div class="p-chips"><span>0 现金</span><span>3–6% 股份</span><span>36 个月成熟</span><span>每年仅 1 个名额</span></div>
+							<p class="mb-[10px] font-mono text-[12px] text-amber">$ man 我的码-equity</p>
+							<h3 class="font-serif text-[clamp(28px,3vw,38px)] font-black">深度合伙</h3>
+							<p class="mt-[10px] text-[15.5px] leading-[1.9] text-sub">已经有付费用户的产品，我用<b>持续的代码投入换一小部分未来</b>。不拿工资、不占业务决策权——要的只是「把产品做好」的那一票。这是三档里唯一<b>不用付现金</b>的。</p>
+							<div class="mt-[18px] flex flex-wrap gap-[9px]"><span>0 现金</span><span>3–6% 股份</span><span>36 个月成熟</span><span>每年仅 1 个名额</span></div>
 						</div>
-						<div class="fact">
-							<div class="fact-t">档案 / FACTS</div>
-							<div><b>形态</b><span>0 现金 · 代码换股份</span></div>
-							<div><b>比例</b><span>3–6%，谈定</span></div>
-							<div><b>成熟</b><span>36 个月线性</span></div>
-							<div><b>门槛</b><span>月流水 ≥ ¥5,000</span></div>
-							<div><b>名额</b><span>每年 1 个</span></div>
+						<div class="rounded-xl border border-line bg-bg p-[18px_20px] font-mono text-[12.5px]">
+							<div class="mb-3 text-[11px] tracking-[.2em] text-faint">档案 / FACTS</div>
+							<div class="grid grid-cols-[86px_1fr] gap-3 border-b border-dashed border-line py-[7px] leading-[1.7] last:border-b-0"><b class="font-normal text-faint">形态</b><span class="text-ink">0 现金 · 代码换股份</span></div>
+							<div class="grid grid-cols-[86px_1fr] gap-3 border-b border-dashed border-line py-[7px] leading-[1.7] last:border-b-0"><b class="font-normal text-faint">比例</b><span class="text-ink">3–6%，谈定</span></div>
+							<div class="grid grid-cols-[86px_1fr] gap-3 border-b border-dashed border-line py-[7px] leading-[1.7] last:border-b-0"><b class="font-normal text-faint">成熟</b><span class="text-ink">36 个月线性</span></div>
+							<div class="grid grid-cols-[86px_1fr] gap-3 border-b border-dashed border-line py-[7px] leading-[1.7] last:border-b-0"><b class="font-normal text-faint">门槛</b><span class="text-ink">月流水 ≥ ¥5,000</span></div>
+							<div class="grid grid-cols-[86px_1fr] gap-3 border-b border-dashed border-line py-[7px] leading-[1.7] last:border-b-0"><b class="font-normal text-faint">名额</b><span class="text-ink">每年 1 个</span></div>
 						</div>
 					</div>
 
-					<div class="ss"><div class="ss-h"><span class="ss-no">4.1</span><h4>三条硬前提</h4><em>差一条都不谈</em></div>
-						<ul class="accept">
+					<div class="mt-[34px] border-t border-dashed border-line2 pt-[26px]"><div class="mb-[18px] flex flex-wrap items-baseline gap-[14px]"><span class="font-mono text-[11px] tracking-[.18em] text-amber">4.1</span><h4 class="text-[18px] font-bold">三条硬前提</h4><em class="ml-auto font-mono text-[11.5px] text-faint">差一条都不谈</em></div>
+						<ul class="grid list-none gap-[14px]">
 							<li><b><span>1</span></b><span>产品<b style="color:var(--ink)">已有人付费</b>，或月流水 ≥ ¥5,000。</span></li>
 							<li><b><span>2</span></b><span>你全职投入（或有明确的全职时间表）。</span></li>
 							<li><b><span>3</span></b><span>这个方向，你打算干至少三年；产品体量与我的产能匹配。</span></li>
 						</ul>
-						<p class="note">空想法不换股份——不是清高，是见过太多「合伙搭子」三个月散伙、股份撕得一地。只投已验证的方向，是经验，不是姿态。门槛 ¥5,000：付过钱的用户哪怕只有几十个，也说明「有人愿意为它掏钱」。</p>
+						<p class="mt-3 text-[13px] leading-[1.9] text-faint">空想法不换股份——不是清高，是见过太多「合伙搭子」三个月散伙、股份撕得一地。只投已验证的方向，是经验，不是姿态。门槛 ¥5,000：付过钱的用户哪怕只有几十个，也说明「有人愿意为它掏钱」。</p>
 					</div>
 
-					<div class="ss"><div class="ss-h"><span class="ss-no">4.2</span><h4>怎么走到一起</h4><em>先验证人，再验证事</em></div>
-						<div class="tline">
-							<div class="tnode"><span class="tn-day">第 1–2 周</span><h5>聊透</h5><p>至少 3 次深聊：业务、用户、数字、性格，都过一遍。聊不拢就当认识个朋友，谁也不欠谁。</p></div>
-							<div class="tnode money"><span class="tn-day">第 3–8 周</span><h5>试用<i>先付费合作一段</i></h5><p>走一段正常报价的合作（MVP 或一个月长期，同样起步价）。合不合拍，一个月看得清清楚楚——这笔学费双方都出得起。</p></div>
-							<div class="tnode"><span class="tn-day">第 9 周</span><h5>协议</h5><p>股权协议四要件：投入范围、股份比例、成熟节奏、回购与退出。建议让你的律师过目——我的条款经得起看。</p></div>
-							<div class="tnode done"><span class="tn-day">第 1–3 年</span><h5>同行</h5><p>按约定节奏投入 + 季度复盘。技术侧的决策我有话语权，业务侧永远你说了算。</p></div>
+					<div class="mt-[34px] border-t border-dashed border-line2 pt-[26px]"><div class="mb-[18px] flex flex-wrap items-baseline gap-[14px]"><span class="font-mono text-[11px] tracking-[.18em] text-amber">4.2</span><h4 class="text-[18px] font-bold">怎么走到一起</h4><em class="ml-auto font-mono text-[11.5px] text-faint">先验证人，再验证事</em></div>
+						<div class="relative ml-[7px] grid gap-6 border-l-2 border-line2 pl-7">
+							<div class="tnode relative before:absolute before:-left-[35px] before:top-[3px] before:size-[12px] before:rounded-[3px] before:border-[2.5px] before:border-amber before:bg-bg before:content-['']"><span class="block font-mono text-[11px] tracking-[.12em] text-faint">第 1–2 周</span><h5>聊透</h5><p>至少 3 次深聊：业务、用户、数字、性格，都过一遍。聊不拢就当认识个朋友，谁也不欠谁。</p></div>
+							<div class="tnode relative before:absolute before:-left-[35px] before:top-[3px] before:size-[12px] before:rounded-[3px] before:border-[2.5px] before:border-amber before:bg-amber before:content-['']"><span class="block font-mono text-[11px] tracking-[.12em] text-faint">第 3–8 周</span><h5>试用<i>先付费合作一段</i></h5><p>走一段正常报价的合作（MVP 或一个月长期，同样起步价）。合不合拍，一个月看得清清楚楚——这笔学费双方都出得起。</p></div>
+							<div class="tnode relative before:absolute before:-left-[35px] before:top-[3px] before:size-[12px] before:rounded-[3px] before:border-[2.5px] before:border-amber before:bg-bg before:content-['']"><span class="block font-mono text-[11px] tracking-[.12em] text-faint">第 9 周</span><h5>协议</h5><p>股权协议四要件：投入范围、股份比例、成熟节奏、回购与退出。建议让你的律师过目——我的条款经得起看。</p></div>
+							<div class="tnode relative before:absolute before:-left-[35px] before:top-[3px] before:size-[12px] before:rounded-[3px] before:border-[2.5px] before:border-green before:bg-bg before:content-['']"><span class="block font-mono text-[11px] tracking-[.12em] text-faint">第 1–3 年</span><h5>同行</h5><p>按约定节奏投入 + 季度复盘。技术侧的决策我有话语权，业务侧永远你说了算。</p></div>
 						</div>
 					</div>
 
-					<div class="ss"><div class="ss-h"><span class="ss-no">4.3</span><h4>股份怎么算</h4><em>锚点透明，数字谈定</em></div>
-						<pre class="calc">参考锚点 = 未来 12 个月开发投入（按标准价折现） ÷ 项目估值 + 风险溢价
+					<div class="mt-[34px] border-t border-dashed border-line2 pt-[26px]"><div class="mb-[18px] flex flex-wrap items-baseline gap-[14px]"><span class="font-mono text-[11px] tracking-[.18em] text-amber">4.3</span><h4 class="text-[18px] font-bold">股份怎么算</h4><em class="ml-auto font-mono text-[11.5px] text-faint">锚点透明，数字谈定</em></div>
+						<pre class="overflow-x-auto whitespace-pre rounded-xl border border-line2 bg-panel p-[22px_26px] font-mono text-[13px] leading-[2.05] text-sub">参考锚点 = 未来 12 个月开发投入（按标准价折现） ÷ 项目估值 + 风险溢价
 │
 ├─ 示例：年投入折 ¥80,000 ÷ 估值 ¥2,000,000 → <b>4% 起谈</b>
 ├─ 风险溢价：产品越早期，溢价越高——我拿的是「未来」，不是现金
 └─ 最终数字谈出来，不套公式——每门生意都不一样</pre>
-						<p class="note">折现按标准价而不是起步价算——入股的部分，我按市场价入股，让利只让给付现金的合作。</p>
+						<p class="mt-3 text-[13px] leading-[1.9] text-faint">折现按标准价而不是起步价算——入股的部分，我按市场价入股，让利只让给付现金的合作。</p>
 					</div>
 
-					<div class="ss"><div class="ss-h"><span class="ss-no">4.4</span><h4>成熟条款</h4><em>拖一拖，看看怎么算</em></div>
-						<div class="vest">
+					<div class="mt-[34px] border-t border-dashed border-line2 pt-[26px]"><div class="mb-[18px] flex flex-wrap items-baseline gap-[14px]"><span class="font-mono text-[11px] tracking-[.18em] text-amber">4.4</span><h4 class="text-[18px] font-bold">成熟条款</h4><em class="ml-auto font-mono text-[11.5px] text-faint">拖一拖，看看怎么算</em></div>
+						<div class="mb-4 mt-1 grid grid-cols-[repeat(18,minmax(0,1fr))] gap-1">
 							<div id="vestGrid" style="display:contents"></div>
 							<input type="range" id="vestRange" min="0" max="36" value="14" aria-label="拖动查看成熟进度">
-							<div class="vest-cap" id="vestCap"></div>
+							<div class="font-mono text-[12px] leading-[1.8] text-sub" id="vestCap"></div>
 						</div>
-						<p class="note">约定股份分 36 个月线性成熟：做满三年全部到手；中途退出，未成熟部分自动收回。这条保护双方——谁也不欠谁。</p>
+						<p class="mt-3 text-[13px] leading-[1.9] text-faint">约定股份分 36 个月线性成熟：做满三年全部到手；中途退出，未成熟部分自动收回。这条保护双方——谁也不欠谁。</p>
 					</div>
 
-					<div class="ss"><div class="ss-h"><span class="ss-no">4.5</span><h4>退出</h4></div>
-						<div class="chg">
-							<div class="chg-row"><div><i>我停</i><b>我停止投入</b></div><span>未成熟部分收回；已成熟部分保留，或按协议回购。</span></div>
-							<div class="chg-row"><div><i>你买</i><b>你想回购</b></div><span>按最近一轮估值 × 协议折扣谈，谈不拢就继续按成熟条款走。</span></div>
-							<div class="chg-row"><div><i>兜底</i><b>无论如何</b></div><span>代码、文档、部署完整留在你公司。没有「删库跑路」这种剧情——仓库权限第一天就在你手里。</span></div>
+					<div class="mt-[34px] border-t border-dashed border-line2 pt-[26px]"><div class="mb-[18px] flex flex-wrap items-baseline gap-[14px]"><span class="font-mono text-[11px] tracking-[.18em] text-amber">4.5</span><h4 class="text-[18px] font-bold">退出</h4></div>
+						<div class="grid gap-[10px]">
+							<div class="grid grid-cols-1 gap-1.5 rounded-[10px] border border-line bg-bg p-[15px_18px] text-[13.5px] leading-[1.9] text-sub phone:grid-cols-[minmax(150px,220px)_1fr] phone:gap-[18px]"><div><i>我停</i><b>我停止投入</b></div><span>未成熟部分收回；已成熟部分保留，或按协议回购。</span></div>
+							<div class="grid grid-cols-1 gap-1.5 rounded-[10px] border border-line bg-bg p-[15px_18px] text-[13.5px] leading-[1.9] text-sub phone:grid-cols-[minmax(150px,220px)_1fr] phone:gap-[18px]"><div><i>你买</i><b>你想回购</b></div><span>按最近一轮估值 × 协议折扣谈，谈不拢就继续按成熟条款走。</span></div>
+							<div class="grid grid-cols-1 gap-1.5 rounded-[10px] border border-line bg-bg p-[15px_18px] text-[13.5px] leading-[1.9] text-sub phone:grid-cols-[minmax(150px,220px)_1fr] phone:gap-[18px]"><div><i>兜底</i><b>无论如何</b></div><span>代码、文档、部署完整留在你公司。没有「删库跑路」这种剧情——仓库权限第一天就在你手里。</span></div>
 						</div>
 					</div>
 
-					<div class="ss"><div class="ss-h"><span class="ss-no">4.6</span><h4>常被问到的</h4></div>
-						<div class="faq">
-							<div class="fq"><button class="fq-q" type="button"><span>会不会稀释我的控制权？</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><div><p>不会。这是技术干股：不带业务决策权、不带董事会席位。我要的只有「把产品做好」的那一票。</p></div></div></div>
-							<div class="fq"><button class="fq-q" type="button"><span>如果产品黄了呢？</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><div><p>我认亏。这是投资属性的风险，签之前我就接受了——所以前提才卡得那么死：只投已验证的方向。</p></div></div></div>
-							<div class="fq"><button class="fq-q" type="button"><span>团队已经有技术了，还能谈吗？</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><div><p>能，但形态会变：可能变成「技术负责人空降 + 少量股份」，也可能变成纯付费的技术顾问——看团队真正缺什么，聊完才知道。</p></div></div></div>
+					<div class="mt-[34px] border-t border-dashed border-line2 pt-[26px]"><div class="mb-[18px] flex flex-wrap items-baseline gap-[14px]"><span class="font-mono text-[11px] tracking-[.18em] text-amber">4.6</span><h4 class="text-[18px] font-bold">常被问到的</h4></div>
+						<div class="grid gap-[10px]">
+							<div class="fq group overflow-hidden rounded-[11px] border border-line2 bg-bg transition-colors duration-300 group-[.open]:border-amber-d"><button class="fq-q flex w-full items-center gap-3 border-0 bg-transparent px-5 py-4 text-left text-[14.5px] font-medium text-ink" type="button"><span>会不会稀释我的控制权？</span><svg class="chev ml-auto size-3.5 shrink-0 text-faint transition-transform duration-300 group-[.open]:rotate-45 group-[.open]:text-amber" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a grid transition-[grid-template-rows] duration-[400ms] ease-[cubic-bezier(.2,.7,.3,1)] [grid-template-rows:0fr] group-[.open]:[grid-template-rows:1fr]"><div class="overflow-hidden"><p class="px-5 pb-[18px] pl-[46px] text-[13.5px] leading-[2] text-sub">不会。这是技术干股：不带业务决策权、不带董事会席位。我要的只有「把产品做好」的那一票。</p></div></div></div>
+							<div class="fq group overflow-hidden rounded-[11px] border border-line2 bg-bg transition-colors duration-300 group-[.open]:border-amber-d"><button class="fq-q flex w-full items-center gap-3 border-0 bg-transparent px-5 py-4 text-left text-[14.5px] font-medium text-ink" type="button"><span>如果产品黄了呢？</span><svg class="chev ml-auto size-3.5 shrink-0 text-faint transition-transform duration-300 group-[.open]:rotate-45 group-[.open]:text-amber" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a grid transition-[grid-template-rows] duration-[400ms] ease-[cubic-bezier(.2,.7,.3,1)] [grid-template-rows:0fr] group-[.open]:[grid-template-rows:1fr]"><div class="overflow-hidden"><p class="px-5 pb-[18px] pl-[46px] text-[13.5px] leading-[2] text-sub">我认亏。这是投资属性的风险，签之前我就接受了——所以前提才卡得那么死：只投已验证的方向。</p></div></div></div>
+							<div class="fq group overflow-hidden rounded-[11px] border border-line2 bg-bg transition-colors duration-300 group-[.open]:border-amber-d"><button class="fq-q flex w-full items-center gap-3 border-0 bg-transparent px-5 py-4 text-left text-[14.5px] font-medium text-ink" type="button"><span>团队已经有技术了，还能谈吗？</span><svg class="chev ml-auto size-3.5 shrink-0 text-faint transition-transform duration-300 group-[.open]:rotate-45 group-[.open]:text-amber" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a grid transition-[grid-template-rows] duration-[400ms] ease-[cubic-bezier(.2,.7,.3,1)] [grid-template-rows:0fr] group-[.open]:[grid-template-rows:1fr]"><div class="overflow-hidden"><p class="px-5 pb-[18px] pl-[46px] text-[13.5px] leading-[2] text-sub">能，但形态会变：可能变成「技术负责人空降 + 少量股份」，也可能变成纯付费的技术顾问——看团队真正缺什么，聊完才知道。</p></div></div></div>
 						</div>
 					</div>
 				</div>
@@ -423,38 +423,38 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 	</section>
 
 	<!-- ============ 05 预算紧的三条路 ============ -->
-	<section class="sec" id="low" style="padding-top:20px">
-		<div class="wrap">
-			<div class="sec-head" data-rv>
-				<span class="sec-no">05 / 预算</span>
+	<section class="py-[84px]" id="low" style="padding-top:20px">
+		<div class="mx-auto w-full max-w-[1120px] px-7">
+			<div class="mb-[18px] flex flex-wrap items-baseline gap-[22px]" data-rv>
+				<span class="font-mono text-[13px] tracking-[.15em] text-amber">05 / 预算</span>
 				<h2>预算紧？三条正路，别硬扛</h2>
-				<span class="sec-cmd">$ ./low-budget --honest</span>
+				<span class="ml-auto font-mono text-[12.5px] text-faint">$ ./low-budget --honest</span>
 			</div>
 			<p class="sec-lead" data-rv>起步价已经压得很低，但我知道几千块对很多刚起步的人仍然是堵墙。与其磨价格（磨掉的都是干活的预算），不如换思路——这三条路我全都真心推荐：</p>
 
-			<div class="paths">
-				<div class="path" data-rv>
-					<span class="pn">ROUTE 01</span>
+			<div class="grid grid-cols-1 gap-4 desk:grid-cols-3">
+				<div class="flex flex-col gap-3 rounded-[14px] border border-line2 bg-bg2 p-[26px_24px]" data-rv>
+					<span class="font-mono text-[11px] tracking-[.2em] text-amber">ROUTE 01</span>
 					<h4>砍范围，别砍价</h4>
 					<p>把你列的 20 个功能，砍到 <b>1 个最疼的</b>。会员管理砍到「档案 + 到店记录」；预约系统砍到「一张可订的日历」。MVP 的 M 不是 minimal，是 <b>must-have</b>。</p>
-					<div class="pf">同样 ¥4,000，做透一件事，比摊薄三件事值十倍。第一版的功能，一半活不过第一次真实用户反馈。</div>
+					<div class="mt-auto border-t border-dashed border-line2 pt-[14px] font-mono text-[11.5px] leading-[1.8] text-faint">同样 ¥4,000，做透一件事，比摊薄三件事值十倍。第一版的功能，一半活不过第一次真实用户反馈。</div>
 				</div>
-				<div class="path" data-rv style="transition-delay:.08s">
-					<span class="pn">ROUTE 02</span>
+				<div class="flex flex-col gap-3 rounded-[14px] border border-line2 bg-bg2 p-[26px_24px]" data-rv style="transition-delay:.08s">
+					<span class="font-mono text-[11px] tracking-[.2em] text-amber">ROUTE 02</span>
 					<h4>分期走</h4>
 					<p>¥3,000 以下 50/50 两期；以上 <b>40/30/30</b> 三期无息；¥1.2 万以上按里程碑拆 4 期。第二期挂在「你亲手点过预览」上，不是时间上。</p>
-					<div class="pf">分期不加息不加价——创业早期每一块钱都该花在刀刃上，包括留在你账上的。</div>
+					<div class="mt-auto border-t border-dashed border-line2 pt-[14px] font-mono text-[11.5px] leading-[1.8] text-faint">分期不加息不加价——创业早期每一块钱都该花在刀刃上，包括留在你账上的。</div>
 				</div>
-				<div class="path" data-rv style="transition-delay:.16s">
-					<span class="pn">ROUTE 03</span>
+				<div class="flex flex-col gap-3 rounded-[14px] border border-line2 bg-bg2 p-[26px_24px]" data-rv style="transition-delay:.16s">
+					<span class="font-mono text-[11px] tracking-[.2em] text-amber">ROUTE 03</span>
 					<h4>先做更小的验证</h4>
 					<p>工具不是第一步，<b>需求才是</b>。一张落地页 + 一个预约表单（¥1,500 起），先看有没有人留资；甚至先用群接龙 + 人工跑两周，痛点真实到疼了再写代码。</p>
-					<div class="pf">顺序错了才是最贵的浪费——先验证「有人要」，再验证「做得出来」。</div>
+					<div class="mt-auto border-t border-dashed border-line2 pt-[14px] font-mono text-[11.5px] leading-[1.8] text-faint">顺序错了才是最贵的浪费——先验证「有人要」，再验证「做得出来」。</div>
 				</div>
 			</div>
 
-			<div class="tbl-scroll" data-rv style="margin-top:22px">
-				<table class="tier">
+			<div class="overflow-x-auto rounded-[14px] border border-line2 bg-bg2" data-rv style="margin-top:22px">
+				<table class="w-full border-collapse text-[13.5px]">
 					<thead><tr><th style="width:170px">你的预算</th><th>我建议怎么花</th></tr></thead>
 					<tbody>
 						<tr><td><b>¥1,500–3,000</b></td><td>落地页 + 预约/留资表单，先把「有人想要」验证出来。跑通后再谈工具。</td></tr>
@@ -464,40 +464,40 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 					</tbody>
 				</table>
 			</div>
-			<p class="tbl-note" data-rv>// 最贵的一步，是花两万块做一个没人要的东西。便宜的验证，都是省钱。</p>
+			<p class="mt-[14px] font-mono text-[11.5px] text-faint" data-rv>// 最贵的一步，是花两万块做一个没人要的东西。便宜的验证，都是省钱。</p>
 		</div>
 	</section>
 
 	<!-- ============ 06 估价器 ============ -->
-	<section class="sec" id="est" style="padding-top:20px">
-		<div class="wrap">
-			<div class="sec-head" data-rv>
-				<span class="sec-no">06 / 估价</span>
+	<section class="py-[84px]" id="est" style="padding-top:20px">
+		<div class="mx-auto w-full max-w-[1120px] px-7">
+			<div class="mb-[18px] flex flex-wrap items-baseline gap-[22px]" data-rv>
+				<span class="font-mono text-[13px] tracking-[.15em] text-amber">06 / 估价</span>
 				<h2>先心里有个数</h2>
-				<span class="sec-cmd">$ 我的码 estimate --mvp --workshop</span>
+				<span class="ml-auto font-mono text-[12.5px] text-faint">$ 我的码 estimate --mvp --workshop</span>
 			</div>
 			<p class="sec-lead" data-rv>勾一勾你的 MVP 大概要什么，我给你一个起步价参考区间。这不是报价——报价要聊完才有。但预算盘子多大、值不值得约语音，这一步就能判断。</p>
-			<div class="est-box" data-rv>
-				<div class="est-l">
-					<div class="est-t">01 · 勾选需要的东西（可多选）</div>
-					<div class="est-chips" id="estChips"></div>
-					<div class="est-comp">
-						<div class="est-t" style="margin-top:24px">02 · 复杂度感受</div>
+			<div class="grid grid-cols-1 overflow-hidden rounded-2xl border border-line2 bg-bg2 tab:grid-cols-[1.15fr_.85fr]" data-rv>
+				<div class="p-[28px_30px]">
+					<div class="mb-4 font-mono text-[11.5px] tracking-[.2em] text-faint">01 · 勾选需要的东西（可多选）</div>
+					<div class="flex flex-wrap gap-[10px]" id="estChips"></div>
+					<div class="mt-6">
+						<div class="mb-4 font-mono text-[11.5px] tracking-[.2em] text-faint" style="margin-top:24px">02 · 复杂度感受</div>
 						<div class="ec-row" id="estComp">
 							<button class="ec on" data-m="0.8" data-l="从简">从简 ×0.8</button>
-							<button class="ec" data-m="1" data-l="标准">标准 ×1.0</button>
-							<button class="ec" data-m="1.3" data-l="稍复杂">稍复杂 ×1.3</button>
+							<button class="ec cursor-pointer rounded-full border-[1.5px] border-line2 px-4 py-2 font-mono text-[12.5px] text-sub transition-all duration-200 hover:border-amber-d hover:text-ink" data-m="1" data-l="标准">标准 ×1.0</button>
+							<button class="ec cursor-pointer rounded-full border-[1.5px] border-line2 px-4 py-2 font-mono text-[12.5px] text-sub transition-all duration-200 hover:border-amber-d hover:text-ink" data-m="1.3" data-l="稍复杂">稍复杂 ×1.3</button>
 						</div>
 					</div>
-					<button class="est-reset" id="estReset" type="button">清空重选</button>
+					<button class="mt-[22px] cursor-pointer border-0 bg-transparent font-[inherit] text-[12.5px] text-faint underline hover:text-ink" id="estReset" type="button">清空重选</button>
 				</div>
-				<div class="est-r">
-					<div class="est-t">03 · 参考结果</div>
-					<div class="er-hint" id="estHint">先在左边勾选你大概需要的东西，这里会算给你看。</div>
+				<div class="flex flex-col border-t border-line bg-bg p-[28px_30px] tab:border-l tab:border-t-0">
+					<div class="mb-4 font-mono text-[11.5px] tracking-[.2em] text-faint">03 · 参考结果</div>
+					<div class="text-[14px] leading-[2] text-faint" id="estHint">先在左边勾选你大概需要的东西，这里会算给你看。</div>
 					<div class="er-body" id="estBody" hidden>
-						<div class="er-row"><span class="er-k">预估工时</span><span class="er-v"><b id="estDays">0</b> 人天<i>≈</i><b id="estWeeks">0</b> 周</span></div>
-						<div class="er-row"><span class="er-k">参考价格（起步价）</span><span class="er-price" id="estPrice">¥0 – ¥0</span></div>
-						<p class="er-note" id="estNote"></p>
+						<div class="grid gap-1.5"><span class="font-mono text-[11px] tracking-[.18em] text-faint">预估工时</span><span class="font-serif text-[34px] font-black leading-[1.3]"><b id="estDays">0</b> 人天<i>≈</i><b id="estWeeks">0</b> 周</span></div>
+						<div class="grid gap-1.5"><span class="font-mono text-[11px] tracking-[.18em] text-faint">参考价格（起步价）</span><span class="font-serif text-[clamp(24px,2.6vw,32px)] font-black leading-[1.4] text-amber" id="estPrice">¥0 – ¥0</span></div>
+						<p class="mt-auto border-t border-dashed border-line2 pt-4 text-[12px] leading-[1.9] text-faint" id="estNote"></p>
 					</div>
 				</div>
 			</div>
@@ -505,34 +505,34 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 	</section>
 
 	<!-- ============ 07 通用条款 ============ -->
-	<section class="sec" id="common" style="padding-top:20px">
-		<div class="wrap">
-			<div class="sec-head" data-rv>
-				<span class="sec-no">07 / 条款</span>
+	<section class="py-[84px]" id="common" style="padding-top:20px">
+		<div class="mx-auto w-full max-w-[1120px] px-7">
+			<div class="mb-[18px] flex flex-wrap items-baseline gap-[22px]" data-rv>
+				<span class="font-mono text-[13px] tracking-[.15em] text-amber">07 / 条款</span>
 				<h2>三种模式通用的执行细节</h2>
-				<span class="sec-cmd">$ cat 通用条款.txt</span>
+				<span class="ml-auto font-mono text-[12.5px] text-faint">$ cat 通用条款.txt</span>
 			</div>
-			<div class="cg">
-				<div class="cc" data-rv><h4>$ 合同怎么签</h4><p><b>一页纸合作协议</b>，我出模板：范围、价格、付款节点、交付物、售后边界、知识产权归你。电子签当天完成（腾讯电子签 / e签宝）；要纸质版也行，快递时间算你的。</p></div>
-				<div class="cc" data-rv style="transition-delay:.06s"><h4>$ 怎么付钱</h4><p>对公或个人账户均可，微信 / 支付宝 / 银行转账都收。<b>MVP 按两/三期结，长期月初结，合伙不结</b>。发票可开普票（个体户，税费另计）。</p></div>
-				<div class="cc" data-rv style="transition-delay:.12s"><h4>$ 日常沟通</h4><p>一个三人群：你 + 我 + 共享文档。消息<b>当天回（晚间集中处理）</b>，不追求即时在线；P0 故障电话直呼；每周一次 30 分钟语音（约晚间或周末）——这半小时能防掉 90% 的误会。</p></div>
-				<div class="cc" data-rv style="transition-delay:.18s"><h4>$ 东西放在哪</h4><p>代码仓库、服务器、域名、小程序主体，<b>全部在你的账号名下</b>，我从第一天起只有协作权限。对我来说跑路成本无限高——这是比合同更硬的信用。</p></div>
-				<div class="cc" data-rv style="transition-delay:.24s"><h4>$ 退费与解约</h4><p>三种模式的退出条款各自写明（见上文）。共同原则：<b>已完成部分按约结算，交接物完整交付</b>，不设违约金、不扣押任何东西。</p></div>
-				<div class="cc" data-rv style="transition-delay:.3s"><h4>$ 有争议怎么办</h4><p>先在每周语音里当面说——这个制度就是为此存在的。仍然解决不了，按协议退出条款走。三年 6 段合作，真正走到解约的一次都没有，<b>但条款一直在</b>，这就是原因。</p></div>
+			<div class="grid grid-cols-1 gap-4 phone:grid-cols-2 desk:grid-cols-3">
+				<div class="rounded-[14px] border border-line2 bg-bg2 p-[26px]" data-rv><h4>$ 合同怎么签</h4><p><b>一页纸合作协议</b>，我出模板：范围、价格、付款节点、交付物、售后边界、知识产权归你。电子签当天完成（腾讯电子签 / e签宝）；要纸质版也行，快递时间算你的。</p></div>
+				<div class="rounded-[14px] border border-line2 bg-bg2 p-[26px]" data-rv style="transition-delay:.06s"><h4>$ 怎么付钱</h4><p>对公或个人账户均可，微信 / 支付宝 / 银行转账都收。<b>MVP 按两/三期结，长期月初结，合伙不结</b>。发票可开普票（个体户，税费另计）。</p></div>
+				<div class="rounded-[14px] border border-line2 bg-bg2 p-[26px]" data-rv style="transition-delay:.12s"><h4>$ 日常沟通</h4><p>一个三人群：你 + 我 + 共享文档。消息<b>当天回（晚间集中处理）</b>，不追求即时在线；P0 故障电话直呼；每周一次 30 分钟语音（约晚间或周末）——这半小时能防掉 90% 的误会。</p></div>
+				<div class="rounded-[14px] border border-line2 bg-bg2 p-[26px]" data-rv style="transition-delay:.18s"><h4>$ 东西放在哪</h4><p>代码仓库、服务器、域名、小程序主体，<b>全部在你的账号名下</b>，我从第一天起只有协作权限。对我来说跑路成本无限高——这是比合同更硬的信用。</p></div>
+				<div class="rounded-[14px] border border-line2 bg-bg2 p-[26px]" data-rv style="transition-delay:.24s"><h4>$ 退费与解约</h4><p>三种模式的退出条款各自写明（见上文）。共同原则：<b>已完成部分按约结算，交接物完整交付</b>，不设违约金、不扣押任何东西。</p></div>
+				<div class="rounded-[14px] border border-line2 bg-bg2 p-[26px]" data-rv style="transition-delay:.3s"><h4>$ 有争议怎么办</h4><p>先在每周语音里当面说——这个制度就是为此存在的。仍然解决不了，按协议退出条款走。三年 6 段合作，真正走到解约的一次都没有，<b>但条款一直在</b>，这就是原因。</p></div>
 			</div>
 		</div>
 	</section>
 
 	<!-- ============ 08 CTA ============ -->
-	<section class="cta" id="cta">
-		<div class="wrap">
-			<span class="sec-no" data-rv>08 / NEXT</span>
+	<section class="border-t border-line bg-bg2 py-24 text-center" id="cta">
+		<div class="mx-auto w-full max-w-[1120px] px-7">
+			<span class="font-mono text-[13px] tracking-[.15em] text-amber" data-rv>08 / NEXT</span>
 			<h2 data-rv>规则都在明处了。剩下的，聊。</h2>
 			<p data-rv>到这一步你还有的问题，一定跟你的具体项目有关——那正是「发 PR」要解决的事。一句话说说你想做什么，我回你一份带天数的价格清单。起步价随签约锁定，不随我涨价。</p>
-			<div class="cta-btns" data-rv>
+			<div class="mt-[34px] flex flex-wrap items-center justify-center gap-[14px]" data-rv>
 				<a class="btn amber" href="/#pr">去主站发一个 PR</a>
 				<button class="btn line" id="mailBtn" type="button">复制邮箱</button>
-			</div>				<p class="cta-crumb" data-rv>~/我的码/docs $ echo "砍范围，别砍价——这句免费送你。"</p>
+			</div>				<p class="mt-[34px] font-mono text-[12px] text-faint" data-rv>~/我的码/docs $ echo "砍范围，别砍价——这句免费送你。"</p>
 		</div>
 	</section>
 </PricingLayout>
@@ -685,7 +685,7 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 			var hint = $('#estHint'), bodyEl = $('#estBody');
 			if (!wrap || !comp) return;
 			wrap.innerHTML = EST_ITEMS.map(function (it, i) {
-				return '<button class="echip" type="button" data-i="' + i + '">' + it.k + '<i>' + it.d + ' 天</i></button>';
+				return '<button class="echip cursor-pointer rounded-[10px] border-[1.5px] border-line2 px-[15px] py-[11px] text-[13.5px] leading-[1.4] text-sub transition-all duration-200 hover:border-amber-d hover:text-ink" type="button" data-i="' + i + '">' + it.k + '<i>' + it.d + ' 天</i></button>';
 			}).join('');
 			function round100(n) { return Math.round(n / 100) * 100; }
 			function fmt(n) { return n.toLocaleString('en-US'); }

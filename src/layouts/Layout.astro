@@ -35,27 +35,27 @@ import '@fontsource/jetbrains-mono/700.css';
 		<meta name="generator" content={Astro.generator} />
 	</head>
 	<body>
-		<a class="skip-link" href="#main">跳到主要内容</a>
+		<a class="fixed left-4 -top-12 z-[200] rounded-b-[10px] bg-amber px-4 py-[10px] text-[13.5px] font-medium text-[#16130a] transition-[top] duration-200 focus:top-0" href="#main">跳到主要内容</a>
 		<!-- ============ 顶栏 ============ -->
-		<header class="top" id="top">
-			<a class="logo" href="#" aria-label="回到顶部">
-				<span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6.5" cy="5" r="2.3"/><circle cx="6.5" cy="19" r="2.3"/><circle cx="17.5" cy="8" r="2.3"/><path d="M6.5 7.3v9.4"/><path d="M17.5 10.3c0 4-3.6 4.7-7.5 5.2"/></svg></span>
-				我的码<i>共建仓库</i>
+		<header class="fixed inset-x-0 top-0 z-50 flex h-16 items-center justify-between gap-4 border-b border-transparent px-[clamp(18px,3vw,34px)] transition-colors duration-300" id="top">
+			<a class="flex items-center gap-[11px] font-mono text-[16px] font-bold" href="#" aria-label="回到顶部">
+				<span class="grid size-[30px] place-items-center rounded-lg border-[1.5px] border-line2 text-amber"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6.5" cy="5" r="2.3"/><circle cx="6.5" cy="19" r="2.3"/><circle cx="17.5" cy="8" r="2.3"/><path d="M6.5 7.3v9.4"/><path d="M17.5 10.3c0 4-3.6 4.7-7.5 5.2"/></svg></span>
+				我的码<i class="ml-[2px] text-[11px] font-normal tracking-[.14em] text-faint">共建仓库</i>
 			</a>
-			<nav class="nav" id="nav">
-				<a href="#diff" data-s="diff">方式</a>
-				<a href="#work" data-s="work">作品</a>
-				<a href="#modes" data-s="modes">投入</a>
-				<a href="#path" data-s="path">轨迹</a>
-				<a href="#about" data-s="about">关于</a>
-				<a href="#faq" data-s="faq">FAQ</a>
+			<nav class="nav hidden items-center gap-[2px] desk:flex" id="nav">
+				<a class="rounded-lg px-[11px] py-[7px] text-[13.5px] text-sub transition-colors duration-200 hover:bg-ink/5 hover:text-ink" href="#diff" data-s="diff">方式</a>
+				<a class="rounded-lg px-[11px] py-[7px] text-[13.5px] text-sub transition-colors duration-200 hover:bg-ink/5 hover:text-ink" href="#work" data-s="work">作品</a>
+				<a class="rounded-lg px-[11px] py-[7px] text-[13.5px] text-sub transition-colors duration-200 hover:bg-ink/5 hover:text-ink" href="#modes" data-s="modes">投入</a>
+				<a class="rounded-lg px-[11px] py-[7px] text-[13.5px] text-sub transition-colors duration-200 hover:bg-ink/5 hover:text-ink" href="#path" data-s="path">轨迹</a>
+				<a class="rounded-lg px-[11px] py-[7px] text-[13.5px] text-sub transition-colors duration-200 hover:bg-ink/5 hover:text-ink" href="#about" data-s="about">关于</a>
+				<a class="rounded-lg px-[11px] py-[7px] text-[13.5px] text-sub transition-colors duration-200 hover:bg-ink/5 hover:text-ink" href="#faq" data-s="faq">FAQ</a>
 			</nav>
-			<div class="top-r">
-				<button class="kbd-btn" id="palBtn" aria-label="打开命令面板">
-					<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-					<span class="kba">⌘ K</span><span class="kbb">目录</span>
+			<div class="flex items-center gap-[10px]">
+				<button class="flex items-center gap-[7px] rounded-lg border-[1.5px] border-line2 px-[11px] py-[7px] font-mono text-[12px] text-sub transition-colors duration-200 hover:border-amber-d hover:text-ink" id="palBtn" aria-label="打开命令面板">
+					<svg class="h-[1em] w-[1em] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+					<span class="hidden desk:inline">⌘ K</span><span class="inline desk:hidden">目录</span>
 				</button>
-				<a class="btn amber" href="#pr" style="padding:9px 18px;font-size:13.5px">发个 PR</a>
+				<a class="inline-flex items-center justify-center gap-[9px] rounded-[10px] bg-amber px-[18px] py-[9px] text-[13.5px] font-bold text-[#1d1405] transition duration-200 hover:brightness-[1.09] active:scale-[.97]" href="#pr">发个 PR</a>
 			</div>
 		</header>
 
@@ -64,70 +64,70 @@ import '@fontsource/jetbrains-mono/700.css';
 		</main>
 
 		<!-- ============ 页脚 ============ -->
-		<footer>
-			<div class="wrap foot-grid">
+		<footer class="border-t border-line bg-bg2 pt-[60px]">
+			<div class="mx-auto grid w-full max-w-[1200px] grid-cols-1 gap-[44px] px-7 pb-[50px] tab:grid-cols-[1.1fr_.6fr_.75fr]">
 				<div>
-					<div class="f-h">GIT LOG</div>
-					<div class="f-log">
-						<div><span class="f-p">❯</span>git log --oneline 本站</div>
-						<div><b>c2f8a4e</b>fix: 字体改非阻塞加载，不再白屏</div>
-						<div><b>f7e2a1d</b>feat: 补齐所有空空的地方</div>
-						<div><b>b3c9d02</b>design: 手写了一份合作 diff</div>
-						<div><b>7d44e18</b>content: 六段合作的故事</div>
-						<div><b>e0c7713</b>design: 轨迹分支图</div>
+					<div class="mb-4 font-mono text-[11px] tracking-[.2em] text-faint">GIT LOG</div>
+					<div class="font-mono text-[12.5px] leading-[2.3] text-sub">
+						<div><span class="mr-[10px] text-amber">❯</span>git log --oneline 本站</div>
+						<div><b class="mr-3 font-normal text-amber">c2f8a4e</b>fix: 字体改非阻塞加载，不再白屏</div>
+						<div><b class="mr-3 font-normal text-amber">f7e2a1d</b>feat: 补齐所有空空的地方</div>
+						<div><b class="mr-3 font-normal text-amber">b3c9d02</b>design: 手写了一份合作 diff</div>
+						<div><b class="mr-3 font-normal text-amber">7d44e18</b>content: 六段合作的故事</div>
+						<div><b class="mr-3 font-normal text-amber">e0c7713</b>design: 轨迹分支图</div>
 					</div>
 				</div>
 				<div>
-					<div class="f-h">目录 / TREE</div>
-					<nav class="f-nav">
-						<a href="#diff">合作方式</a><a href="#who">适合谁</a><a href="#work">作品仓库</a><a href="#modes">投入方式</a><a href="#how">合作流程</a><a href="#path">三年轨迹</a><a href="#voices">伙伴的话</a><a href="#about">关于我</a><a href="#faq">FAQ</a>
+					<div class="mb-4 font-mono text-[11px] tracking-[.2em] text-faint">目录 / TREE</div>
+					<nav class="flex flex-wrap gap-x-[10px] gap-y-[2px] text-[13.5px]">
+						<a class="-mx-2 -my-[6px] rounded-md px-2 py-[6px] text-sub transition-colors duration-200 hover:text-amber" href="#diff">合作方式</a><a class="-mx-2 -my-[6px] rounded-md px-2 py-[6px] text-sub transition-colors duration-200 hover:text-amber" href="#who">适合谁</a><a class="-mx-2 -my-[6px] rounded-md px-2 py-[6px] text-sub transition-colors duration-200 hover:text-amber" href="#work">作品仓库</a><a class="-mx-2 -my-[6px] rounded-md px-2 py-[6px] text-sub transition-colors duration-200 hover:text-amber" href="#modes">投入方式</a><a class="-mx-2 -my-[6px] rounded-md px-2 py-[6px] text-sub transition-colors duration-200 hover:text-amber" href="#how">合作流程</a><a class="-mx-2 -my-[6px] rounded-md px-2 py-[6px] text-sub transition-colors duration-200 hover:text-amber" href="#path">三年轨迹</a><a class="-mx-2 -my-[6px] rounded-md px-2 py-[6px] text-sub transition-colors duration-200 hover:text-amber" href="#voices">伙伴的话</a><a class="-mx-2 -my-[6px] rounded-md px-2 py-[6px] text-sub transition-colors duration-200 hover:text-amber" href="#about">关于我</a><a class="-mx-2 -my-[6px] rounded-md px-2 py-[6px] text-sub transition-colors duration-200 hover:text-amber" href="#faq">FAQ</a>
 					</nav>
 				</div>
-				<div class="f-side">
-					<div class="f-h">联系 / CONTACT</div>
-					<button class="copy-mail" id="mailBtn">
+				<div class="grid content-start gap-3">
+					<div class="mb-4 font-mono text-[11px] tracking-[.2em] text-faint">联系 / CONTACT</div>
+					<button class="flex w-full items-center justify-between gap-3 rounded-[10px] border-[1.5px] border-line2 px-[15px] py-[11px] font-mono text-[13.5px] text-ink transition-colors duration-200 hover:border-amber hover:text-amber" id="mailBtn">
 						<span data-mail-label>hi [at] wodema [dot] cn</span>
-						<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15H4.5A2.5 2.5 0 0 1 2 12.5v-8A2.5 2.5 0 0 1 4.5 2h8A2.5 2.5 0 0 1 15 4.5V5"/></svg>
+						<svg class="h-[1em] w-[1em] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15H4.5A2.5 2.5 0 0 1 2 12.5v-8A2.5 2.5 0 0 1 4.5 2h8A2.5 2.5 0 0 1 15 4.5V5"/></svg>
 					</button>
-					<button class="copy-mail" id="xhsBtn">
+					<button class="flex w-full items-center justify-between gap-3 rounded-[10px] border-[1.5px] border-line2 px-[15px] py-[11px] font-mono text-[13.5px] text-ink transition-colors duration-200 hover:border-amber hover:text-amber" id="xhsBtn">
 						<span>小红书 · wodema</span>
-						<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15H4.5A2.5 2.5 0 0 1 2 12.5v-8A2.5 2.5 0 0 1 4.5 2h8A2.5 2.5 0 0 1 15 4.5V5"/></svg>
+						<svg class="h-[1em] w-[1em] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15H4.5A2.5 2.5 0 0 1 2 12.5v-8A2.5 2.5 0 0 1 4.5 2h8A2.5 2.5 0 0 1 15 4.5V5"/></svg>
 					</button>
-					<p>私信备注「PR」，通常 24 小时内回复。<br>本站所有项目数据均为示例，替换成你的真实项目即可。</p>
+					<p class="text-[12.5px] leading-[1.9] text-faint">私信备注「PR」，通常 24 小时内回复。<br>本站所有项目数据均为示例，替换成你的真实项目即可。</p>
 				</div>
 			</div>
-			<div class="f-bar">© 2026 我的码 · 与 6 位创业者共同维护 · 本站纯手写，无框架无埋点 · 用一次真诚的合作，交换下一次</div>
+			<div class="border-t border-line px-7 py-5 text-center font-mono text-[11.5px] text-faint">© 2026 我的码 · 与 6 位创业者共同维护 · 本站纯手写，无框架无埋点 · 用一次真诚的合作，交换下一次</div>
 		</footer>
 
 		<!-- ============ 仓库详情弹窗 ============ -->
-		<div class="mask" id="repoMask"><div class="card" id="repoModal" tabindex="-1"></div></div>
+		<div class="mask fixed inset-0 z-[80] animate-fadein items-center justify-center bg-[rgba(9,10,7,.8)] p-[22px] backdrop-blur-[7px]" id="repoMask"><div class="w-[min(680px,100%)] max-h-[88vh] animate-pop overflow-y-auto rounded-2xl border border-line2 bg-bg2 shadow-[0_40px_100px_rgba(0,0,0,.6)]" id="repoModal" tabindex="-1"></div></div>
 
 		<!-- ============ PR 结果弹窗 ============ -->
-		<div class="mask" id="prMask"><div class="card" tabindex="-1">
-			<div class="pr-ok">
-				<div class="pr-ok-head">
-					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>
+		<div class="mask fixed inset-0 z-[80] animate-fadein items-center justify-center bg-[rgba(9,10,7,.8)] p-[22px] backdrop-blur-[7px]" id="prMask"><div class="w-[min(680px,100%)] max-h-[88vh] animate-pop overflow-y-auto rounded-2xl border border-line2 bg-bg2 shadow-[0_40px_100px_rgba(0,0,0,.6)]" tabindex="-1">
+			<div class="p-[30px]">
+				<div class="flex items-center gap-3 font-mono text-[16px] text-green">
+					<svg class="size-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>
 					<span id="prNo">PR #000 已打开</span>
 				</div>
-				<div class="pr-ok-sub">准备合入：合作 ← 你的想法</div>
-				<pre class="pr-brief" id="prBrief"></pre>
-				<div class="pr-ok-btns">
-					<button class="btn line" id="prCopy" type="button">复制简介</button>
-					<button class="btn amber" id="prMail" type="button">写邮件发给他
-						<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></button>
+				<div class="mt-[10px] font-mono text-[12.5px] text-sub">准备合入：合作 ← 你的想法</div>
+				<pre class="my-5 whitespace-pre-wrap rounded-[10px] border border-line bg-bg p-[18px] font-mono text-[12.5px] leading-[2] text-ink" id="prBrief"></pre>
+				<div class="flex flex-wrap items-center gap-3">
+					<button class="inline-flex items-center justify-center gap-[9px] rounded-[10px] border-[1.5px] border-line2 bg-transparent px-5 py-[11px] text-[14.5px] font-bold text-ink transition duration-200 hover:border-amber hover:text-amber active:scale-[.97]" id="prCopy" type="button">复制简介</button>
+					<button class="inline-flex items-center justify-center gap-[9px] rounded-[10px] bg-amber px-5 py-[11px] text-[14.5px] font-bold text-[#1d1405] transition duration-200 hover:brightness-[1.09] active:scale-[.97]" id="prMail" type="button">写邮件发给他
+						<svg class="h-[1em] w-[1em] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></button>
 				</div>
-				<p class="pr-ok-tip">也可以直接私信，把上面这段简介贴过去就行。通常 24 小时内回复。</p>
+				<p class="mt-4 text-[12px] leading-[1.8] text-faint">也可以直接私信，把上面这段简介贴过去就行。通常 24 小时内回复。</p>
 			</div>
 		</div></div>
 
 		<!-- ============ 命令面板 ============ -->
-		<div class="mask" id="palMask"><div class="pal">
-			<div class="pal-in">
-				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-				<input id="palInput" placeholder="输入命令，或想去的板块…" autocomplete="off">
+		<div class="mask fixed inset-0 z-[80] animate-fadein items-center justify-center bg-[rgba(9,10,7,.8)] p-[22px] backdrop-blur-[7px]" id="palMask"><div class="w-[min(520px,100%)] animate-pop self-center overflow-hidden rounded-[14px] border border-line2 bg-bg2 shadow-[0_40px_100px_rgba(0,0,0,.6)]">
+			<div class="flex items-center gap-3 border-b border-line px-[18px] py-4">
+				<svg class="size-4 text-faint" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+				<input class="flex-1 bg-transparent font-mono text-[14px] text-ink outline-none placeholder:text-faint" id="palInput" placeholder="输入命令，或想去的板块…" autocomplete="off">
 			</div>
-			<ul id="palList"></ul>
-			<div class="pal-ft">↑ ↓ 选择 · Enter 执行 · Esc 关闭</div>
+			<ul class="max-h-[320px] overflow-y-auto p-2" id="palList"></ul>
+			<div class="border-t border-line px-[18px] py-[11px] font-mono text-[11px] text-faint">↑ ↓ 选择 · Enter 执行 · Esc 关闭</div>
 		</div></div>
 
 		<div id="toast" role="status"></div>
@@ -173,9 +173,9 @@ import '@fontsource/jetbrains-mono/700.css';
 					else fallbackCopy(txt, done);
 				}
 				function go(sel) { var el = document.querySelector(sel); if (el) el.scrollIntoView({ behavior: 'smooth' }); }
-				var ICON_ARR = '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg>';
-				var ICON_BRANCH = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6.5" cy="5" r="2.3"/><circle cx="6.5" cy="19" r="2.3"/><circle cx="17.5" cy="8" r="2.3"/><path d="M6.5 7.3v9.4"/><path d="M17.5 10.3c0 4-3.6 4.7-7.5 5.2"/></svg>';
-				var ICON_X = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+				var ICON_ARR = '<svg class="h-[1em] w-[1em] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg>';
+				var ICON_BRANCH = '<svg class="size-[22px] text-amber" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6.5" cy="5" r="2.3"/><circle cx="6.5" cy="19" r="2.3"/><circle cx="17.5" cy="8" r="2.3"/><path d="M6.5 7.3v9.4"/><path d="M17.5 10.3c0 4-3.6 4.7-7.5 5.2"/></svg>';
+				var ICON_X = '<svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>';
 
 				/* ================================================================
 				   数据区：替换成你的真实项目 / 提交记录 / 邮箱即可
@@ -328,25 +328,25 @@ import '@fontsource/jetbrains-mono/700.css';
 
 				var SCENES = [
 					{ cmd: 'git log --oneline 合作仓库', out: [
-						['a41f2c9 (HEAD → 主线) 毛孩子档案 v2.0 上线 · 与陈姐同行 19 个月', 'o-amber'],
+						['a41f2c9 (HEAD → 主线) 毛孩子档案 v2.0 上线 · 与陈姐同行 19 个月', 'text-amber'],
 						['8e77d01 山舍 · 旺季房态全量同步 · 与老周', ''],
 						['c3a9d4f 选题库 · 付费转化 +18% · 与小林', ''],
 						['9f02b3e 课表通 · 第 100 家工作室入驻 · 与王老师', ''] ] },
 					{ cmd: 'git remote -v', out: [
-						['origin  你的业务和用户', 'o-dim'],
-						['origin  我的代码和产品 · 我们共用一个仓库', 'o-dim'] ] },
+						['origin  你的业务和用户', 'text-faint'],
+						['origin  我的代码和产品 · 我们共用一个仓库', 'text-faint'] ] },
 					{ cmd: 'git shortlog -sn --no-merges', out: [
-						['  4712  我（写了这些代码）', 'o-amber'],
+						['  4712  我（写了这些代码）', 'text-amber'],
 						['  1893  陈姐（提的需求和反馈）', ''],
 						['  1520  小林（骂过的和夸过的）', ''],
-						['   908  老周（半夜发来的语音）', 'o-dim'] ] },
+						['   908  老周（半夜发来的语音）', 'text-faint'] ] },
 					{ cmd: 'git merge 你的想法', out: [
 						['Auto-merging 一款真正有人用的产品', 'o-green'],
-						['Merge made by the 合作 strategy into 主线.', 'o-dim'] ] },
+						['Merge made by the 合作 strategy into 主线.', 'text-faint'] ] },
 					{ cmd: 'tail -f 生产环境.log', out: [
-						['14:02:11 POST /api/booking 200 · 62ms', 'o-dim'],
-						['14:02:19 POST /api/pay 200 · 又一单', 'o-green'],
-						['14:03:40 GET /health 200 · 一切正常', 'o-dim'] ] }
+						['14:02:11 POST /api/booking 200 · 62ms', 'text-faint'],
+						['14:02:19 POST /api/pay 200 · 又一单', 'text-green'],
+						['14:03:40 GET /health 200 · 一切正常', 'text-faint'] ] }
 				];
 
 				/* ================= 弹窗通用 ================= */
@@ -362,22 +362,22 @@ import '@fontsource/jetbrains-mono/700.css';
 				function openRepo(p) {
 					if (!repoModal) return;
 					repoModal.innerHTML =
-						'<header class="rm-head">' +
-						'<div class="rm-title">' + ICON_BRANCH + '<div><h3>' + esc(p.name) + '</h3><span>' + esc(p.slug) + '</span></div></div>' +
-						'<div class="rm-right"><span class="badge"><i class="dot"></i>' + esc(p.status) + '</span>' +
-						'<button class="icon-btn rm-close" aria-label="关闭">' + ICON_X + '</button></div>' +
+						'<header class="sticky top-0 z-[2] flex items-center justify-between gap-4 border-b border-line bg-bg2 px-[26px] py-[22px]">' +
+						'<div class="flex items-center gap-[14px]">' + ICON_BRANCH + '<div><h3 class="font-serif text-[23px] font-black">' + esc(p.name) + '</h3><span class="block font-mono text-[11px] text-faint">' + esc(p.slug) + '</span></div></div>' +
+						'<div class="flex items-center gap-[14px]"><span class="inline-flex items-center gap-2 rounded-full border border-green/35 px-3 py-1 font-mono text-[11.5px] text-green"><i class="size-[7px] animate-dotp rounded-full bg-green"></i>' + esc(p.status) + '</span>' +
+						'<button class="rm-close grid size-[34px] place-items-center rounded-[9px] border-[1.5px] border-line2 text-sub transition-all duration-200 hover:border-amber hover:text-amber" aria-label="关闭">' + ICON_X + '</button></div>' +
 						'</header>' +
-						'<div class="rm-meta">与 ' + esc(p.partner) + '（' + esc(p.role) + '）· ' + esc(p.period) + ' · ' + p.commits.toLocaleString('en-US') + ' commits · ' + p.months + ' 个月</div>' +
-						'<div class="rm-body">' +
-						'<p class="rm-one">' + esc(p.one) + '</p>' +
-						'<div class="rm-beats">' +
-						p.story.map(function (s) { return '<div class="beat"><b>' + esc(s.k) + ' · ' + esc(s.t) + '</b><p>' + esc(s.d) + '</p></div>'; }).join('') +
+						'<div class="border-b border-line px-[26px] py-[15px] font-mono text-[12.5px] text-sub">与 ' + esc(p.partner) + '（' + esc(p.role) + '）· ' + esc(p.period) + ' · ' + p.commits.toLocaleString('en-US') + ' commits · ' + p.months + ' 个月</div>' +
+						'<div class="p-[26px]">' +
+						'<p class="text-[16.5px] leading-[1.9]">' + esc(p.one) + '</p>' +
+						'<div class="my-[26px] grid gap-[18px] border-l-2 border-line pl-6">' +
+						p.story.map(function (s) { return '<div class="relative"><i class="absolute -left-[30px] top-[6px] size-[9px] rounded-full bg-amber"></i><b class="mb-[5px] block font-mono text-[11.5px] font-normal tracking-[.08em] text-amber">' + esc(s.k) + ' · ' + esc(s.t) + '</b><p class="text-[14.5px] leading-[1.95] text-sub">' + esc(s.d) + '</p></div>'; }).join('') +
 						'</div>' +
-						'<div class="rm-heat"><div class="fs-t">commit 热力图 · 最近半年</div><div class="heat"></div></div>' +
-						'<blockquote class="rm-quote">「' + esc(p.quote.text) + '」<footer>—— ' + esc(p.quote.by) + '</footer></blockquote>' +
-						'<div class="rm-foot"><div class="rm-tags">' +
-						p.tags.map(function (t) { return '<span>' + esc(t) + '</span>'; }).join('') +
-						'</div><button class="rm-cta">聊聊同款想法 ' + ICON_ARR + '</button></div>' +
+						'<div class="my-[26px]"><div class="mb-[14px] font-mono text-[11.5px] tracking-[.08em] text-faint">commit 热力图 · 最近半年</div><div class="heat grid gap-[3px] overflow-x-auto pb-1 [--cell:12px] [grid-auto-columns:12px] [grid-auto-flow:column]"></div></div>' +
+						'<blockquote class="border-l-[3px] border-amber py-1 pl-5 font-serif text-[17px] leading-[1.95]"><span class="text-amber">「</span>' + esc(p.quote.text) + '<span class="text-amber">」</span><footer class="mt-[10px] font-mono text-[12px] text-faint">—— ' + esc(p.quote.by) + '</footer></blockquote>' +
+						'<div class="mt-[26px] flex flex-wrap items-center justify-between gap-4"><div class="flex flex-wrap gap-[9px]">' +
+						p.tags.map(function (t) { return '<span class="rounded-full border border-line2 px-3 py-1 font-mono text-[11px] text-sub">' + esc(t) + '</span>'; }).join('') +
+						'</div><button class="rm-cta inline-flex items-center gap-2 bg-transparent text-[14px] font-bold text-amber hover:underline">聊聊同款想法 ' + ICON_ARR + '</button></div>' +
 						'</div>';
 					heat(repoModal.querySelector('.heat'), hash(p.id), 26, 7);
 					repoModal.querySelector('.rm-close').addEventListener('click', function () { closeMask(repoMask); });
@@ -397,7 +397,8 @@ import '@fontsource/jetbrains-mono/700.css';
 					var rnd = mulberry32(seed), html = '';
 					for (var i = 0; i < cols * rows; i++) {
 						var r = rnd(), lv = r < .3 ? 0 : r < .55 ? 1 : r < .75 ? 2 : r < .9 ? 3 : 4;
-						html += '<i class="hc" data-l="' + lv + '"></i>';
+						var lvColor = lv === 0 ? 'bg-[#1c2114]' : lv === 1 ? 'bg-green/20' : lv === 2 ? 'bg-green/40' : lv === 3 ? 'bg-green/65' : 'bg-green/95';
+						html += '<i class="h-[12px] w-[12px] rounded-[2.5px] ' + lvColor + '"></i>';
 					}
 					el.innerHTML = html;
 					el.style.gridTemplateRows = 'repeat(' + rows + ',var(--cell))';
@@ -408,7 +409,7 @@ import '@fontsource/jetbrains-mono/700.css';
 					var rnd = mulberry32(seed), html = '';
 					for (var i = 0; i < n; i++) {
 						var h = 4 + Math.round(rnd() * 26);
-						html += '<i class="pb' + (i === n - 1 ? ' now' : '') + '" style="height:' + h + 'px"></i>';
+						html += '<i class="w-[4px] rounded-[2px] ' + (i === n - 1 ? 'bg-amber animate-pbp' : 'bg-green/40') + '" style="height:' + h + 'px"></i>';
 					}
 					el.innerHTML = html;
 				}
@@ -420,8 +421,8 @@ import '@fontsource/jetbrains-mono/700.css';
 					var my = ++tkToken, alive = function () { return my === tkToken; };
 					var s = SCENES[sceneI % SCENES.length];
 					body.innerHTML = '';
-					var line = document.createElement('div'); line.className = 't-line';
-					line.innerHTML = '<span class="t-p">❯</span><span class="t-c"></span><span class="t-cur"></span>';
+					var line = document.createElement('div'); line.className = 'overflow-hidden whitespace-nowrap text-ellipsis';
+					line.innerHTML = '<span class="t-p mr-[9px] font-bold text-amber">❯</span><span class="t-c"></span><span class="t-cur ml-[3px] inline-block h-[14px] w-2 animate-blink bg-amber align-[-2px]"></span>';
 					body.appendChild(line);
 					var c = line.querySelector('.t-c'), i = 0;
 					(function ty() {
@@ -432,7 +433,7 @@ import '@fontsource/jetbrains-mono/700.css';
 						(function nx() {
 							if (!alive()) return;
 							if (j < s.out.length) {
-								var o = document.createElement('div'); o.className = 't-line ' + s.out[j][1];
+								var o = document.createElement('div'); o.className = 'overflow-hidden whitespace-nowrap text-ellipsis ' + s.out[j][1];
 								o.textContent = s.out[j][0]; j++;
 								body.appendChild(o);
 								return setTimeout(nx, 180);
@@ -451,17 +452,19 @@ import '@fontsource/jetbrains-mono/700.css';
 				boot('提交跑马灯', function () {
 					var el = $('#tkTrack'); if (!el) return;
 					var items = TICKER.map(function (t) {
-						return '<span class="tk"><b>' + t[0] + '</b>' + t[1] + '<i>· 与' + t[2] + ' · ' + t[3] + '</i></span>';
-					}).join('<span class="tk-sep">◆</span>') + '<span class="tk-sep">◆</span>';
-					el.innerHTML = '<div class="tk-half">' + items + '</div><div class="tk-half" aria-hidden="true">' + items + '</div>';
+						return '<span class="whitespace-nowrap font-mono text-[12px] text-sub"><b class="mr-[10px] font-normal text-amber">' + t[0] + '</b>' + t[1] + '<i class="ml-2 text-faint">· 与' + t[2] + ' · ' + t[3] + '</i></span>';
+					}).join('<span class="text-[9px] text-line2">◆</span>') + '<span class="text-[9px] text-line2">◆</span>';
+					el.innerHTML = '<div class="flex items-center gap-[30px] pr-[30px]">' + items + '</div><div class="flex items-center gap-[30px] pr-[30px]" aria-hidden="true">' + items + '</div>';
 				});
 
 				/* ================= diff ================= */
 				boot('合作diff', function () {
 					var el = $('#diffBody'); if (!el) return;
+					var M = { 'd-file': 'text-faint', 'd-hdr': 'text-faint', 'd-hunk': 'pt-[10px] text-amber', 'd-del': 'bg-red/10 text-[#e8997f]', 'd-add': 'bg-green/10 text-[#a9d18c]' };
 					el.innerHTML = DIFF.map(function (l, i) {
 						var mk = l[1] === 'd-del' ? '-' : l[1] === 'd-add' ? '+' : ' ';
-						return '<div class="dline ' + l[1] + '" style="transition-delay:' + (0.12 + i * 0.09) + 's"><span class="dmk">' + mk + '</span><span>' + l[0] + '</span></div>';
+						var mkc = l[1] === 'd-del' ? 'text-red' : l[1] === 'd-add' ? 'text-green' : '';
+						return '<div class="dline flex gap-[14px] whitespace-pre-wrap px-[26px] py-[4.5px] ' + (M[l[1]] || '') + '" style="transition-delay:' + (0.12 + i * 0.09) + 's"><span class="w-[12px] shrink-0 text-center ' + mkc + '">' + mk + '</span><span>' + l[0] + '</span></div>';
 					}).join('');
 				});
 
@@ -474,10 +477,10 @@ import '@fontsource/jetbrains-mono/700.css';
 					set('featStatus', feat.status); set('featName', feat.name); set('featSlug', feat.slug);
 					set('featOne', feat.one);
 					var fp = document.getElementById('featPartner');
-					if (fp) fp.innerHTML = '合作伙伴：<b>' + feat.partner + '</b>（' + feat.role + '）· ' + feat.period;
+					if (fp) fp.innerHTML = '合作伙伴：<b class="font-medium text-amber">' + feat.partner + '</b>（' + feat.role + '）· ' + feat.period;
 					set('featLead', '「' + feat.story[0].d + '」' + feat.story[feat.story.length - 1].d);
 					var fs = document.getElementById('featStats');
-					if (fs) fs.innerHTML = feat.nums.map(function (n) { return '<span><b>' + n.n + '</b><i>' + n.l + '</i></span>'; }).join('');
+					if (fs) fs.innerHTML = feat.nums.map(function (n) { return '<span><b class="block font-serif text-[26px] font-black text-ink">' + n.n + '</b><i class="font-mono text-[11px] text-faint">' + n.l + '</i></span>'; }).join('');
 					heat(document.getElementById('featHeat'), hash(feat.id), 32, 7);
 					var fb = document.getElementById('featBtn');
 					if (fb) fb.addEventListener('click', function () { openRepo(feat); });
@@ -486,20 +489,20 @@ import '@fontsource/jetbrains-mono/700.css';
 					var rest = PROJECTS.filter(function (p) { return !p.featured; });
 					rest.forEach(function (p, i) {
 						var row = document.createElement('article');
-						row.className = 'rr'; row.tabIndex = 0;
+						row.className = 'rr group grid cursor-pointer grid-cols-[minmax(0,1fr)_auto] items-center gap-x-6 gap-y-2.5 border-b border-line px-2.5 py-[26px] transition-[background-color,padding] duration-300 hover:bg-ink/5 hover:pl-5 wide:grid-cols-[minmax(210px,1fr)_1.5fr_auto]'; row.tabIndex = 0;
 						row.setAttribute('role', 'button');
 						row.setAttribute('aria-label', '查看 ' + p.name);
 						row.style.transitionDelay = (i * 0.07) + 's';
 						row.innerHTML =
-							'<div class="rr-l"><span class="rr-idx">' + String(i + 2).padStart(2, '0') + '</span>' +
-							'<div class="rr-name"><h3>' + p.name + '</h3><span class="rr-slug">' + p.slug + ' · 与' + p.partner + '</span>' +
-							'<div class="rr-tags">' + p.tags.map(function (t) { return '<i>' + t + '</i>'; }).join('') + '</div></div></div>' +
-							'<p class="rr-one">' + p.one + '</p>' +
-							'<div class="rr-side">' +
-							'<div class="rr-pulse" aria-hidden="true"></div>' +
-							'<div class="rr-meta"><b>' + p.commits.toLocaleString('en-US') + '</b><i>commits · ' + p.months + ' 个月</i></div>' +
-							'<span class="badge"><i class="dot"></i>' + p.status + '</span>' +
-							'<svg class="rr-arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg>' +
+							'<div class="flex min-w-0 items-baseline gap-4"><span class="font-mono text-[12px] text-faint">' + String(i + 2).padStart(2, '0') + '</span>' +
+							'<div class="min-w-0"><h3 class="font-serif text-[23px] font-black transition-colors duration-200 group-hover:text-amber">' + p.name + '</h3><span class="font-mono text-[11px] text-faint">' + p.slug + ' · 与' + p.partner + '</span>' +
+							'<div class="mt-2 flex flex-wrap gap-[7px]">' + p.tags.map(function (t) { return '<i class="rounded-full border border-line px-[9px] py-[2px] font-mono text-[10px] text-faint">' + t + '</i>'; }).join('') + '</div></div></div>' +
+							'<p class="col-span-2 min-w-0 text-[14px] leading-[1.8] text-sub wide:col-span-1">' + p.one + '</p>' +
+							'<div class="flex items-center gap-5">' +
+							'<div class="hidden h-8 items-end gap-[3px] slim:flex" aria-hidden="true"></div>' +
+							'<div class="text-right"><b class="block font-mono text-[15px] font-bold text-ink">' + p.commits.toLocaleString('en-US') + '</b><i class="font-mono text-[10.5px] text-faint">commits · ' + p.months + ' 个月</i></div>' +
+							'<span class="inline-flex items-center gap-2 rounded-full border border-green/35 px-3 py-1 font-mono text-[11.5px] text-green"><i class="size-[7px] animate-dotp rounded-full bg-green"></i>' + p.status + '</span>' +
+							'<svg class="size-[18px] text-faint transition-all duration-300 group-hover:translate-x-[5px] group-hover:text-amber" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg>' +
 							'</div>';
 						var open = function () { openRepo(p); };
 						row.addEventListener('click', open);
@@ -513,7 +516,7 @@ import '@fontsource/jetbrains-mono/700.css';
 				boot('伙伴评价', function () {
 					var el = $('#qwall'); if (!el) return;
 					el.innerHTML = QUOTES.map(function (q) {
-						return '<div class="qcard"><blockquote>' + q.t + '</blockquote><div class="qmeta"><b>' + q.who + '</b>' + q.p + '</div></div>';
+						return '<div class="mb-[18px] break-inside-avoid rounded-[14px] border border-line2 bg-bg2 px-7 py-[26px]"><blockquote class="font-serif text-[16.5px] leading-[1.95] text-ink"><span class="text-amber">「</span>' + q.t + '<span class="text-amber">」</span></blockquote><div class="mt-4 font-mono text-[11.5px] text-faint"><b class="mr-[10px] font-normal text-amber">' + q.who + '</b>' + q.p + '</div></div>';
 					}).join('');
 				});
 
@@ -521,10 +524,10 @@ import '@fontsource/jetbrains-mono/700.css';
 				boot('FAQ', function () {
 					var el = $('#faqList'); if (!el) return;
 					el.innerHTML = FAQ.map(function (f, i) {
-						return '<div class="fq"><button class="fq-q" type="button" aria-expanded="false">' +
-							'<span class="qno">' + String(i + 1).padStart(2, '0') + '</span><span>' + f[0] + '</span>' +
-							'<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>' +
-							'</button><div class="fq-a"><div><p>' + f[1] + '</p></div></div></div>';
+						return '<div class="fq group overflow-hidden rounded-xl border border-line2 bg-bg2 transition-colors duration-300 group-[.open]:border-amber-d"><button class="fq-q flex w-full items-center gap-[14px] border-0 bg-transparent px-[22px] py-[18px] text-left text-[15.5px] font-medium text-ink" type="button" aria-expanded="false">' +
+							'<span class="shrink-0 font-mono text-[12px] text-amber">' + String(i + 1).padStart(2, '0') + '</span><span>' + f[0] + '</span>' +
+							'<svg class="chev ml-auto size-[15px] shrink-0 text-faint transition-transform duration-300 group-[.open]:rotate-45 group-[.open]:text-amber" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>' +
+							'</button><div class="fq-a grid transition-[grid-template-rows] duration-[400ms] ease-[cubic-bezier(.2,.7,.3,1)] [grid-template-rows:0fr] group-[.open]:[grid-template-rows:1fr]"><div class="overflow-hidden"><p class="px-[22px] pb-5 pl-[51px] text-[14.5px] leading-[2] text-sub">' + f[1] + '</p></div></div></div>';
 					}).join('');
 					el.addEventListener('click', function (e) {
 						var q = e.target.closest('.fq-q'); if (!q) return;
@@ -545,31 +548,31 @@ import '@fontsource/jetbrains-mono/700.css';
 					var mx = 96, sy = 46, step = 128;
 					var endY = sy + step * (PROJECTS.length - 1) + 104 + 40;
 					svg.setAttribute('viewBox', '0 0 620 ' + (endY + 30));
-					svg.appendChild(mk('path', { class: 'gg-master', d: 'M' + mx + ' ' + (sy - 22) + ' V' + endY }));
+					svg.appendChild(mk('path', { class: 'gg-master fill-none stroke-line2 [stroke-width:3]', d: 'M' + mx + ' ' + (sy - 22) + ' V' + endY }));
 					var lastYear = null;
 					PROJECTS.forEach(function (p, i) {
 						var y0 = sy + i * step, y1 = y0 + 104;
-						var bp = mk('path', { class: 'gg-branch', d: 'M' + mx + ' ' + y0 + ' C ' + (mx + 96) + ' ' + y0 + ', ' + (mx + 134) + ' ' + (y0 + 14) + ', ' + (mx + 134) + ' ' + (y0 + 52) + ' C ' + (mx + 134) + ' ' + (y0 + 90) + ', ' + (mx + 96) + ' ' + y1 + ', ' + mx + ' ' + y1 });
+						var bp = mk('path', { class: 'gg-branch fill-none stroke-amber opacity-85 [stroke-width:2.5]', d: 'M' + mx + ' ' + y0 + ' C ' + (mx + 96) + ' ' + y0 + ', ' + (mx + 134) + ' ' + (y0 + 14) + ', ' + (mx + 134) + ' ' + (y0 + 52) + ' C ' + (mx + 134) + ' ' + (y0 + 90) + ', ' + (mx + 96) + ' ' + y1 + ', ' + mx + ' ' + y1 });
 						svg.appendChild(bp);
-						var n1 = mk('circle', { class: 'gg-node', cx: mx, cy: y0, r: 5 });
-						var n2 = mk('circle', { class: 'gg-node gg-merge', cx: mx, cy: y1, r: 5 });
+						var n1 = mk('circle', { class: 'fill-bg stroke-amber [stroke-width:2.5]', cx: mx, cy: y0, r: 5 });
+						var n2 = mk('circle', { class: 'fill-amber stroke-amber [stroke-width:2.5]', cx: mx, cy: y1, r: 5 });
 						svg.appendChild(n1); svg.appendChild(n2);
-						var t1 = mk('text', { class: 'gg-name gg-fade', x: mx + 152, y: y0 + 42 });
-						var t2 = mk('text', { class: 'gg-meta gg-fade', x: mx + 152, y: y0 + 62 });
-						var t3 = mk('text', { class: 'gg-st gg-fade', x: mx + 152, y: y0 + 82 });
+						var t1 = mk('text', { class: 'gg-name gg-fade cursor-pointer fill-ink font-serif text-[17px] font-black hover:fill-amber', x: mx + 152, y: y0 + 42 });
+						var t2 = mk('text', { class: 'gg-meta gg-fade cursor-pointer fill-sub font-mono text-[11px]', x: mx + 152, y: y0 + 62 });
+						var t3 = mk('text', { class: 'gg-st gg-fade cursor-pointer fill-faint text-[11.5px]', x: mx + 152, y: y0 + 82 });
 						t1.textContent = p.name; t2.textContent = p.period + ' · 与' + p.partner; t3.textContent = p.one;
 						svg.appendChild(t1); svg.appendChild(t2); svg.appendChild(t3);
-						var hit = mk('rect', { class: 'gg-hit gg-fade', x: mx + 142, y: y0 + 18, width: 420, height: 76 });
+						var hit = mk('rect', { class: 'gg-fade cursor-pointer fill-transparent', x: mx + 142, y: y0 + 18, width: 420, height: 76 });
 						var title = document.createElementNS(NS, 'title'); title.textContent = '查看 ' + p.name + ' 详情';
 						hit.appendChild(title); svg.appendChild(hit);
 						[t1, t2, t3, hit].forEach(function (n) { n.addEventListener('click', function () { openRepo(p); }); });
 						var yr = p.start.slice(0, 4);
-						if (yr !== lastYear) { lastYear = yr; var yt = mk('text', { class: 'gg-year', x: mx - 18, y: y0 + 4 }); yt.textContent = yr; svg.appendChild(yt); }
+						if (yr !== lastYear) { lastYear = yr; var yt = mk('text', { class: 'fill-faint font-mono text-[11px] [text-anchor:end]', x: mx - 18, y: y0 + 4 }); yt.textContent = yr; svg.appendChild(yt); }
 						[t1, t2, t3, hit, n1, n2].forEach(function (n) { n.style.transitionDelay = (0.25 + i * 0.18 + 0.35) + 's'; });
 						bp.style.transitionDelay = (0.25 + i * 0.18) + 's';
 					});
-					var head = mk('circle', { class: 'gg-node gg-head', cx: mx, cy: endY, r: 6 });
-					var ht = mk('text', { class: 'gg-meta gg-fade', x: mx + 18, y: endY + 4 });
+					var head = mk('circle', { class: 'fill-ink stroke-bg [stroke-width:3]', cx: mx, cy: endY, r: 6 });
+					var ht = mk('text', { class: 'gg-fade fill-sub font-mono text-[11px]', x: mx + 18, y: endY + 4 });
 					ht.textContent = 'HEAD → 主线 · 还在继续写';
 					svg.appendChild(head); svg.appendChild(ht);
 
@@ -600,11 +603,27 @@ import '@fontsource/jetbrains-mono/700.css';
 
 				/* ================= PR 表单 ================= */
 				boot('PR表单', function () {
+					var CHIP_BASE = ['border-line2', 'text-sub'];
+					var CHIP_ON = ['border-amber', 'text-amber', 'bg-amber/10'];
+					function markTitleErr(on) {
+						var e = $('#prTitle'); if (!e) return;
+						e.classList.remove('border-line2', 'border-red', 'animate-shake');
+						e.classList.add(on ? 'border-red' : 'border-line2');
+						if (on) e.classList.add('animate-shake');
+					}
+					function paintChips() {
+						$$('#stageChips .chip').forEach(function (x) {
+							var on = x.classList.contains('on');
+							x.classList.remove.apply(x.classList, CHIP_BASE.concat(CHIP_ON));
+							x.classList.add.apply(x.classList, on ? CHIP_ON : CHIP_BASE);
+						});
+					}
 					var chips = $('#stageChips');
 					if (chips) chips.addEventListener('click', function (e) {
 						var c = e.target.closest('.chip'); if (!c) return;
 						$$('#stageChips .chip').forEach(function (x) { x.classList.remove('on'); });
 						c.classList.add('on');
+						paintChips();
 					});
 					var form = $('#prForm'); if (!form) return;
 					var prMask = $('#prMask');
@@ -614,7 +633,7 @@ import '@fontsource/jetbrains-mono/700.css';
 						var tEl = $('#prTitle');
 						var t = tEl ? tEl.value.trim() : '';
 						if (!t) {
-							if (tEl) { tEl.classList.add('err'); tEl.focus(); setTimeout(function () { tEl.classList.remove('err'); }, 1200); }
+							if (tEl) { markTitleErr(true); tEl.focus(); setTimeout(function () { markTitleErr(false); }, 1200); }
 							toast('先写一句：我想做一个 XXX');
 							return;
 						}
@@ -632,6 +651,7 @@ import '@fontsource/jetbrains-mono/700.css';
 						if (prMask) openMask(prMask);
 						form.reset();
 						$$('#stageChips .chip').forEach(function (x, i) { x.classList.toggle('on', i === 0); });
+						paintChips();
 						toast('PR 已创建，复制简介或直接发邮件');
 					});
 					var pc = $('#prCopy');
@@ -668,14 +688,20 @@ import '@fontsource/jetbrains-mono/700.css';
 						{ k: '动作 · 回到顶部', h: 'top', run: function () { window.scrollTo({ top: 0, behavior: 'smooth' }); } }
 					];
 					function paintAct() {
-						palList.querySelectorAll('li[data-i]').forEach(function (li) { li.classList.toggle('act', +li.dataset.i === palIdx); });
+						palList.querySelectorAll('li[data-i]').forEach(function (li) {
+							var on = +li.dataset.i === palIdx;
+							li.classList.toggle('bg-amber/10', on);
+							li.classList.toggle('text-ink', on);
+							var it = li.querySelector('i');
+							if (it) { it.classList.toggle('text-amber', on); it.classList.toggle('text-faint', !on); }
+						});
 					}
 					function renderPal(q) {
 						curCmds = COMMANDS.filter(function (c) { return c.k.indexOf(q) > -1 || c.h.indexOf(q) > -1; });
 						if (palIdx >= curCmds.length) palIdx = Math.max(0, curCmds.length - 1);
 						palList.innerHTML = curCmds.length
-							? curCmds.map(function (c, i) { return '<li class="' + (i === palIdx ? 'act' : '') + '" data-i="' + i + '"><span>' + c.k + '</span><i>' + c.h + '</i></li>'; }).join('')
-							: '<li class="empty">没有匹配的命令</li>';
+							? curCmds.map(function (c, i) { return '<li class="flex cursor-pointer items-center justify-between gap-[14px] rounded-[9px] px-[14px] py-[11px] text-[14px]' + (i === palIdx ? ' bg-amber/10 text-ink' : ' text-sub') + '" data-i="' + i + '"><span>' + c.k + '</span><i class="font-mono text-[11.5px]' + (i === palIdx ? ' text-amber' : ' text-faint') + '">' + c.h + '</i></li>'; }).join('')
+							: '<li class="empty flex cursor-default items-center justify-center gap-[14px] rounded-[9px] px-[14px] py-[11px] text-[14px] text-faint">没有匹配的命令</li>';
 						palList.querySelectorAll('li[data-i]').forEach(function (li) {
 							li.addEventListener('click', function () { curCmds[+li.dataset.i].run(); closeMask(palMask); });
 							li.addEventListener('mousemove', function () { palIdx = +li.dataset.i; paintAct(); });

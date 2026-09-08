@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>co-build · 合作方案与报价</title>
+<meta name="description" content="M1 上手月方案 + 长期月费方案，逐条写清每一块钱买什么。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230E100C'/%3E%3Cpath d='M11 9v13a4 4 0 0 0 4 4h7' stroke='%23E5A63C' stroke-width='2.6' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='11' cy='7' r='3' fill='%23E5A63C'/%3E%3Ccircle cx='22' cy='26' r='3' fill='%23E5A63C'/%3E%3Ccircle cx='22' cy='7' r='3' fill='%23EDE8D8'/%3E%3C/svg%3E">
+<!-- 字体非阻塞加载：网络不通时立即用本地字体渲染，绝不白屏 -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap"></noscript>
+<style>
+:root{
+  --bg:#0E100C; --bg2:#12150E; --panel:#161A11; --line:#262B1D; --line2:#3A4029;
+  --ink:#EDE8D8; --sub:#ABA88D; --faint:#77755F;
+  --amber:#E5A63C; --amber-d:#9A7024;
+  --green:#8BC46A; --red:#E07456;
+  --green-bg:rgba(139,196,106,.08);
+  --mono:'JetBrains Mono','SF Mono','Consolas','Menlo','Noto Sans SC',monospace;
+  --serif:'Noto Serif SC','Source Han Serif SC','Songti SC','STSong','SimSun',serif;
+  --sans:'Noto Sans SC','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{color-scheme:dark;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+::selection{background:var(--amber);color:#161004}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-thumb{background:#2C3120;border-radius:5px}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+.wrap{max-width:1000px;margin:0 auto;padding:0 28px}
+:focus-visible{outline:2px dashed var(--amber);outline-offset:3px}
+html.js [data-rv]{opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+html.js [data-rv].in{opacity:1;transform:none}
+
+/* 顶栏 */
+.top{position:fixed;inset:0 0 auto;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px;padding:0 clamp(18px,3vw,34px);background:rgba(14,16,12,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:11px;font-family:var(--mono);font-weight:700;font-size:16px}
+.logo .mark{width:30px;height:30px;border:1.5px solid var(--line2);border-radius:8px;display:grid;place-items:center;color:var(--amber)}
+.logo .mark svg{width:16px;height:16px}
+.logo i{font-style:normal;font-size:11px;color:var(--faint);font-weight:400;letter-spacing:.14em}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:10px;font-weight:700;font-size:14px;border:none;transition:filter .2s,transform .15s,border-color .2s,color .2s}
+.btn:active{transform:scale(.97)}
+.btn.amber{background:var(--amber);color:#1D1405;padding:10px 20px}
+.btn.amber:hover{filter:brightness(1.09)}
+.btn.line{background:none;border:1.5px solid var(--line2);color:var(--ink);padding:10px 20px}
+.btn.line:hover{border-color:var(--amber);color:var(--amber)}
+@media(max-width:760px){.logo i{display:none}}
+
+/* HERO */
+.hero{padding:136px 0 66px;background-image:radial-gradient(rgba(237,232,216,.05) 1px,transparent 1px);background-size:30px 30px;-webkit-mask-image:linear-gradient(#000 60%,transparent);mask-image:linear-gradient(#000 60%,transparent)}
+.crumb{font-family:var(--mono);font-size:13px;color:var(--faint);margin-bottom:22px}
+.crumb b{color:var(--amber);font-weight:700;margin-right:10px}
+.hero h1{font-family:var(--serif);font-weight:900;font-size:clamp(34px,4.8vw,56px);line-height:1.3}
+.hero h1 em{font-style:normal;color:var(--amber)}
+.hero-sub{margin-top:22px;max-width:640px;font-size:15.5px;line-height:2;color:var(--sub)}
+.hero-sub b{color:var(--ink);font-weight:500}
+.q-meta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.q-meta span{font-family:var(--mono);font-size:12px;color:var(--sub);border:1px solid var(--line2);border-radius:999px;padding:7px 15px}
+.q-meta span b{color:var(--amber);font-weight:400;margin-right:8px}
+
+/* 章节 */
+.sec{padding:72px 0}
+.sec-head{display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:16px}
+.sec-no{font-family:var(--mono);font-size:13px;color:var(--amber);letter-spacing:.15em}
+.sec-head h2{font-family:var(--serif);font-weight:900;font-size:clamp(24px,3.2vw,34px)}
+.sec-cmd{font-family:var(--mono);font-size:12px;color:var(--faint);margin-left:auto}
+.sec-lead{max-width:680px;color:var(--sub);font-size:14.5px;line-height:2;margin-bottom:36px}
+
+/* 项目理解 */
+.und{border:1px solid var(--line2);border-left:3px solid var(--amber);border-radius:12px;background:var(--bg2);padding:26px 30px;font-size:15px;line-height:2.1;color:var(--ink)}
+.und p+p{margin-top:10px}
+
+/* 两段式 */
+.two-step{display:grid;grid-template-columns:1fr 46px 1fr;gap:0;align-items:stretch}
+.stepc{border:1px solid var(--line2);border-radius:14px;background:var(--bg2);padding:26px 28px}
+.stepc .sn{font-family:var(--mono);font-size:11px;color:var(--amber);letter-spacing:.2em;margin-bottom:10px}
+.stepc h3{font-family:var(--serif);font-weight:900;font-size:22px}
+.stepc .sp{margin-top:10px;font-size:14px;line-height:2;color:var(--sub)}
+.stepc .sp b{color:var(--ink)}
+.step-arrow{display:grid;place-items:center;color:var(--amber)}
+.step-arrow svg{width:22px;height:22px}
+@media(max-width:760px){.two-step{grid-template-columns:1fr}.step-arrow{transform:rotate(90deg);padding:8px 0}}
+
+/* 时间线 */
+.tline{position:relative;border-left:2px solid var(--line2);padding-left:28px;margin-left:7px;display:grid;gap:22px}
+.tnode{position:relative}
+.tnode::before{content:'';position:absolute;left:-35px;top:3px;width:12px;height:12px;border-radius:3px;background:var(--bg);border:2.5px solid var(--amber)}
+.tnode.done::before{border-color:var(--green)}
+.tn-day{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.12em}
+.tnode h5{font-size:15.5px;margin:4px 0 7px}
+.tnode h5 i{font-style:normal;font-family:var(--mono);font-size:10.5px;font-weight:400;color:var(--amber);border:1px solid rgba(229,166,60,.4);border-radius:5px;padding:2px 8px;margin-left:10px;vertical-align:2px}
+.tnode p{font-size:13.5px;line-height:1.95;color:var(--sub)}
+.tnode p b{color:var(--ink);font-weight:500}
+
+/* 付款条 */
+.paybar{display:flex;gap:8px;margin:6px 0 4px}
+.pseg{flex:1;text-align:center;font-family:var(--mono);font-size:12px;padding:14px 8px;border-radius:9px;background:rgba(229,166,60,.1);color:var(--amber);border:1px solid rgba(229,166,60,.4);line-height:1.7}
+.pseg.g{background:var(--green-bg);color:var(--green);border-color:rgba(139,196,106,.3)}
+@media(max-width:640px){.paybar{flex-direction:column}}
+
+/* 档位选择 */
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.tier{position:relative;border:1.5px solid var(--line2);border-radius:14px;background:var(--bg2);padding:24px 22px;cursor:pointer;text-align:left;transition:all .2s;font-family:inherit;color:var(--sub)}
+.tier:hover{border-color:var(--amber-d)}
+.tier.on{border-color:var(--amber);background:rgba(229,166,60,.06)}
+.tier .tn{font-family:var(--mono);font-size:12px;color:var(--faint);letter-spacing:.18em}
+.tier h4{font-family:var(--serif);font-weight:900;font-size:24px;color:var(--ink);margin-top:6px}
+.tier .td{font-family:var(--mono);font-size:11.5px;color:var(--sub);margin-top:4px}
+.tier .tp{font-family:var(--mono);font-size:20px;font-weight:700;color:var(--amber);margin-top:14px}
+.tier .tp i{font-style:normal;font-size:11px;color:var(--faint);font-weight:400}
+.tier p{font-size:12.5px;line-height:1.9;margin-top:12px}
+.rec{position:absolute;top:-11px;left:18px;background:var(--amber);color:#1D1405;font-family:var(--mono);font-size:10.5px;padding:3px 11px;border-radius:999px;font-weight:700}
+@media(max-width:760px){.tiers{grid-template-columns:1fr}}
+
+/* 费用总览 */
+.cost-box{border:1px solid var(--line2);border-radius:16px;background:var(--bg2);padding:30px}
+.cost-bar{display:flex;gap:8px}
+.cseg{flex:1;border-radius:10px;padding:16px 10px;text-align:center;font-family:var(--mono);line-height:1.8}
+.cseg .cl{font-size:11px;letter-spacing:.1em;display:block}
+.cseg .cv{font-size:17px;font-weight:700;display:block;margin-top:4px}
+.cseg.m1{background:rgba(229,166,60,.12);border:1px solid rgba(229,166,60,.45);color:var(--amber)}
+.cseg.mm{background:var(--green-bg);border:1px solid rgba(139,196,106,.3);color:var(--green)}
+.cseg.stop{background:none;border:1.5px dashed var(--line2);color:var(--faint);font-size:11.5px}
+.cost-sum{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-top:22px;padding-top:20px;border-top:1px dashed var(--line2)}
+.cost-sum b{font-family:var(--serif);font-weight:900;font-size:40px;color:var(--ink)}
+.cost-sum i{font-style:normal;font-family:var(--mono);font-size:12.5px;color:var(--sub)}
+.cost-note{margin-top:14px;font-size:12.5px;color:var(--faint);line-height:1.9}
+@media(max-width:760px){.cost-bar{flex-direction:column}}
+
+/* 保障 */
+.gd{display:grid;gap:12px}
+.gd-row{display:grid;grid-template-columns:minmax(150px,200px) 1fr;gap:18px;border:1px solid var(--line);border-radius:10px;padding:15px 18px;font-size:13.5px;line-height:1.9;color:var(--sub);background:var(--bg)}
+.gd-row b{color:var(--ink);font-weight:500}
+.gd-row i{font-style:normal;font-family:var(--mono);font-size:10.5px;color:var(--green);display:block;margin-bottom:4px}
+@media(max-width:640px){.gd-row{grid-template-columns:1fr;gap:6px}}
+
+/* CTA */
+.cta{text-align:center;border-top:1px solid var(--line);background:var(--bg2);padding:84px 0}
+.cta h2{font-family:var(--serif);font-weight:900;font-size:clamp(28px,3.8vw,42px)}
+.cta p{margin:18px auto 0;max-width:560px;font-size:14.5px;line-height:2;color:var(--sub)}
+.cta-btns{display:flex;gap:14px;justify-content:center;margin-top:30px;flex-wrap:wrap}
+.cta-crumb{margin-top:30px;font-family:var(--mono);font-size:12px;color:var(--faint)}
+
+footer{background:var(--bg2);border-top:1px solid var(--line);padding:24px 28px;text-align:center;font-family:var(--mono);font-size:11.5px;color:var(--faint);line-height:2}
+
+#toast{position:fixed;left:50%;bottom:32px;transform:translate(-50%,16px);background:var(--ink);color:#16130A;padding:13px 22px;border-radius:10px;font-size:13.5px;font-weight:500;opacity:0;pointer-events:none;transition:all .3s cubic-bezier(.2,.8,.3,1);z-index:120;box-shadow:0 12px 34px rgba(0,0,0,.45);max-width:88vw}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+
+/* 打印：保持品牌深色，隐藏顶栏与按钮 */
+@media print{
+  .top,.noprint,#toast{display:none!important}
+  body{background:var(--bg)}
+  .hero{padding-top:48px;-webkit-mask-image:none;mask-image:none}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+
+<header class="top noprint">
+  <a class="logo" href="index.html" aria-label="返回主站">
+    <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6.5" cy="5" r="2.3"/><circle cx="6.5" cy="19" r="2.3"/><circle cx="17.5" cy="8" r="2.3"/><path d="M6.5 7.3v9.4"/><path d="M17.5 10.3c0 4-3.6 4.7-7.5 5.2"/></svg></span>
+    co-build<i>合作方案</i>
+  </a>
+  <button class="btn amber" id="printBtn" type="button">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M6 11l6 6 6-6"/><path d="M4 21h16"/></svg>
+    存为 PDF</button>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap">
+    <p class="crumb" data-rv><b>❯</b>~/co-build/quotes $ cat <span class="pj">项目</span>-合作方案.md</p>
+    <h1 data-rv style="transition-delay:.08s">先跑一个月，<br>再决定<em>走多远</em>。</h1>
+    <p class="hero-sub" data-rv style="transition-delay:.16s">这份方案分两段：<b>第一段 M1 是一次性的一口价</b>——上手、体检、第一批改进；<b>第二段从第二个月起按月付</b>——提前两周随时停。每一块钱买什么、什么时候付、怎么退出，下面逐条写清，没有任何「详情面议」。</p>
+    <div class="q-meta" data-rv style="transition-delay:.24s">
+      <span><b>项目</b><span class="pj">项目名</span></span>
+      <span><b>编号</b><span id="qNo">Q-000</span></span>
+      <span><b>日期</b><span id="qDate">—</span></span>
+      <span><b>有效期</b><span id="qValid">7 天</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 01 项目理解 ============ -->
+<section class="sec" id="und" style="padding-top:44px">
+  <div class="wrap">
+    <div class="sec-head" data-rv>
+      <span class="sec-no">01 / 理解</span>
+      <h2>先写下我理解的项目</h2>
+      <span class="sec-cmd">// 有出入，直接指出来</span>
+    </div>
+    <div class="und" data-rv id="undBox"></div>
+  </div>
+</section>
+
+<!-- ============ 02 建议路径 ============ -->
+<section class="sec" id="path" style="padding-top:12px">
+  <div class="wrap">
+    <div class="sec-head" data-rv>
+      <span class="sec-no">02 / 路径</span>
+      <h2>为什么分两段</h2>
+      <span class="sec-cmd">$ cat 结构.md</span>
+    </div>
+    <div class="two-step" data-rv>
+      <div class="stepc">
+        <div class="sn">PHASE 1 · 一次性</div>
+        <h3>M1 上手月</h3>
+        <p class="sp">第一个月要做三件<b>只做一次</b>的事：全量体检、接管部署、搭协作节奏——外加第一批高优需求上线。这些按<b>一口价</b>收，产出物（体检报告 + 路线图）本身就是你的资产，拿着它找任何开发者都能接着干。</p>
+      </div>
+      <div class="step-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></div>
+      <div class="stepc">
+        <div class="sn">PHASE 2 · 按月</div>
+        <h3>长期月费</h3>
+        <p class="sp">第二个月起，只剩纯干活：每周迭代、修 bug、盯告警、月度复盘。所以价格降下来——<b>按月付，月初付当月，提前两周随时停</b>。没有长约、没有押金，留人靠产出，不靠合同。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 M1 方案 ============ -->
+<section class="sec" id="m1" style="padding-top:12px">
+  <div class="wrap">
+    <div class="sec-head" data-rv>
+      <span class="sec-no">03 / M1</span>
+      <h2>首月方案 · 一口价</h2>
+      <span class="sec-cmd" id="m1Break"></span>
+    </div>
+    <div class="tline" data-rv>
+      <div class="tnode"><span class="tn-day">第 1 周</span><h5>全量代码体检<i>约 2 深度日</i></h5><p>通读全部代码，盘点账号、服务器、第三方依赖，产出《体检报告》：<b>现状、技术债、风险清单</b>——哪里会坏、先修什么、值不值得修。</p></div>
+      <div class="tnode"><span class="tn-day">第 1 周</span><h5>三个月迭代路线图<i>约 1 深度日</i></h5><p>结合你的业务目标排出优先级清单，<b>你划勾确认</b>。之后每个月做什么，都从这张图上走。</p></div>
+      <div class="tnode"><span class="tn-day">第 1–2 周</span><h5>接管与加固<i>约 1 深度日</i></h5><p>服务器监控和告警接我手机、数据备份、账号权限盘点。<b>线上出问题，你发现之前我通常已经在改。</b></p></div>
+      <div class="tnode done"><span class="tn-day">第 2–4 周</span><h5>首批高优需求上线<i>约 4 深度日</i></h5><p>路线图里<b>前 3–5 项</b>，本月内上线到正式环境——不是演示环境。第一批做什么，体检完你定。</p></div>
+      <div class="tnode done"><span class="tn-day">贯穿首月</span><h5>协作机制搭建<i>含在内</i></h5><p>共享看板 + 周日晚排期 + 周五晚一页周报 + 三人群。第二个月起，你只需要看板和周报。</p></div>
+    </div>
+    <div class="sec-head" data-rv style="margin-top:34px">
+      <span class="sec-no">付款</span><h2 style="font-size:clamp(20px,2.6vw,26px)">两期，无息</h2>
+    </div>
+    <div class="paybar" data-rv>
+      <div class="pseg">① 确认方案开工 50%<br>锁档期 · 建仓库 · 开始体检</div>
+      <div class="pseg g">② 月末交付 50%<br>《体检报告》+ 路线图 + 首批需求上线时</div>
+    </div>
+    <p class="sec-lead" data-rv style="margin:14px 0 0;font-size:13px;color:var(--faint)">M1 结束时，即使选择不再继续，《体检报告》和《路线图》也完整交付——它们是独立可用的资产，这是收一次性价格的底气。</p>
+  </div>
+</section>
+
+<!-- ============ 04 月费方案 ============ -->
+<section class="sec" id="month" style="padding-top:12px">
+  <div class="wrap">
+    <div class="sec-head" data-rv>
+      <span class="sec-no">04 / 月费</span>
+      <h2>第二个月起 · 按月</h2>
+      <span class="sec-cmd">// 点选档位，价格同步更新</span>
+    </div>
+    <p class="sec-lead" data-rv>三个档位的区别只有一个：我每周投入的深度日数量。每月 1 日可升降档；月底复盘时，你决定续不续——<b>没开工的月份不收费</b>。</p>
+    <div class="tiers" data-rv id="tierBox"></div>
+
+    <div class="sec-head" data-rv style="margin-top:40px">
+      <span class="sec-no">节奏</span><h2 style="font-size:clamp(20px,2.6vw,26px)">一个月怎么跑</h2>
+    </div>
+    <div class="tline" data-rv>
+      <div class="tnode"><span class="tn-day">每周日晚</span><h5>下周排期</h5><p>本周任务进共享看板，谁先谁后你说了算；紧急插队标注「今天就要」，当晚答复。</p></div>
+      <div class="tnode"><span class="tn-day">周一 – 周五晚间</span><h5>深度施工</h5><p>你睡前留言，我集中处理和施工——<b>早上你醒来，进展已经在看板上</b>。</p></div>
+      <div class="tnode"><span class="tn-day">每周五晚</span><h5>一页周报</h5><p>做完什么 / 下周什么 / 有什么风险，一分钟读完。</p></div>
+      <div class="tnode done"><span class="tn-day">月末</span><h5>复盘 + 双向决定</h5><p>数据过一遍：用户在用什么、哪里流失。你决定续不续，产出决定接不接。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 费用总览 ============ -->
+<section class="sec" id="cost" style="padding-top:12px">
+  <div class="wrap">
+    <div class="sec-head" data-rv>
+      <span class="sec-no">05 / 总览</span>
+      <h2>费用一目了然</h2>
+      <span class="sec-cmd">$ cat 账本.md</span>
+    </div>
+    <div class="cost-box" data-rv>
+      <div class="cost-bar">
+        <div class="cseg m1"><span class="cl">M1 首月 · 一口价</span><span class="cv" id="vM1">¥0</span></div>
+        <div class="cseg mm"><span class="cl">M2 · 月初付</span><span class="cv" id="vM2">¥0</span></div>
+        <div class="cseg mm"><span class="cl">M3 · 月初付</span><span class="cv" id="vM3">¥0</span></div>
+        <div class="cseg stop">第 4 个月起<br>提前 2 周随时停<br>未开工月不收费</div>
+      </div>
+      <div class="cost-sum">
+        <b id="vSum">¥0</b>
+        <i>首三个月合计（M1 一口价 + 2 个月月费）<br>之后每月 <span id="vAfter">¥0</span>，按月续，无长约</i>
+      </div>
+      <p class="cost-note">月费包含：功能迭代、bug 修复、小程序提审、服务器监控、每月数据复盘、技术咨询。不含：服务器等第三方成本（你直付，约 ¥100–600/年）、全新独立大模块（走一口价）。本报价签约后锁定，不随档期涨价。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 保障 ============ -->
+<section class="sec" id="guard" style="padding-top:12px">
+  <div class="wrap">
+    <div class="sec-head" data-rv>
+      <span class="sec-no">06 / 保障</span>
+      <h2>如果走不下去</h2>
+      <span class="sec-cmd">// 条款先于分歧</span>
+    </div>
+    <div class="gd" data-rv>
+      <div class="gd-row"><div><i>头 3 天</i><b>M1 不满意</b></div><span>退首期的 70%（扣除已投入部分），零理由零扯皮；体检报告照常给你。</span></div>
+      <div class="gd-row"><div><i>任何一个月</i><b>月费随时停</b></div><span>提前 2 周通知即可。当月排期做完、文档补齐、交接语音一次，体面收尾。无违约金、无押金。</span></div>
+      <div class="gd-row"><div><i>资产</i><b>东西全在你手里</b></div><span>代码仓库、服务器、域名、小程序主体从第一天起就在你的账号名下，我只有协作权限——没有「代码赎回」这种剧情。</span></div>
+      <div class="gd-row"><div><i>价格</i><b>签约即锁价</b></div><span>本报价确认后，合作周期内不涨价。我调价只影响之后的新合作，不追溯。</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 下一步 ============ -->
+<section class="cta">
+  <div class="wrap">
+    <span class="sec-no" data-rv>07 / NEXT</span>
+    <h2 data-rv>方案在这。剩下一句话的事。</h2>
+    <p data-rv>回复「按方案来」，或者指出要调整的地方；我出一页纸协议，电子签当天完成，排进下周档期。想先只做 M1 也完全可以——做完拿报告再决定，本来就是这个结构设计的意义。</p>
+    <div class="cta-btns noprint" data-rv>
+      <button class="btn amber" id="mailBtn" type="button">复制邮箱回复</button>
+    </div>
+    <p class="cta-crumb" data-rv>~/co-build/quotes $ echo "M1 的报告，无论续不续都是你的资产。"</p>
+  </div>
+</section>
+
+<footer>本报价 <span id="validF">7</span> 天内有效（档期有限，先约先占）· co-build 手作坊 · <span id="dateF"></span></footer>
+
+<div id="toast" role="status"></div>
+
+<script>
+(function(){
+'use strict';
+
+/* ================================================================
+   配置区：发给客户前，改这里 ↓↓↓
+================================================================ */
+var CONFIG={
+  project:'「项目名」',                 // ← 改成真实项目名（保留「」括号更醒目）
+  quoteNo:'Q-2025-001',                // ← 报价编号（随意，有编号显得正式）
+  validDays:7,                         // ← 报价有效期（天）
+  understanding:[                       // ← 「我理解的项目」两三段，改成你的真实理解
+    '你现在有一套已经在用的产品，核心流程能跑，但迭代被卡住了：需求没人接、线上小问题没人修、代码在自己手里却没人看得懂。',
+    '接下来的目标：用一个月摸清家底、修掉最疼的几件事；之后按月稳步迭代，把产品交到「随时有人管」的状态。',
+    '有出入直接指出——这份理解写错了，后面的方案就得重排。'
+  ],
+  tiers:{
+    qb:{key:'qb',name:'轻伴',days:'每周约 1 个深度日',m1:3200,month:1980,desc:'适合刚稳定：维护、修 bug、盯告警、小调整，不追新功能。'},
+    pp:{key:'pp',name:'陪跑',days:'每周约 2 个深度日',m1:4800,month:3600,desc:'多数合作在这档：持续迭代 + 每月数据复盘，功能按节奏出。',rec:true},
+    jb:{key:'jb',name:'并肩',days:'每周约 3 个深度日',m1:7000,month:5800,desc:'适合增长冲刺期：功能密度更高，我参加你的周会。'}
+  },
+  defaultTier:'pp',                     // ← 默认选中的档位
+  MAIL:'hello@co-build.dev'
+};
+/* ============== 配置区结束 ============== */
+
+var $=function(s){ return document.querySelector(s); };
+var $$=function(s){ return Array.prototype.slice.call(document.querySelectorAll(s)); };
+var toastTimer=0;
+function toast(msg){ var el=$('#toast'); if(!el)return; el.textContent=msg; el.classList.add('on'); clearTimeout(toastTimer); toastTimer=setTimeout(function(){el.classList.remove('on');},2600); }
+function fmt(n){ return n.toLocaleString('en-US'); }
+function copyText(txt,ok){
+  var done=function(){ toast(ok||'已复制到剪贴板'); };
+  var fb=function(){
+    var ta=document.createElement('textarea'); ta.value=txt; ta.style.cssText='position:fixed;opacity:0';
+    document.body.appendChild(ta); ta.select();
+    try{ document.execCommand('copy'); done(); }catch(e){ toast('复制失败，请手动选择文本'); }
+    ta.remove();
+  };
+  if(navigator.clipboard && window.isSecureContext){ navigator.clipboard.writeText(txt).then(done,fb); }
+  else fb();
+}
+
+function boot(tag,fn){ try{ fn(); }catch(err){ console.error('[报价页] '+tag+'：',err); } }
+
+/* 基本信息 */
+boot('基本信息',function(){
+  var d=new Date();
+  var date=d.getFullYear()+'.'+String(d.getMonth()+1).padStart(2,'0')+'.'+String(d.getDate()).padStart(2,'0');
+  $$('.pj').forEach(function(el){ el.textContent=CONFIG.project; });
+  $('#qNo').textContent=CONFIG.quoteNo;
+  $('#qDate').textContent=date;
+  $('#qValid').textContent=CONFIG.validDays+' 天';
+  $('#validF').textContent=CONFIG.validDays;
+  $('#dateF').textContent=date;
+  document.title='co-build · '+CONFIG.project+' 合作方案与报价';
+  $('#undBox').innerHTML=CONFIG.understanding.map(function(p){ return '<p>'+p+'</p>'; }).join('');
+});
+
+/* 档位选择 + 价格联动 */
+var curTier=CONFIG.defaultTier;
+boot('档位与价格',function(){
+  var box=$('#tierBox');
+  box.innerHTML=Object.keys(CONFIG.tiers).map(function(k){
+    var t=CONFIG.tiers[k];
+    return '<button type="button" class="tier'+(k===curTier?' on':'')+'" data-k="'+k+'">'+
+      (t.rec?'<span class="rec">建议从这里开始</span>':'')+
+      '<span class="tn">TIER</span><h4>'+t.name+'</h4>'+
+      '<span class="td">'+t.days+'</span>'+
+      '<span class="tp">¥'+fmt(t.month)+'<i> /月</i></span>'+
+      '<p>'+t.desc+'</p></button>';
+  }).join('');
+  box.addEventListener('click',function(e){
+    var b=e.target.closest('.tier'); if(!b)return;
+    curTier=b.getAttribute('data-k');
+    box.querySelectorAll('.tier').forEach(function(x){ x.classList.toggle('on',x===b); });
+    paint();
+  });
+  paint();
+});
+function paint(){
+  var t=CONFIG.tiers[curTier];
+  $('#m1Break').textContent='M1 = ¥'+fmt(t.month)+' 月费 + ¥'+fmt(t.m1-t.month)+' 一次性上手费';
+  $('#vM1').textContent='¥'+fmt(t.m1);
+  $('#vM2').textContent='¥'+fmt(t.month);
+  $('#vM3').textContent='¥'+fmt(t.month);
+  $('#vSum').textContent='¥'+fmt(t.m1+t.month*2);
+  $('#vAfter').textContent='¥'+fmt(t.month);
+}
+
+/* 按钮 */
+boot('按钮',function(){
+  var p=$('#printBtn');
+  if(p) p.addEventListener('click',function(){
+    toast('在打印对话框选择「另存为 PDF」，即可发给客户');
+    setTimeout(function(){ window.print(); },450);
+  });
+  var m=$('#mailBtn');
+  if(m) m.addEventListener('click',function(){ copyText(CONFIG.MAIL,'邮箱已复制：'+CONFIG.MAIL); });
+});
+
+/* 浮现 */
+boot('浮现动效',function(){
+  var els=$$('[data-rv]');
+  if(!('IntersectionObserver' in window)){ els.forEach(function(el){ el.classList.add('in'); }); return; }
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+  },{threshold:.1});
+  els.forEach(function(el){ io.observe(el); });
+});
+
+})();
+</script>
+</body>
+</html>

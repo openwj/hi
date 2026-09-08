@@ -1,0 +1,295 @@
+---
+import ProjectLayout from '../../../layouts/ProjectLayout.astro';
+import '../../../projects/p20260908/pricing.css';
+
+// 报价配置与交互（档位联动 / 打印 / 复制邮箱）见页面底部 <script>。
+---
+
+<ProjectLayout
+	title="兰森食堂 · 合作方案与报价"
+	description="M1 上手月方案 + 长期月费方案，逐条写清每一块钱买什么。"
+	crumb="合作方案"
+	foot="本报价 7 天内有效（档期有限，先约先占）· 我的码 · 与主站同一人维护"
+>
+	<button class="btn amber noprint" id="printBtn" slot="actions" type="button">
+		<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M6 11l6 6 6-6"/><path d="M4 21h16"/></svg>
+		存为 PDF
+	</button>
+
+	<!-- ============ HERO ============ -->
+	<section class="pq-hero">
+		<div class="pq-wrap">
+			<p class="pq-crumb" data-rv><b>❯</b>~/pr/p20260908/quotes $ cat <span class="pj">项目</span>-合作方案.md</p>
+			<h1 data-rv style="transition-delay:.08s">先跑一个月，<br>再决定<em>走多远</em>。</h1>
+			<p class="pq-sub" data-rv style="transition-delay:.16s">这份方案分两段：<b>第一段 M1 是一次性的一口价</b>——上手、体检、第一批改进；<b>第二段从第二个月起按月付</b>——提前两周随时停。每一块钱买什么、什么时候付、怎么退出，下面逐条写清，没有任何「详情面议」。</p>
+			<div class="pq-meta" data-rv style="transition-delay:.24s">
+				<span><b>项目</b><span class="pj">项目名</span></span>
+				<span><b>编号</b><span id="qNo">Q-000</span></span>
+				<span><b>日期</b><span id="qDate">—</span></span>
+				<span><b>有效期</b><span id="qValid">7 天</span></span>
+			</div>
+		</div>
+	</section>
+
+	<!-- ============ 01 项目理解 ============ -->
+	<section class="pq-sec" id="und" style="padding-top:44px">
+		<div class="pq-wrap">
+			<div class="pq-sec-head" data-rv>
+				<span class="pq-sec-no">01 / 理解</span>
+				<h2>先写下我理解的项目</h2>
+				<span class="pq-sec-cmd">// 有出入，直接指出来</span>
+			</div>
+			<div class="pq-und" data-rv id="undBox"></div>
+		</div>
+	</section>
+
+	<!-- ============ 02 建议路径 ============ -->
+	<section class="pq-sec" id="path" style="padding-top:12px">
+		<div class="pq-wrap">
+			<div class="pq-sec-head" data-rv>
+				<span class="pq-sec-no">02 / 路径</span>
+				<h2>为什么分两段</h2>
+				<span class="pq-sec-cmd">$ cat 结构.md</span>
+			</div>
+			<div class="pq-two-step" data-rv>
+				<div class="pq-stepc">
+					<div class="sn">PHASE 1 · 一次性</div>
+					<h3>M1 上手月</h3>
+					<p class="sp">第一个月要做三件<b>只做一次</b>的事：全量体检、接管部署、搭协作节奏——外加第一批高优需求上线。这些按<b>一口价</b>收，产出物（体检报告 + 路线图）本身就是你的资产，拿着它找任何开发者都能接着干。</p>
+				</div>
+				<div class="pq-step-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></div>
+				<div class="pq-stepc">
+					<div class="sn">PHASE 2 · 按月</div>
+					<h3>长期月费</h3>
+					<p class="sp">第二个月起，只剩纯干活：每周迭代、修 bug、盯告警、月度复盘。所以价格降下来——<b>按月付，月初付当月，提前两周随时停</b>。没有长约、没有押金，留人靠产出，不靠合同。</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- ============ 03 M1 方案 ============ -->
+	<section class="pq-sec" id="m1" style="padding-top:12px">
+		<div class="pq-wrap">
+			<div class="pq-sec-head" data-rv>
+				<span class="pq-sec-no">03 / M1</span>
+				<h2>首月方案 · 一口价</h2>
+				<span class="pq-sec-cmd" id="m1Break"></span>
+			</div>
+			<div class="pq-tline" data-rv>
+				<div class="pq-tnode"><span class="pq-tn-day">第 1 周</span><h5>全量代码体检<i>约 2 深度日</i></h5><p>通读全部代码，盘点账号、服务器、第三方依赖，产出《体检报告》：<b>现状、技术债、风险清单</b>——哪里会坏、先修什么、值不值得修。</p></div>
+				<div class="pq-tnode"><span class="pq-tn-day">第 1 周</span><h5>三个月迭代路线图<i>约 1 深度日</i></h5><p>结合你的业务目标排出优先级清单，<b>你划勾确认</b>。之后每个月做什么，都从这张图上走。</p></div>
+				<div class="pq-tnode"><span class="pq-tn-day">第 1–2 周</span><h5>接管与加固<i>约 1 深度日</i></h5><p>服务器监控和告警接我手机、数据备份、账号权限盘点。<b>线上出问题，你发现之前我通常已经在改。</b></p></div>
+				<div class="pq-tnode done"><span class="pq-tn-day">第 2–4 周</span><h5>首批高优需求上线<i>约 4 深度日</i></h5><p>路线图里<b>前 3–5 项</b>，本月内上线到正式环境——不是演示环境。第一批做什么，体检完你定。</p></div>
+				<div class="pq-tnode done"><span class="pq-tn-day">贯穿首月</span><h5>协作机制搭建<i>含在内</i></h5><p>共享看板 + 周日晚排期 + 周五晚一页周报 + 三人群。第二个月起，你只需要看板和周报。</p></div>
+			</div>
+			<div class="pq-sec-head" data-rv style="margin-top:34px">
+				<span class="pq-sec-no">付款</span><h2 style="font-size:clamp(20px,2.6vw,26px)">两期，无息</h2>
+			</div>
+			<div class="pq-paybar" data-rv>
+				<div class="pq-pseg">① 确认方案开工 50%<br>锁档期 · 建仓库 · 开始体检</div>
+				<div class="pq-pseg g">② 月末交付 50%<br>《体检报告》+ 路线图 + 首批需求上线时</div>
+			</div>
+			<p class="pq-lead" data-rv style="margin:14px 0 0;font-size:13px;color:var(--color-faint)">M1 结束时，即使选择不再继续，《体检报告》和《路线图》也完整交付——它们是独立可用的资产，这是收一次性价格的底气。</p>
+		</div>
+	</section>
+
+	<!-- ============ 04 月费方案 ============ -->
+	<section class="pq-sec" id="month" style="padding-top:12px">
+		<div class="pq-wrap">
+			<div class="pq-sec-head" data-rv>
+				<span class="pq-sec-no">04 / 月费</span>
+				<h2>第二个月起 · 按月</h2>
+				<span class="pq-sec-cmd">// 点选档位，价格同步更新</span>
+			</div>
+			<p class="pq-lead" data-rv>三个档位的区别只有一个：我每周投入的深度日数量。每月 1 日可升降档；月底复盘时，你决定续不续——<b>没开工的月份不收费</b>。</p>
+			<div class="pq-tiers" data-rv id="tierBox"></div>
+
+			<div class="pq-sec-head" data-rv style="margin-top:40px">
+				<span class="pq-sec-no">节奏</span><h2 style="font-size:clamp(20px,2.6vw,26px)">一个月怎么跑</h2>
+			</div>
+			<div class="pq-tline" data-rv>
+				<div class="pq-tnode"><span class="pq-tn-day">每周日晚</span><h5>下周排期</h5><p>本周任务进共享看板，谁先谁后你说了算；紧急插队标注「今天就要」，当晚答复。</p></div>
+				<div class="pq-tnode"><span class="pq-tn-day">周一 – 周五晚间</span><h5>深度施工</h5><p>你睡前留言，我集中处理和施工——<b>早上你醒来，进展已经在看板上</b>。</p></div>
+				<div class="pq-tnode"><span class="pq-tn-day">每周五晚</span><h5>一页周报</h5><p>做完什么 / 下周什么 / 有什么风险，一分钟读完。</p></div>
+				<div class="pq-tnode done"><span class="pq-tn-day">月末</span><h5>复盘 + 双向决定</h5><p>数据过一遍：用户在用什么、哪里流失。你决定续不续，产出决定接不接。</p></div>
+			</div>
+		</div>
+	</section>
+
+	<!-- ============ 05 费用总览 ============ -->
+	<section class="pq-sec" id="cost" style="padding-top:12px">
+		<div class="pq-wrap">
+			<div class="pq-sec-head" data-rv>
+				<span class="pq-sec-no">05 / 总览</span>
+				<h2>费用一目了然</h2>
+				<span class="pq-sec-cmd">$ cat 账本.md</span>
+			</div>
+			<div class="pq-cost-box" data-rv>
+				<div class="pq-cost-bar">
+					<div class="pq-cseg m1"><span class="cl">M1 首月 · 一口价</span><span class="cv" id="vM1">¥0</span></div>
+					<div class="pq-cseg mm"><span class="cl">M2 · 月初付</span><span class="cv" id="vM2">¥0</span></div>
+					<div class="pq-cseg mm"><span class="cl">M3 · 月初付</span><span class="cv" id="vM3">¥0</span></div>
+					<div class="pq-cseg stop">第 4 个月起<br>提前 2 周随时停<br>未开工月不收费</div>
+				</div>
+				<div class="pq-cost-sum">
+					<b id="vSum">¥0</b>
+					<i>首三个月合计（M1 一口价 + 2 个月月费）<br>之后每月 <span id="vAfter">¥0</span>，按月续，无长约</i>
+				</div>
+				<p class="pq-cost-note">月费包含：功能迭代、bug 修复、小程序提审、服务器监控、每月数据复盘、技术咨询。不含：服务器等第三方成本（你直付，约 ¥100–600/年）、全新独立大模块（走一口价）。本报价签约后锁定，不随档期涨价。</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- ============ 06 保障 ============ -->
+	<section class="pq-sec" id="guard" style="padding-top:12px">
+		<div class="pq-wrap">
+			<div class="pq-sec-head" data-rv>
+				<span class="pq-sec-no">06 / 保障</span>
+				<h2>如果走不下去</h2>
+				<span class="pq-sec-cmd">// 条款先于分歧</span>
+			</div>
+			<div class="pq-gd" data-rv>
+				<div class="pq-gd-row"><div><i>头 3 天</i><b>M1 不满意</b></div><span>退首期的 70%（扣除已投入部分），零理由零扯皮；体检报告照常给你。</span></div>
+				<div class="pq-gd-row"><div><i>任何一个月</i><b>月费随时停</b></div><span>提前 2 周通知即可。当月排期做完、文档补齐、交接语音一次，体面收尾。无违约金、无押金。</span></div>
+				<div class="pq-gd-row"><div><i>资产</i><b>东西全在你手里</b></div><span>代码仓库、服务器、域名、小程序主体从第一天起就在你的账号名下，我只有协作权限——没有「代码赎回」这种剧情。</span></div>
+				<div class="pq-gd-row"><div><i>价格</i><b>签约即锁价</b></div><span>本报价确认后，合作周期内不涨价。我调价只影响之后的新合作，不追溯。</span></div>
+			</div>
+		</div>
+	</section>
+
+	<!-- ============ 07 下一步 ============ -->
+	<section class="pq-cta">
+		<div class="pq-wrap">
+			<span class="pq-sec-no" data-rv>07 / NEXT</span>
+			<h2 data-rv>方案在这。剩下一句话的事。</h2>
+			<p data-rv>回复「按方案来」，或者指出要调整的地方；我出一页纸协议，电子签当天完成，排进下周档期。想先只做 M1 也完全可以——做完拿报告再决定，本来就是这个结构设计的意义。</p>
+			<div class="pq-cta-btns noprint" data-rv>
+				<button class="btn amber" id="mailBtn" type="button">复制邮箱回复</button>
+			</div>
+			<p class="pq-cta-crumb" data-rv>~/pr/p20260908/quotes $ echo "M1 的报告，无论续不续都是你的资产。"</p>
+		</div>
+	</section>
+
+	<script>
+		(function () {
+			'use strict';
+
+			/* ================================================================
+			   配置区：改这里 ↓↓↓
+			================================================================ */
+			var CONFIG = {
+				project: '「兰森食堂」',
+				quoteNo: 'Q-2026-001',
+				validDays: 7,
+				understanding: [
+					'你现在有一套已经在用的产品，核心流程能跑，但迭代被卡住了：需求没人接、线上小问题没人修、代码在自己手里却没人看得懂。',
+					'接下来的目标：用一个月摸清家底、修掉最疼的几件事；之后按月稳步迭代，把产品交到「随时有人管」的状态。',
+					'有出入直接指出——这份理解写错了，后面的方案就得重排。'
+				],
+				tiers: {
+					qb: { key: 'qb', name: '轻伴', days: '每周约 1 个深度日', m1: 3200, month: 1980, desc: '适合刚稳定：维护、修 bug、盯告警、小调整，不追新功能。' },
+					pp: { key: 'pp', name: '陪跑', days: '每周约 2 个深度日', m1: 4800, month: 3600, desc: '多数合作在这档：持续迭代 + 每月数据复盘，功能按节奏出。', rec: true },
+					jb: { key: 'jb', name: '并肩', days: '每周约 3 个深度日', m1: 7000, month: 5800, desc: '适合增长冲刺期：功能密度更高，我参加你的周会。' }
+				},
+				defaultTier: 'pp',
+				MAIL: 'hello@co-build.dev'
+			};
+			/* ============== 配置区结束 ============== */
+
+			var $ = function (s) { return document.querySelector(s); };
+			var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+			var toastTimer = 0;
+			function toast(msg) {
+				var el = $('#toast');
+				if (!el) return;
+				el.textContent = msg;
+				el.classList.add('on');
+				clearTimeout(toastTimer);
+				toastTimer = setTimeout(function () { el.classList.remove('on'); }, 2600);
+			}
+			function fmt(n) { return n.toLocaleString('en-US'); }
+			function copyText(txt, ok) {
+				var done = function () { toast(ok || '已复制到剪贴板'); };
+				var fb = function () {
+					var ta = document.createElement('textarea');
+					ta.value = txt;
+					ta.style.cssText = 'position:fixed;opacity:0';
+					document.body.appendChild(ta);
+					ta.select();
+					try { document.execCommand('copy'); done(); } catch (e) { toast('复制失败，请手动选择文本'); }
+					ta.remove();
+				};
+				if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(txt).then(done, fb); }
+				else fb();
+			}
+
+			function boot(tag, fn) { try { fn(); } catch (err) { console.error('[报价页] ' + tag + '：', err); } }
+
+			/* 基本信息 */
+			boot('基本信息', function () {
+				var d = new Date();
+				var date = d.getFullYear() + '.' + String(d.getMonth() + 1).padStart(2, '0') + '.' + String(d.getDate()).padStart(2, '0');
+				$$('.pj').forEach(function (el) { el.textContent = CONFIG.project; });
+				$('#qNo').textContent = CONFIG.quoteNo;
+				$('#qDate').textContent = date;
+				$('#qValid').textContent = CONFIG.validDays + ' 天';
+				$('#validF') && ($('#validF').textContent = CONFIG.validDays);
+				$('#dateF') && ($('#dateF').textContent = date);
+				$('#undBox').innerHTML = CONFIG.understanding.map(function (p) { return '<p>' + p + '</p>'; }).join('');
+			});
+
+			/* 档位选择 + 价格联动 */
+			var curTier = CONFIG.defaultTier;
+			function paint() {
+				var t = CONFIG.tiers[curTier];
+				$('#m1Break').textContent = 'M1 = ¥' + fmt(t.month) + ' 月费 + ¥' + fmt(t.m1 - t.month) + ' 一次性上手费';
+				$('#vM1').textContent = '¥' + fmt(t.m1);
+				$('#vM2').textContent = '¥' + fmt(t.month);
+				$('#vM3').textContent = '¥' + fmt(t.month);
+				$('#vSum').textContent = '¥' + fmt(t.m1 + t.month * 2);
+				$('#vAfter').textContent = '¥' + fmt(t.month);
+			}
+			boot('档位与价格', function () {
+				var box = $('#tierBox');
+				box.innerHTML = Object.keys(CONFIG.tiers).map(function (k) {
+					var t = CONFIG.tiers[k];
+					return '<button type="button" class="pq-tier' + (k === curTier ? ' on' : '') + '" data-k="' + k + '">' +
+						(t.rec ? '<span class="pq-rec">建议从这里开始</span>' : '') +
+						'<span class="tn">TIER</span><h4>' + t.name + '</h4>' +
+						'<span class="td">' + t.days + '</span>' +
+						'<span class="tp">¥' + fmt(t.month) + '<i> /月</i></span>' +
+						'<p>' + t.desc + '</p></button>';
+				}).join('');
+				box.addEventListener('click', function (e) {
+					var b = e.target.closest('.pq-tier');
+					if (!b) return;
+					curTier = b.getAttribute('data-k');
+					box.querySelectorAll('.pq-tier').forEach(function (x) { x.classList.toggle('on', x === b); });
+					paint();
+				});
+				paint();
+			});
+
+			/* 按钮 */
+			boot('按钮', function () {
+				var p = $('#printBtn');
+				if (p) p.addEventListener('click', function () {
+					toast('在打印对话框选择「另存为 PDF」，即可发给客户');
+					setTimeout(function () { window.print(); }, 450);
+				});
+				var m = $('#mailBtn');
+				if (m) m.addEventListener('click', function () { copyText(CONFIG.MAIL, '邮箱已复制：' + CONFIG.MAIL); });
+			});
+
+			/* 浮现 */
+			boot('浮现动效', function () {
+				var els = $$('[data-rv]');
+				if (!('IntersectionObserver' in window)) { els.forEach(function (el) { el.classList.add('in'); }); return; }
+				var io = new IntersectionObserver(function (es) {
+					es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+				}, { threshold: 0.1 });
+				els.forEach(function (el) { io.observe(el); });
+			});
+		})();
+	</script>
+</ProjectLayout>

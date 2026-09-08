@@ -1,0 +1,900 @@
+<div class="page">
+
+<!-- HERO -->
+<header class="hero">
+  <div class="eyebrow">产品需求梳理 · 功能清单</div>
+  <h1>兰森食堂 · 私域白领外卖平台<br><span class="accent">功能模块需求梳理</span></h1>
+  <p class="sub">面向写字楼白领的「私域外卖 + 多角色协同」一体化平台需求分析。本文档基于对现有管理后台 17 大功能模块的逐一实机勘查整理而成，用于指导系统的重新规划与开发。</p>
+  <div class="meta">
+    <span>覆盖模块 17 个</span>
+    <span>角色 5 类</span>
+    <span>业务线 6 条</span>
+    <span>文档类型：PRD 梳理稿</span>
+  </div>
+</header>
+
+<!-- TOC -->
+<nav class="toc">
+  <h2>目录</h2>
+  <ol>
+    <li><a href="#overview">系统概览与业务模式</a></li>
+    <li><a href="#roles">角色体系与权限边界</a></li>
+    <li><a href="#core-flow">核心业务主线：菜品三级联动</a></li>
+    <li><a href="#dashboard">驾驶舱（决策分析）</a></li>
+    <li><a href="#building">楼宇管理</a></li>
+    <li><a href="#store">门店（厨房中心）管理</a></li>
+    <li><a href="#dish">菜品与菜单</a></li>
+    <li><a href="#order">订单管理</a></li>
+    <li><a href="#delivery">配送管理</a></li>
+    <li><a href="#user">用户管理</a></li>
+    <li><a href="#partner">合伙人管理</a></li>
+    <li><a href="#marketing">营销活动</a></li>
+    <li><a href="#group">团购管理</a></li>
+    <li><a href="#surround">周边管理</a></li>
+    <li><a href="#corp">企业团餐</a></li>
+    <li><a href="#breakfast">早餐管理</a></li>
+    <li><a href="#kitchen">厨房测算</a></li>
+    <li><a href="#finance">资金管理</a></li>
+    <li><a href="#review">评价管理</a></li>
+    <li><a href="#service">客服中心</a></li>
+    <li><a href="#order-state">订单状态机</a></li>
+    <li><a href="#data">数据模型与对象</a></li>
+    <li><a href="#priority">开发优先级建议</a></li>
+    <li><a href="#devplan">开发计划总览（全版本）</a></li>
+    <li><a href="#v1checklist">V1 午餐实施清单</a></li>
+    <li><a href="#supplement">补充：前台端与支撑体系</a></li>
+  </ol>
+</nav>
+
+<!-- 1. OVERVIEW -->
+<section id="overview">
+  <h2 class="sec">系统概览与业务模式</h2>
+  <p class="lead">兰森食堂是一个面向写字楼白领的「私域外卖」一体化平台。其核心模式是<b>厨房中心模式</b>：总部统一品牌，门店承担厨房中心角色，按「楼宇」组织私域白领的用餐与配送，同时延伸出早餐、团购、周边好物、企业团餐等在办公室场景的增值业务线。</p>
+
+  <div class="grid cols-3">
+    <div class="card"><h4><span class="i">🏢</span>单元模型</h4><p>楼宇是顾客端触达的最小业务单元。白领绑定所在楼宇，顾客端只显示绑定门店对应楼宇当日可售菜品，取餐点在楼宇内设置。</p></div>
+    <div class="card"><h4><span class="i">🏪</span>厨房中心</h4><p>门店本质是「厨房中心」，挂着总部统一品牌，绑定一个主楼宇用于命名，可同时服务多个可售楼宇，共享库存。</p></div>
+    <div class="card"><h4><span class="i">🤝</span>联营模式</h4><p>平台通过「合伙人」体系扩展经营：门店合伙人、楼宇合伙人、配送合伙人、配送员，各司其职，支持多角色后台分离。</p></div>
+  </div>
+
+  <div class="grid cols-3">
+    <div class="card"><h4><span class="i">📦</span>业务线 1 · 正餐</h4><p>当日现炒正餐外卖，白领在楼宇菜单下单，按取餐点自提或配送。是平台的核心主业务。</p></div>
+    <div class="card"><h4><span class="i">🥐</span>业务线 2 · 早餐预订</h4><p>前一天订、第二天到固定取餐点扫码取餐，支持单品与套餐。</p></div>
+    <div class="card"><h4><span class="i">🛒</span>业务线 3 · 下班团购</h4><p>水果/蔬菜/鲜奶/早餐，按楼拼团，当日 16:00 截单、17:30 大堂自提。</p></div>
+  </div>
+
+  <div class="grid cols-3">
+    <div class="card"><h4><span class="i">🏠</span>业务线 4 · 周边好物</h4><p>家政上门服务（蛋糕/保洁/鲜花/维修/干洗），平台严选、预约上门、售后保障。</p></div>
+    <div class="card"><h4><span class="i">🍽️</span>业务线 5 · 企业团餐</h4><p>面向企业用户的多人团餐，按楼宇展示方案，达到起购份数自动匹配阶梯折扣。</p></div>
+    <div class="card"><h4><span class="i">💰</span>业务线 6 · 会员与资金</h4><p>会员卡（充值/次卡/期限卡）、优惠券营销，资金按平台抽成费率结算。</p></div>
+  </div>
+
+  <div class="callout"><b>核心设计洞察：</b>系统以「楼宇」为主线串联库存、菜单、配送与私域运营。同一份菜品库存由多个可售楼宇共享，顾客端按今日/明日 weekday 从「周排班」动态生成菜单——这是区别于普通外卖平台的关键业务设计，也是开发时最需重点保障的数据联动逻辑。</div>
+
+  <!-- architecture diagram -->
+  <figure class="diagram">
+    <div class="mermaid" data-processed="true"><svg aria-roledescription="flowchart-v2" role="graphics-document document" viewBox="0 0 2439.984375 684" style="max-width: 2439.984375px;" class="flowchart" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="100%" id="mermaid-1788865994574"><style>#mermaid-1788865994574{font-family:"InstrumentSans";font-size:16px;fill:#23201B;}#mermaid-1788865994574 .error-icon{fill:#ffffff;}#mermaid-1788865994574 .error-text{fill:#000000;stroke:#000000;}#mermaid-1788865994574 .edge-thickness-normal{stroke-width:1px;}#mermaid-1788865994574 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-1788865994574 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-1788865994574 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-1788865994574 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-1788865994574 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-1788865994574 .marker{fill:#b9ad9a;stroke:#b9ad9a;}#mermaid-1788865994574 .marker.cross{stroke:#b9ad9a;}#mermaid-1788865994574 svg{font-family:"InstrumentSans";font-size:16px;}#mermaid-1788865994574 p{margin:0;}#mermaid-1788865994574 .label{font-family:"InstrumentSans";color:#23201B;}#mermaid-1788865994574 .cluster-label text{fill:#000000;}#mermaid-1788865994574 .cluster-label span{color:#000000;}#mermaid-1788865994574 .cluster-label span p{background-color:transparent;}#mermaid-1788865994574 .label text,#mermaid-1788865994574 span{fill:#23201B;color:#23201B;}#mermaid-1788865994574 .node rect,#mermaid-1788865994574 .node circle,#mermaid-1788865994574 .node ellipse,#mermaid-1788865994574 .node polygon,#mermaid-1788865994574 .node path{fill:#fdeee7;stroke:#E0572B;stroke-width:1px;}#mermaid-1788865994574 .rough-node .label text,#mermaid-1788865994574 .node .label text,#mermaid-1788865994574 .image-shape .label,#mermaid-1788865994574 .icon-shape .label{text-anchor:middle;}#mermaid-1788865994574 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-1788865994574 .rough-node .label,#mermaid-1788865994574 .node .label,#mermaid-1788865994574 .image-shape .label,#mermaid-1788865994574 .icon-shape .label{text-align:center;}#mermaid-1788865994574 .node.clickable{cursor:pointer;}#mermaid-1788865994574 .root .anchor path{fill:#b9ad9a!important;stroke-width:0;stroke:#b9ad9a;}#mermaid-1788865994574 .arrowheadPath{fill:#0b0b0b;}#mermaid-1788865994574 .edgePath .path{stroke:#b9ad9a;stroke-width:2.0px;}#mermaid-1788865994574 .flowchart-link{stroke:#b9ad9a;fill:none;}#mermaid-1788865994574 .edgeLabel{background-color:#e5f2ec;text-align:center;}#mermaid-1788865994574 .edgeLabel p{background-color:#e5f2ec;}#mermaid-1788865994574 .edgeLabel rect{opacity:0.5;background-color:#e5f2ec;fill:#e5f2ec;}#mermaid-1788865994574 .labelBkg{background-color:rgba(229, 242, 236, 0.5);}#mermaid-1788865994574 .cluster rect{fill:#ffffff;stroke:hsl(0, 0%, 90%);stroke-width:1px;}#mermaid-1788865994574 .cluster text{fill:#000000;}#mermaid-1788865994574 .cluster span{color:#000000;}#mermaid-1788865994574 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"InstrumentSans";font-size:12px;background:#ffffff;border:1px solid hsl(0, 0%, 90%);border-radius:2px;pointer-events:none;z-index:100;}#mermaid-1788865994574 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#23201B;}#mermaid-1788865994574 rect.text{fill:none;stroke-width:0;}#mermaid-1788865994574 .icon-shape,#mermaid-1788865994574 .image-shape{background-color:#e5f2ec;text-align:center;}#mermaid-1788865994574 .icon-shape p,#mermaid-1788865994574 .image-shape p{background-color:#e5f2ec;padding:2px;}#mermaid-1788865994574 .icon-shape rect,#mermaid-1788865994574 .image-shape rect{opacity:0.5;background-color:#e5f2ec;fill:#e5f2ec;}#mermaid-1788865994574 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker orient="auto" markerHeight="8" markerWidth="8" markerUnits="userSpaceOnUse" refY="5" refX="5" viewBox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1788865994574_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerHeight="8" markerWidth="8" markerUnits="userSpaceOnUse" refY="5" refX="4.5" viewBox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1788865994574_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="11" viewBox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1788865994574_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="-1" viewBox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1788865994574_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="12" viewBox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1788865994574_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="-1" viewBox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1788865994574_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"><g data-look="classic" id="D" class="cluster"><rect height="337" width="258" y="339" x="10.6640625" style=""></rect><g transform="translate(107.6640625, 339)" class="cluster-label"><foreignObject height="24" width="64"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>厨房中心</p></span></div></foreignObject></g></g><g data-look="classic" id="P" class="cluster"><rect height="281" width="637.984375" y="8" x="8" style=""></rect><g transform="translate(278.9921875, 8)" class="cluster-label"><foreignObject height="24" width="96"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>合伙人工作台</p></span></div></foreignObject></g></g><g data-look="classic" id="HQ" class="cluster"><rect height="282" width="838" y="161" x="665.984375" style=""></rect><g transform="translate(1004.984375, 161)" class="cluster-label"><foreignObject height="24" width="160"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>总部管理台（全权限）</p></span></div></foreignObject></g></g><g data-look="classic" id="C" class="cluster"><rect height="281" width="908" y="8" x="1523.984375" style=""></rect><g transform="translate(1921.49609375, 8)" class="cluster-label"><foreignObject height="24" width="112.9765625"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>顾客端（C 端）</p></span></div></foreignObject></g></g></g><g class="edgePaths"><path marker-end="url(#mermaid-1788865994574_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_C1_C2_0" d="M1688.984,87L1688.984,93.167C1688.984,99.333,1688.984,111.667,1688.984,124C1688.984,136.333,1688.984,148.667,1688.984,158.333C1688.984,168,1688.984,175,1688.984,178.5L1688.984,182"></path><path marker-end="url(#mermaid-1788865994574_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_C3_C4_1" d="M1914.984,87L1914.984,93.167C1914.984,99.333,1914.984,111.667,1914.984,124C1914.984,136.333,1914.984,148.667,1914.984,160.333C1914.984,172,1914.984,183,1914.984,188.5L1914.984,194"></path><path marker-end="url(#mermaid-1788865994574_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_C5_C6_2" d="M2096.984,87L2096.984,93.167C2096.984,99.333,2096.984,111.667,2096.984,124C2096.984,136.333,2096.984,148.667,2096.984,160.333C2096.984,172,2096.984,183,2096.984,188.5L2096.984,194"></path><path marker-end="url(#mermaid-1788865994574_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_H1_H2_3" d="M780.984,252L780.984,258.167C780.984,264.333,780.984,276.667,780.984,287C780.984,297.333,780.984,305.667,780.984,314C780.984,322.333,780.984,330.667,782.77,338.404C784.555,346.141,788.125,353.282,789.91,356.852L791.696,360.422"></path><path marker-end="url(#mermaid-1788865994574_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_D1_D2_4" d="M123.664,418L123.664,422.167C123.664,426.333,123.664,434.667,123.664,443C123.664,451.333,123.664,459.667,124.75,467.363C125.836,475.059,128.008,482.118,129.094,485.647L130.18,489.177"></path><path marker-end="url(#mermaid-1788865994574_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_D2_D3_5" d="M139.664,547L139.664,551.167C139.664,555.333,139.664,563.667,139.664,571.333C139.664,579,139.664,586,139.664,589.5L139.664,593"></path><path marker-end="url(#mermaid-1788865994574_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_C2_H2_6" d="M1688.984,264L1688.984,268.167C1688.984,272.333,1688.984,280.667,1562.151,289C1435.318,297.333,1181.651,305.667,1054.818,314C927.984,322.333,927.984,330.667,918.901,338.737C909.818,346.807,891.652,354.614,882.569,358.517L873.486,362.421"></path><path marker-end="url(#mermaid-1788865994574_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_H2_D2_7" d="M806.984,418L806.984,422.167C806.984,426.333,806.984,434.667,704.848,443C602.711,451.333,398.438,459.667,292.416,467.54C186.395,475.413,178.625,482.826,174.741,486.532L170.856,490.239"></path><path marker-end="url(#mermaid-1788865994574_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_P1_D1_8" d="M123.664,252L123.664,258.167C123.664,264.333,123.664,276.667,123.664,287C123.664,297.333,123.664,305.667,123.664,314C123.664,322.333,123.664,330.667,123.664,338.333C123.664,346,123.664,353,123.664,356.5L123.664,360"></path><path marker-end="url(#mermaid-1788865994574_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_P2_C2_9" d="M530.32,87L530.32,93.167C530.32,99.333,530.32,111.667,530.32,124C530.32,136.333,530.32,148.667,701.099,164.266C871.877,179.866,1213.434,198.732,1384.212,208.166L1554.99,217.599"></path><path marker-end="url(#mermaid-1788865994574_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_P3_P4_10" d="M318.992,87L318.992,93.167C318.992,99.333,318.992,111.667,318.992,124C318.992,136.333,318.992,148.667,318.992,160.333C318.992,172,318.992,183,318.992,188.5L318.992,194"></path><path marker-end="url(#mermaid-1788865994574_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_C6_H3_11" d="M2096.984,252L2096.984,258.167C2096.984,264.333,2096.984,276.667,1925.651,287C1754.318,297.333,1411.651,305.667,1240.318,314C1068.984,322.333,1068.984,330.667,1068.984,338.333C1068.984,346,1068.984,353,1068.984,356.5L1068.984,360"></path></g><g class="edgeLabels"><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g transform="translate(318.9921875, 124)" class="edgeLabel"><g transform="translate(-32, -12)" class="label"><foreignObject height="24" width="64"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"><p>配送批次</p></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g transform="translate(1688.984375, 60)" id="flowchart-C1-0" class="node default"><rect height="54" width="201.328125" y="-27" x="-100.6640625" style="" class="basic label-container"></rect><g transform="translate(-70.6640625, -12)" style="" class="label"><rect></rect><foreignObject height="24" width="141.328125"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>微信/小程序 用户端</p></span></div></foreignObject></g></g><g transform="translate(1688.984375, 225)" id="flowchart-C2-1" class="node default"><rect height="78" width="260" y="-39" x="-130" style="" class="basic label-container"></rect><g transform="translate(-100, -24)" style="" class="label"><rect></rect><foreignObject height="48" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>按楼宇看菜单下单/支付/自提码</p></span></div></foreignObject></g></g><g transform="translate(1914.984375, 60)" id="flowchart-C3-2" class="node default"><rect height="54" width="124" y="-27" x="-62" style="" class="basic label-container"></rect><g transform="translate(-32, -12)" style="" class="label"><rect></rect><foreignObject height="24" width="64"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>我的订单</p></span></div></foreignObject></g></g><g transform="translate(1914.984375, 225)" id="flowchart-C4-3" class="node default"><rect height="54" width="92" y="-27" x="-46" style="" class="basic label-container"></rect><g transform="translate(-16, -12)" style="" class="label"><rect></rect><foreignObject height="24" width="32"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>评价</p></span></div></foreignObject></g></g><g transform="translate(2096.984375, 60)" id="flowchart-C5-4" class="node default"><rect height="54" width="124" y="-27" x="-62" style="" class="basic label-container"></rect><g transform="translate(-32, -12)" style="" class="label"><rect></rect><foreignObject height="24" width="64"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>早餐预订</p></span></div></foreignObject></g></g><g transform="translate(2096.984375, 225)" id="flowchart-C6-5" class="node default"><rect height="54" width="172" y="-27" x="-86" style="" class="basic label-container"></rect><g transform="translate(-56, -12)" style="" class="label"><rect></rect><foreignObject height="24" width="112"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>团购/周边/团餐</p></span></div></foreignObject></g></g><g transform="translate(2314.984375, 225)" id="flowchart-C7-6" class="node default"><rect height="54" width="164" y="-27" x="-82" style="" class="basic label-container"></rect><g transform="translate(-52, -12)" style="" class="label"><rect></rect><foreignObject height="24" width="104"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>会员卡/优惠券</p></span></div></foreignObject></g></g><g transform="translate(780.984375, 225)" id="flowchart-H1-7" class="node default"><rect height="54" width="108" y="-27" x="-54" style="" class="basic label-container"></rect><g transform="translate(-24, -12)" style="" class="label"><rect></rect><foreignObject height="24" width="48"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>驾驶舱</p></span></div></foreignObject></g></g><g transform="translate(806.984375, 391)" id="flowchart-H2-8" class="node default"><rect height="54" width="212" y="-27" x="-106" style="" class="basic label-container"></rect><g transform="translate(-76, -12)" style="" class="label"><rect></rect><foreignObject height="24" width="152"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>楼宇/门店/菜品/订单</p></span></div></foreignObject></g></g><g transform="translate(1068.984375, 391)" id="flowchart-H3-9" class="node default"><rect height="54" width="212" y="-27" x="-106" style="" class="basic label-container"></rect><g transform="translate(-76, -12)" style="" class="label"><rect></rect><foreignObject height="24" width="152"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>营销/团购/周边/团餐</p></span></div></foreignObject></g></g><g transform="translate(1346.984375, 391)" id="flowchart-H4-10" class="node default"><rect height="54" width="244" y="-27" x="-122" style="" class="basic label-container"></rect><g transform="translate(-92, -12)" style="" class="label"><rect></rect><foreignObject height="24" width="184"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>厨房测算/资金/评价/客服</p></span></div></foreignObject></g></g><g transform="translate(123.6640625, 225)" id="flowchart-P1-11" class="node default"><rect height="54" width="161.328125" y="-27" x="-80.6640625" style="" class="basic label-container"></rect><g transform="translate(-50.6640625, -12)" style="" class="label"><rect></rect><foreignObject height="24" width="101.328125"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>🏪 门店合伙人</p></span></div></foreignObject></g></g><g transform="translate(530.3203125, 60)" id="flowchart-P2-12" class="node default"><rect height="54" width="161.328125" y="-27" x="-80.6640625" style="" class="basic label-container"></rect><g transform="translate(-50.6640625, -12)" style="" class="label"><rect></rect><foreignObject height="24" width="101.328125"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>🏢 楼宇合伙人</p></span></div></foreignObject></g></g><g transform="translate(318.9921875, 60)" id="flowchart-P3-13" class="node default"><rect height="54" width="161.328125" y="-27" x="-80.6640625" style="" class="basic label-container"></rect><g transform="translate(-50.6640625, -12)" style="" class="label"><rect></rect><foreignObject height="24" width="101.328125"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>🚚 配送合伙人</p></span></div></foreignObject></g></g><g transform="translate(318.9921875, 225)" id="flowchart-P4-14" class="node default"><rect height="54" width="129.328125" y="-27" x="-64.6640625" style="" class="basic label-container"></rect><g transform="translate(-34.6640625, -12)" style="" class="label"><rect></rect><foreignObject height="24" width="69.328125"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>🛵 配送员</p></span></div></foreignObject></g></g><g transform="translate(123.6640625, 391)" id="flowchart-D1-15" class="node default"><rect height="54" width="124" y="-27" x="-62" style="" class="basic label-container"></rect><g transform="translate(-32, -12)" style="" class="label"><rect></rect><foreignObject height="24" width="64"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>门店接单</p></span></div></foreignObject></g></g><g transform="translate(139.6640625, 520)" id="flowchart-D2-16" class="node default"><rect height="54" width="140" y="-27" x="-70" style="" class="basic label-container"></rect><g transform="translate(-40, -12)" style="" class="label"><rect></rect><foreignObject height="24" width="80"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>周排班备餐</p></span></div></foreignObject></g></g><g transform="translate(139.6640625, 624)" id="flowchart-D3-17" class="node default"><rect height="54" width="188" y="-27" x="-94" style="" class="basic label-container"></rect><g transform="translate(-64, -12)" style="" class="label"><rect></rect><foreignObject height="24" width="128"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>出餐配送到取餐点</p></span></div></foreignObject></g></g></g></g></g></svg></div>
+    <figcaption>图 1 · 系统总体架构与角色协同关系</figcaption>
+  </figure>
+</section>
+
+<!-- 2. ROLES -->
+<section id="roles">
+  <h2 class="sec">角色体系与权限边界</h2>
+  <p class="lead">系统采用「总部 + 合伙人多角色」的权限架构。普通 C 端用户由前台自行注册；门店合伙人、楼宇合伙人、配送合伙人、配送员等<b>经营账号统一在「合伙人管理」创建</b>。</p>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>角色</th><th>登录后入口</th><th>核心职责</th><th>典型账号</th></tr></thead>
+    <tbody>
+      <tr><td><b>平台管理员（总部）</b></td><td>总部管理台（全权限）</td><td>全局运营、品牌、菜品库、门店/楼宇、营销、资金、客服</td><td>admin</td></tr>
+      <tr><td><b>🏪 门店合伙人</b></td><td>门店工作台</td><td>门店经营、接单、库存、营业状态、排班执行</td><td>smanager1</td></tr>
+      <tr><td><b>🏢 楼宇合伙人</b></td><td>楼宇工作台</td><td>楼宇运营、私域推广、用户触达、团购开团</td><td>bmanager1</td></tr>
+      <tr><td><b>🚚 配送合伙人</b></td><td>配送负责人工作台</td><td>配送团队管理、批次规划与调度</td><td>cleader1</td></tr>
+      <tr><td><b>🛵 配送员</b></td><td>配送员工作台</td><td>领取配送批次、按楼宇配送、送达确认</td><td>courier1</td></tr>
+      <tr><td><b>👤 C 端用户</b></td><td>前台用户端</td><td>注册、下正餐/早餐/团购/周边/团餐单、评价</td><td>自注册</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout"><b>权限要点：</b>普通用户不在后台创建；需要新增合伙人/配送员/管理员账号，一律前往「合伙人管理」页面。这对账户体系设计有直接约束——用户（User）与合伙人（Partner/Employee）应拆分为两套独立的认证体系。</div>
+</section>
+
+<!-- 3. CORE FLOW -->
+<section id="core-flow">
+  <h2 class="sec">核心业务主线：菜品三级联动</h2>
+  <p class="lead">整个正餐业务的核心是一条「菜品库 → 门店绑定 → 周排班」的三级数据链路。理解了这条链路，就理解了这个平台 70% 的数据关系。</p>
+
+  <div class="metrics">
+    <div class="metric"><span class="num">3</span><span class="lbl">菜品数据层级</span></div>
+    <div class="metric"><span class="num">7</span><span class="lbl">周排班天数</span></div>
+    <div class="metric"><span class="num">多</span><span class="lbl">可售楼宇共享库存</span></div>
+    <div class="metric"><span class="num">2</span><span class="lbl">今日+明日菜单</span></div>
+  </div>
+
+  <div class="dolist">
+    <div class="do"><span class="dot">1</span><div><span class="t">菜品库（总部维护）</span><div class="d">总部设计「可生产菜品」基础库，不绑定门店/楼宇，不含售价。字段含名称、类型（套餐/加购/单品）、分类（招牌套餐/轻食套餐/面食/饮品/甜品等）、描述、状态。</div></div></div>
+    <div class="do"><span class="dot">2</span><div><span class="t">门店绑定（售价）</span><div class="d">门店从菜品库选菜并设定本店售价与划线原价，可下架/移除。同一菜品在不同门店可有不同售价。</div></div></div>
+    <div class="do"><span class="dot">3</span><div><span class="t">周排班（周一~周日 + 库存）</span><div class="d">门店按「菜品 × 星期」排班，每格设置单日价格 + 周内库存 + 已售数 + 可售楼宇，多楼宇勾选共享同一份库存。</div></div></div>
+  </div>
+
+  <div class="callout"><b>顾客端展示规则：</b>顾客当日可见菜品 = 今天对应 weekday 的所有排班项；明日菜单 = weekday+1 的排班项。「可售楼宇」决定某楼宇白领能看到哪些菜品；「共享库存」意味多栋楼共卖一份量，库存扣减需做并发控制。</div>
+
+  <figure class="diagram">
+    <div class="mermaid" data-processed="true"><svg aria-roledescription="flowchart-v2" role="graphics-document document" viewBox="0 0 1339.859375 198" style="max-width: 1339.859375px;" class="flowchart" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="100%" id="mermaid-1788865994598"><style>#mermaid-1788865994598{font-family:"InstrumentSans";font-size:16px;fill:#23201B;}#mermaid-1788865994598 .error-icon{fill:#ffffff;}#mermaid-1788865994598 .error-text{fill:#000000;stroke:#000000;}#mermaid-1788865994598 .edge-thickness-normal{stroke-width:1px;}#mermaid-1788865994598 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-1788865994598 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-1788865994598 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-1788865994598 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-1788865994598 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-1788865994598 .marker{fill:#b9ad9a;stroke:#b9ad9a;}#mermaid-1788865994598 .marker.cross{stroke:#b9ad9a;}#mermaid-1788865994598 svg{font-family:"InstrumentSans";font-size:16px;}#mermaid-1788865994598 p{margin:0;}#mermaid-1788865994598 .label{font-family:"InstrumentSans";color:#23201B;}#mermaid-1788865994598 .cluster-label text{fill:#000000;}#mermaid-1788865994598 .cluster-label span{color:#000000;}#mermaid-1788865994598 .cluster-label span p{background-color:transparent;}#mermaid-1788865994598 .label text,#mermaid-1788865994598 span{fill:#23201B;color:#23201B;}#mermaid-1788865994598 .node rect,#mermaid-1788865994598 .node circle,#mermaid-1788865994598 .node ellipse,#mermaid-1788865994598 .node polygon,#mermaid-1788865994598 .node path{fill:#fdeee7;stroke:#E0572B;stroke-width:1px;}#mermaid-1788865994598 .rough-node .label text,#mermaid-1788865994598 .node .label text,#mermaid-1788865994598 .image-shape .label,#mermaid-1788865994598 .icon-shape .label{text-anchor:middle;}#mermaid-1788865994598 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-1788865994598 .rough-node .label,#mermaid-1788865994598 .node .label,#mermaid-1788865994598 .image-shape .label,#mermaid-1788865994598 .icon-shape .label{text-align:center;}#mermaid-1788865994598 .node.clickable{cursor:pointer;}#mermaid-1788865994598 .root .anchor path{fill:#b9ad9a!important;stroke-width:0;stroke:#b9ad9a;}#mermaid-1788865994598 .arrowheadPath{fill:#0b0b0b;}#mermaid-1788865994598 .edgePath .path{stroke:#b9ad9a;stroke-width:2.0px;}#mermaid-1788865994598 .flowchart-link{stroke:#b9ad9a;fill:none;}#mermaid-1788865994598 .edgeLabel{background-color:#e5f2ec;text-align:center;}#mermaid-1788865994598 .edgeLabel p{background-color:#e5f2ec;}#mermaid-1788865994598 .edgeLabel rect{opacity:0.5;background-color:#e5f2ec;fill:#e5f2ec;}#mermaid-1788865994598 .labelBkg{background-color:rgba(229, 242, 236, 0.5);}#mermaid-1788865994598 .cluster rect{fill:#ffffff;stroke:hsl(0, 0%, 90%);stroke-width:1px;}#mermaid-1788865994598 .cluster text{fill:#000000;}#mermaid-1788865994598 .cluster span{color:#000000;}#mermaid-1788865994598 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"InstrumentSans";font-size:12px;background:#ffffff;border:1px solid hsl(0, 0%, 90%);border-radius:2px;pointer-events:none;z-index:100;}#mermaid-1788865994598 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#23201B;}#mermaid-1788865994598 rect.text{fill:none;stroke-width:0;}#mermaid-1788865994598 .icon-shape,#mermaid-1788865994598 .image-shape{background-color:#e5f2ec;text-align:center;}#mermaid-1788865994598 .icon-shape p,#mermaid-1788865994598 .image-shape p{background-color:#e5f2ec;padding:2px;}#mermaid-1788865994598 .icon-shape rect,#mermaid-1788865994598 .image-shape rect{opacity:0.5;background-color:#e5f2ec;fill:#e5f2ec;}#mermaid-1788865994598 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker orient="auto" markerHeight="8" markerWidth="8" markerUnits="userSpaceOnUse" refY="5" refX="5" viewBox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1788865994598_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerHeight="8" markerWidth="8" markerUnits="userSpaceOnUse" refY="5" refX="4.5" viewBox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1788865994598_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="11" viewBox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1788865994598_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="-1" viewBox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1788865994598_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="12" viewBox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1788865994598_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="-1" viewBox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1788865994598_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#mermaid-1788865994598_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_A_B_0" d="M204,105L208.167,105C212.333,105,220.667,105,228.333,105C236,105,243,105,246.5,105L250,105"></path><path marker-end="url(#mermaid-1788865994598_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_B_C_1" d="M482,105L486.167,105C490.333,105,498.667,105,506.333,105C514,105,521,105,524.5,105L528,105"></path><path marker-end="url(#mermaid-1788865994598_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_C_D_2" d="M722.328,78L735.417,72.833C748.505,67.667,774.682,57.333,791.271,52.167C807.859,47,814.859,47,818.359,47L821.859,47"></path><path marker-end="url(#mermaid-1788865994598_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_C_E_3" d="M722.328,132L735.417,137.167C748.505,142.333,774.682,152.667,795.937,157.833C817.193,163,833.526,163,841.693,163L849.859,163"></path><path marker-end="url(#mermaid-1788865994598_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_D_F_4" d="M1085.859,47L1090.026,47C1094.193,47,1102.526,47,1113.526,47C1124.526,47,1138.193,47,1145.026,47L1151.859,47"></path><path marker-end="url(#mermaid-1788865994598_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_E_G_5" d="M1057.859,163L1066.693,163C1075.526,163,1093.193,163,1105.526,163C1117.859,163,1124.859,163,1128.359,163L1131.859,163"></path></g><g class="edgeLabels"><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignObject height="0" width="0"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g transform="translate(106, 105)" id="flowchart-A-30" class="node default"><rect height="54" width="196" y="-27" x="-98" style="" class="basic label-container"></rect><g transform="translate(-68, -12)" style="" class="label"><rect></rect><foreignObject height="24" width="136"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>菜品库总部·无售价</p></span></div></foreignObject></g></g><g transform="translate(368, 105)" id="flowchart-B-31" class="node default"><rect height="54" width="228" y="-27" x="-114" style="" class="basic label-container"></rect><g transform="translate(-84, -12)" style="" class="label"><rect></rect><foreignObject height="24" width="168"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>门店绑定本店售价/原价</p></span></div></foreignObject></g></g><g transform="translate(653.9296875, 105)" id="flowchart-C-33" class="node default"><rect height="54" width="243.859375" y="-27" x="-121.9296875" style="" class="basic label-container"></rect><g transform="translate(-91.9296875, -12)" style="" class="label"><rect></rect><foreignObject height="24" width="183.859375"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>周排班周1-周7 价格+库存</p></span></div></foreignObject></g></g><g transform="translate(955.859375, 47)" id="flowchart-D-35" class="node default"><rect height="78" width="260" y="-39" x="-130" style="" class="basic label-container"></rect><g transform="translate(-100, -24)" style="" class="label"><rect></rect><foreignObject height="48" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>顾客端菜单今日=weekday 明日=weekday+1</p></span></div></foreignObject></g></g><g transform="translate(955.859375, 163)" id="flowchart-E-37" class="node default"><rect height="54" width="204" y="-27" x="-102" style="" class="basic label-container"></rect><g transform="translate(-72, -12)" style="" class="label"><rect></rect><foreignObject height="24" width="144"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>多可售楼宇共享库存</p></span></div></foreignObject></g></g><g transform="translate(1233.859375, 47)" id="flowchart-F-39" class="node default"><rect height="54" width="156" y="-27" x="-78" style="" class="basic label-container"></rect><g transform="translate(-48, -12)" style="" class="label"><rect></rect><foreignObject height="24" width="96"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>楼宇白领下单</p></span></div></foreignObject></g></g><g transform="translate(1233.859375, 163)" id="flowchart-G-41" class="node default"><rect height="54" width="196" y="-27" x="-98" style="" class="basic label-container"></rect><g transform="translate(-68, -12)" style="" class="label"><rect></rect><foreignObject height="24" width="136"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>库存扣减·并发控制</p></span></div></foreignObject></g></g></g></g></g></svg></div>
+    <figcaption>图 2 · 菜品三级联动链路</figcaption>
+  </figure>
+</section>
+
+<!-- 4. DASHBOARD -->
+<section id="dashboard">
+  <h2 class="sec">驾驶舱（决策分析）</h2>
+  <p class="lead">总部全局数据看板，支持按日期区间筛选。一次概览平台整体经营状况与多维分析视图。</p>
+  <div class="mod">
+    <div class="mod-head"><span class="no">01</span><h4>驾驶舱</h4><span class="scope">总部 · 全权限</span></div>
+    <div class="mod-body">
+      <div class="goal">目标：为总部提供实时全局经营概览与多维分析，支撑经营决策。</div>
+      <div class="row" style="display:grid;gap:1rem">
+        <div><b style="color:var(--accent)">核心指标卡</b><br>
+        <span class="chip">今日订单</span><span class="chip">今日 GMV</span><span class="chip">累计订单</span><span class="chip">累计 GMV</span><span class="chip">注册用户</span><span class="chip">全国门店数量</span><span class="chip">全国楼宇数量</span><span class="chip">差评数量</span></div>
+        <div><b style="color:var(--accent)">数据分析视图</b><br>
+        <span class="chip">用户性别占比</span><span class="chip">用户年龄分布</span><span class="chip">用户下单时段习惯</span><span class="chip">近 7 天订单趋势</span><span class="chip">楼宇下单情况</span><span class="chip">菜品售卖 TOP10</span><span class="chip">客单价分布</span><span class="chip">门店下单情况</span><span class="chip">单店日均分布</span></div>
+        <div><b style="color:var(--accent)">数据筛选</b><br><span class="chip">开始日期</span><span class="chip">结束日期</span><span class="chip">查询按钮</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. BUILDING -->
+<section id="building">
+  <h2 class="sec">楼宇管理</h2>
+  <p class="lead">楼宇是顾客端触达与私域运营的最小业务单元，承接配送、取餐点与菜单的楼宇级展示与筛选。</p>
+  <div class="mod">
+    <div class="mod-head"><span class="no">05</span><h4>楼宇管理</h4><span class="scope">总部 / 楼宇合伙人</span></div>
+    <div class="mod-body">
+      <div class="goal">目标：统一管理可服务的写字楼，作为门店覆盖、配送范围、用户归属与菜单展示的锚点。</div>
+      <div class="dolist">
+        <div class="do"><span class="dot">1</span><div><span class="t">楼宇 CRUD</span><div class="d">增删改查楼宇基础信息：名称、所在区域/商圈、详细地址、状态（启用/停用）。删除需校验是否已绑定门店或存在历史订单。</div></div></div>
+        <div class="do"><span class="dot">2</span><div><span class="t">门店绑定关系</span><div class="d">楼宇可绑定服务门店；门店可同时服务多个「可售楼宇」，楼宇显示与筛选依赖该关系。</div></div></div>
+        <div class="do"><span class="dot">3</span><div><span class="t">取餐点设置</span><div class="d">为楼宇配置取餐点（自提点）位置与标识，供正餐自提、早餐扫码取餐、团购大堂自提复用。</div></div></div>
+        <div class="do"><span class="dot">4</span><div><span class="t">楼宇合伙人绑定</span><div class="d">指定楼宇负责的楼宇合伙人，实现楼宇级私域运营与推广责任划分。</div></div></div>
+      </div>
+      <div class="callout"><b>开发要点：</b>楼宇在数据模型中是「菜单可见性」与「订单归属」的关键外键，几乎所有顾客端查询都以「用户所在楼宇」为过滤条件，需建立楼宇维度的索引与缓存。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. STORE -->
+<section id="store">
+  <h2 class="sec">门店（厨房中心）管理</h2>
+  <p class="lead">门店本质是「厨房中心」：挂总部统一品牌，绑定一个主楼宇命名，可同时服务多个可售楼宇，共享库存。</p>
+  <div class="mod">
+    <div class="mod-head"><span class="no">06</span><h4>门店管理</h4><span class="scope">总部 / 门店合伙人</span></div>
+    <div class="mod-body">
+      <div class="goal">目标：管理门店经营主体、营业状态与合伙人归属，指导出餐与库存执行。</div>
+      <div class="dolist">
+        <div class="do"><span class="dot">1</span><div><span class="t">门店 CRUD</span><div class="d">增删改查门店：名称、主楼宇、商户主体信息、联系人、电话、状态。</div></div></div>
+        <div class="do"><span class="dot">2</span><div><span class="t">服务楼宇与覆盖面</span><div class="d">配置门店的可售楼宇范围，顾客端据此过滤今日可选菜品与配送范围。</div></div></div>
+        <div class="do"><span class="dot">3</span><div><span class="t">营业状态开关</span><div class="d">门店开门/打烊状态控制，营业中才接受下单与排班展示。</div></div></div>
+        <div class="do"><span class="dot">4</span><div><span class="t">门店合伙人归属</span><div class="d">门店与门店合伙人账号绑定，进入门店工作台执行接单、库存与排班。</div></div></div>
+        <div class="do"><span class="dot">5</span><div><span class="t">门店级菜品管理入口</span><div class="d">作为菜品三级联动第 2 层的操作入口：选菜、定本店售价、下架。</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. DISH -->
+<section id="dish">
+  <h2 class="sec">菜品与菜单</h2>
+  <p class="lead">菜品数据按三级联动管理，此处聚焦菜品库与门店菜单的维护细节（排班部分见第 3 章）。</p>
+  <div class="mod">
+    <div class="mod-head"><span class="no">07</span><h4>菜品与菜单</h4><span class="scope">总部 / 门店合伙人</span></div>
+    <div class="mod-body">
+      <div class="goal">目标：维护统一的菜品基础库，并配置门店层级的价格与上下架。</div>
+      <div class="dolist">
+        <div class="do"><span class="dot">1</span><div><span class="t">菜品库维护</span><div class="d">总部新增/编辑可生产菜品：名称、类型（套餐/加购/单品）、分类（招牌套餐/轻食套餐/面食/饮品/甜品等）、图片、描述、状态。</div></div></div>
+        <div class="do"><span class="dot">2</span><div><span class="t">门店绑定与定价</span><div class="d">门店从库中勾选菜品，设置本店销售价与划线原价，支持批量上架/下架。</div></div></div>
+        <div class="do"><span class="dot">3</span><div><span class="t">多价格体系</span><div class="d">同一菜品在不同门店、不同星期可拥有不同售价，价格以最终排班格为准。</div></div></div>
+        <div class="do"><span class="dot">4</span><div><span class="t">加购与套餐组合</span><div class="d">支持加购项与套餐类型的结构化描述，顾客下单时可选择。</div></div></div>
+      </div>
+      <div class="callout"><b>关联排班：</b>菜品只有在被纳入「周排班」后才能在前台售卖（见第三章三级联动），仅加入门店菜单但未排班则展示但不可售或不可见，需在需求中明确前后台口径。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. ORDER -->
+<section id="order">
+  <h2 class="sec">订单管理</h2>
+  <p class="lead">正餐订单的查询、筛选与全流程状态跟踪，是厨房中心出餐与配送协同的中枢。</p>
+  <div class="mod">
+    <div class="mod-head"><span class="no">08</span><h4>订单管理</h4><span class="scope">总部 / 门店合伙人</span></div>
+    <div class="mod-body">
+      <div class="goal">目标：让总部与门店清晰掌握订单进度的每个环节。</div>
+      <div class="dolist">
+        <div class="do"><span class="dot">1</span><div><span class="t">订单列表与详情</span><div class="d">支持按状态、门店、楼宇、订单号、手机号、日期区间等多维筛选；详情含菜品明细、金额、支付、配送/自提信息。</div></div></div>
+        <div class="do"><span class="dot">2</span><div><span class="t">状态流转跟踪</span><div class="d">展示整单与每个菜品节点的状态，配合厨房接单/出餐/配送推进（完整状态机见第 21 章）。</div></div></div>
+        <div class="do"><span class="dot">3</span><div><span class="t">接单与改价/退款操作</span><div class="d">门店对订单进行接单、确认、退款等操作；涉及资金变动需走结算与资金流水。</div></div></div>
+        <div class="do"><span class="dot">4</span><div><span class="t">订单来源标识</span><div class="d">区分正餐、早餐、团购、周边、企业团餐等业务线来源，便于统计与售后定位。</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. DELIVERY -->
+<section id="delivery">
+  <h2 class="sec">配送管理</h2>
+  <p class="lead">以配送合伙人和配送员两级角色协同，完成从门店出餐到楼宇取餐点的配送闭环。</p>
+  <div class="mod">
+    <div class="mod-head"><span class="no">09</span><h4>配送管理</h4><span class="scope">配送合伙人 / 配送员</span></div>
+    <div class="mod-body">
+      <div class="goal">目标：将出餐订单高效组织为配送批次并派发到配送员。</div>
+      <div class="dolist">
+        <div class="do"><span class="dot">1</span><div><span class="t">配送批次规划</span><div class="d">配送合伙人按时间/楼宇维度聚合待送订单，生成配送批次。</div></div></div>
+        <div class="do"><span class="dot">2</span><div><span class="t">配送员派单</span><div class="d">将批次指派给配送员，配送员在工作台领取批次。</div></div></div>
+        <div class="do"><span class="dot">3</span><div><span class="t">配送轨迹与送达确认</span><div class="d">配送员逐楼配送并在送达时确认，更新订单配送状态。</div></div></div>
+        <div class="do"><span class="dot">4</span><div><span class="t">运力与团队管理</span><div class="d">配送合伙人维护配送员账号与当日运力，处理异常订单（漏送、改址）。</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10. USER -->
+<section id="user">
+  <h2 class="sec">用户管理</h2>
+  <p class="lead">面向 C 端注册用户的管理，为运营画像与触达提供数据基础。</p>
+  <div class="mod">
+    <div class="mod-head"><span class="no">10</span><h4>用户管理</h4><span class="scope">总部</span></div>
+    <div class="mod-body">
+      <div class="goal">目标：查看与治理注册用户，支撑精准运营。</div>
+      <div class="dolist">
+        <div class="do"><span class="dot">1</span><div><span class="t">用户列表与查询</span><div class="d">按手机号、昵称、楼宇、注册时间筛选；查看用户基本资料与画像标签。</div></div></div>
+        <div class="do"><span class="dot">2</span><div><span class="t">用户归属楼宇</span><div class="d">维护/查看用户所在楼宇，作为菜单可见性与订单过滤依据。</div></div></div>
+        <div class="do"><span class="dot">3</span><div><span class="t">行为记录概览</span><div class="d">聚合消费频次、客单价、偏好分类，供驾驶舱与营销定向使用。</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11. PARTNER -->
+<section id="partner">
+  <h2 class="sec">合伙人管理</h2>
+  <p class="lead">经营账号（门店合伙人、楼宇合伙人、配送合伙人、配送员及新管理员）在此统一开户。</p>
+  <div class="mod">
+    <div class="mod-head"><span class="no">11</span><h4>合伙人管理</h4><span class="scope">总部</span></div>
+    <div class="mod-body">
+      <div class="goal">目标：统一管理所有可登录后台的经营角色账号及其权限归属。</div>
+      <div class="dolist">
+        <div class="do"><span class="dot">1</span><div><span class="t">账号创建与角色分配</span><div class="d">创建账号并指定角色（门店/楼宇/配送合伙人、配送员），绑定对应门店或楼宇。</div></div></div>
+        <div class="do"><span class="dot">2</span><div><span class="t">权限与工作台隔离</span><div class="d">不同角色登录进入各自独立工作台，按角色配置菜单与操作权限。</div></div></div>
+        <div class="do"><span class="dot">3</span><div><span class="t">账号状态管理</span><div class="d">启用/停用、重置密码、查看登录记录。</div></div></div>
+      </div>
+      <div class="callout"><b>账户体系约束：</b>后台经营账号与前台普通用户为两套独立认证体系，合伙人账号由总部在此创建而非自助注册（详见第 2 章角色体系）。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 12. MARKETING -->
+<section id="marketing">
+  <h2 class="sec">营销活动</h2>
+  <p class="lead">以优惠券、会员卡、满减等工具支撑拉新促活与会员运营。</p>
+  <div class="mod">
+    <div class="mod-head"><span class="no">12</span><h4>营销活动</h4><span class="scope">总部</span></div>
+    <div class="mod-body">
+      <div class="goal">目标：围绕类目/菜品/楼宇进行定向优惠与活动运营。</div>
+      <div class="dolist">
+        <div class="do"><span class="dot">1</span><div><span class="t">优惠券体系</span><div class="d">创建满减/折扣/立减券，设定发行量、有效期、适用类目、适用菜品与楼宇范围，支持定向发放。</div></div></div>
+        <div class="do"><span class="dot">2</span><div><span class="t">会员卡运营</span><div class="d">充值卡、次卡、期限卡的类型与规则配置，接入资金与核销流水。</div></div></div>
+        <div class="do"><span class="dot">3</span><div><span class="t">活动投放与数据</span><div class="d">活动的人群圈选、展示位置投放以及领券、核销 ROI 统计。</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 13. GROUP -->
+<section id="group">
+  <h2 class="sec">团购管理</h2>
+  <p class="lead">「下班团购」业务线：水果/蔬菜/鲜奶/早餐按楼拼团，当日截单、大堂自提。</p>
+  <div class="mod">
+    <div class="mod-head"><span class="no">13</span><h4>团购管理</h4><span class="scope">总部 / 楼宇合伙人</span></div>
+    <div class="mod-body">
+      <div class="goal">目标：按楼宇发起与管理拼团，规模化集单降低履约成本。</div>
+      <div class="dolist">
+        <div class="do"><span class="dot">1</span><div><span class="t">开团与选品</span><div class="d">楼宇合伙人或总部按楼发起拼团，选择团购商品（水果/蔬菜/鲜奶/早餐）并设置团价。</div></div></div>
+        <div class="do"><span class="dot">2</span><div><span class="t">拼团规则</span><div class="d">设置起团份数、成团/满员目标、截单时间（约 16:00）、自提时间（约 17:30 大堂自提）。</div></div></div>
+        <div class="do"><span class="dot">3</span><div><span class="t">拼团状态与履约</span><div class="d">跟踪已拼/差 N 份、已成/未成团、截单提醒与自提核销。</div></div></div>
+        <div class="do"><span class="dot">4</span><div><span class="t">自提核销</span><div class="d">到店/大堂出示拼团凭证进行核销，关联订单状态流转。</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 14. SURROUND -->
+<section id="surround">
+  <h2 class="sec">周边管理</h2>
+  <p class="lead">「周边好物」业务线：家政上门服务（蛋糕/保洁/鲜花/维修/干洗），平台严选、预约上门。</p>
+  <div class="mod">
+    <div class="mod-head"><span class="no">14</span><h4>周边管理</h4><span class="scope">总部</span></div>
+    <div class="mod-body">
+      <div class="goal">目标：拓展外卖场景之外的到家服务，形成楼宇周边生活服务闭环。</div>
+      <div class="dolist">
+        <div class="do"><span class="dot">1</span><div><span class="t">周边商品/服务管理</span><div class="d">维护蛋糕、保洁、鲜花、维修、干洗等严选服务，配置服务说明与价格。</div></div></div>
+        <div class="do"><span class="dot">2</span><div><span class="t">预约下单</span><div class="d">用户预约上门时间并下单，平台承接撮合。</div></div></div>
+        <div class="do"><span class="dot">3</span><div><span class="t">售后保障</span><div class="d">服务履约跟踪、退款与售后处理、服务商核销。</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 15. CORP -->
+<section id="corp">
+  <h2 class="sec">企业团餐</h2>
+  <p class="lead">面向企业用户的多人团餐，按楼宇展示方案，达成起购份数自动匹配阶梯折扣。</p>
+  <div class="mod">
+    <div class="mod-head"><span class="no">15</span><h4>企业团餐</h4><span class="scope">总部</span></div>
+    <div class="mod-body">
+      <div class="goal">目标：承接企业级批量订餐并做大客单价与稳定订单。</div>
+      <div class="dolist">
+        <div class="do"><span class="dot">1</span><div><span class="t">团餐方案管理</span><div class="d">企业可配置多套餐方案，按楼宇可见、对应到门店排班备餐。</div></div></div>
+        <div class="do"><span class="dot">2</span><div><span class="t">阶梯折扣</span><div class="d">按起购份数自动匹配档位折扣，达到门槛自动优惠。</div></div></div>
+        <div class="do"><span class="dot">3</span><div><span class="t">批量下单与配送</span><div class="d">企业批量下单，整批派送到楼宇/企业指定点，走配送批次协同。</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 16. BREAKFAST -->
+<section id="breakfast">
+  <h2 class="sec">早餐管理</h2>
+  <p class="lead">「早餐预订」业务线：前一天订、第二天到固定取餐点扫码取餐，支持单品与套餐。</p>
+  <div class="mod">
+    <div class="mod-head"><span class="no">16</span><h4>早餐管理</h4><span class="scope">总部 / 门店合伙人</span></div>
+    <div class="mod-body">
+      <div class="goal">目标：以预订制管理次晨早餐的备餐与取餐。</div>
+      <div class="dolist">
+        <div class="do"><span class="dot">1</span><div><span class="t">早餐商品配置</span><div class="d">配置次日早餐单品与套餐组合，设定预订截止时间与每日库存。</div></div></div>
+        <div class="do"><span class="dot">2</span><div><span class="t">预订下单</span><div class="d">用户在前一天下单预订，第二天到指定楼宇/取餐点自提。</div></div></div>
+        <div class="do"><span class="dot">3</span><div><span class="t">扫码取餐核销</span><div class="d">次晨到固定取餐点扫码核销出餐，关联库存扣减。</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 17. KITCHEN -->
+<section id="kitchen">
+  <h2 class="sec">厨房测算</h2>
+  <p class="lead">依据排班与销量预估，指导备餐量与原材料采购，减少损耗。</p>
+  <div class="mod">
+    <div class="mod-head"><span class="no">17</span><h4>厨房测算</h4><span class="scope">门店合伙人</span></div>
+    <div class="mod-body">
+      <div class="goal">目标：用量化的方式辅助备餐决策。</div>
+      <div class="dolist">
+        <div class="do"><span class="dot">1</span><div><span class="t">销量预估</span><div class="d">基于历史销量与排班设置进行需求预测。</div></div></div>
+        <div class="do"><span class="dot">2</span><div><span class="t">备餐量与原料测算</span><div class="d">按菜品配比测算原材料用量与备餐数量，输出测算单。</div></div></div>
+        <div class="do"><span class="dot">3</span><div><span class="t">损耗与校准</span><div class="d">记录实际出餐与预估偏差，逐步校准测算模型。</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 18. FINANCE -->
+<section id="finance">
+  <h2 class="sec">资金管理</h2>
+  <p class="lead">围绕订单收入、会员卡、优惠券与平台抽成的资金结算与对账。</p>
+  <div class="mod">
+    <div class="mod-head"><span class="no">18</span><h4>资金管理</h4><span class="scope">总部</span></div>
+    <div class="mod-body">
+      <div class="goal">目标：保证各业务线资金清分准确、账实相符。</div>
+      <div class="dolist">
+        <div class="do"><span class="dot">1</span><div><span class="t">订单收入流水</span><div class="d">正餐/早餐/团购/周边/团餐订单的收入明细与汇总。</div></div></div>
+        <div class="do"><span class="dot">2</span><div><span class="t">平台抽成结算</span><div class="d">按抽成费率对门店/合伙人进行分成结算与对账单。</div></div></div>
+        <div class="do"><span class="dot">3</span><div><span class="t">会员卡与优惠券资金</span><div class="d">充值、次卡/期限卡核销、优惠券抵扣的资金流水管理。</div></div></div>
+        <div class="do"><span class="dot">4</span><div><span class="t">退款与对账</span><div class="d">退款联动资金回冲，支持定时对账与差错分析。</div></div></div>
+      </div>
+      <div class="callout warn"><b>风控要点：</b>资金相关操作需做幂等与并发控制（如同时退款与核销），并保留完整审计日志。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 19. REVIEW -->
+<section id="review">
+  <h2 class="sec">评价管理</h2>
+  <p class="lead">用户对订单进行评价，差评进入总部重点关注与改进闭环。</p>
+  <div class="mod">
+    <div class="mod-head"><span class="no">19</span><h4>评价管理</h4><span class="scope">总部</span></div>
+    <div class="mod-body">
+      <div class="goal">目标：沉淀口碑并驱动服务改进。</div>
+      <div class="dolist">
+        <div class="do"><span class="dot">1</span><div><span class="t">评价列表与筛选</span><div class="d">按门店、楼宇、星级、菜品维度查看用户评价。</div></div></div>
+        <div class="do"><span class="dot">2</span><div><span class="t">差评关注</span><div class="d">差评聚合提醒，驱动门店改进，驾驶舱同步差评数量。</div></div></div>
+        <div class="do"><span class="dot">3</span><div><span class="t">回复与处理</span><div class="d">商家/总部对评价进行回复或处理，形成闭环。</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 20. SERVICE -->
+<section id="service">
+  <h2 class="sec">客服中心</h2>
+  <p class="lead">面向用户售后咨询与投诉的统一处理入口。</p>
+  <div class="mod">
+    <div class="mod-head"><span class="no">20</span><h4>客服中心</h4><span class="scope">总部</span></div>
+    <div class="mod-body">
+      <div class="goal">目标：快速解决用户咨询、售后与投诉，保障体验。</div>
+      <div class="dolist">
+        <div class="do"><span class="dot">1</span><div><span class="t">咨询与工单</span><div class="d">接收用户在订单/商品上的咨询与投诉，转人工工单处理。</div></div></div>
+        <div class="do"><span class="dot">2</span><div><span class="t">退款与售后协同</span><div class="d">客服发起退款、补偿，联动资金流与订单状态。</div></div></div>
+        <div class="do"><span class="dot">3</span><div><span class="t">处理记录</span><div class="d">完整记录处理过程与结果，形成服务知识沉淀。</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 21. ORDER STATE MACHINE -->
+<section id="order-state">
+  <h2 class="sec">订单状态机</h2>
+  <p class="lead">以正餐订单为例梳理核心状态流转，其它业务线在此基上扩展。</p>
+  <div class="mod">
+    <div class="mod-head"><span class="no">21</span><h4>订单状态机</h4><span class="scope">全局</span></div>
+    <div class="mod-body">
+      <div class="dolist">
+        <div class="do"><span class="dot">1</span><div><span class="t">待支付</span><div class="d">顾客提交订单未支付，超时关闭。</div></div></div>
+        <div class="do"><span class="dot">2</span><div><span class="t">待接单</span><div class="d">已支付进入门店工作台排队，等待厨房确认。</div></div></div>
+        <div class="do"><span class="dot">3</span><div><span class="t">备餐中</span><div class="d">门店接单后厨房开始制作（按排班节点推进）。</div></div></div>
+        <div class="do"><span class="dot">4</span><div><span class="t">待取餐</span><div class="d">已出餐，等待自提或配送员领取配送。</div></div></div>
+        <div class="do"><span class="dot">5</span><div><span class="t">配送中</span><div class="d">配送员领取批次后送往楼宇取餐点。</div></div></div>
+        <div class="do"><span class="dot">6</span><div><span class="t">已完成</span><div class="d">配送送达 / 自提核销确认完成，可进入评价。</div></div></div>
+        <div class="do"><span class="dot">7</span><div><span class="t">已取消 / 已退款</span><div class="d">用户取消或售后退款，资金联动回冲。</div></div></div>
+      </div>
+      <figure class="diagram">
+        <div class="mermaid" data-processed="true"><svg aria-roledescription="flowchart-v2" role="graphics-document document" viewBox="0 0 1266 248" style="max-width: 1266px;" class="flowchart" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="100%" id="mermaid-1788865994606"><style>#mermaid-1788865994606{font-family:"InstrumentSans";font-size:16px;fill:#23201B;}#mermaid-1788865994606 .error-icon{fill:#ffffff;}#mermaid-1788865994606 .error-text{fill:#000000;stroke:#000000;}#mermaid-1788865994606 .edge-thickness-normal{stroke-width:1px;}#mermaid-1788865994606 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-1788865994606 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-1788865994606 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-1788865994606 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-1788865994606 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-1788865994606 .marker{fill:#b9ad9a;stroke:#b9ad9a;}#mermaid-1788865994606 .marker.cross{stroke:#b9ad9a;}#mermaid-1788865994606 svg{font-family:"InstrumentSans";font-size:16px;}#mermaid-1788865994606 p{margin:0;}#mermaid-1788865994606 .label{font-family:"InstrumentSans";color:#23201B;}#mermaid-1788865994606 .cluster-label text{fill:#000000;}#mermaid-1788865994606 .cluster-label span{color:#000000;}#mermaid-1788865994606 .cluster-label span p{background-color:transparent;}#mermaid-1788865994606 .label text,#mermaid-1788865994606 span{fill:#23201B;color:#23201B;}#mermaid-1788865994606 .node rect,#mermaid-1788865994606 .node circle,#mermaid-1788865994606 .node ellipse,#mermaid-1788865994606 .node polygon,#mermaid-1788865994606 .node path{fill:#fdeee7;stroke:#E0572B;stroke-width:1px;}#mermaid-1788865994606 .rough-node .label text,#mermaid-1788865994606 .node .label text,#mermaid-1788865994606 .image-shape .label,#mermaid-1788865994606 .icon-shape .label{text-anchor:middle;}#mermaid-1788865994606 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-1788865994606 .rough-node .label,#mermaid-1788865994606 .node .label,#mermaid-1788865994606 .image-shape .label,#mermaid-1788865994606 .icon-shape .label{text-align:center;}#mermaid-1788865994606 .node.clickable{cursor:pointer;}#mermaid-1788865994606 .root .anchor path{fill:#b9ad9a!important;stroke-width:0;stroke:#b9ad9a;}#mermaid-1788865994606 .arrowheadPath{fill:#0b0b0b;}#mermaid-1788865994606 .edgePath .path{stroke:#b9ad9a;stroke-width:2.0px;}#mermaid-1788865994606 .flowchart-link{stroke:#b9ad9a;fill:none;}#mermaid-1788865994606 .edgeLabel{background-color:#e5f2ec;text-align:center;}#mermaid-1788865994606 .edgeLabel p{background-color:#e5f2ec;}#mermaid-1788865994606 .edgeLabel rect{opacity:0.5;background-color:#e5f2ec;fill:#e5f2ec;}#mermaid-1788865994606 .labelBkg{background-color:rgba(229, 242, 236, 0.5);}#mermaid-1788865994606 .cluster rect{fill:#ffffff;stroke:hsl(0, 0%, 90%);stroke-width:1px;}#mermaid-1788865994606 .cluster text{fill:#000000;}#mermaid-1788865994606 .cluster span{color:#000000;}#mermaid-1788865994606 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"InstrumentSans";font-size:12px;background:#ffffff;border:1px solid hsl(0, 0%, 90%);border-radius:2px;pointer-events:none;z-index:100;}#mermaid-1788865994606 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#23201B;}#mermaid-1788865994606 rect.text{fill:none;stroke-width:0;}#mermaid-1788865994606 .icon-shape,#mermaid-1788865994606 .image-shape{background-color:#e5f2ec;text-align:center;}#mermaid-1788865994606 .icon-shape p,#mermaid-1788865994606 .image-shape p{background-color:#e5f2ec;padding:2px;}#mermaid-1788865994606 .icon-shape rect,#mermaid-1788865994606 .image-shape rect{opacity:0.5;background-color:#e5f2ec;fill:#e5f2ec;}#mermaid-1788865994606 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker orient="auto" markerHeight="8" markerWidth="8" markerUnits="userSpaceOnUse" refY="5" refX="5" viewBox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1788865994606_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerHeight="8" markerWidth="8" markerUnits="userSpaceOnUse" refY="5" refX="4.5" viewBox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1788865994606_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="11" viewBox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1788865994606_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5" refX="-1" viewBox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1788865994606_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="12" viewBox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1788865994606_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerHeight="11" markerWidth="11" markerUnits="userSpaceOnUse" refY="5.2" refX="-1" viewBox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1788865994606_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#mermaid-1788865994606_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_A_B_0" d="M116,136.583L126.167,131.986C136.333,127.388,156.667,118.194,176.333,113.597C196,109,215,109,224.5,109L234,109"></path><path marker-end="url(#mermaid-1788865994606_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_B_C_1" d="M346,109L355.5,109C365,109,384,109,402.333,109C420.667,109,438.333,109,447.167,109L456,109"></path><path marker-end="url(#mermaid-1788865994606_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_C_D_2" d="M568,84.583L578.167,79.986C588.333,75.388,608.667,66.194,628.333,61.597C648,57,667,57,676.5,57L686,57"></path><path marker-end="url(#mermaid-1788865994606_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_D_G_3" d="M798,40.21L808.833,36.842C819.667,33.473,841.333,26.737,872,23.368C902.667,20,942.333,20,980.667,20C1019,20,1056,20,1083.368,22.956C1110.735,25.912,1128.47,31.823,1137.338,34.779L1146.205,37.735"></path><path marker-end="url(#mermaid-1788865994606_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_D_E_4" d="M798,73.79L808.833,77.158C819.667,80.527,841.333,87.263,862.333,90.632C883.333,94,903.667,94,913.833,94L924,94"></path><path marker-end="url(#mermaid-1788865994606_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_E_G_5" d="M1036,94L1045.5,94C1055,94,1074,94,1092.368,91.044C1110.735,88.088,1128.47,82.177,1137.338,79.221L1146.205,76.265"></path><path marker-end="url(#mermaid-1788865994606_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_A_H_6" d="M116,185.417L126.167,190.014C136.333,194.612,156.667,203.806,176.333,208.403C196,213,215,213,224.5,213L234,213"></path><path marker-end="url(#mermaid-1788865994606_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_C_I_7" d="M568,133.417L578.167,138.014C588.333,142.612,608.667,151.806,628.333,156.403C648,161,667,161,676.5,161L686,161"></path></g><g class="edgeLabels"><g transform="translate(177, 109)" class="edgeLabel"><g transform="translate(-32, -12)" class="label"><foreignObject height="24" width="64"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"><p>支付成功</p></span></div></foreignObject></g></g><g transform="translate(403, 109)" class="edgeLabel"><g transform="translate(-32, -12)" class="label"><foreignObject height="24" width="64"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"><p>门店接单</p></span></div></foreignObject></g></g><g transform="translate(629, 57)" class="edgeLabel"><g transform="translate(-16, -12)" class="label"><foreignObject height="24" width="32"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"><p>出餐</p></span></div></foreignObject></g></g><g transform="translate(982, 20)" class="edgeLabel"><g transform="translate(-32, -12)" class="label"><foreignObject height="24" width="64"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"><p>自提核销</p></span></div></foreignObject></g></g><g transform="translate(863, 94)" class="edgeLabel"><g transform="translate(-40, -12)" class="label"><foreignObject height="24" width="80"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"><p>配送员领取</p></span></div></foreignObject></g></g><g transform="translate(1093, 94)" class="edgeLabel"><g transform="translate(-32, -12)" class="label"><foreignObject height="24" width="64"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"><p>送达确认</p></span></div></foreignObject></g></g><g transform="translate(177, 213)" class="edgeLabel"><g transform="translate(-36, -12)" class="label"><foreignObject height="24" width="72"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"><p>超时/取消</p></span></div></foreignObject></g></g><g transform="translate(629, 161)" class="edgeLabel"><g transform="translate(-36, -12)" class="label"><foreignObject height="24" width="72"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" class="labelBkg" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"><p>售后/取消</p></span></div></foreignObject></g></g></g><g class="nodes"><g transform="translate(62, 161)" id="flowchart-A-42" class="node default"><rect height="54" width="108" y="-27" x="-54" style="" class="basic label-container"></rect><g transform="translate(-24, -12)" style="" class="label"><rect></rect><foreignObject height="24" width="48"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>待支付</p></span></div></foreignObject></g></g><g transform="translate(292, 109)" id="flowchart-B-43" class="node default"><rect height="54" width="108" y="-27" x="-54" style="" class="basic label-container"></rect><g transform="translate(-24, -12)" style="" class="label"><rect></rect><foreignObject height="24" width="48"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>待接单</p></span></div></foreignObject></g></g><g transform="translate(514, 109)" id="flowchart-C-45" class="node default"><rect height="54" width="108" y="-27" x="-54" style="" class="basic label-container"></rect><g transform="translate(-24, -12)" style="" class="label"><rect></rect><foreignObject height="24" width="48"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>备餐中</p></span></div></foreignObject></g></g><g transform="translate(744, 57)" id="flowchart-D-47" class="node default"><rect height="54" width="108" y="-27" x="-54" style="" class="basic label-container"></rect><g transform="translate(-24, -12)" style="" class="label"><rect></rect><foreignObject height="24" width="48"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>待取餐</p></span></div></foreignObject></g></g><g transform="translate(1204, 57)" id="flowchart-G-49" class="node default"><rect height="54" width="108" y="-27" x="-54" style="" class="basic label-container"></rect><g transform="translate(-24, -12)" style="" class="label"><rect></rect><foreignObject height="24" width="48"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>已完成</p></span></div></foreignObject></g></g><g transform="translate(982, 94)" id="flowchart-E-51" class="node default"><rect height="54" width="108" y="-27" x="-54" style="" class="basic label-container"></rect><g transform="translate(-24, -12)" style="" class="label"><rect></rect><foreignObject height="24" width="48"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>配送中</p></span></div></foreignObject></g></g><g transform="translate(292, 213)" id="flowchart-H-55" class="node default"><rect height="54" width="108" y="-27" x="-54" style="" class="basic label-container"></rect><g transform="translate(-24, -12)" style="" class="label"><rect></rect><foreignObject height="24" width="48"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>已取消</p></span></div></foreignObject></g></g><g transform="translate(744, 161)" id="flowchart-I-57" class="node default"><rect height="54" width="108" y="-27" x="-54" style="" class="basic label-container"></rect><g transform="translate(-24, -12)" style="" class="label"><rect></rect><foreignObject height="24" width="48"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>已退款</p></span></div></foreignObject></g></g></g></g></g></svg></div>
+        <figcaption>图 3 · 正餐订单主状态流转</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 22. DATA -->
+<section id="data">
+  <h2 class="sec">数据模型与核心对象</h2>
+  <p class="lead">基于以上模块提炼出的核心领域对象及其关系，是数据库设计的出发。</p>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>领域对象</th><th>说明</th><th>关键关联</th><th>归属模块</th></tr></thead>
+    <tbody>
+      <tr><td>User（C 端用户）</td><td>前台注册用户，绑定楼宇</td><td>楼宇、订单、评价</td><td>用户管理</td></tr>
+      <tr><td>Partner / Employee（经营账号）</td><td>合伙人/配送员/管理员，独立认证</td><td>门店、楼宇、配送批次</td><td>合伙人管理</td></tr>
+      <tr><td>Building（楼宇）</td><td>私域最小业务单元</td><td>门店（可售）、用户、取餐点</td><td>楼宇管理</td></tr>
+      <tr><td>Store（门店/厨房中心）</td><td>经营主体，绑定主楼宇</td><td>楼宇、菜品、订单、周排班</td><td>门店管理</td></tr>
+      <tr><td>Dish（菜品）</td><td>菜品库基础项，无售价</td><td>门店绑定、周排班</td><td>菜品与菜单</td></tr>
+      <tr><td>MenuBinding（门店绑定）</td><td>菜品×门店 售价/下架</td><td>菜品、门店</td><td>菜品与菜单</td></tr>
+      <tr><td>Schedule（周排班格）</td><td>菜品×星期 价格/库存/已售/可售楼宇</td><td>菜品、门店、楼宇</td><td>菜品与菜单</td></tr>
+      <tr><td>Order（订单）</td><td>多业务线聚合的订单主档</td><td>用户、楼宇、门店、明细</td><td>订单管理</td></tr>
+      <tr><td>DeliveryBatch（配送批次）</td><td>聚合待送订单的配送单元</td><td>订单、配送员</td><td>配送管理</td></tr>
+      <tr><td>Coupon / MemberCard</td><td>优惠券与会员卡</td><td>用户、资金流水</td><td>营销活动</td></tr>
+      <tr><td>Group / CorpMeal</td><td>团购开团 / 企业团餐方案</td><td>楼宇、订单、商品</td><td>团购 / 企业团餐</td></tr>
+      <tr><td>FundFlow（资金流水）</td><td>收入/抽成/核销/退款记录</td><td>订单、会员卡</td><td>资金管理</td></tr>
+      <tr><td>Review（评价）</td><td>订单售后评价</td><td>订单、用户、门店</td><td>评价管理</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- 23. PRIORITY -->
+<section id="priority">
+  <h2 class="sec">开发优先级建议（V1 范围定版）</h2>
+  <p class="lead">版本分工以「<b>先做有收入的</b>」为第一原则：<b>午餐优先</b>（当前唯一有现金流的业务），随后 <b>早餐</b>；<b>下班团购、周边好物整体后置</b>，不在第一版范围。每条新业务线都在同一商品/订单内核上做搭配，不重复建系统。</p>
+
+  <div class="callout ok"><b>版本取舍总纲：</b>V1 只做午餐闭环，单业务线先跑通并产生收入；V1.5 追加早餐；V2 做营销与会员；团购/周边等「增量业务线」顺延到最后。越往后越前置投入的商品中心与订单主表，会被早餐自然复用，避免二次返工。</div>
+
+  <div class="grid cols-3">
+    <div class="card"><h4><span class="i">V0.5</span>架构地基（先搭，一次到位）</h4>
+      <ul>
+        <li>统一商品中心（SPU/多规格/库存，午餐先用）</li>
+        <li>统一订单主表 + 履约方式字段</li>
+        <li>账户体系（用户/合伙人多角色认证与权限 RBAC）</li>
+        <li>楼宇 &amp; 门店基础管理</li>
+      </ul>
+    </div>
+    <div class="card card-focus"><h4><span class="i">V1</span>午餐闭环（当期收入核心）</h4>
+      <ul>
+        <li>菜品三级联动（库→门店绑定→周排班）</li>
+        <li>午餐下单支付（今日 / 明日预约）</li>
+        <li>门店工作台：接单 / 备餐 / 出餐</li>
+        <li>配送管理（批次 / 派单 / 送达）</li>
+        <li>库存扣减与并发正确</li>
+        <li>基础驾驶舱</li>
+      </ul>
+    </div>
+    <div class="card"><h4><span class="i">V1.5</span>早餐扩展</h4>
+      <ul>
+        <li>早餐预订（今天订 · 明早取）</li>
+        <li>固定取餐点 + 取餐码 / 扫码核销</li>
+        <li>复用午餐商品与订单内核，只加业务线配置</li>
+      </ul>
+    </div>
+  </div>
+  <div class="grid cols-3">
+    <div class="card"><h4><span class="i">V2</span>营销与会员</h4>
+      <ul>
+        <li>优惠券 / 会员成长值 / 各自权益</li>
+        <li>新客立减（首单特惠）</li>
+        <li>邀请返利（拉新）</li>
+        <li>资金清结算：退款 / 返利 / 提现 / 发票</li>
+      </ul>
+    </div>
+    <div class="card"><h4><span class="i">V3</span>后置业务线（按营收节奏再排）</h4>
+      <ul>
+        <li>下班团购（拼团 / 自提核销）</li>
+        <li>周边好物（蛋糕 / 保洁 / 鲜花 / 维修）</li>
+        <li>企业团餐 + 阶梯折扣</li>
+        <li>厨房测算（备餐预估）</li>
+      </ul>
+    </div>
+    <div class="card"><h4><span class="i">V4</span>长期增强</h4>
+      <ul>
+        <li>评价与客服全量闭环</li>
+        <li>礼品卡 / 发票管理</li>
+        <li>多维驾驶舱与经营报表</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout"><b>落地建议：</b>V1 阶段明确「只做午餐」，把「下单→接单→备餐→出餐→配送/自提」主链打穿并先跑出真实订单；保证菜品三级联动、库存并发、配送派单正确。<b>V0.5 的商品中心与订单主表一定要用通用模型设计</b>，否则早餐 / 团购上线时会触发订单与库存重构，反而更慢。</div>
+</section>
+
+<!-- 23c. DEV PLAN -->
+<section id="devplan">
+  <h2 class="sec">开发计划总览（全部版本）</h2>
+  <p class="lead">把 V0.5–V4 的每个版本与其目标、核心范围、依赖、估时、上线收益拉成一张完整的开发路线图，作为「所有开发计划」的总纲。详细到里程碑与任务的排期见 <a href="#v1checklist">V1 午餐实施清单</a>。</p>
+
+  <h3>1. 版本全景路线图</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>版本</th><th>目标</th><th>核心范围</th><th>依赖</th><th>估时（小团队/周）</th><th>上线收益</th></tr></thead>
+    <tbody>
+      <tr><td><b>V0.5</b> 架构地基</td><td>搭通用底座，一次到位</td><td>商品中心 / 统一订单主表 / 账户 RBAC / 楼宇门店</td><td>—</td><td>约 2</td><td>无直接收入，奠定可复用模型</td></tr>
+      <tr><td><b>V1</b> 午餐闭环</td><td style="font-weight:600">当期有收入</td><td>菜品三级联动、午餐下单支付、门店工作台、配送、库存并发、驾驶舱</td><td>V0.5</td><td>约 5–7</td><td><b>产生第一笔真实现金流</b></td></tr>
+      <tr><td><b>V1.5</b> 早餐扩展</td><td>次日预订增收</td><td>早餐预订、固定取餐点、取餐码/扫码核销</td><td>V1（复用内核）</td><td>约 2–3</td><td>早餐销售收入、时段利用率</td></tr>
+      <tr><td><b>V2</b> 营销与会员</td><td>拉新促复购</td><td>优惠券 / 会员成长值 / 新客立减 / 邀请返利 / 资金清结算</td><td>V1</td><td>约 3–4</td><td>复购率、客单价、拉新降本</td></tr>
+      <tr><td><b>V3</b> 增量业务线</td><td>多引擎增收</td><td>下班团购（拼团/自提核销）、周边好物、企业团餐、厨房测算</td><td>V0.5 商品/订单内核</td><td>约 4–6（分线推进）</td><td>团购/周边/团餐营收</td></tr>
+      <tr><td><b>V4</b> 长期增强</td><td>体验与精细化</td><td>评价与客服闭环 / 礼品卡·发票 / 多维驾驶舱与报表</td><td>V2（资金）/ V3</td><td>持续迭代</td><td>服务水平、经营决策能力</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>2. 版本依赖与推进顺序</h3>
+  <div class="dolist">
+    <div class="do"><span class="dot">1</span><div><span class="t">先单核后外延</span><div class="d">V0.5 → V1 是「核心」，必须先打通；V1.5/V2/V3 都在同一商品/订单内核上做加法，避免外延早于核心。</div></div></div>
+    <div class="do"><span class="dot">2</span><div><span class="t">先收入后体验</span><div class="d">V1 午餐（现金流）→ V1.5 早餐（日活）→ V2 营销（复购）；团购/周边（V3）是有余力再扩的「第二火箭」。</div></div></div>
+    <div class="do"><span class="dot">3</span><div><span class="t">资金能力前置</span><div class="d">V2 的资金清结算（退款/返利/提现/发票）是 V3 团购/周边到店服务的支付前提，建议在 V2 一并成熟。</div></div></div>
+    <div class="do"><span class="dot">4</span><div><span class="t">节奏对齐</span><div class="d">每个版本以小步验收 + 真实业务上线为准，不追求「一次性大版本」；V1 之后每个版本都可独立上线产生增量价值。</div></div></div>
+  </div>
+
+  <h3>3. 里程碑落地（V1 主线）</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>里程碑</th><th>范围</th><th>估时</th><th>出口条件</th><th>对应详细任务</th></tr></thead>
+    <tbody>
+      <tr><td><b>M0</b> 地基</td><td>商品中心 / 订单主表 / RBAC / 楼宇门店</td><td>1–2 周</td><td>通用模型评审通过</td><td>见 <a href="#v1checklist">V0.5 清单</a></td></tr>
+      <tr><td><b>M1</b> 下单支付</td><td>菜品三级联动、C 端点餐结算、支付、状态机</td><td>1–2 周</td><td>可完成下单→支付→订单生成</td><td><a href="#m1tasks">M1 详细任务拆解</a></td></tr>
+      <tr><td><b>M2</b> 门店履约</td><td>门店工作台、库存扣减并发</td><td>1 周</td><td>接单→备餐→出餐 + 库存回补</td><td>—</td></tr>
+      <tr><td><b>M3</b> 配送</td><td>批次、派单、配送员端、送达</td><td>1 周</td><td>批次→派单→送达闭环</td><td>—</td></tr>
+      <tr><td><b>M4</b> 联调上线</td><td>驾驶舱、联调、压测、上线</td><td>1 周</td><td>DoD 全过，第一笔真实订单</td><td>—</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>4. 团队分工建议</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>角色</th><th>V1–V1.5 职责</th><th>V2+ 扩展</th></tr></thead>
+    <tbody>
+      <tr><td><b>后端</b></td><td>商品/订单/支付/库存接口，状态机与并发</td><td>资金清结算、营销/会员、团购拼团</td></tr>
+      <tr><td><b>前端 C 端</b></td><td>午餐 SPA 首页/购物车/结算/订单</td><td>早餐/团购/周边页面、我的中心</td></tr>
+      <tr><td><b>前端管理台</b></td><td>菜品库/排班/订单/门店工作台</td><td>营销配置、资金对账、驾驶舱</td></tr>
+      <tr><td><b>配送端</b></td><td>配送任务（配送员 H5/小程序）</td><td>—</td></tr>
+      <tr><td><b>产品/业务</b></td><td>截单/履约/取餐口径定义与验收</td><td>营销规则、团购选品、招商</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout ok"><b>里程碑总览：</b>以「V1 午餐上线收钱」为首要目标（约 5–7 周），随后 V1.5 早餐、V2 营销会员顺次推进；V3 团购/周边作为独立业务线按营收节奏切入。整份计划均复用 V0.5 商品/订单内核，避免「每线一套」的碎片化返工。</div>
+</section>
+
+<!-- 23b. V1 CHECKLIST -->
+<section id="v1checklist">
+  <h2 class="sec">V1 午餐闭环 · 详细实施清单</h2>
+  <p class="lead">本清单把 V1「只做午餐」落到可直接执行的工作项：目标与边界、功能拆解、字段级数据模型、页面清单、验收标准（DoD）、风险前置决策与交付里程碑。范围覆盖 <b>V0.5 地基依赖 + V1 午餐主链</b>。</p>
+
+  <h3>1. V1 目标与范围边界</h3>
+  <div class="grid cols-2">
+    <div class="card"><h4><span class="i">✅</span>V1 目标</h4><p>打通午餐「<b>下单 → 支付 → 接单 → 备餐 → 出餐 → 自提/配送 → 送达</b>」全链，并在真实楼宇跑通真实订单、产生现金流。单门店起步，保证菜品三级联动与库存并发正确。</p></div>
+    <div class="card"><h4><span class="i">⛔</span>明确不做（范围外）</h4><ul><li>早餐、团购、周边、企业团餐</li><li>会员成长值 / 优惠券 / 邀请返利</li><li>发票 / 礼品卡 / 多门店复杂 SKU</li><li>评价与客服（仅保留订单级别联）</li></ul></div>
+  </div>
+
+  <div class="callout"><b>范围口径：</b>V1 的「多楼宇 / 多门店」只做基础支撑，不做跨店配送协同。配送先支持「同楼宇聚合批次」这一种简化模式；独立的配送员端必须做，因为配送是午餐履约不可缺的一环。</div>
+
+  <h3>2. 前置依赖 — V0.5 地基（必须用通用模型）</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>地基项</th><th>交付物</th><th>为什么必须「通用」</th></tr></thead>
+    <tbody>
+      <tr><td><b>统一商品中心</b></td><td>SPU + 多规格(SKU) + 库存模型</td><td>早餐/团购/周边都卖「物品」，通用于商品左栏隔离，避免每线建表</td></tr>
+      <tr><td><b>统一订单主表</b></td><td>order_type + 履约方式 + 明细</td><td>早餐/团购后续可直接复用，避免订单重构</td></tr>
+      <tr><td><b>账户 / RBAC</b></td><td>用户端 + 多角色后台权限</td><td>门店/楼宇/配送合伙人同后台按角色裁剪</td></tr>
+      <tr><td><b>楼宇 &amp; 门店</b></td><td>楼宇 CRUD、门店挂楼宇、营业状态</td><td>C 端按楼宇过滤菜单 / 配送 / 取餐点，所有线共用</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>3. 功能模块拆解（用户故事 + 要点）</h3>
+
+  <div class="mod">
+    <div class="mod-head"><span class="no">A</span><h4>商品中心 &amp; 菜品三级联动</h4><span class="scope">V0.5+V1</span></div>
+    <div class="mod-body"><div class="dolist">
+      <div class="do"><span class="dot">1</span><div><span class="t">菜品库（SPU）</span><div class="d">维护菜品：名称、分类、图片、描述、参考价；菜品是「可复用的菜」，不依附门店。</div></div></div>
+      <div class="do"><span class="dot">2</span><div><span class="t">门店绑定（SKU）</span><div class="d">把菜品绑定到「可售门店」，可设置门店侧售价、规格、起售/停售。</div></div></div>
+      <div class="do"><span class="dot">3</span><div><span class="t">周排班</span><div class="d">按「星期 × 门店」配置当日可售菜单与可预约量；今日/明日由系统按 weekday 自动取档，不再手工切换。</div></div></div>
+      <div class="do"><span class="dot">4</span><div><span class="t">库存模型</span><div class="d">每个 SKU 记录总量/可售/锁定；下单锁定、支付实扣、超时与取消回补。</div></div></div>
+      <div class="do"><span class="dot">5</span><div><span class="t">截单控制</span><div class="d">今日餐按「门店当日截单时间」（如 11:00）判定可售与倒计时；明日预约不受当日截单限制。</div></div></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-head"><span class="no">B</span><h4>楼宇 &amp; 门店</h4><span class="scope">V0.5</span></div>
+    <div class="mod-body"><div class="dolist">
+      <div class="do"><span class="dot">1</span><div><span class="t">楼宇管理</span><div class="d">楼宇增删改、启用状态；C 端首启定位/选择楼宇。</div></div></div>
+      <div class="do"><span class="dot">2</span><div><span class="t">门店信息</span><div class="d">门店归属楼宇、营业时段、经营状态（营业/歇业）、当日截单时间、自提/配送开关。</div></div></div>
+      <div class="do"><span class="dot">3</span><div><span class="t">可售过滤</span><div class="d">C 端按「楼宇→门店→菜品」链路拉取数据，未配送 / 休业的门店不可售。</div></div></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-head"><span class="no">C</span><h4>下单（今日 / 明日预约）</h4><span class="scope">V1</span></div>
+    <div class="mod-body"><div class="dolist">
+      <div class="do"><span class="dot">1</span><div><span class="t">点餐</span><div class="d">C 端「今日午餐 / 明日预约」Tab、截单倒计时、菜品卡片（可加购「加购更满足」）、购物车计价。</div></div></div>
+      <div class="do"><span class="dot">2</span><div><span class="t">结算</span><div class="d">取餐方式（自提/配送）、取餐点或配送地址、预计送达时段；优惠仅先留额度接口（V1 不做券）。</div></div></div>
+      <div class="do"><span class="dot">3</span><div><span class="t">下单幂等</span><div class="d">防重复提交：前端禁用 + 后端幂等键；库存校验失败即给友好提示。</div></div></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-head"><span class="no">D</span><h4>统一订单主表 &amp; 状态机</h4><span class="scope">V0.5+V1</span></div>
+    <div class="mod-body"><div class="dolist">
+      <div class="do"><span class="dot">1</span><div><span class="t">主表字段</span><div class="d">订单号、order_type(午餐)、门店、楼宇、用户、明细快照、金额、支付状态、履约方式、配送单号、取餐/送达信息。</div></div></div>
+      <div class="do"><span class="dot">2</span><div><span class="t">状态机骨架</span><div class="d">待支付 → 待接单 → 备餐中 → 待取餐/待配送 → 配送中 → 已完成；旁支含已取消、已退款。</div></div></div>
+      <div class="do"><span class="dot">3</span><div><span class="t">超时控制</span><div class="d">未支付订单到期自动关闭并回补库存（延时任务）。</div></div></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-head"><span class="no">E</span><h4>门店工作台</h4><span class="scope">V1</span></div>
+    <div class="mod-body"><div class="dolist">
+      <div class="do"><span class="dot">1</span><div><span class="t">接单</span><div class="d">新订单提醒、接单 / 拒单（拒单触发取消退款回补）。</div></div></div>
+      <div class="do"><span class="dot">2</span><div><span class="t">备餐→出餐</span><div class="d">按「待备餐 / 备餐中 / 已出餐」列展示，出餐后通知配送或生成自提就绪状态。</div></div></div>
+      <div class="do"><span class="dot">3</span><div><span class="t">聚合视图</span><div class="d">今日订单按门店 / 状态 / 时间分组，支持筛选与批量标记。</div></div></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-head"><span class="no">F</span><h4>配送管理（批次 / 派单 / 送达）</h4><span class="scope">V1</span></div>
+    <div class="mod-body"><div class="dolist">
+      <div class="do"><span class="dot">1</span><div><span class="t">批次聚合</span><div class="d">按「门店 × 楼宇 × 出餐时段」将订单聚成配送批次，减少跑腿次数。</div></div></div>
+      <div class="do"><span class="dot">2</span><div><span class="t">派单</span><div class="d">手动/自动指派配送员；配送员端任务列表、开始配送、逐单送达。</div></div></div>
+      <div class="do"><span class="dot">3</span><div><span class="t">状态联动</span><div class="d">配送状态写回订单主表（待配送→配送中→已完成），驱动 C 端订单进度可见。</div></div></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-head"><span class="no">G</span><h4>库存扣减与并发（可靠性重点）</h4><span class="scope">V1</span></div>
+    <div class="mod-body"><div class="dolist">
+      <div class="do"><span class="dot">1</span><div><span class="t">三段式库存</span><div class="d">下单锁定 → 支付成功实扣 → 超时/取消/拒单回补；全链路可追踪。</div></div></div>
+      <div class="do"><span class="dot">2</span><div><span class="t">防超卖</span><div class="d">按 SKU 用数据库行锁 / 条件更新（`WHERE 可售余额 &gt;= 数量`）原子扣减，配合乐观锁。</div></div></div>
+      <div class="do"><span class="dot">3</span><div><span class="t">幂等与重试</span><div class="d">下单 / 支付回调 / 库存变更用幂等键，超时重试不产生重复扣减。</div></div></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-head"><span class="no">H</span><h4>支付</h4><span class="scope">V1</span></div>
+    <div class="mod-body"><div class="dolist">
+      <div class="do"><span class="dot">1</span><div><span class="t">支付接入</span><div class="d">微信支付（需商户号资质），统一下单、回调验签、结果幂等落库。</div></div></div>
+      <div class="do"><span class="dot">2</span><div><span class="t">退款</span><div class="d">拒单 / 取消的退款走原路退回，记退款流水与对账明细。</div></div></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-head"><span class="no">I</span><h4>基础驾驶舱</h4><span class="scope">V1</span></div>
+    <div class="mod-body"><div class="dolist">
+      <div class="do"><span class="dot">1</span><div><span class="t">核心指标</span><div class="d">今日订单数、GMV、客单价、菜品售卖 TOP、楼宇/门店下单分布、门店接单量。</div></div></div>
+      <div class="do"><span class="dot">2</span><div><span class="t">口径</span><div class="d">本期只做汇总看板，不做经营多维下钻（留待 V4）。</div></div></div>
+    </div></div>
+  </div>
+
+  <h3>4. 关键数据模型（字段级）</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>对象</th><th>核心字段</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td rowspan="2"><b>菜品 SPU</b></td><td>id / name / category / images / desc / status</td><td>可复用菜品主数据</td></tr>
+      <tr><td>business_line(午餐) / unit</td><td>通用营业线字段，早餐复用</td></tr>
+      <tr><td rowspan="2"><b>SKU / 门店绑定</b></td><td>id / spu_id / store_id / price / specs / on_sale</td><td>门店侧售价与规格</td></tr>
+      <tr><td>total_stock / sellable / locked / day / time_slot</td><td>按 SKU×日期时段存库存与锁定</td></tr>
+      <tr><td rowspan="2"><b>排班菜单 schedule</b></td><td>store_id / weekday / date / sku_id / qty</td><td>周排班档期</td></tr>
+      <tr><td>window_start / window_end(截单) / reserve_qty</td><td>可售时段与预约量</td></tr>
+      <tr><td rowspan="2"><b>订单 order</b></td><td>id / order_no / order_type(1=午餐) / status</td><td>统一主表，后续加早餐/团购类型</td></tr>
+      <tr><td>store_id / building_id / user_id / fulfill(自提|配送) / pay_status / total / discount / delivery_no / pickup_point / addr</td><td>履约与金额</td></tr>
+      <tr><td><b>订单明细 order_item</b></td><td>order_id / sku_id / name_snapshot / price / qty / locked_id</td><td>明细快照 + 关联本次锁定库存</td></tr>
+      <tr><td><b>配送任务 delivery</b></td><td>id / batch_no / rider_id / store_id / building_id / status(待派|配送中|送达) / order_ids</td><td>批次聚合 + 派单</td></tr>
+      <tr><td><b>收款/退款 payment</b></td><td>id / order_id / type(支付|退款) / amount / out_txn / status</td><td>资金留痕，V2 并入清结算中心</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>5. 页面清单</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>端</th><th>页面</th><th>核心交互</th></tr></thead>
+    <tbody>
+      <tr><td rowspan="4"><b>C 端</b></td><td>午餐首页</td><td>楼宇定位、今日/明日 Tab、截单倒计时、菜品列表与加购</td></tr>
+      <tr><td>购物车 / 结算</td><td>取餐方式、取餐点/地址、提交订单</td></tr>
+      <tr><td>订单详情</td><td>实时状态、金额、取餐码/配送进度</td></tr>
+      <tr><td>我的订单</td><td>历史订单、状态筛选、再来一单</td></tr>
+      <tr><td rowspan="5"><b>管理台</b></td><td>菜品库</td><td>SPU 增删改 + 上下架</td></tr>
+      <tr><td>门店绑定</td><td>SKU 绑定门店、售价、规格、库存</td></tr>
+      <tr><td>周排班</td><td>星期×门店菜单与可预约量</td></tr>
+      <tr><td>订单管理</td><td>列表筛选、详情、改单/取消/退款</td></tr>
+      <tr><td>驾驶舱</td><td>今日核心指标一览</td></tr>
+      <tr><td rowspan="2"><b>协作端</b></td><td>门店工作台（门店合伙人）</td><td>接单/备餐/出餐</td></tr>
+      <tr><td>配送任务（配送员）</td><td>任务列表、开始配送、送达</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>6. 验收标准（DoD）</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>能力</th><th>通过条件</th></tr></thead>
+    <tbody>
+      <tr><td>菜品三级联动</td><td>菜品库→门店绑定→周排班任一环节修改后，C 端今日/明日菜单即时正确反映，且可回溯口径。</td></tr>
+      <tr><td>下单</td><td>同一菜品并发下单超出可售量时不会超卖；重复提交只生成一单；库存不足给出明确提示。</td></tr>
+      <tr><td>截单</td><td>过 11:00 后「今日」不可加购，仅「明日预约」可用；倒计时与后台配置一致。</td></tr>
+      <tr><td>订单状态</td><td>待支付→接单→备餐→配送→送达全链路在 C 端实时可见，超时未支付自动关闭。</td></tr>
+      <tr><td>门店工作台</td><td>接单/拒单/备餐/出餐操作同步更新订单状态；拒单触发退款与库存回补。</td></tr>
+      <tr><td>配送</td><td>批次聚合正确、派单后配送员端可见、送达后 C 端标记完成。</td></tr>
+      <tr><td>支付</td><td>支付成功/失败/退款状态一致，回调幂等，无重复扣款。</td></tr>
+      <tr><td>驾驶舱</td><td>当日指标与订单库实际数据对得上。</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>7. 风险与前置决策</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>风险 / 决策点</th><th>建议口径（需与业务确认）</th></tr></thead>
+    <tbody>
+      <tr><td>截单时间是否门店级可配</td><td>默认「11:00」，建议做成门店配置字段，避免写死</td></tr>
+      <tr><td>午间下单并发峰值</td><td>针对 SKU 库存扣减做行锁/条件更新，先保证正确再优化吞吐；压测确认上限</td></tr>
+      <tr><td>库存口径</td><td>售罄即下架还是允许预约排队？建议 V1 简单：实时可售、售罄即不可选</td></tr>
+      <tr><td>默认履约方式</td><td>同楼宇默认自提还是配送？影响 C 端默认选项与配送批次聚合</td></tr>
+      <tr><td>微信支付商户号</td><td>需提前申请并配置回调；资质不齐会阻断 V1 收付款</td></tr>
+      <tr><td>退款规则</td><td>拒单/超时/用户取消的退款时限与是否原路退回</td></tr>
+      <tr><td>「加购更满足」是否纳入订单</td><td>加购项作为独立明细行而非 SKU 捆绑，便于计价与库存</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>8. 交付里程碑</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>里程碑</th><th>范围</th><th>估时</th><th>出口条件</th></tr></thead>
+    <tbody>
+      <tr><td><b>M0</b> 地基</td><td>商品中心、订单主表、RBAC、楼宇门店</td><td>1–2 周</td><td>通用模型评审通过，可被早餐复用</td></tr>
+      <tr><td><b>M1</b> 下单支付</td><td>菜品三级联动、C 端点餐结算、支付、订单状态机</td><td>1–2 周</td><td>可完成「下单→支付→订单生成」全流程</td></tr>
+      <tr><td><b>M2</b> 门店履约</td><td>门店工作台、库存扣减与并发</td><td>1 周</td><td>可完成「接单→备餐→出餐」并正确回补库存</td></tr>
+      <tr><td><b>M3</b> 配送</td><td>配送批次、派单、配送员端、送达</td><td>1 周</td><td>可完成「批次→派单→送达」闭环</td></tr>
+      <tr><td><b>M4</b> 联调上线</td><td>驾驶舱、全链路联调、压测、上线</td><td>1 周</td><td>DoD 全过，真实楼宇跑出第一笔午餐订单</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3 id="m1tasks">9. M1 下单支付 · 开发任务拆解（可排期）</h3>
+  <p class="lead">承接 M0 地基完成之后，按「数据/排班 → C 端点餐 → 下单/状态机 → 支付 → 库存联动」拆为 5 条并行的子轨。估时为<b>单人日均</b>口径；多人并行时缩短的是墙钟时长，不压缩人天。</p>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>任务 ID</th><th>任务</th><th>依赖</th><th>估时（人天）</th><th>出口 / 验收</th></tr></thead>
+    <tbody>
+      <tr><td colspan="5" style="background:var(--surface-muted)"><b>子轨 T1 · 商品与排班数据</b></td></tr>
+      <tr><td>M1-T1.1</td><td>菜品库(SPU) CRUD：接口 + 管理台页面</td><td>M0 商品中心</td><td>1.5</td><td>可增改菜品，含分类/图片/下架</td></tr>
+      <tr><td>M1-T1.2</td><td>门店绑定（SKU：门店价 / 规格 / 停售）</td><td>M1-T1.1</td><td>1</td><td>同一菜品在不同门店售价独立</td></tr>
+      <tr><td>M1-T1.3</td><td>周排班配置 + 今日/明日取档（按 weekday）</td><td>M1-T1.2</td><td>1.5</td><td>C 端自动取对档期，今日/明日互不串</td></tr>
+      <tr><td colspan="5" style="background:var(--surface-muted)"><b>子轨 T2 · C 端点餐</b></td></tr>
+      <tr><td>M1-T2.1</td><td>午餐首页：楼宇定位 / 今日·明日 Tab / 截单倒计时 / 菜品列表</td><td>M1-T1.3</td><td>2</td><td>按楼宇过滤可售门店与菜单</td></tr>
+      <tr><td>M1-T2.2</td><td>加购与购物车计价（含「加购更满足」）</td><td>M1-T2.1</td><td>1.5</td><td>数量步进、合计正确、超可售拦截</td></tr>
+      <tr><td>M1-T2.3</td><td>结算页：履约方式 / 取餐点·地址 / 提交订单</td><td>M1-T2.2</td><td>1.5</td><td>可提交生成订单并进入支付</td></tr>
+      <tr><td colspan="5" style="background:var(--surface-muted)"><b>子轨 T3 · 下单与状态机</b></td></tr>
+      <tr><td>M1-T3.1</td><td>订单创建 API + 幂等键（防重复提交）</td><td>M0 订单主表</td><td>2</td><td>并发/连点只生成一单</td></tr>
+      <tr><td>M1-T3.2</td><td>订单状态机骨架 + 未支付超时自动关闭（延时任务）</td><td>M1-T3.1</td><td>1.5</td><td>到期自动关闭并回补库存</td></tr>
+      <tr><td>M1-T3.3</td><td>C 端订单详情 / 我的订单</td><td>M1-T3.1</td><td>1.5</td><td>状态实时可见、可取消</td></tr>
+      <tr><td colspan="5" style="background:var(--surface-muted)"><b>子轨 T4 · 支付</b></td></tr>
+      <tr><td>M1-T4.1</td><td>微信支付：统一下单 / 回调验签 / 结果幂等落库</td><td>M1-T3.1</td><td>2.5</td><td>支付成功/失败状态一致，无重复扣款</td></tr>
+      <tr><td>M1-T4.2</td><td>退款基础（拒单 / 取消原路退回 + 流水）</td><td>M1-T4.1</td><td>1</td><td>退款到账且留痕</td></tr>
+      <tr><td colspan="5" style="background:var(--surface-muted)"><b>子轨 T5 · 库存联动（可靠性）</b></td></tr>
+      <tr><td>M1-T5.1</td><td>锁库存 / 支付实扣 / 回补 + 防超卖（行锁 / 条件更新）</td><td>M1-T3.1、M1-T4.1</td><td>2</td><td>并发超出可售不超卖，取消/超时正确回补</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="grid cols-3">
+    <div class="card"><h4><span class="i">Σ</span>合计</h4><p>约 <b>19.5 人天</b>（单人），含联调余量约 <b>20 人天</b>。</p></div>
+    <div class="card"><h4><span class="i">🔀</span>可并行</h4><p>T2（C 端）与 T1（数据）无强耦合，可与 T3 交叉开工；T4 依赖 T3.1，T5 依赖 T3.1+T4.1。</p></div>
+    <div class="card"><h4><span class="i">⏱</span>排期参考</h4><p>单人约 3–4 周；2 人并行（一人走 T1→T2，一人走 T3→T4→T5）可压到约 2–3 周。</p></div>
+  </div>
+  <div class="callout"><b>排期建议：</b>T4.1（微信支付）开工前必须先把商户号 + 回调域名就绪，这是硬前置。<b>T5 库存不能压到最后补</b>——它与下单强相关，并行时最迟随 T3.1 一起联调，避免「订单能下、库存错乱」的返工。</div>
+
+  <div class="callout ok"><b>总体估时：</b>单门店午餐一条链约 <b>5–7 周</b>。建议以「M1 能收到第一笔真实支付」为最优先标志——先让流水进来，再逐步补齐门店与配送的细粒度体验。</div>
+</section>
+
+<!-- 24. SUPPLEMENT -->
+<section id="supplement">
+  <h2 class="sec">补充：前台用户端与支撑体系</h2>
+  <p class="lead">以下内容基于对 C 端用户页面（<code>yuanwuji.cn</code>）的实机勘查补充，是对第 1~23 章「重后台」内容的完善——补齐了用户实际消费的前台触点，以及勘查中发现、但后台清单未完整涵盖的新能力。</p>
+
+  <h3>24.1 前台用户端 · 产品形态与全局框架</h3>
+  <div class="grid cols-3">
+    <div class="card"><h4><span class="i">📱</span>载体形态</h4><p>面向移动端的单页应用（SPA，hash 路由）。加载后即进入「楼宇定位」模式，按用户所在楼宇展示可售内容。</p></div>
+    <div class="card"><h4><span class="i">🗂️</span>底部主导航</h4><p>三大 Tab：<b>早餐</b>、<b>午餐</b>、<b>我的</b>。早餐为正餐之外的独立板块，与后台「早餐管理」对应；团购、周边、团餐、优惠券从各页入口进入。</p></div>
+    <div class="card"><h4><span class="i">📍</span>楼宇选择器</h4><p>顶部持久显示当前楼宇（如「银河SOHO 2号楼」），可切换。换楼后菜单、取餐点、团购内容随之切换——与后台「楼宇管理 + 可售门店」数据联动。</p></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-head"><span class="no">24</span><h4>C 端页面拆解（实机勘查）</h4><span class="scope">前台用户端</span></div>
+    <div class="mod-body">
+      <div class="row" style="display:grid;gap:1.2rem">
+        <div class="do"><span class="dot">1</span><div><span class="t">早餐页</span><div class="d">问候语 + 当前楼宇（「今天订 · 明早到取餐点」）。选套餐（A 套·饭团餐 / B 套·蒸点餐）+ 加点单品（包子/豆浆/小米粥/三明治/茶叶蛋/咖啡，带 +/- 步进器）。固定取餐点：取餐点下拉、取餐日期（默认为明天）、取餐人姓名、手机号。提交后<b>生成取餐码</b>，次日到取餐点出示/扫码核销。底部常驻购物车栏（已选 N 件 · ¥X · 去结算）。</div></div></div>
+        <div class="do"><span class="dot">2</span><div><span class="t">午餐页</span><div class="d">楼宇定位 + 促销横幅（「新客立减 3 元 · 首单特惠」「写字楼专送 · 私域价」）+ 当日截单倒计时（今日 11:00 截单，现炒现做）。Tab 切换「今日午餐 / 明日预约」。展示服务门店（如「兰森食堂（中环国际 C座）（今日可售）」）与菜品分类：轻食套餐、招牌套餐等；每道菜点「预约」加入订单；另有「加购更满足」加购区（+步进器：希腊酸奶/每日坚果/鲜榨橙汁）。底部挂「下班团购」「周边好物」两个业务线 banner 入口。</div></div></div>
+        <div class="do"><span class="dot">3</span><div><span class="t">团购页（下班团购）</span><div class="d">「楼宇专属 · 社区团购」，规则明确（当天 16:00 截单 · 17:30-18:30 一楼大堂取货 · 按楼拼团更划算）。商品卡含：标题、划线原价、现价、已售份数、「立即购」。示例：光明鲜牛奶 950ml×2 瓶 ¥16（原价 ¥24，已售 120 份）、次日早餐包 ¥10。对应后台「团购管理」。</div></div></div>
+        <div class="do"><span class="dot">4</span><div><span class="t">周边页（周边好物）</span><div class="d">「家政上门」服务聚合，卖点：平台严选 · 上门服务 · 价格透明 · 售后保障；承诺标签：平台担保 / 不满意退 / 老张代约。分类：蛋糕、保洁、鲜花、维修。商品多为<b>多规格</b>（如生日蛋糕 6 寸 ¥158 / 8 寸 ¥238；保洁 2h ¥99 / 4h ¥199；鲜花单次 ¥39 / 包月 ¥129），显示已售单数、立即下单。对应后台「周边管理」。</div></div></div>
+        <div class="do"><span class="dot">5</span><div><span class="t">我的页</span><div class="d">用户信息（头像/昵称/换账号）+ <b>会员等级与成长值</b>（如 Lv1 小蓝鹿，成长值 0，距 Lv2 还差 200）。功能入口：我的订单、优惠券、多人团餐、发票管理、礼品卡、招商合作、关注微信、我的早餐；以及<b>邀请拉新</b>入口（邀好友得 ¥9.9 · 新朋友专享·到店配送到楼）。</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <h3>24.2 后台清单之外的补充能力（勘查新发现）</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>能力</th><th>发现位置</th><th>建议落在模块</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td><b>会员等级 / 成长值</b></td><td>我的页 · 用户头衔</td><td>营销活动 / 会员体系</td><td>按成长值升等级（Lv 体系），各等级权益待定义（折扣/专属价）。C 端展示升级进度。</td></tr>
+      <tr><td><b>邀请返利（拉新）</b></td><td>我的页 · 邀好友得 ¥9.9</td><td>营销活动</td><td>邀请好友注册并下单，邀请人得奖励；含分享页、返利到账与记录。</td></tr>
+      <tr><td><b>发票管理</b></td><td>我的页 · 发票管理</td><td>资金管理 / 订单</td><td>用户对已支付订单申请开票（个人/企业抬头），平台开票与记录。</td></tr>
+      <tr><td><b>礼品卡</b></td><td>我的页 · 礼品卡</td><td>营销活动 / 资金</td><td>可购买/赠送/充值礼品卡用于消费，卡号绑定资金与核销。</td></tr>
+      <tr><td><b>多人团餐入口</b></td><td>我的页 · 多人团餐</td><td>企业团餐</td><td>C 端聚合企业/多人团餐的参与入口，与后台「企业团餐」对接。</td></tr>
+      <tr><td><b>招商合作入口</b></td><td>我的页 · 招商合作</td><td>合伙人</td><td>用户侧表达开店/合伙意向，联动后台合伙人招商线索。</td></tr>
+      <tr><td><b>关注微信</b></td><td>我的页 · 关注微信</td><td>私域 / 消息</td><td>引导关注公众号/企微，承接「私域」触达与订阅通知。</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>24.3 前台端业务要点（开发约束）</h3>
+  <div class="mod">
+    <div class="mod-head"><span class="no">24</span><h4>C 端开发约束</h4><span class="scope">前台用户端</span></div>
+    <div class="mod-body">
+      <div class="dolist">
+        <div class="do"><span class="dot">1</span><div><span class="t">楼宇强依赖</span><div class="d">首页首启即做楼宇定位/选择，几乎所有页面内容（菜单、取餐点、团购、门店）都以楼宇为唯一过滤维度，需与后台楼宇-门店模型强一致。</div></div></div>
+        <div class="do"><span class="dot">2</span><div><span class="t">截单与预约逻辑</span><div class="d">午餐按「今日/明日预约」Tab 区分，展示当日截单时间倒计时；早餐按「今天订·明早到」预订制；需由后端按 weekday+截单时间判定可售与可见（承接菜品三级联动）。</div></div></div>
+        <div class="do"><span class="dot">3</span><div><span class="t">取餐码与核销</span><div class="d">早餐提交后生成取餐码，次日现场出示/扫码核销，需联动库存扣减与订单流转。</div></div></div>
+        <div class="do"><span class="dot">4</span><div><span class="t">多规格商品</span><div class="d">周边好物存在「规格/套餐」结构（6 寸/8 寸、单次/包月、2h/4h），商品模型需支持规格组与定价，并可选订阅（如每周一花）。</div></div></div>
+        <div class="do"><span class="dot">5</span><div><span class="t">邀请与成长值资金</span><div class="d">返利、成长值、礼品卡、发票等均涉及资金/权益账户，需并入资金管理与风控（幂等、流水、审计）。</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <h3>24.4 待确认问题清单</h3>
+  <div class="callout warn"><b>开发前需与业务对齐的口径：</b>① 会员各等级的具体权益与成长值获取规则；② 午餐「今日/明日」截单时间是否是楼宇级可配；③ 邀请返利的发放账户与提现规则；④ 礼品卡的适用范围与是否限用；⑤ 发票的抬头校验与开票渠道；⑥ 团购/周边/早餐是否也纳入会员成长值累积。</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="sources">
+    <h2>文档说明</h2>
+    <p>本文档基于对现有管理后台 17 大功能模块（驾驶舱、楼宇、门店、菜品、订单、配送、用户、合伙人、营销、团购、周边、企业团餐、早餐、厨房测算、资金、评价、客服）的逐一实机勘查整理，作为兰森食堂系统重新规划与开发的 PRD 梳理稿。用于指导后续详细设计、原型与排期。</p>
+  </div>
+</footer>
+
+</div>

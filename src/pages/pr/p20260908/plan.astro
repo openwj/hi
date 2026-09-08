@@ -1,0 +1,121 @@
+---
+import ProjectLayout from '../../../layouts/ProjectLayout.astro';
+import '../../../projects/p20260908/plan.css';
+// PRD 正文 1:1 保留（含两张架构图 SVG），仅套用站点深色主题。
+// Vite ?raw 在构建期把文件内联为字符串。
+import Doc from '../../../projects/p20260908/plan.html?raw';
+
+// 前端校验：密码哈希比对（sha256('20260908')）。换密码只需重算此常量。
+const PASSWORD_SHA256 = 'd553c4458a7fd0c7df2f93e6d441592570ece74be82f968f8e53cbbf34c49451';
+---
+
+<ProjectLayout
+	title="兰森食堂 · 私域白领外卖平台 — 项目计划（PRD 梳理稿）"
+	description="兰森食堂私域白领外卖平台的功能模块需求梳理与开发计划：17 大功能模块、5 类角色、6 条业务线、订单状态机、数据模型与 V1 实施清单。"
+	crumb="项目计划"
+	foot="项目计划 · 兰森食堂 PRD 梳理稿 · 我的码 · 与主站同一人维护"
+>
+	<!-- ============ 密码门 ============ -->
+	<section id="gate" class="gate-wrap" aria-label="访问验证">
+		<div class="gate">
+			<p class="gate-crumb"><b>❯</b>~/我的码/docs $ access 项目计划.md --key</p>
+			<h1>项目计划<span class="accent"> · 需要口令</span></h1>
+			<p>这份计划目前只对项目相关人开放。输入访问口令继续；口令由项目发起人提供。</p>
+			<form class="gate-form" id="gateForm" autocomplete="off">
+				<input
+					class="gate-input"
+					id="gateInput"
+					name="passphrase"
+					type="password"
+					inputmode="numeric"
+					placeholder="输入口令…"
+					aria-label="访问口令"
+					autofocus
+				/>
+				<button class="gate-btn" type="submit">解锁</button>
+			</form>
+			<p class="gate-err" id="gateErr" role="alert">口令不对，再想想 —— 或找发起人要。</p>
+			<div class="gate-hint">
+				<span class="dot"></span>
+				<span>仅前端校验 · 校验通过后本机记住，下次免输</span>
+			</div>
+		</div>
+	</section>
+
+	<!-- ============ 文档正文 ============ -->
+	<div id="gatedoc" set:html={Doc} />
+
+	<script define:vars={{ PASSWORD_SHA256 }}>
+		(function () {
+			var root = document.documentElement;
+			var gate = document.getElementById('gate');
+			var doc = document.getElementById('gatedoc');
+			if (!gate || !doc) return;
+
+			function sha256(str) {
+				if (window.crypto && crypto.subtle && window.TextEncoder) {
+					return crypto.subtle
+						.digest('SHA-256', new TextEncoder().encode(str))
+						.then(function (buf) {
+							return Array.prototype.map.call(new Uint8Array(buf), function (b) {
+								return b.toString(16).padStart(2, '0');
+							}).join('');
+						});
+				}
+				return Promise.reject(new Error('no crypto'));
+			}
+
+			function unlock(persist) {
+				root.setAttribute('data-authed', '');
+				try {
+					if (persist) localStorage.setItem('lr_auth', '1');
+				} catch (_) {}
+				gate.remove();
+				doc.style.display = 'block';
+			}
+
+			// 已解锁（本页 head 内联脚本已设 data-authed）：直接进文档
+			if (root.hasAttribute('data-authed')) {
+				gate.remove();
+				doc.style.display = 'block';
+				return;
+			}
+
+			var form = document.getElementById('gateForm');
+			var input = document.getElementById('gateInput');
+			var err = document.getElementById('gateErr');
+
+			form.addEventListener('submit', function (e) {
+				e.preventDefault();
+				var val = (input.value || '').trim();
+				if (!val) {
+					err.classList.add('on');
+					input.classList.add('shake');
+					setTimeout(function () { input.classList.remove('shake'); }, 350);
+					return;
+				}
+				var t0 = Date.now();
+				function fail() {
+					err.classList.add('on');
+					input.classList.add('shake');
+					setTimeout(function () { input.classList.remove('shake'); }, 350);
+					input.select();
+				}
+				sha256(val)
+					.then(function (hex) {
+						if (hex === PASSWORD_SHA256) unlock(true);
+						else {
+							// 简单防爆破：答错后至少停顿 400ms 才给反馈
+							var wait = Math.max(0, 400 - (Date.now() - t0));
+							setTimeout(fail, wait);
+						}
+					})
+					.catch(function () {
+						// 极旧浏览器无 WebCrypto：直接比对（仅前端校验场景可接受）
+						if (val === '20260908') unlock(true);
+						else fail();
+					});
+			});
+		})();
+	</script>
+</ProjectLayout>

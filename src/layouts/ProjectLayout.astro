@@ -8,14 +8,27 @@ import '@fontsource/noto-serif-sc/900.css';
 import '@fontsource/jetbrains-mono/400.css';
 import '@fontsource/jetbrains-mono/700.css';
 
+/**
+ * 项目子站通用布局 —— 所有项目页（/projects/<slug>/*）共用。
+ * 页面专属样式由各页面自行 import（如 pr/p20260908/plan.css）。
+ *
+ * Props:
+ *  - title / description : <head> 文案
+ *  - crumb               : 顶栏 logo 旁的小标签（如「项目计划」「合作方案」）
+ *  - foot                : 页脚说明文字
+ */
 interface Props {
-  title?: string;
-  description?: string;
+	title?: string;
+	description?: string;
+	crumb?: string;
+	foot?: string;
 }
 
 const {
-  title = '我的码 · 合作执行手册 — 三种模式怎么落地（手作坊价）',
-  description = '三种合作模式的执行细节：周期、付款节点、报价逻辑、变更规则、验收标准、退出条款，全部摊开写明白。验证期享手作坊起步价。',
+	title = '项目计划 · 我的码',
+	description = '项目相关文档与方案。',
+	crumb = '项目计划',
+	foot = '我的码 · 与主站同一人维护',
 } = Astro.props;
 ---
 
@@ -24,8 +37,11 @@ const {
 	<head>
 		<meta charset="UTF-8" />
 		<script is:inline>document.documentElement.classList.add('js')</script>
+		<!-- 解锁状态先于首帧写入，避免已解锁用户看到密码门闪屏 -->
+		<script is:inline>try{if(localStorage.getItem('lr_auth')==='1')document.documentElement.setAttribute('data-authed','')}catch(_){}</script>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 		<meta name="theme-color" content="#0E100C" />
+		<meta name="robots" content="noindex, nofollow" />
 		<title>{title}</title>
 		<meta name="description" content={description} />
 		<meta property="og:type" content="website" />
@@ -37,28 +53,27 @@ const {
 			rel="icon"
 			href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230E100C'/%3E%3Cpath d='M11 9v13a4 4 0 0 0 4 4h7' stroke='%23E5A63C' stroke-width='2.6' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='11' cy='7' r='3' fill='%23E5A63C'/%3E%3Ccircle cx='22' cy='26' r='3' fill='%23E5A63C'/%3E%3Ccircle cx='22' cy='7' r='3' fill='%23EDE8D8'/%3E%3C/svg%3E"
 		/>
-		<!-- 字体：本地打包（@fontsource），无线上请求。 -->
 		<meta name="generator" content={Astro.generator} />
 	</head>
 	<body>
 		<a class="fixed left-4 -top-12 z-[200] rounded-b-[10px] bg-amber px-4 py-[10px] text-[13.5px] font-medium text-[#16130a] transition-[top] duration-200 focus:top-0" href="#main">跳到主要内容</a>
-		<!-- 顶栏 -->
+		<!-- 顶栏：返回主站 + 页面自定义动作（slot:actions） -->
 		<header class="fixed inset-x-0 top-0 z-50 flex h-16 items-center justify-between gap-4 border-b border-transparent px-[clamp(18px,3vw,34px)] transition-colors duration-300" id="top">
 			<a class="flex items-center gap-[11px] font-mono text-[16px] font-bold" href="/" aria-label="返回 我的码 主站">
 				<span class="grid size-[30px] place-items-center rounded-lg border-[1.5px] border-line2 text-amber"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6.5" cy="5" r="2.3"/><circle cx="6.5" cy="19" r="2.3"/><circle cx="17.5" cy="8" r="2.3"/><path d="M6.5 7.3v9.4"/><path d="M17.5 10.3c0 4-3.6 4.7-7.5 5.2"/></svg></span>
-				我的码<i class="ml-[2px] text-[11px] font-normal tracking-[.14em] text-faint">执行手册</i>
+				我的码<i class="ml-[2px] text-[11px] font-normal tracking-[.14em] text-faint">{crumb}</i>
 			</a>
-			<nav class="nav hidden items-center gap-[2px] desk:flex">
-				<a class="rounded-lg px-[11px] py-[7px] text-[13.5px] text-sub transition-colors duration-200 hover:bg-ink/5 hover:text-ink" href="#cmp">速览</a><a class="rounded-lg px-[11px] py-[7px] text-[13.5px] text-sub transition-colors duration-200 hover:bg-ink/5 hover:text-ink" href="#quiz">帮我选</a><a class="rounded-lg px-[11px] py-[7px] text-[13.5px] text-sub transition-colors duration-200 hover:bg-ink/5 hover:text-ink" href="#policy">定价</a><a class="rounded-lg px-[11px] py-[7px] text-[13.5px] text-sub transition-colors duration-200 hover:bg-ink/5 hover:text-ink" href="#modes">模式</a><a class="rounded-lg px-[11px] py-[7px] text-[13.5px] text-sub transition-colors duration-200 hover:bg-ink/5 hover:text-ink" href="#low">预算紧</a><a class="rounded-lg px-[11px] py-[7px] text-[13.5px] text-sub transition-colors duration-200 hover:bg-ink/5 hover:text-ink" href="#est">估价</a>
-			</nav>
-			<a class="inline-flex items-center justify-center gap-[9px] rounded-[10px] bg-amber px-[18px] py-[9px] text-[13.5px] font-bold text-[#1d1405] transition duration-200 hover:brightness-[1.09] active:scale-[.97]" href="#cta">聊聊合作</a>
+			<div class="flex items-center gap-3">
+				<slot name="actions" />
+				<a class="inline-flex items-center justify-center gap-[9px] rounded-[10px] border-[1.5px] border-line2 bg-transparent px-[18px] py-[9px] text-[13.5px] font-bold text-ink transition duration-200 hover:border-amber hover:text-amber active:scale-[.97]" href="/">返回主站</a>
+			</div>
 		</header>
 
 		<main id="main">
-		<slot />
+			<slot />
 		</main>
 
-		<footer class="border-t border-line bg-bg2 px-7 py-[26px] text-center font-mono text-[11.5px] leading-[2] text-faint">本页价格为验证期起步价参考区间（手作坊模式 · 签约锁定）· 我的码 执行手册 v4 · 与主站同一人维护</footer>
+		<footer class="site-foot border-t border-line bg-bg2 px-7 py-[26px] text-center font-mono text-[11.5px] leading-[2] text-faint">{foot}</footer>
 
 		<div id="toast" role="status"></div>
 	</body>

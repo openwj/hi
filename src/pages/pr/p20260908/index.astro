@@ -1,0 +1,19 @@
+---
+// 项目入口 /pr/p20260908 直接跳转到 PRD 计划页。
+// 静态托管用 meta refresh + JS location.replace 双保险，任何环境都能跳。
+const target = '/pr/p20260908/plan';
+---
+
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="refresh" content={`0; url=${target}`} />
+		<link rel="canonical" href={target} />
+		<title>跳转中…</title>
+	</head>
+	<body>
+		<script is:inline define:vars={{ target }}>location.replace(target);</script>
+		<p style="padding:48px;font-family:monospace">正在跳转… <a href={target}>如果没有自动跳转，点这里</a></p>
+	</body>
+</html>
