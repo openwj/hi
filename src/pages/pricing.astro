@@ -58,7 +58,7 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 				<span class="ml-auto font-mono text-[12.5px] text-faint">$ ./which-mode --quick</span>
 			</div>
 			<div class="qz grid gap-4" id="quizBody" data-rv></div>
-			<div class="qz-res mt-4 hidden animate-rise rounded-[14px] border border-green/35 bg-green/10 p-[26px_28px]" id="quizRes" data-rv></div>
+			<div class="qz-res mt-4 hidden animate-rise rounded-[14px] border border-green/35 bg-green/10 p-[26px_28px]" id="quizRes" role="status" data-rv></div>
 		</div>
 	</section>
 
@@ -113,14 +113,14 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 			</div>
 
 			<div class="overflow-hidden rounded-2xl border border-line2 bg-bg2" data-rv>
-				<div class="sticky top-0 z-[5] flex border-b border-line bg-panel" role="tablist">
+				<div class="sticky top-0 z-[5] flex border-b border-line bg-panel" role="tablist" aria-label="合作模式">
 					<button class="mtab on flex-1 cursor-pointer border-0 border-r border-line bg-transparent px-2 py-[14px] font-mono text-[12.5px] text-sub transition-colors duration-200 last:border-r-0 hover:text-ink [&.on]:bg-bg2 [&.on]:text-amber [&.on]:[box-shadow:inset_0_-2px_0_var(--color-amber)]" data-mode="mvp" role="tab" aria-selected="true"><i class="mr-[6px] not-italic text-faint">01</i>mvp.sprint</button>
-					<button class="mtab flex-1 cursor-pointer border-0 border-r border-line bg-transparent px-2 py-[14px] font-mono text-[12.5px] text-sub transition-colors duration-200 last:border-r-0 hover:text-ink [&.on]:bg-bg2 [&.on]:text-amber [&.on]:[box-shadow:inset_0_-2px_0_var(--color-amber)]" data-mode="month" role="tab"><i class="mr-[6px] not-italic text-faint">02</i>monthly.md</button>
-					<button class="mtab flex-1 cursor-pointer border-0 border-r border-line bg-transparent px-2 py-[14px] font-mono text-[12.5px] text-sub transition-colors duration-200 last:border-r-0 hover:text-ink [&.on]:bg-bg2 [&.on]:text-amber [&.on]:[box-shadow:inset_0_-2px_0_var(--color-amber)]" data-mode="equity" role="tab"><i class="mr-[6px] not-italic text-faint">03</i>equity.md</button>
+					<button class="mtab flex-1 cursor-pointer border-0 border-r border-line bg-transparent px-2 py-[14px] font-mono text-[12.5px] text-sub transition-colors duration-200 last:border-r-0 hover:text-ink [&.on]:bg-bg2 [&.on]:text-amber [&.on]:[box-shadow:inset_0_-2px_0_var(--color-amber)]" data-mode="month" role="tab" aria-selected="false"><i class="mr-[6px] not-italic text-faint">02</i>monthly.md</button>
+					<button class="mtab flex-1 cursor-pointer border-0 border-r border-line bg-transparent px-2 py-[14px] font-mono text-[12.5px] text-sub transition-colors duration-200 last:border-r-0 hover:text-ink [&.on]:bg-bg2 [&.on]:text-amber [&.on]:[box-shadow:inset_0_-2px_0_var(--color-amber)]" data-mode="equity" role="tab" aria-selected="false"><i class="mr-[6px] not-italic text-faint">03</i>equity.md</button>
 				</div>
 
 				<!-- ===== MVP 冲刺 ===== -->
-				<div class="panel animate-rise p-[36px_clamp(20px,4vw,44px)_44px]" data-mode="mvp">
+				<div class="panel animate-rise p-[36px_clamp(20px,4vw,44px)_44px]" data-mode="mvp" role="tabpanel" aria-label="MVP 冲刺">
 					<div class="mb-[10px] grid grid-cols-1 items-start gap-9 tab:grid-cols-[1.15fr_.85fr]">
 						<div>
 							<p class="mb-[10px] font-mono text-[12px] text-amber">$ man 我的码-mvp</p>
@@ -245,7 +245,7 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 				</div>
 
 				<!-- ===== 长期同行 ===== -->
-				<div class="panel hidden animate-rise p-[36px_clamp(20px,4vw,44px)_44px]" data-mode="month">
+				<div class="panel hidden animate-rise p-[36px_clamp(20px,4vw,44px)_44px]" data-mode="month" role="tabpanel" aria-label="长期同行">
 					<div class="mb-[10px] grid grid-cols-1 items-start gap-9 tab:grid-cols-[1.15fr_.85fr]">
 						<div>
 							<p class="mb-[10px] font-mono text-[12px] text-amber">$ man 我的码-monthly</p>
@@ -348,7 +348,7 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 				</div>
 
 				<!-- ===== 深度合伙 ===== -->
-				<div class="panel hidden animate-rise p-[36px_clamp(20px,4vw,44px)_44px]" data-mode="equity">
+				<div class="panel hidden animate-rise p-[36px_clamp(20px,4vw,44px)_44px]" data-mode="equity" role="tabpanel" aria-label="深度合伙">
 					<div class="mb-[10px] grid grid-cols-1 items-start gap-9 tab:grid-cols-[1.15fr_.85fr]">
 						<div>
 							<p class="mb-[10px] font-mono text-[12px] text-amber">$ man 我的码-equity</p>
@@ -395,7 +395,7 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 
 					<div class="mt-[34px] border-t border-dashed border-line2 pt-[26px]"><div class="mb-[18px] flex flex-wrap items-baseline gap-[14px]"><span class="font-mono text-[11px] tracking-[.18em] text-amber">4.4</span><h4 class="text-[18px] font-bold">成熟条款</h4><em class="ml-auto font-mono text-[11.5px] text-faint">拖一拖，看看怎么算</em></div>
 						<div class="mb-4 mt-1 grid grid-cols-[repeat(18,minmax(0,1fr))] gap-1">
-							<div id="vestGrid" style="display:contents"></div>
+							<div id="vestGrid" style="display:contents" aria-hidden="true"></div>
 							<input type="range" id="vestRange" min="0" max="36" value="14" aria-label="拖动查看成熟进度" class="my-1 w-full cursor-pointer accent-amber">
 							<div class="font-mono text-[12px] leading-[1.8] text-sub" id="vestCap"></div>
 						</div>
@@ -484,9 +484,9 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 					<div class="mt-6">
 						<div class="mb-4 font-mono text-[11.5px] tracking-[.2em] text-faint" style="margin-top:24px">02 · 复杂度感受</div>
 						<div class="ec-row" id="estComp">
-							<button class="ec on cursor-pointer rounded-full border-[1.5px] border-line2 px-4 py-2 font-mono text-[12.5px] text-sub transition-all duration-200 hover:border-amber-d hover:text-ink [&.on]:border-amber [&.on]:bg-amber/10 [&.on]:text-amber" data-m="0.8" data-l="从简">从简 ×0.8</button>
-							<button class="ec cursor-pointer rounded-full border-[1.5px] border-line2 px-4 py-2 font-mono text-[12.5px] text-sub transition-all duration-200 hover:border-amber-d hover:text-ink [&.on]:border-amber [&.on]:bg-amber/10 [&.on]:text-amber" data-m="1" data-l="标准">标准 ×1.0</button>
-							<button class="ec cursor-pointer rounded-full border-[1.5px] border-line2 px-4 py-2 font-mono text-[12.5px] text-sub transition-all duration-200 hover:border-amber-d hover:text-ink [&.on]:border-amber [&.on]:bg-amber/10 [&.on]:text-amber" data-m="1.3" data-l="稍复杂">稍复杂 ×1.3</button>
+							<button class="ec on cursor-pointer rounded-full border-[1.5px] border-line2 px-4 py-2 font-mono text-[12.5px] text-sub transition-[border-color,color,background-color] duration-200 hover:border-amber-d hover:text-ink [&.on]:border-amber [&.on]:bg-amber/10 [&.on]:text-amber" data-m="0.8" data-l="从简" aria-pressed="true">从简 ×0.8</button>
+							<button class="ec cursor-pointer rounded-full border-[1.5px] border-line2 px-4 py-2 font-mono text-[12.5px] text-sub transition-[border-color,color,background-color] duration-200 hover:border-amber-d hover:text-ink [&.on]:border-amber [&.on]:bg-amber/10 [&.on]:text-amber" data-m="1" data-l="标准" aria-pressed="false">标准 ×1.0</button>
+							<button class="ec cursor-pointer rounded-full border-[1.5px] border-line2 px-4 py-2 font-mono text-[12.5px] text-sub transition-[border-color,color,background-color] duration-200 hover:border-amber-d hover:text-ink [&.on]:border-amber [&.on]:bg-amber/10 [&.on]:text-amber" data-m="1.3" data-l="稍复杂" aria-pressed="false">稍复杂 ×1.3</button>
 						</div>
 					</div>
 					<button class="mt-[22px] cursor-pointer border-0 bg-transparent font-[inherit] text-[12.5px] text-faint underline hover:text-ink" id="estReset" type="button">清空重选</button>
@@ -495,8 +495,8 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 					<div class="mb-4 font-mono text-[11.5px] tracking-[.2em] text-faint">03 · 参考结果</div>
 					<div class="text-[14px] leading-[2] text-faint" id="estHint">先在左边勾选你大概需要的东西，这里会算给你看。</div>
 					<div class="er-body grid gap-[18px] hidden" id="estBody">
-						<div class="grid gap-1.5"><span class="font-mono text-[11px] tracking-[.18em] text-faint">预估工时</span><span class="font-serif text-[34px] font-black leading-[1.3]"><b id="estDays">0</b> 人天<i>≈</i><b id="estWeeks">0</b> 周</span></div>
-						<div class="grid gap-1.5"><span class="font-mono text-[11px] tracking-[.18em] text-faint">参考价格（起步价）</span><span class="font-serif text-[clamp(24px,2.6vw,32px)] font-black leading-[1.4] text-amber" id="estPrice">¥0 – ¥0</span></div>
+						<div class="grid gap-1.5"><span class="font-mono text-[11px] tracking-[.18em] text-faint">预估工时</span><span class="font-serif text-[34px] font-black leading-[1.3] [font-variant-numeric:tabular-nums]"><b id="estDays">0</b> 人天<i>≈</i><b id="estWeeks">0</b> 周</span></div>
+						<div class="grid gap-1.5"><span class="font-mono text-[11px] tracking-[.18em] text-faint">参考价格（起步价）</span><span class="font-serif text-[clamp(24px,2.6vw,32px)] font-black leading-[1.4] text-amber [font-variant-numeric:tabular-nums]" id="estPrice">¥0 – ¥0</span></div>
 						<p class="mt-auto border-t border-dashed border-line2 pt-4 text-[12px] leading-[1.9] text-faint" id="estNote"></p>
 					</div>
 				</div>
@@ -623,7 +623,7 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 				var block = document.createElement('div');
 				block.className = 'qz-block rounded-[14px] border border-line2 bg-bg2 p-[24px_26px]';
 				block.innerHTML = '<div class="qz-no mb-2 font-mono text-[11px] tracking-[.2em] text-amber">QUESTION ' + (qi + 1) + '/3</div><div class="qz-q mb-4 text-[17px] font-bold">' + q.q + '</div><div class="qz-opts grid grid-cols-1 gap-2.5 phone:grid-cols-2">' +
-					q.opts.map(function (o, oi) { return '<button class="qz-opt cursor-pointer rounded-[10px] border-[1.5px] border-line2 bg-transparent px-4 py-[13px] text-left text-[14px] leading-[1.7] text-sub transition-all duration-200 hover:border-amber-d hover:text-ink [&.sel]:border-amber [&.sel]:bg-amber/10 [&.sel]:text-amber" type="button" data-q="' + qi + '" data-o="' + oi + '">' + o.t + '</button>'; }).join('') + '</div>';
+					q.opts.map(function (o, oi) { return '<button class="qz-opt cursor-pointer rounded-[10px] border-[1.5px] border-line2 bg-transparent px-4 py-[13px] text-left text-[14px] leading-[1.7] text-sub transition-[border-color,color,background-color] duration-200 hover:border-amber-d hover:text-ink [&.sel]:border-amber [&.sel]:bg-amber/10 [&.sel]:text-amber" type="button" aria-pressed="false" data-q="' + qi + '" data-o="' + oi + '">' + o.t + '</button>'; }).join('') + '</div>';
 				body.appendChild(block);
 			});
 			function judge() {
@@ -645,8 +645,9 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 			body.addEventListener('click', function (e) {
 				var b = e.target.closest('.qz-opt'); if (!b) return;
 				var qi = +b.getAttribute('data-q');
-				b.parentElement.querySelectorAll('.qz-opt').forEach(function (x) { x.classList.remove('sel'); });
+				b.parentElement.querySelectorAll('.qz-opt').forEach(function (x) { x.classList.remove('sel'); x.setAttribute('aria-pressed', 'false'); });
 				b.classList.add('sel');
+				b.setAttribute('aria-pressed', 'true');
 				answers[qi] = +b.getAttribute('data-o');
 				judge();
 			});
@@ -685,7 +686,7 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 			var hint = $('#estHint'), bodyEl = $('#estBody');
 			if (!wrap || !comp) return;
 			wrap.innerHTML = EST_ITEMS.map(function (it, i) {
-				return '<button class="echip cursor-pointer rounded-[10px] border-[1.5px] border-line2 px-[15px] py-[11px] text-[13.5px] leading-[1.4] text-sub transition-all duration-200 hover:border-amber-d hover:text-ink [&.on]:border-amber [&.on]:bg-amber/10 [&.on]:text-ink [&.on_i]:text-amber" type="button" data-i="' + i + '">' + it.k + '<i class="ml-[9px] font-mono text-[10.5px] not-italic text-faint">' + it.d + ' 天</i></button>';
+				return '<button class="echip cursor-pointer rounded-[10px] border-[1.5px] border-line2 px-[15px] py-[11px] text-[13.5px] leading-[1.4] text-sub transition-[border-color,color,background-color] duration-200 hover:border-amber-d hover:text-ink [&.on]:border-amber [&.on]:bg-amber/10 [&.on]:text-ink [&.on_i]:text-amber" type="button" aria-pressed="false" data-i="' + i + '">' + it.k + '<i class="ml-[9px] font-mono text-[10.5px] not-italic text-faint">' + it.d + ' 天</i></button>';
 			}).join('');
 			function round100(n) { return Math.round(n / 100) * 100; }
 			function fmt(n) { return n.toLocaleString('en-US'); }
@@ -705,16 +706,18 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 				$('#estPrice').textContent = '¥' + fmt(round100(d * EST_RATE * 0.85)) + ' – ¥' + fmt(round100(d * EST_RATE * 1.15));
 				$('#estNote').textContent = '按起步单价 ¥' + fmt(EST_RATE) + '/人天、复杂度「' + lab + '」计算（手作坊价）。实际报价以聊完的范围清单为准——误差通常在 ±30% 内。砍范围，别砍价。';
 			}
-			wrap.addEventListener('click', function (e) { var c = e.target.closest('.echip'); if (!c) return; c.classList.toggle('on'); calc(); });
+			wrap.addEventListener('click', function (e) { var c = e.target.closest('.echip'); if (!c) return; c.classList.toggle('on'); c.setAttribute('aria-pressed', c.classList.contains('on') ? 'true' : 'false'); calc(); });
 			comp.addEventListener('click', function (e) {
 				var b = e.target.closest('.ec'); if (!b) return;
-				comp.querySelectorAll('.ec').forEach(function (x) { x.classList.remove('on'); });
-				b.classList.add('on'); calc();
+				comp.querySelectorAll('.ec').forEach(function (x) { x.classList.remove('on'); x.setAttribute('aria-pressed', 'false'); });
+				b.classList.add('on');
+				b.setAttribute('aria-pressed', 'true');
+				calc();
 			});
 			var rs = $('#estReset');
 			if (rs) rs.addEventListener('click', function () {
-				wrap.querySelectorAll('.echip').forEach(function (x) { x.classList.remove('on'); });
-				comp.querySelectorAll('.ec').forEach(function (x) { x.classList.toggle('on', x.getAttribute('data-m') === '1'); });
+				wrap.querySelectorAll('.echip').forEach(function (x) { x.classList.remove('on'); x.setAttribute('aria-pressed', 'false'); });
+				comp.querySelectorAll('.ec').forEach(function (x) { var on = x.getAttribute('data-m') === '1'; x.classList.toggle('on', on); x.setAttribute('aria-pressed', on ? 'true' : 'false'); });
 				calc();
 			});
 		});
@@ -746,12 +749,13 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 		/* ========== FAQ 手风琴（全页通用） ========== */
 		boot('FAQ', function () {
 			once('faq', function () {
+				$$('.fq-q').forEach(function (q) { if (!q.hasAttribute('aria-expanded')) q.setAttribute('aria-expanded', 'false'); });
 				document.addEventListener('click', function (e) {
 					var q = e.target.closest('.fq-q'); if (!q) return;
 					var fq = q.parentElement, wasOpen = fq.classList.contains('open');
 					var box = fq.parentElement;
-					if (box) box.querySelectorAll('.fq').forEach(function (x) { x.classList.remove('open'); });
-					if (!wasOpen) fq.classList.add('open');
+					if (box) box.querySelectorAll('.fq').forEach(function (x) { x.classList.remove('open'); x.querySelector('.fq-q').setAttribute('aria-expanded', 'false'); });
+					if (!wasOpen) { fq.classList.add('open'); q.setAttribute('aria-expanded', 'true'); }
 				});
 			});
 		});
@@ -767,21 +771,6 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 			once('top', function () {
 				var top = $('#top'); if (!top) return;
 				window.addEventListener('scroll', function () { top.classList.toggle('scrolled', window.scrollY > 24); }, { passive: true });
-			});
-		});
-		boot('移动端菜单', function () {
-			once('burger', function () {
-				var burger = $('#burger'), mNav = $('#mNav');
-				if (!burger || !mNav) return;
-				function setOpen(on) {
-					burger.classList.toggle('on', on);
-					mNav.classList.toggle('on', on);
-					burger.setAttribute('aria-expanded', on ? 'true' : 'false');
-					burger.setAttribute('aria-label', on ? '关闭菜单' : '打开菜单');
-				}
-				burger.addEventListener('click', function () { setOpen(!burger.classList.contains('on')); });
-				mNav.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
-				document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
 			});
 		});
 		boot('浮现动效', function () {

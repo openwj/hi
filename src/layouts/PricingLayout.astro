@@ -33,6 +33,10 @@ const {
 		<meta property="og:description" content={description} />
 		<meta property="og:site_name" content="我的码" />
 		<meta property="og:locale" content="zh_CN" />
+		<meta property="og:image" content="/og.png" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta name="twitter:card" content="summary_large_image" />
 		<link
 			rel="icon"
 			href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230E100C'/%3E%3Cpath d='M11 9v13a4 4 0 0 0 4 4h7' stroke='%23E5A63C' stroke-width='2.6' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='11' cy='7' r='3' fill='%23E5A63C'/%3E%3Ccircle cx='22' cy='26' r='3' fill='%23E5A63C'/%3E%3Ccircle cx='22' cy='7' r='3' fill='%23EDE8D8'/%3E%3C/svg%3E"
@@ -43,12 +47,12 @@ const {
 	<body>
 		<a class="fixed left-4 -top-12 z-[200] rounded-b-[10px] bg-amber px-4 py-[10px] text-[13.5px] font-medium text-[#16130a] transition-[top] duration-200 focus:top-0" href="#main">跳到主要内容</a>
 		<!-- 顶栏 -->
-		<header class="fixed inset-x-0 top-0 z-50 flex h-16 items-center justify-between gap-4 border-b border-transparent px-[clamp(18px,3vw,34px)] transition-colors duration-300" id="top">
+		<header class="fixed inset-x-0 top-0 z-50 flex h-16 items-center justify-between gap-4 border-b border-transparent pl-[max(clamp(18px,3vw,34px),env(safe-area-inset-left))] pr-[max(clamp(18px,3vw,34px),env(safe-area-inset-right))] transition-colors duration-300" id="top">
 			<a class="flex items-center gap-[11px] font-mono text-[16px] font-bold" href="/" aria-label="返回 我的码 主站">
 				<span class="grid size-[30px] place-items-center rounded-lg border-[1.5px] border-line2 text-amber"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6.5" cy="5" r="2.3"/><circle cx="6.5" cy="19" r="2.3"/><circle cx="17.5" cy="8" r="2.3"/><path d="M6.5 7.3v9.4"/><path d="M17.5 10.3c0 4-3.6 4.7-7.5 5.2"/></svg></span>
 				我的码<i class="ml-[2px] text-[11px] font-normal not-italic tracking-[.14em] text-faint">执行手册</i>
 			</a>
-			<nav class="nav hidden items-center gap-[2px] desk:flex">
+			<nav class="nav flex max-w-[56vw] items-center gap-[2px] overflow-x-auto whitespace-nowrap [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" aria-label="页面导航">
 				<a class="rounded-lg px-[11px] py-[7px] text-[13.5px] text-sub transition-colors duration-200 hover:bg-ink/5 hover:text-ink" href="#cmp">速览</a><a class="rounded-lg px-[11px] py-[7px] text-[13.5px] text-sub transition-colors duration-200 hover:bg-ink/5 hover:text-ink" href="#quiz">帮我选</a><a class="rounded-lg px-[11px] py-[7px] text-[13.5px] text-sub transition-colors duration-200 hover:bg-ink/5 hover:text-ink" href="#policy">定价</a><a class="rounded-lg px-[11px] py-[7px] text-[13.5px] text-sub transition-colors duration-200 hover:bg-ink/5 hover:text-ink" href="#modes">模式</a><a class="rounded-lg px-[11px] py-[7px] text-[13.5px] text-sub transition-colors duration-200 hover:bg-ink/5 hover:text-ink" href="#low">预算紧</a><a class="rounded-lg px-[11px] py-[7px] text-[13.5px] text-sub transition-colors duration-200 hover:bg-ink/5 hover:text-ink" href="#est">估价</a>
 			</nav>
 			<a class="inline-flex items-center justify-center gap-[9px] rounded-[10px] bg-amber px-[18px] py-[9px] text-[13.5px] font-bold text-[#1d1405] transition duration-200 hover:brightness-[1.09] active:scale-[.97]" href="#cta">聊聊合作</a>
@@ -58,7 +62,7 @@ const {
 		<slot />
 		</main>
 
-		<footer class="border-t border-line bg-bg2 px-7 py-[26px] text-center font-mono text-[11.5px] leading-[2] text-faint">本页价格为验证期起步价参考区间（手作坊模式 · 签约锁定）· 我的码 执行手册 v4 · 与主站同一人维护</footer>
+		<footer class="border-t border-line bg-bg2 px-7 pt-[26px] pb-[calc(26px+env(safe-area-inset-bottom))] text-center font-mono text-[11.5px] leading-[2] text-faint">本页价格为验证期起步价参考区间（手作坊模式 · 签约锁定）· 我的码 执行手册 v4 · 与主站同一人维护</footer>
 
 		<div id="toast" role="status"></div>
 	</body>
