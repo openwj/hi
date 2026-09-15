@@ -211,9 +211,8 @@ html.js .rr.in {
 
 /* 轨迹图 SVG 文本淡入（JS 给 #graphWrap 加 .in） */
 .gg-fade {
-	opacity: 0;
 	transition: opacity 0.6s ease;
 }
-.graph-wrap.in .gg-fade {
-	opacity: 1;
+html.js .graph-wrap:not(.in) .gg-fade {
+	opacity: 0;
 }

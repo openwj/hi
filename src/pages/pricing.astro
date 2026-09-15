@@ -396,8 +396,8 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 					<div class="mt-[34px] border-t border-dashed border-line2 pt-[26px]"><div class="mb-[18px] flex flex-wrap items-baseline gap-[14px]"><span class="font-mono text-[11px] tracking-[.18em] text-amber">4.4</span><h4 class="text-[18px] font-bold">成熟条款</h4><em class="ml-auto font-mono text-[11.5px] text-faint">拖一拖，看看怎么算</em></div>
 						<div class="mb-4 mt-1 grid grid-cols-[repeat(18,minmax(0,1fr))] gap-1">
 							<div id="vestGrid" style="display:contents" aria-hidden="true"></div>
-							<input type="range" id="vestRange" min="0" max="36" value="14" aria-label="拖动查看成熟进度" class="my-1 w-full cursor-pointer accent-amber">
-							<div class="font-mono text-[12px] leading-[1.8] text-sub" id="vestCap"></div>
+							<input type="range" id="vestRange" min="0" max="36" value="14" aria-label="拖动查看成熟进度" class="col-span-full my-1 w-full cursor-pointer accent-amber">
+							<div class="col-span-full font-mono text-[12px] leading-[1.8] text-sub" id="vestCap"></div>
 						</div>
 						<p class="mt-3 text-[13px] leading-[1.9] text-faint">约定股份分 36 个月线性成熟：做满三年全部到手；中途退出，未成熟部分自动收回。这条保护双方——谁也不欠谁。</p>
 					</div>
