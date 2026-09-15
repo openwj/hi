@@ -24,8 +24,12 @@ import '@fontsource/jetbrains-mono/700.css';
 		<meta property="og:type" content="website" />
 		<meta property="og:title" content="我的码 · 共建仓库 — 找一起做产品的创业伙伴" />
 		<meta property="og:description" content="独立全栈开发者，找长期创业伙伴。你管业务，我管产品，从 MVP 一路做到有人付费。" />
+		<meta property="og:image" content="/og.png" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
 		<meta property="og:site_name" content="我的码" />
 		<meta property="og:locale" content="zh_CN" />
+		<meta name="twitter:card" content="summary_large_image" />
 		<link
 			rel="icon"
 			href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230E100C'/%3E%3Cg fill='%23E5A63C'%3E%3Ccircle cx='7' cy='7' r='2.6'/%3E%3Ccircle cx='14' cy='4' r='1.5'/%3E%3Ccircle cx='14' cy='10' r='1.5'/%3E%3Ccircle cx='20' cy='7' r='2.2'/%3E%3C/g%3E%3Cg stroke='%23E5A63C' stroke-width='1.4' stroke-linecap='round' fill='none'%3E%3Cpath d='M7 4.4V9.6M14 5.3c-1.1 1.6-2.4 1.9-3.6 2.4M14 8.7c1.1 1.6 2.4 1.9 3.6 2.4'/%3E%3C/g%3E%3Ctext x='24' y='19' font-family='monospace' font-size='7.5' font-weight='700' fill='%23EDE8D8' letter-spacing='.35'%3E我的码%3C/text%3E%3C/svg%3E"
@@ -124,9 +128,9 @@ import '@fontsource/jetbrains-mono/700.css';
 		<div class="mask fixed inset-0 z-[80] animate-fadein items-center justify-center bg-[rgba(9,10,7,.8)] p-[22px] backdrop-blur-[7px]" id="palMask"><div class="w-[min(520px,100%)] animate-pop self-center overflow-hidden rounded-[14px] border border-line2 bg-bg2 shadow-[0_40px_100px_rgba(0,0,0,.6)]" role="dialog" aria-modal="true" aria-label="命令面板">
 			<div class="flex items-center gap-3 border-b border-line px-[18px] py-4">
 				<svg class="size-4 text-faint" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-				<input class="flex-1 bg-transparent font-mono text-[14px] text-ink placeholder:text-faint" id="palInput" placeholder="输入命令，或想去的板块…" autocomplete="off" aria-label="搜索命令">
+				<input class="flex-1 bg-transparent font-mono text-[14px] text-ink placeholder:text-faint" id="palInput" placeholder="输入命令，或想去的板块…" autocomplete="off" aria-label="搜索命令" role="combobox" aria-expanded="true" aria-controls="palList" aria-autocomplete="list">
 			</div>
-			<ul class="max-h-[320px] overflow-y-auto p-2" id="palList"></ul>
+			<ul class="max-h-[320px] overflow-y-auto p-2" id="palList" role="listbox" aria-label="命令列表"></ul>
 			<div class="border-t border-line px-[18px] py-[11px] font-mono text-[11px] text-faint">↑ ↓ 选择 · Enter 执行 · Esc 关闭</div>
 		</div></div>
 
@@ -701,17 +705,19 @@ import '@fontsource/jetbrains-mono/700.css';
 					function paintAct() {
 						palList.querySelectorAll('li[data-i]').forEach(function (li) {
 							var on = +li.dataset.i === palIdx;
+							li.setAttribute('aria-selected', on ? 'true' : 'false');
 							li.classList.toggle('bg-amber/10', on);
 							li.classList.toggle('text-ink', on);
 							var it = li.querySelector('i');
 							if (it) { it.classList.toggle('text-amber', on); it.classList.toggle('text-faint', !on); }
 						});
+						palInput.setAttribute('aria-activedescendant', curCmds.length ? 'pal-opt-' + palIdx : '');
 					}
 					function renderPal(q) {
 						curCmds = COMMANDS.filter(function (c) { return c.k.indexOf(q) > -1 || c.h.indexOf(q) > -1; });
 						if (palIdx >= curCmds.length) palIdx = Math.max(0, curCmds.length - 1);
 						palList.innerHTML = curCmds.length
-							? curCmds.map(function (c, i) { return '<li class="flex cursor-pointer items-center justify-between gap-[14px] rounded-[9px] px-[14px] py-[11px] text-[14px]' + (i === palIdx ? ' bg-amber/10 text-ink' : ' text-sub') + '" data-i="' + i + '"><span>' + c.k + '</span><i class="font-mono text-[11.5px]' + (i === palIdx ? ' text-amber' : ' text-faint') + '">' + c.h + '</i></li>'; }).join('')
+							? curCmds.map(function (c, i) { return '<li role="option" aria-selected="' + (i === palIdx) + '" id="pal-opt-' + i + '" class="flex cursor-pointer items-center justify-between gap-[14px] rounded-[9px] px-[14px] py-[11px] text-[14px]' + (i === palIdx ? ' bg-amber/10 text-ink' : ' text-sub') + '" data-i="' + i + '"><span>' + c.k + '</span><i class="font-mono text-[11.5px]' + (i === palIdx ? ' text-amber' : ' text-faint') + '">' + c.h + '</i></li>'; }).join('')
 							: '<li class="empty flex cursor-default items-center justify-center gap-[14px] rounded-[9px] px-[14px] py-[11px] text-[14px] text-faint">没有匹配的命令</li>';
 						palList.querySelectorAll('li[data-i]').forEach(function (li) {
 							li.addEventListener('click', function () { curCmds[+li.dataset.i].run(); closeMask(palMask); });
