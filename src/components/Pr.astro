@@ -12,16 +12,16 @@
 			</div>
 		</div>
 		<form class="grid gap-[18px] rounded-2xl border border-line2 bg-bg2 p-[30px]" id="prForm" data-rv style="transition-delay:.1s" novalidate>
-			<span class="-mb-2 font-mono text-[12px] text-faint">标题 · 一句话就够</span>
-			<input class="w-full rounded-[10px] border-[1.5px] border-line2 bg-bg px-[15px] py-[13px] text-[15px] text-ink transition-colors duration-200 placeholder:text-faint focus:border-amber focus:outline-none" id="prTitle" type="text" placeholder="我想做一个 XXX" autocomplete="off">
-			<span class="-mb-2 font-mono text-[12px] text-faint">补充 · 可以慢慢聊（选填）</span>
-			<textarea class="min-h-[110px] w-full resize-y rounded-[10px] border-[1.5px] border-line2 bg-bg px-[15px] py-[13px] text-[15px] leading-[1.8] text-ink transition-colors duration-200 placeholder:text-faint focus:border-amber focus:outline-none" id="prBody" placeholder="现在进展到哪了？目标用户是谁？最想先解决什么问题？"></textarea>
+			<label for="prTitle" class="-mb-2 block font-mono text-[12px] text-faint">标题 · 一句话就够</label>
+			<input class="w-full rounded-[10px] border-[1.5px] border-line2 bg-bg px-[15px] py-[13px] text-[15px] text-ink transition-colors duration-200 placeholder:text-faint focus:border-amber focus:outline-none" id="prTitle" name="title" type="text" placeholder="我想做一个 XXX" autocomplete="off">
+			<label for="prBody" class="-mb-2 block font-mono text-[12px] text-faint">补充 · 可以慢慢聊（选填）</label>
+			<textarea class="min-h-[110px] w-full resize-y rounded-[10px] border-[1.5px] border-line2 bg-bg px-[15px] py-[13px] text-[15px] leading-[1.8] text-ink transition-colors duration-200 placeholder:text-faint focus:border-amber focus:outline-none" id="prBody" name="body" placeholder="现在进展到哪了？目标用户是谁？最想先解决什么问题？"></textarea>
 			<span class="-mb-2 font-mono text-[12px] text-faint">你现在处于哪个阶段</span>
-			<div class="flex flex-wrap gap-[10px]" id="stageChips">
-				<button type="button" class="chip rounded-full border-[1.5px] border-amber bg-amber/10 px-[17px] py-2 text-[13px] text-amber transition-colors duration-200" data-v="只有一个想法">只有一个想法</button>
-				<button type="button" class="chip rounded-full border-[1.5px] border-line2 px-[17px] py-2 text-[13px] text-sub transition-colors duration-200 hover:border-amber-d hover:text-ink" data-v="已有方案或原型">已有方案或原型</button>
-				<button type="button" class="chip rounded-full border-[1.5px] border-line2 px-[17px] py-2 text-[13px] text-sub transition-colors duration-200 hover:border-amber-d hover:text-ink" data-v="已有用户在用">已有用户在用</button>
-				<button type="button" class="chip rounded-full border-[1.5px] border-line2 px-[17px] py-2 text-[13px] text-sub transition-colors duration-200 hover:border-amber-d hover:text-ink" data-v="已有第一版产品">已有第一版产品</button>
+			<div class="flex flex-wrap gap-[10px]" id="stageChips" role="group" aria-label="你现在处于哪个阶段">
+				<button type="button" aria-pressed="true" class="chip rounded-full border-[1.5px] border-amber bg-amber/10 px-[17px] py-2 text-[13px] text-amber transition-colors duration-200" data-v="只有一个想法">只有一个想法</button>
+				<button type="button" aria-pressed="false" class="chip rounded-full border-[1.5px] border-line2 px-[17px] py-2 text-[13px] text-sub transition-colors duration-200 hover:border-amber-d hover:text-ink" data-v="已有方案或原型">已有方案或原型</button>
+				<button type="button" aria-pressed="false" class="chip rounded-full border-[1.5px] border-line2 px-[17px] py-2 text-[13px] text-sub transition-colors duration-200 hover:border-amber-d hover:text-ink" data-v="已有用户在用">已有用户在用</button>
+				<button type="button" aria-pressed="false" class="chip rounded-full border-[1.5px] border-line2 px-[17px] py-2 text-[13px] text-sub transition-colors duration-200 hover:border-amber-d hover:text-ink" data-v="已有第一版产品">已有第一版产品</button>
 			</div>
 			<button class="inline-flex items-center justify-center gap-[9px] rounded-[10px] bg-amber px-5 py-[11px] text-[14.5px] font-bold text-[#1d1405] transition duration-200 hover:brightness-[1.09] active:scale-[.97]" type="submit">发起 PR
 				<svg class="h-[1em] w-[1em] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></button>

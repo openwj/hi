@@ -108,15 +108,15 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 		<div class="mx-auto w-full max-w-[1120px] px-7">
 			<div class="mb-[18px] flex flex-wrap items-baseline gap-[22px]" data-rv>
 				<span class="font-mono text-[13px] tracking-[.15em] text-amber">04 / 详解</span>
-				<h2>三种模式各自一页</h2>
+				<h2 class="font-serif text-[clamp(26px,3.4vw,38px)] font-black">三种模式各自一页</h2>
 				<span class="ml-auto font-mono text-[12.5px] text-faint">$ ls 模式/</span>
 			</div>
 
 			<div class="overflow-hidden rounded-2xl border border-line2 bg-bg2" data-rv>
 				<div class="sticky top-0 z-[5] flex border-b border-line bg-panel" role="tablist">
-					<button class="mtab flex-1 cursor-pointer border-0 border-r border-line bg-bg2 px-2 py-[14px] font-mono text-[12.5px] text-amber transition-colors duration-200 last:border-r-0 [box-shadow:inset_0_-2px_0_var(--color-amber)]" data-mode="mvp" role="tab"><i>01</i>mvp.sprint</button>
-					<button class="mtab flex-1 cursor-pointer border-0 border-r border-line bg-transparent px-2 py-[14px] font-mono text-[12.5px] text-sub transition-colors duration-200 last:border-r-0 hover:text-ink" data-mode="month" role="tab"><i>02</i>monthly.md</button>
-					<button class="mtab flex-1 cursor-pointer border-0 border-r border-line bg-transparent px-2 py-[14px] font-mono text-[12.5px] text-sub transition-colors duration-200 last:border-r-0 hover:text-ink" data-mode="equity" role="tab"><i>03</i>equity.md</button>
+					<button class="mtab on flex-1 cursor-pointer border-0 border-r border-line bg-transparent px-2 py-[14px] font-mono text-[12.5px] text-sub transition-colors duration-200 last:border-r-0 hover:text-ink [&.on]:bg-bg2 [&.on]:text-amber [&.on]:[box-shadow:inset_0_-2px_0_var(--color-amber)]" data-mode="mvp" role="tab" aria-selected="true"><i class="mr-[6px] not-italic text-faint">01</i>mvp.sprint</button>
+					<button class="mtab flex-1 cursor-pointer border-0 border-r border-line bg-transparent px-2 py-[14px] font-mono text-[12.5px] text-sub transition-colors duration-200 last:border-r-0 hover:text-ink [&.on]:bg-bg2 [&.on]:text-amber [&.on]:[box-shadow:inset_0_-2px_0_var(--color-amber)]" data-mode="month" role="tab"><i class="mr-[6px] not-italic text-faint">02</i>monthly.md</button>
+					<button class="mtab flex-1 cursor-pointer border-0 border-r border-line bg-transparent px-2 py-[14px] font-mono text-[12.5px] text-sub transition-colors duration-200 last:border-r-0 hover:text-ink [&.on]:bg-bg2 [&.on]:text-amber [&.on]:[box-shadow:inset_0_-2px_0_var(--color-amber)]" data-mode="equity" role="tab"><i class="mr-[6px] not-italic text-faint">03</i>equity.md</button>
 				</div>
 
 				<!-- ===== MVP 冲刺 ===== -->
@@ -125,8 +125,8 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 						<div>
 							<p class="mb-[10px] font-mono text-[12px] text-amber">$ man 我的码-mvp</p>
 							<h3 class="font-serif text-[clamp(28px,3vw,38px)] font-black">MVP 冲刺</h3>
-							<p class="mt-[10px] text-[15.5px] leading-[1.9] text-sub">用最小的一笔钱，把想法变成<b>能给真人用的东西</b>。固定周期、固定价格、固定交付物——先跑起来，再谈别的。</p>
-							<div class="mt-[18px] flex flex-wrap gap-[9px]"><span>2–4 周</span><span>一口价</span><span>晚间+周末冲刺</span><span>含 2 周保障期</span><span>同期只带 1 个</span></div>
+							<p class="mt-[10px] text-[15.5px] leading-[1.9] text-sub">用最小的一笔钱，把想法变成<b class="font-medium text-ink">能给真人用的东西</b>。固定周期、固定价格、固定交付物——先跑起来，再谈别的。</p>
+							<div class="mt-[18px] flex flex-wrap gap-[9px]"><span class="rounded-full border border-line2 px-[13px] py-[5px] font-mono text-[11.5px] text-sub">2–4 周</span><span class="rounded-full border border-line2 px-[13px] py-[5px] font-mono text-[11.5px] text-sub">一口价</span><span class="rounded-full border border-line2 px-[13px] py-[5px] font-mono text-[11.5px] text-sub">晚间+周末冲刺</span><span class="rounded-full border border-line2 px-[13px] py-[5px] font-mono text-[11.5px] text-sub">含 2 周保障期</span><span class="rounded-full border border-line2 px-[13px] py-[5px] font-mono text-[11.5px] text-sub">同期只带 1 个</span></div>
 						</div>
 						<div class="rounded-xl border border-line bg-bg p-[18px_20px] font-mono text-[12.5px]">
 							<div class="mb-3 text-[11px] tracking-[.2em] text-faint">档案 / FACTS</div>
@@ -186,13 +186,13 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 
 					<div class="mt-[34px] border-t border-dashed border-line2 pt-[26px]"><div class="mb-[18px] flex flex-wrap items-baseline gap-[14px]"><span class="font-mono text-[11px] tracking-[.18em] text-amber">4.4</span><h4 class="text-[18px] font-bold">边界：包含什么，不包含什么</h4></div>
 						<div class="grid grid-cols-1 gap-4 tab:grid-cols-2">
-							<div class="io rounded-xl border border-green/30 bg-bg p-[20px_22px]"><h5 class="mb-[14px] font-mono text-[12px] font-normal text-green">+ 这些都含在一口价里</h5><ul>
+							<div class="io rounded-xl border border-green/30 bg-bg p-[20px_22px]"><h5 class="mb-[14px] font-mono text-[12px] font-normal text-green">+ 这些都含在一口价里</h5><ul class="grid list-none gap-[10px]">
 								<li class="flex gap-[10px] text-[13.5px] leading-[1.8] text-sub before:shrink-0 before:font-mono before:text-green before:content-['+']">范围清单内的全部开发</li>
 								<li class="flex gap-[10px] text-[13.5px] leading-[1.8] text-sub before:shrink-0 before:font-mono before:text-green before:content-['+']">部署上线：服务器配置、域名解析、小程序提审（改到过为止）</li>
 								<li class="flex gap-[10px] text-[13.5px] leading-[1.8] text-sub before:shrink-0 before:font-mono before:text-green before:content-['+']">两轮修改 + 2 周 bug 保障</li>
 								<li class="flex gap-[10px] text-[13.5px] leading-[1.8] text-sub before:shrink-0 before:font-mono before:text-green before:content-['+']">交付物六件套（见下节）</li>
 							</ul></div>
-							<div class="io rounded-xl border border-red/30 bg-bg p-[20px_22px]"><h5 class="mb-[14px] font-mono text-[12px] font-normal text-red">− 这些要另算</h5><ul>
+							<div class="io rounded-xl border border-red/30 bg-bg p-[20px_22px]"><h5 class="mb-[14px] font-mono text-[12px] font-normal text-red">− 这些要另算</h5><ul class="grid list-none gap-[10px]">
 								<li class="flex gap-[10px] text-[13.5px] leading-[1.8] text-sub before:shrink-0 before:font-mono before:text-red before:content-['−']">范围外新功能（走变更单，一口价追加）</li>
 								<li class="flex gap-[10px] text-[13.5px] leading-[1.8] text-sub before:shrink-0 before:font-mono before:text-red before:content-['−']">服务器、短信等第三方成本（你直付，约 ¥100–600/年）</li>
 								<li class="flex gap-[10px] text-[13.5px] leading-[1.8] text-sub before:shrink-0 before:font-mono before:text-red before:content-['−']">内容录入与日常运营</li>
@@ -227,9 +227,9 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 
 					<div class="mt-[34px] border-t border-dashed border-line2 pt-[26px]"><div class="mb-[18px] flex flex-wrap items-baseline gap-[14px]"><span class="font-mono text-[11px] tracking-[.18em] text-amber">4.7</span><h4 class="text-[18px] font-bold">退出与退费</h4></div>
 						<div class="grid gap-[10px]">
-							<div class="grid grid-cols-1 gap-1.5 rounded-[10px] border border-line bg-bg p-[15px_18px] text-[13.5px] leading-[1.9] text-sub phone:grid-cols-[minmax(150px,220px)_1fr] phone:gap-[18px]"><div><i>前 3 天</i><b>不满意</b></div><span>退首期的 70%（扣除已投入部分），零理由零扯皮。</span></div>
-							<div class="grid grid-cols-1 gap-1.5 rounded-[10px] border border-line bg-bg p-[15px_18px] text-[13.5px] leading-[1.9] text-sub phone:grid-cols-[minmax(150px,220px)_1fr] phone:gap-[18px]"><div><i>中期</i><b>叫停</b></div><span>按已完成项结算，代码和文档照常交接。</span></div>
-							<div class="grid grid-cols-1 gap-1.5 rounded-[10px] border border-line bg-bg p-[15px_18px] text-[13.5px] leading-[1.9] text-sub phone:grid-cols-[minmax(150px,220px)_1fr] phone:gap-[18px]"><div><i>保障期后</i><b>还想改</b></div><span>转长期，或单次报价——先谈价，后动工。</span></div>
+							<div class="grid grid-cols-1 gap-1.5 rounded-[10px] border border-line bg-bg p-[15px_18px] text-[13.5px] leading-[1.9] text-sub phone:grid-cols-[minmax(150px,220px)_1fr] phone:gap-[18px]"><div><i class="mb-1 block font-mono text-[10.5px] text-green">前 3 天</i><b class="font-medium text-ink">不满意</b></div><span>退首期的 70%（扣除已投入部分），零理由零扯皮。</span></div>
+							<div class="grid grid-cols-1 gap-1.5 rounded-[10px] border border-line bg-bg p-[15px_18px] text-[13.5px] leading-[1.9] text-sub phone:grid-cols-[minmax(150px,220px)_1fr] phone:gap-[18px]"><div><i class="mb-1 block font-mono text-[10.5px] text-green">中期</i><b class="font-medium text-ink">叫停</b></div><span>按已完成项结算，代码和文档照常交接。</span></div>
+							<div class="grid grid-cols-1 gap-1.5 rounded-[10px] border border-line bg-bg p-[15px_18px] text-[13.5px] leading-[1.9] text-sub phone:grid-cols-[minmax(150px,220px)_1fr] phone:gap-[18px]"><div><i class="mb-1 block font-mono text-[10.5px] text-green">保障期后</i><b class="font-medium text-ink">还想改</b></div><span>转长期，或单次报价——先谈价，后动工。</span></div>
 						</div>
 					</div>
 
@@ -245,13 +245,13 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 				</div>
 
 				<!-- ===== 长期同行 ===== -->
-				<div class="panel hidden p-[36px_clamp(20px,4vw,44px)_44px]" data-mode="month">
+				<div class="panel hidden animate-rise p-[36px_clamp(20px,4vw,44px)_44px]" data-mode="month">
 					<div class="mb-[10px] grid grid-cols-1 items-start gap-9 tab:grid-cols-[1.15fr_.85fr]">
 						<div>
 							<p class="mb-[10px] font-mono text-[12px] text-amber">$ man 我的码-monthly</p>
 							<h3 class="font-serif text-[clamp(28px,3vw,38px)] font-black">长期同行</h3>
-							<p class="mt-[10px] text-[15.5px] leading-[1.9] text-sub">像养一个<b>不用坐班的技术合伙人</b>：按月付费、每周可见进展、随时可停。买断的不是我的在线时长，是「每周产出 + 一个随叫随到的人」。</p>
-							<div class="mt-[18px] flex flex-wrap gap-[9px]"><span>最短 3 个月</span><span>月初付当月</span><span>不押金</span><span>提前 2 周可停</span><span>无违约金</span></div>
+							<p class="mt-[10px] text-[15.5px] leading-[1.9] text-sub">像养一个<b class="font-medium text-ink">不用坐班的技术合伙人</b>：按月付费、每周可见进展、随时可停。买断的不是我的在线时长，是「每周产出 + 一个随叫随到的人」。</p>
+							<div class="mt-[18px] flex flex-wrap gap-[9px]"><span class="rounded-full border border-line2 px-[13px] py-[5px] font-mono text-[11.5px] text-sub">最短 3 个月</span><span class="rounded-full border border-line2 px-[13px] py-[5px] font-mono text-[11.5px] text-sub">月初付当月</span><span class="rounded-full border border-line2 px-[13px] py-[5px] font-mono text-[11.5px] text-sub">不押金</span><span class="rounded-full border border-line2 px-[13px] py-[5px] font-mono text-[11.5px] text-sub">提前 2 周可停</span><span class="rounded-full border border-line2 px-[13px] py-[5px] font-mono text-[11.5px] text-sub">无违约金</span></div>
 						</div>
 						<div class="rounded-xl border border-line bg-bg p-[18px_20px] font-mono text-[12.5px]">
 							<div class="mb-3 text-[11px] tracking-[.2em] text-faint">档案 / FACTS</div>
@@ -308,33 +308,33 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 
 					<div class="mt-[34px] border-t border-dashed border-line2 pt-[26px]"><div class="mb-[18px] flex flex-wrap items-baseline gap-[14px]"><span class="font-mono text-[11px] tracking-[.18em] text-amber">4.5</span><h4 class="text-[18px] font-bold">边界</h4></div>
 						<div class="grid grid-cols-1 gap-4 tab:grid-cols-2">
-							<div class="io rounded-xl border border-green/30 bg-bg p-[20px_22px]"><h5 class="mb-[14px] font-mono text-[12px] font-normal text-green">+ 月费里都含</h5><ul>
-								<li>既有功能的持续迭代</li>
-								<li>bug 修复 + 上表三级故障响应</li>
-								<li>小程序版本提审、服务器监控</li>
-								<li>新需求评估与排期</li>
-								<li>每月一次数据复盘</li>
-								<li>技术咨询：选型、招人参考、避坑</li>
+							<div class="io rounded-xl border border-green/30 bg-bg p-[20px_22px]"><h5 class="mb-[14px] font-mono text-[12px] font-normal text-green">+ 月费里都含</h5><ul class="grid list-none gap-[10px]">
+								<li class="flex gap-[10px] text-[13.5px] leading-[1.8] text-sub before:shrink-0 before:font-mono before:text-green before:content-['+']">既有功能的持续迭代</li>
+								<li class="flex gap-[10px] text-[13.5px] leading-[1.8] text-sub before:shrink-0 before:font-mono before:text-green before:content-['+']">bug 修复 + 上表三级故障响应</li>
+								<li class="flex gap-[10px] text-[13.5px] leading-[1.8] text-sub before:shrink-0 before:font-mono before:text-green before:content-['+']">小程序版本提审、服务器监控</li>
+								<li class="flex gap-[10px] text-[13.5px] leading-[1.8] text-sub before:shrink-0 before:font-mono before:text-green before:content-['+']">新需求评估与排期</li>
+								<li class="flex gap-[10px] text-[13.5px] leading-[1.8] text-sub before:shrink-0 before:font-mono before:text-green before:content-['+']">每月一次数据复盘</li>
+								<li class="flex gap-[10px] text-[13.5px] leading-[1.8] text-sub before:shrink-0 before:font-mono before:text-green before:content-['+']">技术咨询：选型、招人参考、避坑</li>
 							</ul></div>
-							<div class="io rounded-xl border border-red/30 bg-bg p-[20px_22px]"><h5 class="mb-[14px] font-mono text-[12px] font-normal text-red">− 不含，另算</h5><ul>
-								<li>服务器等第三方成本（你直付）</li>
-								<li>全新独立模块（如突然要做 App）——拆出去走一口价</li>
-								<li>工作时段内的即时在线 / 白天驻场</li>
-								<li>内容运营、投放素材</li>
+							<div class="io rounded-xl border border-red/30 bg-bg p-[20px_22px]"><h5 class="mb-[14px] font-mono text-[12px] font-normal text-red">− 不含，另算</h5><ul class="grid list-none gap-[10px]">
+								<li class="flex gap-[10px] text-[13.5px] leading-[1.8] text-sub before:shrink-0 before:font-mono before:text-red before:content-['−']">服务器等第三方成本（你直付）</li>
+								<li class="flex gap-[10px] text-[13.5px] leading-[1.8] text-sub before:shrink-0 before:font-mono before:text-red before:content-['−']">全新独立模块（如突然要做 App）——拆出去走一口价</li>
+								<li class="flex gap-[10px] text-[13.5px] leading-[1.8] text-sub before:shrink-0 before:font-mono before:text-red before:content-['−']">工作时段内的即时在线 / 白天驻场</li>
+								<li class="flex gap-[10px] text-[13.5px] leading-[1.8] text-sub before:shrink-0 before:font-mono before:text-red before:content-['−']">内容运营、投放素材</li>
 							</ul></div>
 						</div>
 					</div>
 
 					<div class="mt-[34px] border-t border-dashed border-line2 pt-[26px]"><div class="mb-[18px] flex flex-wrap items-baseline gap-[14px]"><span class="font-mono text-[11px] tracking-[.18em] text-amber">4.6</span><h4 class="text-[18px] font-bold">变更怎么处理</h4><em class="ml-auto font-mono text-[11.5px] text-faint">长期模式天然消化变更</em></div>
 						<div class="grid gap-[10px]">
-							<div class="grid grid-cols-1 gap-1.5 rounded-[10px] border border-line bg-bg p-[15px_18px] text-[13.5px] leading-[1.9] text-sub phone:grid-cols-[minmax(150px,220px)_1fr] phone:gap-[18px]"><div><i>排期窗口</i><b>常规变更</b></div><span>每周日晚的排期就是变更窗口，直接排进去。</span></div>
-							<div class="grid grid-cols-1 gap-1.5 rounded-[10px] border border-line bg-bg p-[15px_18px] text-[13.5px] leading-[1.9] text-sub phone:grid-cols-[minmax(150px,220px)_1fr] phone:gap-[18px]"><div><i>当晚答复</i><b>紧急插队</b></div><span>标注「今天就要」，我评估后当晚回复。排序规则写死：P0 故障 &gt; 付费用户的事 &gt; 其他。</span></div>
-							<div class="grid grid-cols-1 gap-1.5 rounded-[10px] border border-line bg-bg p-[15px_18px] text-[13.5px] leading-[1.9] text-sub phone:grid-cols-[minmax(150px,220px)_1fr] phone:gap-[18px]"><div><i>拆出去</i><b>超大模块</b></div><span>全新独立的东西走阶段一口价，不混在月费里——账算不清，友情就没了。</span></div>
+							<div class="grid grid-cols-1 gap-1.5 rounded-[10px] border border-line bg-bg p-[15px_18px] text-[13.5px] leading-[1.9] text-sub phone:grid-cols-[minmax(150px,220px)_1fr] phone:gap-[18px]"><div><i class="mb-1 block font-mono text-[10.5px] text-green">排期窗口</i><b class="font-medium text-ink">常规变更</b></div><span>每周日晚的排期就是变更窗口，直接排进去。</span></div>
+							<div class="grid grid-cols-1 gap-1.5 rounded-[10px] border border-line bg-bg p-[15px_18px] text-[13.5px] leading-[1.9] text-sub phone:grid-cols-[minmax(150px,220px)_1fr] phone:gap-[18px]"><div><i class="mb-1 block font-mono text-[10.5px] text-green">当晚答复</i><b class="font-medium text-ink">紧急插队</b></div><span>标注「今天就要」，我评估后当晚回复。排序规则写死：P0 故障 &gt; 付费用户的事 &gt; 其他。</span></div>
+							<div class="grid grid-cols-1 gap-1.5 rounded-[10px] border border-line bg-bg p-[15px_18px] text-[13.5px] leading-[1.9] text-sub phone:grid-cols-[minmax(150px,220px)_1fr] phone:gap-[18px]"><div><i class="mb-1 block font-mono text-[10.5px] text-green">拆出去</i><b class="font-medium text-ink">超大模块</b></div><span>全新独立的东西走阶段一口价，不混在月费里——账算不清，友情就没了。</span></div>
 						</div>
 					</div>
 
 					<div class="mt-[34px] border-t border-dashed border-line2 pt-[26px]"><div class="mb-[18px] flex flex-wrap items-baseline gap-[14px]"><span class="font-mono text-[11px] tracking-[.18em] text-amber">4.7</span><h4 class="text-[18px] font-bold">退出</h4></div>
-						<p class="mt-[10px] text-[15.5px] leading-[1.9] text-sub">提前 2 周说。我把当月排期做完、文档补齐、约 1 小时语音交接完，月底体面收尾。<b>当月费用不退</b>（活已经干了），但没有违约金、没有押金、没有「代码赎回」——仓库从来就在你名下。</p>
+						<p class="mt-[10px] text-[15.5px] leading-[1.9] text-sub">提前 2 周说。我把当月排期做完、文档补齐、约 1 小时语音交接完，月底体面收尾。<b class="font-medium text-ink">当月费用不退</b>（活已经干了），但没有违约金、没有押金、没有「代码赎回」——仓库从来就在你名下。</p>
 					</div>
 
 					<div class="mt-[34px] border-t border-dashed border-line2 pt-[26px]"><div class="mb-[18px] flex flex-wrap items-baseline gap-[14px]"><span class="font-mono text-[11px] tracking-[.18em] text-amber">4.8</span><h4 class="text-[18px] font-bold">常被问到的</h4></div>
@@ -348,13 +348,13 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 				</div>
 
 				<!-- ===== 深度合伙 ===== -->
-				<div class="panel hidden p-[36px_clamp(20px,4vw,44px)_44px]" data-mode="equity">
+				<div class="panel hidden animate-rise p-[36px_clamp(20px,4vw,44px)_44px]" data-mode="equity">
 					<div class="mb-[10px] grid grid-cols-1 items-start gap-9 tab:grid-cols-[1.15fr_.85fr]">
 						<div>
 							<p class="mb-[10px] font-mono text-[12px] text-amber">$ man 我的码-equity</p>
 							<h3 class="font-serif text-[clamp(28px,3vw,38px)] font-black">深度合伙</h3>
-							<p class="mt-[10px] text-[15.5px] leading-[1.9] text-sub">已经有付费用户的产品，我用<b>持续的代码投入换一小部分未来</b>。不拿工资、不占业务决策权——要的只是「把产品做好」的那一票。这是三档里唯一<b>不用付现金</b>的。</p>
-							<div class="mt-[18px] flex flex-wrap gap-[9px]"><span>0 现金</span><span>3–6% 股份</span><span>36 个月成熟</span><span>每年仅 1 个名额</span></div>
+							<p class="mt-[10px] text-[15.5px] leading-[1.9] text-sub">已经有付费用户的产品，我用<b class="font-medium text-ink">持续的代码投入换一小部分未来</b>。不拿工资、不占业务决策权——要的只是「把产品做好」的那一票。这是三档里唯一<b class="font-medium text-ink">不用付现金</b>的。</p>
+							<div class="mt-[18px] flex flex-wrap gap-[9px]"><span class="rounded-full border border-line2 px-[13px] py-[5px] font-mono text-[11.5px] text-sub">0 现金</span><span class="rounded-full border border-line2 px-[13px] py-[5px] font-mono text-[11.5px] text-sub">3–6% 股份</span><span class="rounded-full border border-line2 px-[13px] py-[5px] font-mono text-[11.5px] text-sub">36 个月成熟</span><span class="rounded-full border border-line2 px-[13px] py-[5px] font-mono text-[11.5px] text-sub">每年仅 1 个名额</span></div>
 						</div>
 						<div class="rounded-xl border border-line bg-bg p-[18px_20px] font-mono text-[12.5px]">
 							<div class="mb-3 text-[11px] tracking-[.2em] text-faint">档案 / FACTS</div>
@@ -368,26 +368,26 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 
 					<div class="mt-[34px] border-t border-dashed border-line2 pt-[26px]"><div class="mb-[18px] flex flex-wrap items-baseline gap-[14px]"><span class="font-mono text-[11px] tracking-[.18em] text-amber">4.1</span><h4 class="text-[18px] font-bold">三条硬前提</h4><em class="ml-auto font-mono text-[11.5px] text-faint">差一条都不谈</em></div>
 						<ul class="grid list-none gap-[14px]">
-							<li><b><span>1</span></b><span>产品<b style="color:var(--ink)">已有人付费</b>，或月流水 ≥ ¥5,000。</span></li>
-							<li><b><span>2</span></b><span>你全职投入（或有明确的全职时间表）。</span></li>
-							<li><b><span>3</span></b><span>这个方向，你打算干至少三年；产品体量与我的产能匹配。</span></li>
+							<li class="flex gap-4 text-[14.5px] leading-[1.9] text-sub"><b class="shrink-0 font-mono text-[16px] font-bold text-amber"><span class="grid size-[26px] place-items-center rounded-[7px] border-[1.5px] border-amber/50">1</span></b><span>产品<b class="font-medium text-ink">已有人付费</b>，或月流水 ≥ ¥5,000。</span></li>
+							<li class="flex gap-4 text-[14.5px] leading-[1.9] text-sub"><b class="shrink-0 font-mono text-[16px] font-bold text-amber"><span class="grid size-[26px] place-items-center rounded-[7px] border-[1.5px] border-amber/50">2</span></b><span>你<b class="font-medium text-ink">全职投入</b>（或有明确的全职时间表）。</span></li>
+							<li class="flex gap-4 text-[14.5px] leading-[1.9] text-sub"><b class="shrink-0 font-mono text-[16px] font-bold text-amber"><span class="grid size-[26px] place-items-center rounded-[7px] border-[1.5px] border-amber/50">3</span></b><span>这个方向，你打算干<b class="font-medium text-ink">至少三年</b>；产品体量与我的产能匹配。</span></li>
 						</ul>
 						<p class="mt-3 text-[13px] leading-[1.9] text-faint">空想法不换股份——不是清高，是见过太多「合伙搭子」三个月散伙、股份撕得一地。只投已验证的方向，是经验，不是姿态。门槛 ¥5,000：付过钱的用户哪怕只有几十个，也说明「有人愿意为它掏钱」。</p>
 					</div>
 
 					<div class="mt-[34px] border-t border-dashed border-line2 pt-[26px]"><div class="mb-[18px] flex flex-wrap items-baseline gap-[14px]"><span class="font-mono text-[11px] tracking-[.18em] text-amber">4.2</span><h4 class="text-[18px] font-bold">怎么走到一起</h4><em class="ml-auto font-mono text-[11.5px] text-faint">先验证人，再验证事</em></div>
 						<div class="relative ml-[7px] grid gap-6 border-l-2 border-line2 pl-7">
-							<div class="tnode relative before:absolute before:-left-[35px] before:top-[3px] before:size-[12px] before:rounded-[3px] before:border-[2.5px] before:border-amber before:bg-bg before:content-['']"><span class="block font-mono text-[11px] tracking-[.12em] text-faint">第 1–2 周</span><h5>聊透</h5><p>至少 3 次深聊：业务、用户、数字、性格，都过一遍。聊不拢就当认识个朋友，谁也不欠谁。</p></div>
-							<div class="tnode relative before:absolute before:-left-[35px] before:top-[3px] before:size-[12px] before:rounded-[3px] before:border-[2.5px] before:border-amber before:bg-amber before:content-['']"><span class="block font-mono text-[11px] tracking-[.12em] text-faint">第 3–8 周</span><h5>试用<i>先付费合作一段</i></h5><p>走一段正常报价的合作（MVP 或一个月长期，同样起步价）。合不合拍，一个月看得清清楚楚——这笔学费双方都出得起。</p></div>
-							<div class="tnode relative before:absolute before:-left-[35px] before:top-[3px] before:size-[12px] before:rounded-[3px] before:border-[2.5px] before:border-amber before:bg-bg before:content-['']"><span class="block font-mono text-[11px] tracking-[.12em] text-faint">第 9 周</span><h5>协议</h5><p>股权协议四要件：投入范围、股份比例、成熟节奏、回购与退出。建议让你的律师过目——我的条款经得起看。</p></div>
-							<div class="tnode relative before:absolute before:-left-[35px] before:top-[3px] before:size-[12px] before:rounded-[3px] before:border-[2.5px] before:border-green before:bg-bg before:content-['']"><span class="block font-mono text-[11px] tracking-[.12em] text-faint">第 1–3 年</span><h5>同行</h5><p>按约定节奏投入 + 季度复盘。技术侧的决策我有话语权，业务侧永远你说了算。</p></div>
+							<div class="tnode relative before:absolute before:-left-[35px] before:top-[3px] before:size-[12px] before:rounded-[3px] before:border-[2.5px] before:border-amber before:bg-bg before:content-['']"><span class="block font-mono text-[11px] tracking-[.12em] text-faint">第 1–2 周</span><h5 class="mb-[7px] mt-1 text-[15.5px]">聊透</h5><p class="text-[13.5px] leading-[1.95] text-sub">至少 3 次深聊：业务、用户、数字、性格，都过一遍。聊不拢就当认识个朋友，谁也不欠谁。</p></div>
+							<div class="tnode relative before:absolute before:-left-[35px] before:top-[3px] before:size-[12px] before:rounded-[3px] before:border-[2.5px] before:border-amber before:bg-amber before:content-['']"><span class="block font-mono text-[11px] tracking-[.12em] text-faint">第 3–8 周</span><h5 class="mb-[7px] mt-1 text-[15.5px]">试用<i class="ml-[10px] rounded-[5px] border border-amber/40 px-2 py-[2px] align-[2px] font-mono text-[10.5px] font-normal not-italic text-amber">先付费合作一段</i></h5><p class="text-[13.5px] leading-[1.95] text-sub">走一段正常报价的合作（MVP 或一个月长期，同样起步价）。合不合拍，一个月看得清清楚楚——这笔学费双方都出得起。</p></div>
+							<div class="tnode relative before:absolute before:-left-[35px] before:top-[3px] before:size-[12px] before:rounded-[3px] before:border-[2.5px] before:border-amber before:bg-bg before:content-['']"><span class="block font-mono text-[11px] tracking-[.12em] text-faint">第 9 周</span><h5 class="mb-[7px] mt-1 text-[15.5px]">协议</h5><p class="text-[13.5px] leading-[1.95] text-sub">股权协议四要件：投入范围、股份比例、成熟节奏、回购与退出。建议让你的律师过目——我的条款经得起看。</p></div>
+							<div class="tnode relative before:absolute before:-left-[35px] before:top-[3px] before:size-[12px] before:rounded-[3px] before:border-[2.5px] before:border-green before:bg-bg before:content-['']"><span class="block font-mono text-[11px] tracking-[.12em] text-faint">第 1–3 年</span><h5 class="mb-[7px] mt-1 text-[15.5px]">同行</h5><p class="text-[13.5px] leading-[1.95] text-sub">按约定节奏投入 + 季度复盘。技术侧的决策我有话语权，业务侧永远你说了算。</p></div>
 						</div>
 					</div>
 
 					<div class="mt-[34px] border-t border-dashed border-line2 pt-[26px]"><div class="mb-[18px] flex flex-wrap items-baseline gap-[14px]"><span class="font-mono text-[11px] tracking-[.18em] text-amber">4.3</span><h4 class="text-[18px] font-bold">股份怎么算</h4><em class="ml-auto font-mono text-[11.5px] text-faint">锚点透明，数字谈定</em></div>
 						<pre class="overflow-x-auto whitespace-pre rounded-xl border border-line2 bg-panel p-[22px_26px] font-mono text-[13px] leading-[2.05] text-sub">参考锚点 = 未来 12 个月开发投入（按标准价折现） ÷ 项目估值 + 风险溢价
 │
-├─ 示例：年投入折 ¥80,000 ÷ 估值 ¥2,000,000 → <b>4% 起谈</b>
+├─ 示例：年投入折 ¥80,000 ÷ 估值 ¥2,000,000 → <b class="font-normal text-amber">4% 起谈</b>
 ├─ 风险溢价：产品越早期，溢价越高——我拿的是「未来」，不是现金
 └─ 最终数字谈出来，不套公式——每门生意都不一样</pre>
 						<p class="mt-3 text-[13px] leading-[1.9] text-faint">折现按标准价而不是起步价算——入股的部分，我按市场价入股，让利只让给付现金的合作。</p>
@@ -396,7 +396,7 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 					<div class="mt-[34px] border-t border-dashed border-line2 pt-[26px]"><div class="mb-[18px] flex flex-wrap items-baseline gap-[14px]"><span class="font-mono text-[11px] tracking-[.18em] text-amber">4.4</span><h4 class="text-[18px] font-bold">成熟条款</h4><em class="ml-auto font-mono text-[11.5px] text-faint">拖一拖，看看怎么算</em></div>
 						<div class="mb-4 mt-1 grid grid-cols-[repeat(18,minmax(0,1fr))] gap-1">
 							<div id="vestGrid" style="display:contents"></div>
-							<input type="range" id="vestRange" min="0" max="36" value="14" aria-label="拖动查看成熟进度">
+							<input type="range" id="vestRange" min="0" max="36" value="14" aria-label="拖动查看成熟进度" class="my-1 w-full cursor-pointer accent-amber">
 							<div class="font-mono text-[12px] leading-[1.8] text-sub" id="vestCap"></div>
 						</div>
 						<p class="mt-3 text-[13px] leading-[1.9] text-faint">约定股份分 36 个月线性成熟：做满三年全部到手；中途退出，未成熟部分自动收回。这条保护双方——谁也不欠谁。</p>
@@ -404,9 +404,9 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 
 					<div class="mt-[34px] border-t border-dashed border-line2 pt-[26px]"><div class="mb-[18px] flex flex-wrap items-baseline gap-[14px]"><span class="font-mono text-[11px] tracking-[.18em] text-amber">4.5</span><h4 class="text-[18px] font-bold">退出</h4></div>
 						<div class="grid gap-[10px]">
-							<div class="grid grid-cols-1 gap-1.5 rounded-[10px] border border-line bg-bg p-[15px_18px] text-[13.5px] leading-[1.9] text-sub phone:grid-cols-[minmax(150px,220px)_1fr] phone:gap-[18px]"><div><i>我停</i><b>我停止投入</b></div><span>未成熟部分收回；已成熟部分保留，或按协议回购。</span></div>
-							<div class="grid grid-cols-1 gap-1.5 rounded-[10px] border border-line bg-bg p-[15px_18px] text-[13.5px] leading-[1.9] text-sub phone:grid-cols-[minmax(150px,220px)_1fr] phone:gap-[18px]"><div><i>你买</i><b>你想回购</b></div><span>按最近一轮估值 × 协议折扣谈，谈不拢就继续按成熟条款走。</span></div>
-							<div class="grid grid-cols-1 gap-1.5 rounded-[10px] border border-line bg-bg p-[15px_18px] text-[13.5px] leading-[1.9] text-sub phone:grid-cols-[minmax(150px,220px)_1fr] phone:gap-[18px]"><div><i>兜底</i><b>无论如何</b></div><span>代码、文档、部署完整留在你公司。没有「删库跑路」这种剧情——仓库权限第一天就在你手里。</span></div>
+							<div class="grid grid-cols-1 gap-1.5 rounded-[10px] border border-line bg-bg p-[15px_18px] text-[13.5px] leading-[1.9] text-sub phone:grid-cols-[minmax(150px,220px)_1fr] phone:gap-[18px]"><div><i class="mb-1 block font-mono text-[10.5px] text-green">我停</i><b class="font-medium text-ink">我停止投入</b></div><span>未成熟部分收回；已成熟部分保留，或按协议回购。</span></div>
+							<div class="grid grid-cols-1 gap-1.5 rounded-[10px] border border-line bg-bg p-[15px_18px] text-[13.5px] leading-[1.9] text-sub phone:grid-cols-[minmax(150px,220px)_1fr] phone:gap-[18px]"><div><i class="mb-1 block font-mono text-[10.5px] text-green">你买</i><b class="font-medium text-ink">你想回购</b></div><span>按最近一轮估值 × 协议折扣谈，谈不拢就继续按成熟条款走。</span></div>
+							<div class="grid grid-cols-1 gap-1.5 rounded-[10px] border border-line bg-bg p-[15px_18px] text-[13.5px] leading-[1.9] text-sub phone:grid-cols-[minmax(150px,220px)_1fr] phone:gap-[18px]"><div><i class="mb-1 block font-mono text-[10.5px] text-green">兜底</i><b class="font-medium text-ink">无论如何</b></div><span>代码、文档、部署完整留在你公司。没有「删库跑路」这种剧情——仓库权限第一天就在你手里。</span></div>
 						</div>
 					</div>
 
@@ -427,40 +427,40 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 		<div class="mx-auto w-full max-w-[1120px] px-7">
 			<div class="mb-[18px] flex flex-wrap items-baseline gap-[22px]" data-rv>
 				<span class="font-mono text-[13px] tracking-[.15em] text-amber">05 / 预算</span>
-				<h2>预算紧？三条正路，别硬扛</h2>
+				<h2 class="font-serif text-[clamp(26px,3.4vw,38px)] font-black">预算紧？三条正路，别硬扛</h2>
 				<span class="ml-auto font-mono text-[12.5px] text-faint">$ ./low-budget --honest</span>
 			</div>
-			<p class="sec-lead" data-rv>起步价已经压得很低，但我知道几千块对很多刚起步的人仍然是堵墙。与其磨价格（磨掉的都是干活的预算），不如换思路——这三条路我全都真心推荐：</p>
+			<p class="mb-10 max-w-[660px] text-[15px] leading-[2] text-sub" data-rv>起步价已经压得很低，但我知道几千块对很多刚起步的人仍然是堵墙。与其磨价格（磨掉的都是干活的预算），不如换思路——这三条路我全都真心推荐：</p>
 
 			<div class="grid grid-cols-1 gap-4 desk:grid-cols-3">
 				<div class="flex flex-col gap-3 rounded-[14px] border border-line2 bg-bg2 p-[26px_24px]" data-rv>
 					<span class="font-mono text-[11px] tracking-[.2em] text-amber">ROUTE 01</span>
-					<h4>砍范围，别砍价</h4>
-					<p>把你列的 20 个功能，砍到 <b>1 个最疼的</b>。会员管理砍到「档案 + 到店记录」；预约系统砍到「一张可订的日历」。MVP 的 M 不是 minimal，是 <b>must-have</b>。</p>
+					<h4 class="font-serif text-[22px] font-black">砍范围，别砍价</h4>
+					<p class="text-[13.5px] leading-[2] text-sub">把你列的 20 个功能，砍到 <b class="font-medium text-ink">1 个最疼的</b>。会员管理砍到「档案 + 到店记录」；预约系统砍到「一张可订的日历」。MVP 的 M 不是 minimal，是 <b class="font-medium text-ink">must-have</b>。</p>
 					<div class="mt-auto border-t border-dashed border-line2 pt-[14px] font-mono text-[11.5px] leading-[1.8] text-faint">同样 ¥4,000，做透一件事，比摊薄三件事值十倍。第一版的功能，一半活不过第一次真实用户反馈。</div>
 				</div>
 				<div class="flex flex-col gap-3 rounded-[14px] border border-line2 bg-bg2 p-[26px_24px]" data-rv style="transition-delay:.08s">
 					<span class="font-mono text-[11px] tracking-[.2em] text-amber">ROUTE 02</span>
-					<h4>分期走</h4>
-					<p>¥3,000 以下 50/50 两期；以上 <b>40/30/30</b> 三期无息；¥1.2 万以上按里程碑拆 4 期。第二期挂在「你亲手点过预览」上，不是时间上。</p>
+					<h4 class="font-serif text-[22px] font-black">分期走</h4>
+					<p class="text-[13.5px] leading-[2] text-sub">¥3,000 以下 50/50 两期；以上 <b class="font-medium text-ink">40/30/30</b> 三期无息；¥1.2 万以上按里程碑拆 4 期。第二期挂在「你亲手点过预览」上，不是时间上。</p>
 					<div class="mt-auto border-t border-dashed border-line2 pt-[14px] font-mono text-[11.5px] leading-[1.8] text-faint">分期不加息不加价——创业早期每一块钱都该花在刀刃上，包括留在你账上的。</div>
 				</div>
 				<div class="flex flex-col gap-3 rounded-[14px] border border-line2 bg-bg2 p-[26px_24px]" data-rv style="transition-delay:.16s">
 					<span class="font-mono text-[11px] tracking-[.2em] text-amber">ROUTE 03</span>
-					<h4>先做更小的验证</h4>
-					<p>工具不是第一步，<b>需求才是</b>。一张落地页 + 一个预约表单（¥1,500 起），先看有没有人留资；甚至先用群接龙 + 人工跑两周，痛点真实到疼了再写代码。</p>
+					<h4 class="font-serif text-[22px] font-black">先做更小的验证</h4>
+					<p class="text-[13.5px] leading-[2] text-sub">工具不是第一步，<b class="font-medium text-ink">需求才是</b>。一张落地页 + 一个预约表单（¥1,500 起），先看有没有人留资；甚至先用群接龙 + 人工跑两周，痛点真实到疼了再写代码。</p>
 					<div class="mt-auto border-t border-dashed border-line2 pt-[14px] font-mono text-[11.5px] leading-[1.8] text-faint">顺序错了才是最贵的浪费——先验证「有人要」，再验证「做得出来」。</div>
 				</div>
 			</div>
 
 			<div class="overflow-x-auto rounded-[14px] border border-line2 bg-bg2" data-rv style="margin-top:22px">
 				<table class="w-full border-collapse text-[13.5px]">
-					<thead><tr><th style="width:170px">你的预算</th><th>我建议怎么花</th></tr></thead>
+					<thead><tr><th class="border border-line bg-panel px-4 py-3 text-left align-top font-mono text-[11.5px] font-normal leading-[1.7] text-faint" style="width:170px">你的预算</th><th class="border border-line bg-panel px-4 py-3 text-left align-top font-mono text-[11.5px] font-normal leading-[1.7] text-faint">我建议怎么花</th></tr></thead>
 					<tbody>
-						<tr><td><b>¥1,500–3,000</b></td><td>落地页 + 预约/留资表单，先把「有人想要」验证出来。跑通后再谈工具。</td></tr>
-						<tr><td><b>¥4,000–6,000</b></td><td>单端工具小程序，核心只做一件事。多数 MVP 从这档起步。</td></tr>
-						<tr><td><b>¥8,000–12,000</b></td><td>小程序 + 基础后台，数据自己看得见，不用再求人导表。</td></tr>
-						<tr><td><b>预算接近 0</b></td><td>免费方案梳理：30–45 分钟语音，帮你理清第一版该做什么、技术上有没有坑。不收费、不绑定、聊完不亏。</td></tr>
+						<tr><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub"><b class="font-mono text-[15px] font-bold text-amber">¥1,500–3,000</b></td><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub">落地页 + 预约/留资表单，先把「有人想要」验证出来。跑通后再谈工具。</td></tr>
+						<tr><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub"><b class="font-mono text-[15px] font-bold text-amber">¥4,000–6,000</b></td><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub">单端工具小程序，核心只做一件事。多数 MVP 从这档起步。</td></tr>
+						<tr><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub"><b class="font-mono text-[15px] font-bold text-amber">¥8,000–12,000</b></td><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub">小程序 + 基础后台，数据自己看得见，不用再求人导表。</td></tr>
+						<tr><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub"><b class="font-mono text-[15px] font-bold text-amber">预算接近 0</b></td><td class="border border-line px-4 py-3 text-left align-top leading-[1.7] text-sub">免费方案梳理：30–45 分钟语音，帮你理清第一版该做什么、技术上有没有坑。不收费、不绑定、聊完不亏。</td></tr>
 					</tbody>
 				</table>
 			</div>
@@ -473,10 +473,10 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 		<div class="mx-auto w-full max-w-[1120px] px-7">
 			<div class="mb-[18px] flex flex-wrap items-baseline gap-[22px]" data-rv>
 				<span class="font-mono text-[13px] tracking-[.15em] text-amber">06 / 估价</span>
-				<h2>先心里有个数</h2>
+				<h2 class="font-serif text-[clamp(26px,3.4vw,38px)] font-black">先心里有个数</h2>
 				<span class="ml-auto font-mono text-[12.5px] text-faint">$ 我的码 estimate --mvp --workshop</span>
 			</div>
-			<p class="sec-lead" data-rv>勾一勾你的 MVP 大概要什么，我给你一个起步价参考区间。这不是报价——报价要聊完才有。但预算盘子多大、值不值得约语音，这一步就能判断。</p>
+			<p class="mb-10 max-w-[660px] text-[15px] leading-[2] text-sub" data-rv>勾一勾你的 MVP 大概要什么，我给你一个起步价参考区间。这不是报价——报价要聊完才有。但预算盘子多大、值不值得约语音，这一步就能判断。</p>
 			<div class="grid grid-cols-1 overflow-hidden rounded-2xl border border-line2 bg-bg2 tab:grid-cols-[1.15fr_.85fr]" data-rv>
 				<div class="p-[28px_30px]">
 					<div class="mb-4 font-mono text-[11.5px] tracking-[.2em] text-faint">01 · 勾选需要的东西（可多选）</div>
@@ -484,9 +484,9 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 					<div class="mt-6">
 						<div class="mb-4 font-mono text-[11.5px] tracking-[.2em] text-faint" style="margin-top:24px">02 · 复杂度感受</div>
 						<div class="ec-row" id="estComp">
-							<button class="ec on" data-m="0.8" data-l="从简">从简 ×0.8</button>
-							<button class="ec cursor-pointer rounded-full border-[1.5px] border-line2 px-4 py-2 font-mono text-[12.5px] text-sub transition-all duration-200 hover:border-amber-d hover:text-ink" data-m="1" data-l="标准">标准 ×1.0</button>
-							<button class="ec cursor-pointer rounded-full border-[1.5px] border-line2 px-4 py-2 font-mono text-[12.5px] text-sub transition-all duration-200 hover:border-amber-d hover:text-ink" data-m="1.3" data-l="稍复杂">稍复杂 ×1.3</button>
+							<button class="ec on cursor-pointer rounded-full border-[1.5px] border-line2 px-4 py-2 font-mono text-[12.5px] text-sub transition-all duration-200 hover:border-amber-d hover:text-ink [&.on]:border-amber [&.on]:bg-amber/10 [&.on]:text-amber" data-m="0.8" data-l="从简">从简 ×0.8</button>
+							<button class="ec cursor-pointer rounded-full border-[1.5px] border-line2 px-4 py-2 font-mono text-[12.5px] text-sub transition-all duration-200 hover:border-amber-d hover:text-ink [&.on]:border-amber [&.on]:bg-amber/10 [&.on]:text-amber" data-m="1" data-l="标准">标准 ×1.0</button>
+							<button class="ec cursor-pointer rounded-full border-[1.5px] border-line2 px-4 py-2 font-mono text-[12.5px] text-sub transition-all duration-200 hover:border-amber-d hover:text-ink [&.on]:border-amber [&.on]:bg-amber/10 [&.on]:text-amber" data-m="1.3" data-l="稍复杂">稍复杂 ×1.3</button>
 						</div>
 					</div>
 					<button class="mt-[22px] cursor-pointer border-0 bg-transparent font-[inherit] text-[12.5px] text-faint underline hover:text-ink" id="estReset" type="button">清空重选</button>
@@ -494,7 +494,7 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 				<div class="flex flex-col border-t border-line bg-bg p-[28px_30px] tab:border-l tab:border-t-0">
 					<div class="mb-4 font-mono text-[11.5px] tracking-[.2em] text-faint">03 · 参考结果</div>
 					<div class="text-[14px] leading-[2] text-faint" id="estHint">先在左边勾选你大概需要的东西，这里会算给你看。</div>
-					<div class="er-body" id="estBody" hidden>
+					<div class="er-body grid gap-[18px] hidden" id="estBody">
 						<div class="grid gap-1.5"><span class="font-mono text-[11px] tracking-[.18em] text-faint">预估工时</span><span class="font-serif text-[34px] font-black leading-[1.3]"><b id="estDays">0</b> 人天<i>≈</i><b id="estWeeks">0</b> 周</span></div>
 						<div class="grid gap-1.5"><span class="font-mono text-[11px] tracking-[.18em] text-faint">参考价格（起步价）</span><span class="font-serif text-[clamp(24px,2.6vw,32px)] font-black leading-[1.4] text-amber" id="estPrice">¥0 – ¥0</span></div>
 						<p class="mt-auto border-t border-dashed border-line2 pt-4 text-[12px] leading-[1.9] text-faint" id="estNote"></p>
@@ -509,16 +509,16 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 		<div class="mx-auto w-full max-w-[1120px] px-7">
 			<div class="mb-[18px] flex flex-wrap items-baseline gap-[22px]" data-rv>
 				<span class="font-mono text-[13px] tracking-[.15em] text-amber">07 / 条款</span>
-				<h2>三种模式通用的执行细节</h2>
+				<h2 class="font-serif text-[clamp(26px,3.4vw,38px)] font-black">三种模式通用的执行细节</h2>
 				<span class="ml-auto font-mono text-[12.5px] text-faint">$ cat 通用条款.txt</span>
 			</div>
 			<div class="grid grid-cols-1 gap-4 phone:grid-cols-2 desk:grid-cols-3">
-				<div class="rounded-[14px] border border-line2 bg-bg2 p-[26px]" data-rv><h4>$ 合同怎么签</h4><p><b>一页纸合作协议</b>，我出模板：范围、价格、付款节点、交付物、售后边界、知识产权归你。电子签当天完成（腾讯电子签 / e签宝）；要纸质版也行，快递时间算你的。</p></div>
-				<div class="rounded-[14px] border border-line2 bg-bg2 p-[26px]" data-rv style="transition-delay:.06s"><h4>$ 怎么付钱</h4><p>对公或个人账户均可，微信 / 支付宝 / 银行转账都收。<b>MVP 按两/三期结，长期月初结，合伙不结</b>。发票可开普票（个体户，税费另计）。</p></div>
-				<div class="rounded-[14px] border border-line2 bg-bg2 p-[26px]" data-rv style="transition-delay:.12s"><h4>$ 日常沟通</h4><p>一个三人群：你 + 我 + 共享文档。消息<b>当天回（晚间集中处理）</b>，不追求即时在线；P0 故障电话直呼；每周一次 30 分钟语音（约晚间或周末）——这半小时能防掉 90% 的误会。</p></div>
-				<div class="rounded-[14px] border border-line2 bg-bg2 p-[26px]" data-rv style="transition-delay:.18s"><h4>$ 东西放在哪</h4><p>代码仓库、服务器、域名、小程序主体，<b>全部在你的账号名下</b>，我从第一天起只有协作权限。对我来说跑路成本无限高——这是比合同更硬的信用。</p></div>
-				<div class="rounded-[14px] border border-line2 bg-bg2 p-[26px]" data-rv style="transition-delay:.24s"><h4>$ 退费与解约</h4><p>三种模式的退出条款各自写明（见上文）。共同原则：<b>已完成部分按约结算，交接物完整交付</b>，不设违约金、不扣押任何东西。</p></div>
-				<div class="rounded-[14px] border border-line2 bg-bg2 p-[26px]" data-rv style="transition-delay:.3s"><h4>$ 有争议怎么办</h4><p>先在每周语音里当面说——这个制度就是为此存在的。仍然解决不了，按协议退出条款走。三年 6 段合作，真正走到解约的一次都没有，<b>但条款一直在</b>，这就是原因。</p></div>
+				<div class="rounded-[14px] border border-line2 bg-bg2 p-[26px]" data-rv><h4 class="mb-[14px] font-mono text-[12.5px] font-normal text-amber">$ 合同怎么签</h4><p class="text-[13.5px] leading-[2] text-sub"><b class="font-medium text-ink">一页纸合作协议</b>，我出模板：范围、价格、付款节点、交付物、售后边界、知识产权归你。电子签当天完成（腾讯电子签 / e签宝）；要纸质版也行，快递时间算你的。</p></div>
+				<div class="rounded-[14px] border border-line2 bg-bg2 p-[26px]" data-rv style="transition-delay:.06s"><h4 class="mb-[14px] font-mono text-[12.5px] font-normal text-amber">$ 怎么付钱</h4><p class="text-[13.5px] leading-[2] text-sub">对公或个人账户均可，微信 / 支付宝 / 银行转账都收。<b class="font-medium text-ink">MVP 按两/三期结，长期月初结，合伙不结</b>。发票可开普票（个体户，税费另计）。</p></div>
+				<div class="rounded-[14px] border border-line2 bg-bg2 p-[26px]" data-rv style="transition-delay:.12s"><h4 class="mb-[14px] font-mono text-[12.5px] font-normal text-amber">$ 日常沟通</h4><p class="text-[13.5px] leading-[2] text-sub">一个三人群：你 + 我 + 共享文档。消息<b class="font-medium text-ink">当天回（晚间集中处理）</b>，不追求即时在线；P0 故障电话直呼；每周一次 30 分钟语音（约晚间或周末）——这半小时能防掉 90% 的误会。</p></div>
+				<div class="rounded-[14px] border border-line2 bg-bg2 p-[26px]" data-rv style="transition-delay:.18s"><h4 class="mb-[14px] font-mono text-[12.5px] font-normal text-amber">$ 东西放在哪</h4><p class="text-[13.5px] leading-[2] text-sub">代码仓库、服务器、域名、小程序主体，<b class="font-medium text-ink">全部在你的账号名下</b>，我从第一天起只有协作权限。对我来说跑路成本无限高——这是比合同更硬的信用。</p></div>
+				<div class="rounded-[14px] border border-line2 bg-bg2 p-[26px]" data-rv style="transition-delay:.24s"><h4 class="mb-[14px] font-mono text-[12.5px] font-normal text-amber">$ 退费与解约</h4><p class="text-[13.5px] leading-[2] text-sub">三种模式的退出条款各自写明（见上文）。共同原则：<b class="font-medium text-ink">已完成部分按约结算，交接物完整交付</b>，不设违约金、不扣押任何东西。</p></div>
+				<div class="rounded-[14px] border border-line2 bg-bg2 p-[26px]" data-rv style="transition-delay:.3s"><h4 class="mb-[14px] font-mono text-[12.5px] font-normal text-amber">$ 有争议怎么办</h4><p class="text-[13.5px] leading-[2] text-sub">先在每周语音里当面说——这个制度就是为此存在的。仍然解决不了，按协议退出条款走。三年 6 段合作，真正走到解约的一次都没有，<b class="font-medium text-ink">但条款一直在</b>，这就是原因。</p></div>
 			</div>
 		</div>
 	</section>
@@ -527,11 +527,11 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 	<section class="border-t border-line bg-bg2 py-24 text-center" id="cta">
 		<div class="mx-auto w-full max-w-[1120px] px-7">
 			<span class="font-mono text-[13px] tracking-[.15em] text-amber" data-rv>08 / NEXT</span>
-			<h2 data-rv>规则都在明处了。剩下的，聊。</h2>
-			<p data-rv>到这一步你还有的问题，一定跟你的具体项目有关——那正是「发 PR」要解决的事。一句话说说你想做什么，我回你一份带天数的价格清单。起步价随签约锁定，不随我涨价。</p>
+			<h2 class="font-serif text-[clamp(30px,4vw,46px)] font-black" data-rv>规则都在明处了。剩下的，聊。</h2>
+			<p class="mx-auto mt-5 max-w-[580px] text-[15px] leading-[2] text-sub" data-rv>到这一步你还有的问题，一定跟你的具体项目有关——那正是「发 PR」要解决的事。一句话说说你想做什么，我回你一份带天数的价格清单。起步价随签约锁定，不随我涨价。</p>
 			<div class="mt-[34px] flex flex-wrap items-center justify-center gap-[14px]" data-rv>
-				<a class="btn amber" href="/#pr">去主站发一个 PR</a>
-				<button class="btn line" id="mailBtn" type="button">复制邮箱</button>
+				<a class="inline-flex items-center justify-center gap-[9px] rounded-[10px] bg-amber px-5 py-[11px] text-[14.5px] font-bold text-[#1d1405] transition duration-200 hover:brightness-[1.09] active:scale-[.97]" href="/#pr">去主站发一个 PR</a>
+				<button class="inline-flex items-center justify-center gap-[9px] rounded-[10px] border-[1.5px] border-line2 bg-transparent px-5 py-[11px] text-[14.5px] font-bold text-ink transition duration-200 hover:border-amber hover:text-amber active:scale-[.97]" id="mailBtn" type="button">复制邮箱</button>
 			</div>				<p class="mt-[34px] font-mono text-[12px] text-faint" data-rv>~/我的码/docs $ echo "砍范围，别砍价——这句免费送你。"</p>
 		</div>
 	</section>
@@ -585,7 +585,7 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 				t.classList.toggle('on', on);
 				t.setAttribute('aria-selected', on ? 'true' : 'false');
 			});
-			$$('.panel').forEach(function (p) { p.classList.toggle('on', p.getAttribute('data-mode') === id); });
+			$$('.panel').forEach(function (p) { p.classList.toggle('hidden', p.getAttribute('data-mode') !== id); });
 			if (history.replaceState) history.replaceState(null, '', '#mode-' + id);
 		}
 		boot('模式切换', function () {
@@ -621,9 +621,9 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 			var answers = [null, null, null];
 			QUIZ.forEach(function (q, qi) {
 				var block = document.createElement('div');
-				block.className = 'qz-block';
-				block.innerHTML = '<div class="qz-no">QUESTION ' + (qi + 1) + '/3</div><div class="qz-q">' + q.q + '</div><div class="qz-opts">' +
-					q.opts.map(function (o, oi) { return '<button class="qz-opt" type="button" data-q="' + qi + '" data-o="' + oi + '">' + o.t + '</button>'; }).join('') + '</div>';
+				block.className = 'qz-block rounded-[14px] border border-line2 bg-bg2 p-[24px_26px]';
+				block.innerHTML = '<div class="qz-no mb-2 font-mono text-[11px] tracking-[.2em] text-amber">QUESTION ' + (qi + 1) + '/3</div><div class="qz-q mb-4 text-[17px] font-bold">' + q.q + '</div><div class="qz-opts grid grid-cols-1 gap-2.5 phone:grid-cols-2">' +
+					q.opts.map(function (o, oi) { return '<button class="qz-opt cursor-pointer rounded-[10px] border-[1.5px] border-line2 bg-transparent px-4 py-[13px] text-left text-[14px] leading-[1.7] text-sub transition-all duration-200 hover:border-amber-d hover:text-ink [&.sel]:border-amber [&.sel]:bg-amber/10 [&.sel]:text-amber" type="button" data-q="' + qi + '" data-o="' + oi + '">' + o.t + '</button>'; }).join('') + '</div>';
 				body.appendChild(block);
 			});
 			function judge() {
@@ -636,11 +636,11 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 				var best = 'mvp', order = ['mvp', 'month', 'equity'];
 				for (var m = 1; m < order.length; m++) { if (sc[order[m]] > sc[best]) best = order[m]; }
 				var meta = MODE_META[best];
-				res.innerHTML = '<div class="qr-tag">RECOMMENDED · 推荐模式</div><h4>' + meta.name + '</h4><p>' + meta.desc +
+				res.innerHTML = '<div class="qr-tag mb-[10px] font-mono text-[11px] tracking-[.24em] text-green">RECOMMENDED · 推荐模式</div><h4 class="mb-[10px] font-serif text-[24px] font-black">' + meta.name + '</h4><p class="max-w-[620px] text-[14.5px] leading-[2] text-sub">' + meta.desc +
 					'（得分：冲刺 ' + sc.mvp + ' / 同行 ' + sc.month + ' / 合伙 ' + sc.equity + '）</p>' +
-					'<div class="qr-btns"><button class="btn amber" type="button" data-go="' + best + '" style="padding:10px 18px;font-size:13.5px">查看这个模式怎么执行</button>' +
-					'<button class="qz-reset" type="button">重新选</button></div>';
-				res.classList.add('on');
+					'<div class="qr-btns mt-[18px] flex flex-wrap items-center gap-3"><button class="inline-flex items-center justify-center gap-[9px] rounded-[10px] bg-amber px-[18px] py-[10px] text-[13.5px] font-bold text-[#1d1405] transition duration-200 hover:brightness-[1.09] active:scale-[.97]" type="button" data-go="' + best + '">查看这个模式怎么执行</button>' +
+					'<button class="qz-reset cursor-pointer border-0 bg-transparent text-[13px] text-faint underline hover:text-ink" type="button">重新选</button></div>';
+				res.classList.remove('hidden');
 			}
 			body.addEventListener('click', function (e) {
 				var b = e.target.closest('.qz-opt'); if (!b) return;
@@ -661,7 +661,7 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 				if (e.target.closest('.qz-reset')) {
 					answers = [null, null, null];
 					body.querySelectorAll('.qz-opt').forEach(function (x) { x.classList.remove('sel'); });
-					res.classList.remove('on');
+					res.classList.add('hidden');
 					res.innerHTML = '';
 				}
 			});
@@ -685,7 +685,7 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 			var hint = $('#estHint'), bodyEl = $('#estBody');
 			if (!wrap || !comp) return;
 			wrap.innerHTML = EST_ITEMS.map(function (it, i) {
-				return '<button class="echip cursor-pointer rounded-[10px] border-[1.5px] border-line2 px-[15px] py-[11px] text-[13.5px] leading-[1.4] text-sub transition-all duration-200 hover:border-amber-d hover:text-ink" type="button" data-i="' + i + '">' + it.k + '<i>' + it.d + ' 天</i></button>';
+				return '<button class="echip cursor-pointer rounded-[10px] border-[1.5px] border-line2 px-[15px] py-[11px] text-[13.5px] leading-[1.4] text-sub transition-all duration-200 hover:border-amber-d hover:text-ink [&.on]:border-amber [&.on]:bg-amber/10 [&.on]:text-ink [&.on_i]:text-amber" type="button" data-i="' + i + '">' + it.k + '<i class="ml-[9px] font-mono text-[10.5px] not-italic text-faint">' + it.d + ' 天</i></button>';
 			}).join('');
 			function round100(n) { return Math.round(n / 100) * 100; }
 			function fmt(n) { return n.toLocaleString('en-US'); }
@@ -695,8 +695,8 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 				var onComp = comp.querySelector('.ec.on');
 				var mult = onComp ? +onComp.getAttribute('data-m') : 1;
 				var lab = onComp ? onComp.getAttribute('data-l') : '标准';
-				if (days === 0) { hint.style.display = ''; bodyEl.hidden = true; return; }
-				hint.style.display = 'none'; bodyEl.hidden = false;
+				if (days === 0) { hint.style.display = ''; bodyEl.classList.add('hidden'); return; }
+				hint.style.display = 'none'; bodyEl.classList.remove('hidden');
 				var d = Math.max(1, Math.round(days * mult));
 				var wks = Math.round(d / 5 * 10) / 10;
 				wks = (wks % 1 === 0 ? wks.toFixed(0) : wks.toFixed(1));
@@ -726,17 +726,17 @@ import PricingLayout from '../layouts/PricingLayout.astro';
 			var cells = [];
 			for (var i = 0; i < 36; i++) {
 				var c = document.createElement('div');
-				c.className = 'vcell';
+				c.className = 'vcell h-[15px] rounded-[3px] bg-[#1C2114] transition-colors duration-300 [&.on]:bg-amber';
 				grid.appendChild(c);
 				cells.push(c);
 			}
 			function paint() {
 				var v = +range.value;
 				cells.forEach(function (c, i) { c.classList.toggle('on', i < v); });
-				if (v === 0) { cap.innerHTML = '还没开始 · 成熟 <b>0%</b> · 全部按协议处理'; }
+				if (v === 0) { cap.innerHTML = '还没开始 · 成熟 <b class="font-normal text-amber">0%</b> · 全部按协议处理'; }
 				else {
 					var pct = Math.round(v / 36 * 1000) / 10;
-					cap.innerHTML = '拖到第 <b>' + v + '</b> / 36 个月 · 已成熟 <b>' + pct + '%</b> · 未成熟部分按协议收回';
+					cap.innerHTML = '拖到第 <b class="font-normal text-amber">' + v + '</b> / 36 个月 · 已成熟 <b class="font-normal text-amber">' + pct + '%</b> · 未成熟部分按协议收回';
 				}
 			}
 			range.addEventListener('input', paint);

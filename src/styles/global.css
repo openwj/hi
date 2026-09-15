@@ -116,6 +116,10 @@
 	button:not(:disabled) {
 		cursor: pointer;
 	}
+	a, button {
+		touch-action: manipulation;
+		-webkit-tap-highlight-color: transparent;
+	}
 	@media (prefers-reduced-motion: reduce) {
 		*, *::before, *::after {
 			animation-duration: 0.01ms !important;
@@ -143,13 +147,11 @@ html.js [data-rv].in {
 	transform: none;
 }
 html.js .dline {
-	opacity: 0;
-	transform: translateX(-8px);
 	transition: opacity 0.5s, transform 0.5s;
 }
-html.js .diffwin.in .dline {
-	opacity: 1;
-	transform: none;
+html.js .diffwin:not(.in) .dline {
+	opacity: 0;
+	transform: translateX(-8px);
 }
 html.js .rr {
 	opacity: 0;
@@ -166,6 +168,9 @@ html.js .rr.in {
 }
 .mask.on {
 	display: flex;
+}
+.mask > div {
+	overscroll-behavior: contain;
 }
 
 /* Toast：.on 切换显隐 */
@@ -198,7 +203,7 @@ html.js .rr.in {
 }
 
 /* 顶栏滚动后毛玻璃背景（JS 给 #top 加 .scrolled） */
-.top.scrolled {
+#top.scrolled {
 	background: rgba(14, 16, 12, 0.88);
 	backdrop-filter: blur(10px);
 	border-bottom-color: var(--color-line);
